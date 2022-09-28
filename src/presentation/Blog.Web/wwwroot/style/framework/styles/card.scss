@@ -1,0 +1,91 @@
+﻿.card {
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.25rem;
+	border: 0 solid rgba(0,0,0,.125);
+	background: $color-white;
+	box-shadow: 0 1px 2px rgb(56 65 74 / 15%);
+	margin-bottom: 1.5rem;
+
+	.card-body {
+		flex: 1 1 auto;
+
+		&.pd {
+			padding: 1rem 1rem !important;
+		}
+
+		.card-flex {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+		}
+
+		.card-title {
+			font-weight: 500;
+			color: #878a99;
+			font-size: 1em;
+		}
+
+		h3 {
+			padding: 0;
+			font-size: 1.889rem;
+			font-weight: 500;
+			margin: 16px 0 0 0;
+			font-family: $font-barlow;
+			color: #495057;
+		}
+
+		.card-subtext {
+			display: block;
+			font-size: 0.8rem;
+			color: #878a99;
+		}
+
+		.card-icon {
+			height: 3rem;
+			width: 3rem;
+			padding-top: 8px;
+			border-radius: 50%;
+			text-align: center;
+			background-color: rgba(41,156,219,.18) !important;
+
+			i {
+				height: 28px;
+				width: 28px;
+				font-size: 28px;
+				color: rgb(41,156,219);
+				text-align: center;
+				align-content: center;
+			}
+		}
+	}
+
+	.card-header {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		padding: 10px;
+		border-radius: 0.25rem 0.25rem 0 0;
+		border-bottom: 1px solid #e9ebec;
+
+		h4 {
+			font-size: 16px;
+			color: #495057;
+			font-weight: 500;
+		}
+
+		h5 {
+			font-size: 14px;
+			font-weight: 400;
+			color: #495057;
+		}
+
+		.card-menu {
+			width: 30px;
+
+			a, i {
+				color: $color-gray !important;
+			}
+		}
+	}
+}

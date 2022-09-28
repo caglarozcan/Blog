@@ -1,0 +1,29 @@
+{
+    "name": "blog.script",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "webpack --mode=development",
+        "build": "webpack --mode=production",
+        "start": "webpack-dev-server --mode=production --open"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@babel/core": "^7.18.13",
+        "@babel/preset-env": "^7.18.10",
+        "babel-loader": "^8.2.5",
+        "file-loader": "^6.2.0",
+        "glob": "^7.2.3",
+        "url-loader": "^4.1.1",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^4.10.0",
+        "webpack-dev-server": "^4.10.0"
+    },
+    "devDependencies": {
+        "webpack-fix-style-only-entries": "^0.6.1",
+        "webpack-utf8-bom": "^1.4.0"
+    }
+}

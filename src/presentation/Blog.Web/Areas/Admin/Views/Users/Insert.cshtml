@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "Kullanıcı Yönetimi";
+    Layout = "~/Areas/Admin/Views/_Shared/_MainLayout.cshtml";
+}
+
+<div class="breadcrumbs">
+    <h4>Kullanıcı Ekle</h4>
+    <ul>
+        <li><a asp-route="AdminHome">Anasayfa</a></li>
+        <li>
+            <i class="cdi cdi-arrow-right-alt2"></i>
+        </li>
+        <li><a asp-route="AdminUsers">Kullanıcı Yönetimi</a></li>
+        <li>
+            <i class="cdi cdi-arrow-right-alt2"></i>
+        </li>
+        <li>Kullanıcı Ekle</li>
+    </ul>
+</div>
+
+<div class="wrapper">
+    <div class="grid">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Yeni Kullanıcı Bilgileri</h4>
+                    <input type="submit" class="btn btn-blue" value="Kullanıcı Ekle" />
+                </div>
+                <div class="card-body pd">
+
+                    <!--Kullanıcı ekleme-->
+                    <div class="grid">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="label">Adı</label>
+                                <input type="text" name="Title" class="input" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="label">Soyadı</label>
+                                <input type="text" name="Title" class="input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="label">Email Adresi</label>
+                                <input type="text" name="Title" class="input" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="label">Nickname</label>
+                                <input type="text" name="Title" class="input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="label">Şifre</label>
+                                <input type="text" name="Title" class="input" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="label">Şifre Onay</label>
+                                <input type="text" name="Title" class="input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="label">Rolü</label>
+                                <select>
+                                    <option>Rol Seçiniz</option>
+                                    <option>Administrator</option>
+                                    <option>Editör</option>
+                                    <option>Yazar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="label">Slug</label>
+                                <input type="text" name="Title" class="input" />
+                                <small><i>Boş bırakırsanız otomatik oluşturulacak.</i></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="label">Kullanıcı Durumu</label>
+                                <select>
+                                    <option>Durum Seçiniz</option>
+                                    <option>Aktif Kullanıcı</option>
+                                    <option>Pasif Kullanıcı</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="label">Bildirim</label>
+                                <label class="label">
+                                    <input type="checkbox" />&nbsp;&nbsp;&nbsp;Kullanıcı bilgileri e-posta ile gönderilsin.
+                                </label>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!--Kullanıcı ekleme-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

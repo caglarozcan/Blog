@@ -1,0 +1,151 @@
+﻿//----------------------------------------------------
+//		TABLE
+//----------------------------------------------------
+table {
+	caption-side: bottom;
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 1rem;
+	vertical-align: top;
+
+	&.border-btm > thead, &.border-btm > tbody > tr:not(:last-child) {
+		border-bottom: 1px solid #e9ebec;
+	}
+
+	thead {
+		vertical-align: bottom;
+
+		th {
+			text-align: left;
+			color: #878a99;
+			font-weight: 500;
+
+			i{
+				color:$color-gray-light;
+			}
+		}
+	}
+
+	tbody {
+		vertical-align: inherit;
+	}
+
+	th {
+		padding: 0.3rem 0.45rem;
+	}
+
+	td {
+		color: #212529;
+		vertical-align: middle;
+		padding: 0.45rem 0.45rem;
+
+		a {
+			text-decoration: none;
+			color: $color-blue;
+
+			i {
+				font-size: 14px !important;
+				color: $color-blue;
+			}
+		}
+	}
+}
+
+.table-footer {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+	.table-info{
+		color:$color-gray;
+	}
+}
+
+//----------------------------------------------------
+//		PAGINATION
+//----------------------------------------------------
+.pagination {
+	display: flex;
+	padding-left: 0;
+	list-style: none;
+	border-radius: 3px;
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+
+	&.bordered {
+		li {
+			&:first-child a {
+				border-top-left-radius: 3px;
+				border-bottom-left-radius: 3px;
+			}
+
+			&:last-child a {
+				border-top-right-radius: 3px;
+				border-bottom-right-radius: 3px;
+				border-right: 1px solid $color-gray-lightl;
+			}
+
+			a {
+				border: 1px solid $color-gray-lightl;
+				border-right: none;
+				border-radius: 0;
+				margin: 0;
+			}
+		}
+	}
+
+	&.pg-direction-right {
+		justify-content: flex-end;
+	}
+
+	&.pg-direction-center {
+		justify-content: center;
+	}
+
+	li {
+
+		&:first-child a {
+			margin-left: 0;
+		}
+
+		&:lasst-child a {
+			margin-right: 0;
+		}
+
+		&.active a {
+			background: $color-blue;
+			color: $color-white;
+
+			&:hover {
+				background: $color-blue;
+			}
+		}
+
+		&.arrow a i {
+			font-size: 14px;
+			line-height: 1.2;
+			height: auto !important;
+			width: auto !important;
+			padding: 0;
+			height: 0;
+			color: $color-blue;
+		}
+
+		a {
+			padding: .3rem .65rem;
+			position: relative;
+			display: block;
+			line-height: 1.25;
+			border-radius: 0.25rem;
+			margin: 0 1px;
+			text-align: center;
+			color: $color-blue;
+			text-decoration: none;
+
+			&:hover {
+				background: $color-gray-lightx;
+			}
+		}
+	}
+}

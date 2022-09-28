@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/style/framework/framework.css",
+    "inputFile": "wwwroot/style/framework/framework.scss"
+  },
+  {
+    "outputFile": "wwwroot/style/site.css",
+    "inputFile": "wwwroot/style/site.scss"
+  }
+]

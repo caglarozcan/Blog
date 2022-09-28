@@ -1,0 +1,94 @@
+﻿//----------------------------------------------------
+//		RESET CSS
+//----------------------------------------------------
+*, *::before, *::after {
+	box-sizing: border-box;
+	outline: 0 !important;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	scroll-behavior: smooth;
+}
+
+::selection {
+	background-color: #3b8dbd;
+	color: #ffffff;
+}
+
+html, body, div, header, nav, main, section, article, footer, menu, ul, ol,
+li, b, p, strong, a, h1, h2, h3, h4, h5, h6, table, thead, tbody tr,
+td, span, iframe, input, button, textarea, select, img, sub, sup, pre,
+code, form, i {
+	font-size: 0.9rem;
+	vertical-align: baseline;
+	color: $color-font;
+	font-family: $font-poppins, sans-serif;
+}
+
+html {
+	tab-size: 4;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+	overflow-wrap: break-word;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+a{
+	text-decoration:none;
+	color:$color-blue;
+}
+
+b, strong {
+	font-weight: 500 !important;
+}
+
+small {
+	font-size: 80%
+}
+
+//----------------------------------------------------
+//		SCROLL
+//----------------------------------------------------
+::-webkit-scrollbar {
+	width: 7px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+	background: #ededed;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #a0a0a0;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #039BE5;
+}

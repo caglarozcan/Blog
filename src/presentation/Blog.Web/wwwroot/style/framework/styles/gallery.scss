@@ -1,0 +1,111 @@
+﻿//----------------------------------------------------
+//		GALLERY
+//----------------------------------------------------
+@for $i from 1 through 12 {
+	.gallery[data-columns="#{$i}"] .gallery-item {
+		width: (100%/$i);
+	}
+}
+
+.gallery {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: baseline;
+	flex-wrap: wrap;
+
+	.gallery-item {
+		padding: 6px;
+		position: relative;
+		overflow: hidden;
+		border-radius: 3px;
+
+		&:hover {
+			background: $color-blue;
+		}
+
+		.attachment {
+			position: relative;
+			background: #f0f0f1;
+			cursor: pointer;
+
+			&:before {
+				content: "";
+				display: block;
+				padding-top: 100%;
+			}
+
+			.check {
+				display: none;
+				height: 24px;
+				width: 24px;
+				padding: 0;
+				border: 0;
+				position: absolute;
+				z-index: 10;
+				top: -5px;
+				right: -5px;
+				outline: 0;
+				background: #f0f0f1;
+				cursor: pointer;
+				box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(0, 0, 0, 0.15);
+				color: #3c434a;
+			}
+
+			.thumbnail {
+				overflow: hidden;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				opacity: 1;
+				transition: opacity .1s;
+
+				&:after {
+					content: "";
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+					overflow: hidden;
+				}
+
+				.filename {
+					position: absolute;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					padding: 8px;
+					overflow: hidden;
+					max-height: 100%;
+					word-wrap: break-word;
+					text-align: center;
+					font-weight: 500;
+					background: rgba(255,255,255,.8);
+					box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+				}
+
+				.centered {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					transform: translate(50%,50%);
+
+					img {
+						top: 0;
+						left: 0;
+						max-height: 100%;
+						position: absolute;
+						transform: translate(-50%,-50%);
+					}
+				}
+			}
+		}
+	}
+}

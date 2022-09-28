@@ -1,0 +1,147 @@
+﻿@{
+	ViewBag.Title = "Makale Ekle";
+	Layout = "~/Areas/Admin/Views/_Shared/_MainLayout.cshtml";
+}
+
+<div class="breadcrumbs">
+	<h4>Makale Ekle</h4>
+	<ul>
+		<li><a asp-route="AdminHome">Anasayfa</a></li>
+		<li>
+			<i class="cdi cdi-arrow-right-alt2"></i>
+		</li>
+		<li><a asp-route="AdminArticle">Makale Yönetimi</a></li>
+		<li>
+			<i class="cdi cdi-arrow-right-alt2"></i>
+		</li>
+		<li>Makale Ekle</li>
+	</ul>
+</div>
+
+<div class="wrapper">
+	<div class="grid">
+		<div class="col-9">
+			<div class="card">
+				<div class="card-body pd">
+
+					<!--Makale listesi-->
+					<div class="form-group">
+						<input type="text" placeholder="Makale başlığı.." />
+					</div>
+					<div class="form-group">
+						<textarea style="height:600px;"></textarea>
+					</div>
+					<div class="form-group">
+						<input type="text" placeholder="Slug (Permalink)" />
+					</div>
+					<!--Makale listesi-->
+
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<!--Seçenekler-->
+			<div class="card">
+				<div class="card-body pd">
+					<div class="grid">
+						<div class="col-8">
+							<select>
+								<option>Yayınla</option>
+								<option>Taslak olarak kaydet</option>
+								<option>PDF Aktar</option>
+							</select>
+						</div>
+						<div class="col-4 text-right">
+							<button class="btn btn-blue">Makale Ekle</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Seçenekler-->
+			<!--Kategori-->
+			<div class="card">
+				<div class="card-header">
+					<h5>Kategori</h5>
+				</div>
+				<div class="card-body pd">
+					<ul class="list">
+						<li>
+							<label>
+								<input type="checkbox" value="" id="" />
+								PHP ile Web Programlama
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" value="" id="" />
+								ASP.NET MVC Core 7
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" value="" id="" />
+								Veritabanı Yönetim Sistemleri
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" value="" id="" />
+								Tasarım Desenleri (Design Patterns)
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" value="" id="" />
+								React JS &amp; Node JS
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" value="" id="" />
+								Javascript Teknikleri
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--Kategori-->
+			<!--Etiket-->
+			<div class="card">
+				<div class="card-header">
+					<h5>Etiket</h5>
+				</div>
+				<div class="card-body pd">
+					<div class="grid">
+						<div class="col-10">
+							<input type="text" placeholder="Etiket ismi.." />
+						</div>
+						<div class="col-2 text-right">
+							<button class="btn btn-blue">Ekle</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Etiket-->
+			<!--Etiket-->
+			<div class="card">
+				<div class="card-header">
+					<h5>Görsel</h5>
+				</div>
+				<div class="card-body pd">
+					<a href="javascript:void(0)">Görsel Seç</a>
+				</div>
+			</div>
+			<!--Etiket-->
+			<!--Makale Açıklaması-->
+			<div class="card">
+				<div class="card-header">
+					<h5>Kısa Açıklama</h5>
+				</div>
+				<div class="card-body pd">
+					<textarea></textarea>
+				</div>
+			</div>
+			<!--Makale Açıklaması-->
+		</div>
+	</div>
+</div>

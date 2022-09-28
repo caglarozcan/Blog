@@ -1,0 +1,82 @@
+﻿@{
+	ViewBag.Title = "Medya Yönetimi";
+	Layout = "~/Areas/Admin/Views/_Shared/_MainLayout.cshtml";
+}
+
+<div class="breadcrumbs">
+	<h4>Medya Yönetimi</h4>
+	<ul>
+		<li><a asp-route="AdminHome">Anasayfa</a></li>
+		<li>
+			<i class="cdi cdi-arrow-right-alt2"></i>
+		</li>
+		<li>Medya Yönetimi</li>
+	</ul>
+</div>
+
+<div class="wrapper">
+	<div class="grid">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<h4>Yüklü İçerikler</h4>
+
+					<div class="dropdown">
+						<a href="javascript:void(0)" data-dropdown="#card-menu">
+							<i class="cdi cdi-menu"></i>
+						</a>
+						<div class="drop-down" id="card-menu">
+							<ul>
+								<li><a asp-route="FileUpload"><i class="cdi cdi-cloud-upload"></i>&nbsp;&nbsp;Dosya Yükle</a></li>
+								<li><a asp-route="MediaType"><i class="cdi cdi-admin-tools"></i>&nbsp;&nbsp;Dosya Türleri</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="card-body pd">
+
+					<!--Makale listesi-->
+					<!--Gallery-->
+					<div class="gallery" data-columns="8">
+						@for (int i = 0; i < 10; i++)
+						{
+							<div class="gallery-item">
+								<div class="attachment">
+									<div class="thumbnail">
+										<div class="centered">
+											<img src="~/images/file.png" />
+										</div>
+										<div class="filename">Buraya-dosya-adı-gelecek.png</div>
+									</div>
+
+									<button type="button" class="check">
+										<i class="cdi cdi-yes"></i>
+									</button>
+								</div>
+							</div>
+						}
+
+						@for (int i = 0; i < 10; i++)
+						{
+							<div class="gallery-item">
+								<div class="attachment">
+									<div class="thumbnail">
+										<div class="centered">
+											<img src="~/images/temp-img.jpg" />
+										</div>
+									</div>
+
+									<button type="button" class="check">
+										<i class="cdi cdi-yes"></i>
+									</button>
+								</div>
+							</div>
+						}
+					</div>
+					<!--Makale listesi-->
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

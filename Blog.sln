@@ -1,0 +1,117 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{74BF7932-C593-4373-8DBD-46769D56B041}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{5424D6AE-55C9-43B1-B6C6-0ACC30756357}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Domain", "src\core\Blog.Domain\Blog.Domain.csproj", "{3DBB0346-808E-4ABD-934A-DB13702E5B6B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Application", "src\core\Blog.Application\Blog.Application.csproj", "{F53EC170-198B-42E0-8396-F594AA866A01}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{9DA1462A-F8D9-414B-88A6-72DABEFA55E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Infrastructure", "src\infrastructure\Blog.Infrastructure\Blog.Infrastructure.csproj", "{08E748F0-98E3-4AAF-B496-5DD6E525CB36}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Persistence", "src\infrastructure\Blog.Persistence\Blog.Persistence.csproj", "{9FF8DB82-2BB0-478B-BB38-C23842425BBD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DB185F37-62A9-4573-AFFE-A253D409370C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.NUnitTests", "test\Blog.NUnitTests\Blog.NUnitTests.csproj", "{660B7AAB-CC1D-4445-981D-99CB9600818C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "presentation", "presentation", "{E4BEA445-84A2-4B93-9B83-C1432DAE31B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Web", "src\presentation\Blog.Web\Blog.Web.csproj", "{5449EEFA-F413-491C-B00E-FE35E84B82A5}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Blog.Script", "src\presentation\Blog.Script\Blog.Script.njsproj", "{EFB91B2E-ABDF-4440-8590-20DFD06D22E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DBB0346-808E-4ABD-934A-DB13702E5B6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DBB0346-808E-4ABD-934A-DB13702E5B6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DBB0346-808E-4ABD-934A-DB13702E5B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DBB0346-808E-4ABD-934A-DB13702E5B6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F53EC170-198B-42E0-8396-F594AA866A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53EC170-198B-42E0-8396-F594AA866A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53EC170-198B-42E0-8396-F594AA866A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53EC170-198B-42E0-8396-F594AA866A01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08E748F0-98E3-4AAF-B496-5DD6E525CB36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E748F0-98E3-4AAF-B496-5DD6E525CB36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08E748F0-98E3-4AAF-B496-5DD6E525CB36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08E748F0-98E3-4AAF-B496-5DD6E525CB36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF8DB82-2BB0-478B-BB38-C23842425BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF8DB82-2BB0-478B-BB38-C23842425BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF8DB82-2BB0-478B-BB38-C23842425BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF8DB82-2BB0-478B-BB38-C23842425BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{660B7AAB-CC1D-4445-981D-99CB9600818C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{660B7AAB-CC1D-4445-981D-99CB9600818C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{660B7AAB-CC1D-4445-981D-99CB9600818C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{660B7AAB-CC1D-4445-981D-99CB9600818C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5449EEFA-F413-491C-B00E-FE35E84B82A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5449EEFA-F413-491C-B00E-FE35E84B82A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5449EEFA-F413-491C-B00E-FE35E84B82A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5449EEFA-F413-491C-B00E-FE35E84B82A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB91B2E-ABDF-4440-8590-20DFD06D22E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB91B2E-ABDF-4440-8590-20DFD06D22E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB91B2E-ABDF-4440-8590-20DFD06D22E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB91B2E-ABDF-4440-8590-20DFD06D22E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5424D6AE-55C9-43B1-B6C6-0ACC30756357} = {74BF7932-C593-4373-8DBD-46769D56B041}
+		{3DBB0346-808E-4ABD-934A-DB13702E5B6B} = {5424D6AE-55C9-43B1-B6C6-0ACC30756357}
+		{F53EC170-198B-42E0-8396-F594AA866A01} = {5424D6AE-55C9-43B1-B6C6-0ACC30756357}
+		{9DA1462A-F8D9-414B-88A6-72DABEFA55E6} = {74BF7932-C593-4373-8DBD-46769D56B041}
+		{08E748F0-98E3-4AAF-B496-5DD6E525CB36} = {9DA1462A-F8D9-414B-88A6-72DABEFA55E6}
+		{9FF8DB82-2BB0-478B-BB38-C23842425BBD} = {9DA1462A-F8D9-414B-88A6-72DABEFA55E6}
+		{660B7AAB-CC1D-4445-981D-99CB9600818C} = {DB185F37-62A9-4573-AFFE-A253D409370C}
+		{E4BEA445-84A2-4B93-9B83-C1432DAE31B2} = {74BF7932-C593-4373-8DBD-46769D56B041}
+		{5449EEFA-F413-491C-B00E-FE35E84B82A5} = {E4BEA445-84A2-4B93-9B83-C1432DAE31B2}
+		{EFB91B2E-ABDF-4440-8590-20DFD06D22E5} = {E4BEA445-84A2-4B93-9B83-C1432DAE31B2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {48040D80-7E48-4185-8840-0DB02CF26D75}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://cahoo.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = src\\core\\Blog.Application\\Blog.Application.csproj
+		SccProjectTopLevelParentUniqueName1 = Blog.sln
+		SccProjectName1 = src/core/Blog.Application
+		SccLocalPath1 = src\\core\\Blog.Application
+		SccProjectUniqueName2 = src\\core\\Blog.Domain\\Blog.Domain.csproj
+		SccProjectTopLevelParentUniqueName2 = Blog.sln
+		SccProjectName2 = src/core/Blog.Domain
+		SccLocalPath2 = src\\core\\Blog.Domain
+		SccProjectUniqueName3 = src\\infrastructure\\Blog.Infrastructure\\Blog.Infrastructure.csproj
+		SccProjectTopLevelParentUniqueName3 = Blog.sln
+		SccProjectName3 = src/infrastructure/Blog.Infrastructure
+		SccLocalPath3 = src\\infrastructure\\Blog.Infrastructure
+		SccProjectUniqueName4 = src\\infrastructure\\Blog.Persistence\\Blog.Persistence.csproj
+		SccProjectTopLevelParentUniqueName4 = Blog.sln
+		SccProjectName4 = src/infrastructure/Blog.Persistence
+		SccLocalPath4 = src\\infrastructure\\Blog.Persistence
+		SccProjectUniqueName5 = test\\Blog.NUnitTests\\Blog.NUnitTests.csproj
+		SccProjectTopLevelParentUniqueName5 = Blog.sln
+		SccProjectName5 = test/Blog.NUnitTests
+		SccLocalPath5 = test\\Blog.NUnitTests
+		SccProjectUniqueName6 = src\\presentation\\Blog.Web\\Blog.Web.csproj
+		SccProjectTopLevelParentUniqueName6 = Blog.sln
+		SccProjectName6 = src/presentation/Blog.Web
+		SccLocalPath6 = src\\presentation\\Blog.Web
+		SccProjectUniqueName7 = src\\presentation\\Blog.Script\\Blog.Script.njsproj
+		SccProjectTopLevelParentUniqueName7 = Blog.sln
+		SccProjectName7 = src/presentation/Blog.Script
+		SccLocalPath7 = src\\presentation\\Blog.Script
+	EndGlobalSection
+EndGlobal

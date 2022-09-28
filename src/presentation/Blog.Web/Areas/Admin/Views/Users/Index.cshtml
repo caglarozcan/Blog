@@ -1,0 +1,128 @@
+﻿@{
+	ViewBag.Title = "Kullanıcı Yönetimi";
+	Layout = "~/Areas/Admin/Views/_Shared/_MainLayout.cshtml";
+}
+
+<div class="breadcrumbs">
+	<h4>Kullanıcı Yönetimi</h4>
+	<ul>
+		<li><a asp-route="AdminHome">Anasayfa</a></li>
+		<li>
+			<i class="cdi cdi-arrow-right-alt2"></i>
+		</li>
+		<li>Kullanıcı Yönetimi</li>
+	</ul>
+</div>
+
+<div class="wrapper">
+	<div class="grid">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<div class="search">
+						<div class="search-icon">
+							<i class="cdi cdi-search"></i>
+						</div>
+						<div class="search-box">
+							<input type="text" placeholder="Ara.." />
+						</div>
+					</div>
+					<div class="dropdown">
+						<a href="javascript:void(0)" data-dropdown="#card-menu">
+							<i class="cdi cdi-menu"></i>
+						</a>
+						<div class="drop-down" id="card-menu">
+							<ul>
+								<li><a asp-route="UserInsert"><i class="cdi cdi-plus-alt2"></i>&nbsp;&nbsp;Kullanıcı Ekle</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="card-body pd">
+
+					<!--Makale listesi-->
+
+					<table class="border-btm">
+						<thead>
+							<tr>
+								<th>
+									<input type="checkbox" />
+								</th>
+								<th>Adı</th>
+								<th>Soyadı</th>
+								<th>Nickname</th>
+								<th>Mail Adresi</th>
+								<th>Rolü</th>
+								<th class="text-center">Eklenme</th>
+								<th class="text-center">Son Giriş</th>
+								<th class="text-center">Durum</th>
+								<th class="text-center">İşlem</th>
+							</tr>
+						</thead>
+						<tbody>
+							@for (int i = 1; i <= 20; i++)
+							{
+								<tr>
+									<td><input type="checkbox" /></td>
+									<td>Çağlar</td>
+									<td>ÖZCAN</td>
+									<td>cahoocan</td>
+									<td>cglrozcan@gmail.com</td>
+									<td>Administrator</td>
+									<td class="text-center">10 Ekim 2021 23:36</td>
+									<td class="text-center">10 Ekim 2021 23:36</td>
+									<td class="text-center">
+										<span class="status-success">Aktif</span>
+									</td>
+									<td class="text-center">
+										<a href="#">
+											<i class="cdi cdi-ellipsis"></i>
+										</a>
+									</td>
+								</tr>
+							}
+
+						</tbody>
+					</table>
+
+					<ul class="pagination pg-direction-right">
+						<li class="arrow">
+							<a href="#">
+								<i class="cdi cdi-arrow-left-alt2"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#">1</a>
+						</li>
+						<li>
+							<a href="#">2</a>
+						</li>
+						<li>
+							<a href="#">3</a>
+						</li>
+						<li class="active">
+							<a href="#">4</a>
+						</li>
+						<li>
+							<a href="#">5</a>
+						</li>
+						<li>
+							<a href="#">6</a>
+						</li>
+						<li>
+							<a href="#">7</a>
+						</li>
+						<li class="arrow">
+							<a href="#">
+								<i class="cdi cdi-arrow-right-alt2"></i>
+							</a>
+						</li>
+					</ul>
+
+					<!--Makale listesi-->
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

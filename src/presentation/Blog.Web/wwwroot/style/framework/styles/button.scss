@@ -1,0 +1,135 @@
+﻿.btn {
+	display: inline-block;
+	font-weight: 400;
+	font: inherit;
+	line-height: 1.5;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	cursor: pointer;
+	user-select: none;
+	background-color: transparent;
+	border: 1px solid transparent;
+	padding: 0.355rem 0.755rem;
+	font-size: 1rem;
+	border-radius: 0.25rem;
+	-webkit-font-smoothing: antialiased;
+	transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+
+	&.btn-sm {
+		padding: 0.25rem 0.5rem;
+		font-size: 0.875rem;
+		border-radius: 0.2rem;
+
+		i {
+			font-size: 0.875rem !important;
+			width: auto !important;
+			height: auto;
+			padding: 4px 5px 0 0;
+		}
+	}
+
+	&.btn-md {
+		padding: 0.6rem 1.675rem;
+	}
+
+	&.btn-primary {
+		background: $color-btn-primary;
+		color: $color-white;
+		border-color: $color-btn-primary;
+
+		&:hover {
+			background-color: $color-btn-primary-hover;
+			border-color: $color-btn-primary-hover;
+			color: $color-white;
+		}
+
+		&.disabled,
+		&[disabled],
+		&.disabled:hover,
+		&[disabled]:hover {
+			background-color: $color-btn-primary-disable;
+			border-color: $color-btn-primary-disable;
+		}
+	}
+
+	&.btn-blue {
+		background: $color-btn-blue;
+		color: $color-white;
+		border-color: $color-btn-blue;
+
+		&:hover {
+			background-color: $color-btn-blue-hover;
+			border-color: $color-btn-blue-hover;
+			color: $color-white;
+		}
+
+		&.disabled,
+		&[disabled],
+		&.disabled:hover,
+		&[disabled]:hover {
+			background-color: $color-btn-blue-disable;
+			border-color: $color-btn-blue-disable;
+		}
+	}
+
+	&.btn-danger {
+		background: $color-btn-danger;
+		color: $color-white;
+		border-color: $color-btn-danger;
+
+		&:hover {
+			background-color: $color-btn-danger-hover;
+			border-color: $color-btn-danger-hover;
+			color: $color-white;
+		}
+
+		&.disabled,
+		&[disabled],
+		&.disabled:hover,
+		&[disabled]:hover {
+			background-color: $color-btn-danger-disable;
+			border-color: $color-btn-danger-disable;
+		}
+	}
+
+	&.btn-success {
+		background: $color-btn-success;
+		color: $color-white;
+		border-color: $color-btn-success;
+
+		&:hover {
+			background-color: $color-btn-success-hover;
+			border-color: $color-btn-success-hover;
+			color: $color-white;
+		}
+
+		&.disabled,
+		&[disabled],
+		&.disabled:hover,
+		&[disabled]:hover {
+			background-color: $color-btn-success-disable;
+			border-color: $color-btn-success-disable;
+		}
+	}
+
+	&.btn-default {
+		background: $color-btn-default;
+		color: $color-btn-default-fcolor;
+		border-color: $color-btn-default;
+
+		&:hover {
+			background-color: $color-btn-default-hover;
+			border-color: $color-btn-default-hover;
+			color: $color-btn-default-fcolor;
+		}
+
+		&.disabled,
+		&[disabled],
+		&.disabled:hover,
+		&[disabled]:hover {
+			background-color: $color-btn-default-disable;
+			border-color: $color-btn-default-disable;
+		}
+	}
+}

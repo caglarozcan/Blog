@@ -1,0 +1,79 @@
+﻿@import 
+	'styles/fonts.scss', 
+	'styles/variable.scss', 
+	'styles/reset.scss', 
+	'styles/grid.scss', 
+	'styles/forms.scss', 
+	'styles/button.scss', 
+	'styles/tools.scss',
+	'styles/card.scss',
+	'styles/gallery.scss',
+	'styles/dropdown.scss',
+	'styles/dialog.scss',
+	'styles/table.scss';
+
+//----------------------------------------------------
+//		STATUS
+//----------------------------------------------------
+
+.status-success, .status-info, .status-primary, .status-danger {
+	display: inline-block;
+	padding: 2px 5px;
+	border-radius: 4px;
+	font-size: 0.70em;
+	font-weight: 500;
+}
+
+.status-success {
+	color: #1BC5BD;
+	background-color: #C9F7F5;
+}
+
+.status-info {
+	color: #8950FC;
+	background-color: #EEE5FF;
+}
+
+.status-primary {
+	color: #3699FF;
+	background-color: #E1F0FF;
+}
+
+.status-danger {
+	color: #F64E60;
+	background-color: #FFE2E5;
+}
+
+//----------------------------------------------------
+//		ANIMATION
+//----------------------------------------------------
+.fade {
+	top: 0;
+	transform: translateX(-50%);
+}
+
+.fade .modal-container {
+	transform: translateY(-200%);
+	transition: all .4s;
+	opacity: 0;
+}
+
+.show-modal.modal.fade .modal-container {
+	transform: translateY(0%);
+	opacity: 1;
+}
+
+.show {
+	display: block !important;
+	animation: fadein .8s;
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}

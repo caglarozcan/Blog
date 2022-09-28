@@ -1,0 +1,47 @@
+﻿@mixin make-col($size: 1, $columns: 12) {
+	flex: 0 0 auto;
+	width: percentage($size / $columns);
+}
+
+.grid {
+	--bs-gutter-x: 1.5rem;
+	--bs-gutter-y: 0;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 0;
+	margin-right: calc(-0.5 * 1.5rem);
+	margin-left: calc(-0.5 * 1.5rem);
+
+	& > * {
+		box-sizing: border-box;
+		flex-shrink: 0;
+		width: 100%;
+		max-width: 100%;
+		padding-right: calc(1.5rem * 0.5);
+		padding-left: calc(1.5rem * 0.5);
+		margin-top: 0;
+	}
+
+	.col {
+		flex: 1 0 0%;
+	}
+
+	&.grid-col-auto > * {
+		flex: 0 0 auto;
+		width: auto;
+	}
+
+	@for $i from 1 through 6 {
+		&.grid-col-#{$i} > * {
+			flex: 0 0 auto;
+			width: calc(100% / #{$i});
+		}
+	}
+
+	@for $i from 1 through 12 {
+		.col-#{$i} {
+			@include make-col($i, 12);
+			//padding: 0.750em;
+		}
+	}
+}

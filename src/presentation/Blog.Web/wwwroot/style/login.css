@@ -1,0 +1,31 @@
+﻿body {
+	background: url('../images/login-bg.jpg') #f3f3f3;
+	color: #455560;
+}
+
+.login-box {
+	width: 100%;
+	max-width: 400px;
+	margin: 250px auto 0 auto;
+	padding:30px 20px 20px 20px;
+}
+
+.login-box .logo{
+	display:block;
+	text-align:center;
+}
+
+	.login-box .logo img{
+		width:90px;
+		margin-bottom:15px;
+	}
+
+footer {
+	position: fixed;
+	text-align: center;
+	left: 0;
+	right: 0;
+	bottom: 20px;
+	color: #878a99;
+	font-size:1rem;
+}

@@ -1,0 +1,418 @@
+﻿@{
+	ViewBag.Title = "Kategori Yönetimi";
+	Layout = "~/Areas/Admin/Views/_Shared/_MainLayout.cshtml";
+}
+
+<div class="breadcrumbs">
+	<h4>Kategori Yönetimi</h4>
+	<ul>
+		<li><a asp-route="AdminHome">Anasayfa</a></li>
+		<li>
+			<i class="cdi cdi-arrow-right-alt2"></i>
+		</li>
+		<li>Kategori Yönetimi</li>
+	</ul>
+</div>
+
+<div class="wrapper">
+	<div class="grid">
+		<div class="col-5">
+			<div class="card" id="category-insert-container">
+				<div class="card-header">
+					<h4>Kategori Ekle</h4>
+				</div>
+				<div class="card-body pd">
+					<form asp-route="CategoryInsert" method="post" id="category-insert-form">
+						@Html.ValidationSummary(true)
+
+						<div class="form-group">
+							<label class="label">Kategori Adı</label>
+							<input type="text" name="Title" class="input" />
+							<span class="vld-Title"></span>
+						</div>
+						<div class="form-group">
+							<label class="label">Üst Kategori</label>
+							<select name="ParentId">
+								<option value="">Kategori Seçiniz</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="label">Url (Slug)</label>
+							<input type="text" name="Slug" class="input" />
+							<small><i>Boş bırakırsanız otomatik olarak oluşturulacaktır.</i></small>
+						</div>
+						<div class="form-group">
+							<label class="label">Icon</label>
+							<input type="text" name="Icon" class="input" />
+							<span class="vld-Icon"></span>
+						</div>
+						<div class="form-group">
+							<label class="label">Renk</label>
+							<input type="text" name="Color" class="input" />
+							<span class="vld-Color"></span>
+						</div>
+						<div class="form-group">
+							<label class="label">Kısa Açıklama</label>
+							<textarea class="input" name="Description"></textarea>
+							<span class="vld-Description"></span>
+						</div>
+
+						<div class="form-group">
+							<label class="label">Durumu</label>
+							<select name="Status">
+								<option value="1" selected>Aktif</option>
+								<option value="0">Pasif</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" class="btn btn-blue" value="Kategori Ekle" />
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="card" id="category-edit-container" style="display:none;">
+				<div class="card-header">
+					<h4>Kategori Güncelle</h4>
+				</div>
+				<div class="card-body pd">
+					<form asp-route="CategoryEdit" method="post" id="category-edit-form">
+						@Html.ValidationSummary(true)
+						<input type="hidden" name="Id" />
+
+						<div class="form-group">
+							<label class="label">Kategori Adı</label>
+							<input type="text" name="Title" class="input" />
+							<span class="vld-Title"></span>
+						</div>
+						<div class="form-group">
+							<label class="label">Üst Kategori</label>
+							<select name="ParentId">
+								<option value="">Kategori Seçiniz</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="label">Url (Slug)</label>
+							<input type="text" name="Slug" class="input" />
+							<small><i>Boş bırakırsanız otomatik olarak oluşturulacaktır.</i></small>
+						</div>
+						<div class="form-group">
+							<label class="label">Icon</label>
+							<input type="text" name="Icon" class="input" />
+							<span class="vld-Icon"></span>
+						</div>
+						<div class="form-group">
+							<label class="label">Renk</label>
+							<input type="text" name="Color" class="input" />
+							<span class="vld-Color"></span>
+						</div>
+						<div class="form-group">
+							<label class="label">Kısa Açıklama</label>
+							<textarea class="input" name="Description"></textarea>
+							<span class="vld-Description"></span>
+						</div>
+
+						<div class="form-group">
+							<label class="label">Durumu</label>
+							<select name="Status">
+								<option value="1">Aktif</option>
+								<option value="0">Pasif</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" class="btn btn-blue" value="Kategori Güncelle" />
+							<input type="reset" class="btn btn-default" value="İptal" id="edit-canel-btn" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-7">
+			<div class="card">
+				<div class="card-header">
+					<h4>Kategoriler</h4>
+					<div class="search">
+						<div class="search-icon">
+							<i class="cdi cdi-search"></i>
+						</div>
+						<div class="search-box">
+							<input type="text" placeholder="Ara.." id="filter-box" />
+						</div>
+					</div>
+				</div>
+				<div class="card-body pd">
+
+					<!--Makale listesi-->
+
+					<table class="border-btm" id="table-category">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Kategori Adı</th>
+								<th>Eklenme</th>
+								<th>Renk</th>
+								<th>Icon</th>
+								<th class="text-center">Durum</th>
+								<th class="text-center">İşlem</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+					<!--Makale listesi-->
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	window.addEventListener('DOMContentLoaded', (event) => {
+		//Kategori listesi için data table ayarlanması.
+		var dtCategory = new DataTable('#table-category', {
+			method: 'GET',
+			url: 'https://localhost:44307/Admin/Category/GetList',
+			fixColumn: true,
+			dataPerPage: 15,
+			columns: [
+				{
+					'targets': 'AI',
+					'order': false,
+				},
+				{
+					'targets': 2,
+					'order': true,
+				},
+				{
+					'targets': 7,
+					'order': true,
+					'dateFormat': 'd MM yyyy H:i'
+				},
+				{
+					'targets': 5,
+					'order': false,
+				},
+				{
+					'targets': 4,
+					'order': false,
+				},
+				{
+					'bind': 8,
+					'order': false,
+					'aling': 'center',
+					'render': function (data) {
+						return data == 1 ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
+					}
+				},
+				{
+					'bind': 0,
+					'order': false,
+					'aling': 'center',
+					'render': function (data) {
+						return '<div class="dropdown"><a href="javascript:void(0)" data-dropdown="#cdi' + data.split('-')[0] + '">' +
+							'<i class="cdi cdi-ellipsis"></i>' +
+							'</a>' +
+							'<div class="drop-down" id="cdi' + data.split('-')[0] + '">' +
+							'<ul>' +
+							'<li><a href="javascript:void(0)" data-action="statusChange" data-id="' + data + '"><i class="cdi cdi-remove"></i>&nbsp;&nbsp;Aktif/Pasif</a></li>' +
+							'<li><a href="javascript:void(0)" data-action="edit" data-id="' + data + '"><i class="cdi cdi-edit"></i>&nbsp;&nbsp;Güncelle</a></li>' +
+							'<li class="seperator"></li>' +
+							'<li><a href="javascript:void(0)" data-action="delete" data-id="' + data + '"><i class="cdi cdi-trash"></i>&nbsp;&nbsp;Sil</a></li>' +
+							'</ul>' +
+							'</div></div>';
+					}
+				}
+			],
+			order: [2, 1],
+			onRendered: function () {
+				DropDown.init();
+
+				//Kategori status değiştirme işlemi.
+				var statusLinks = document.querySelectorAll('a[data-action="statusChange"]');
+				statusLinks.forEach(element => {
+					element.addEventListener('click', function (e) {
+						e.stopPropagation();
+						var target = e.currentTarget;
+						var id = target.dataset.id;
+						var statusTd = Util.findAll('td', target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)[5];
+
+						Ajax.send({
+							method: 'POST',
+							url: Util.urlHelper('Admin/Category/StatusChange'),
+							data: { "id": id }
+						}).then(responseData => {
+							statusTd.innerHTML = statusTd.innerHTML == '<span class="status-danger">Pasif</span>' ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
+							Dailog.init({
+								icon: responseData.success ? 'success' : 'danger',
+								title: responseData.success ? 'İşlem başarılı..' : 'İşlem başarısız!',
+								message: responseData.message,
+								buttonType: 'ok'
+							});
+						}).catch(error => {
+							Dailog.init({
+								icon: 'danger',
+								title: 'İşlem başarısız!',
+								message: 'İşlem sırasında bir hata oluştu.. Daha sonra tekrar deneyiniz.',
+								buttonType: 'ok'
+							});
+						});
+					});
+				});
+
+				//Kategori silme işlemi.
+				var deleteLinks = document.querySelectorAll('a[data-action="delete"]');
+				deleteLinks.forEach(element => {
+					element.addEventListener('click', function (e) {
+						e.stopPropagation();
+						var target = e.currentTarget;
+						var id = target.dataset.id;
+
+						Dailog.init({
+							icon: 'question',
+							title: 'Silme işlemi onayla!',
+							message: 'Kategori sistemden silinecek! İşleme devam etmek istediğinizden emin misiniz?',
+							buttonType: 'yesNo',
+							ajax: {
+								url: Util.urlHelper('Admin/Category/Delete'),
+								method: 'POST',
+								data: { "id": id }
+							},
+							ajaxAfter: function () {
+								dtCategory.renderBody();
+							}
+						});
+					});
+				});
+
+				//Kategori düzenleme işlemi.
+				var editLinks = document.querySelectorAll('a[data-action="edit"]');
+				editLinks.forEach(element => {
+					element.addEventListener('click', function (e) {
+						//e.stopPropagation();
+						var target = e.currentTarget;
+						var id = target.dataset.id;
+						var cancelBtn = document.getElementById('edit-canel-btn');
+
+						Ajax.send({
+							method: 'POST',
+							url: Util.urlHelper('Admin/Category/EditInfo'),
+							data: { "id": id }
+						}).then(responseData => {
+							//burada gelen form gösterilecek.
+							//console.log(responseData);
+
+							if (responseData.success) {
+								var insertForm = document.getElementById('category-insert-container');
+								var editForm = document.getElementById('category-edit-container');
+
+								Util.find('input[name="Id"]', editForm).value = responseData.value.id;
+								Util.find('input[name="Title"]', editForm).value = responseData.value.title;
+								Util.find('input[name="Slug"]', editForm).value = responseData.value.slug;
+								Util.find('input[name="Icon"]', editForm).value = responseData.value.icon;
+								Util.find('input[name="Color"]', editForm).value = responseData.value.color;
+								Util.find('textarea[name="Description"]', editForm).value = responseData.value.description;
+								Util.find('select[name="ParentId"]', editForm).value = responseData.value.parentId;
+
+								insertForm.style.display = 'none';
+								editForm.style.display = 'block';
+
+								cancelBtn.addEventListener('click', function () {
+									editForm.style.display = 'none';
+									insertForm.style.display = 'block';
+								});
+							} else {
+								Dailog.init({
+									icon: 'danger',
+									title: 'İşlem başarısız!',
+									message: responseData.message,
+									buttonType: 'ok'
+								});
+							}
+						}).catch(error => {
+							//console.log(error);
+							Dailog.init({
+								icon: 'danger',
+								title: 'İşlem başarısız!',
+								message: 'Düzenlenecek kategori bilgileri alınamadı. Daha sonra tekrar deneyiniz.',
+								buttonType: 'ok'
+							});
+						});
+					});
+				});
+			},
+			filter: {
+				element: '#filter-box'
+			}
+		});
+
+		FormValidation.init({
+			formSelector: '#category-insert-form',
+			sendAjax: true,
+			ajaxAfter: function () {
+				dtCategory.renderBody();
+			},
+			inputs: [
+				{
+					name: 'Title',
+					rules: [
+						{ rule: 'required', message: 'Kategori ismi alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Icon',
+					rules: [
+						{ rule: 'required', message: 'Kategori ikon alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Color',
+					rules: [
+						{ rule: 'required', message: 'Kategori renk alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Description',
+					rules: [
+						{ rule: 'required', message: 'Kategori açıklama alanı zorunludur.' }
+					],
+				}
+			]
+		});
+
+		FormValidation.init({
+			formSelector: '#category-edit-form',
+			sendAjax: true,
+			ajaxAfter: function () {
+				dtCategory.renderBody();
+			},
+			inputs: [
+				{
+					name: 'Title',
+					rules: [
+						{ rule: 'required', message: 'Kategori ismi alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Icon',
+					rules: [
+						{ rule: 'required', message: 'Kategori ikon alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Color',
+					rules: [
+						{ rule: 'required', message: 'Kategori renk alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Description',
+					rules: [
+						{ rule: 'required', message: 'Kategori açıklama alanı zorunludur.' }
+					],
+				}
+			]
+		});
+	});
+</script>

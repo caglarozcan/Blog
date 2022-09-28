@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" href="~/images/logo.png">
+	<link href="~/third-party/cdicons/css/cdicons.css" rel="stylesheet" />
+	<link href="~/style/framework/framework.min.css" rel="stylesheet" />
+	<link href="~/style/site.min.css" rel="stylesheet" />
+	<script src="~/script/frameworkjs/framework.js"></script>
+	<script src="~/script/third-party/data-table.js"></script>
+	<title>@ViewBag.Title</title>
+</head>
+<body>
+	<header>
+		<div class="header-content">
+			<div class="logo">
+				<img src="~/images/logo-main.png" />
+			</div>
+			<div class="system-menu"></div>
+		</div>
+	</header>
+
+	<nav>
+		<ul>
+			<li is-active="yonetim/panel">
+				<a asp-route="AdminHome">
+					<i class="cdi cdi-dashboard"></i>
+					<span>Dashboard</span>
+				</a>
+			</li>
+			<li is-active="yonetim/makale,yonetim/makale-ekle,yonetim/seri-makaleler">
+				<a asp-route="AdminArticle">
+					<i class="cdi cdi-admin-post"></i>
+					<span>Makale</span>
+				</a>
+			</li>
+			<li is-active="yonetim/kullanici,yonetim/kullanici-ekle">
+				<a asp-route="AdminUsers">
+					<i class="cdi cdi-admin-users"></i>
+					<span>Kullanıcı</span>
+				</a>
+			</li>
+			<li is-active="yonetim/kategori">
+				<a asp-route="AdminCategories">
+					<i class="cdi cdi-rest-api"></i>
+					<span>Kategori</span>
+				</a>
+			</li>
+			<li is-active="yonetim/etiket">
+				<a asp-route="AdminTags">
+					<i class="cdi cdi-tag"></i>
+					<span>Etiket</span>
+				</a>
+			</li>
+			<li is-active="yonetim/medya,yonetim/dosya-yukle,yonetim/dosya-turleri">
+				<a asp-route="AdminMedias">
+					<i class="cdi cdi-admin-media"></i>
+					<span>Medya</span>
+				</a>
+			</li>
+			<li is-active="yonetim/yorum">
+				<a asp-route="AdminComments">
+					<i class="cdi cdi-admin-comments"></i>
+					<span>Yorum</span>
+				</a>
+			</li>
+			<li is-active="yonetim/ayarlar">
+				<a asp-route="AdminSettings">
+					<i class="cdi cdi-admin-settings"></i>
+					<span>Ayarlar</span>
+				</a>
+			</li>
+			<li>
+				<a asp-route="AdminLogout">
+					<i class="cdi cdi-admin-plugins"></i>
+					<span>Çıkış</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+	<main id="content">
+		@RenderBody()
+	</main>
+
+	<footer>
+		&copy; Copyright 2002 Çağlar ÖZCAN.
+	</footer>
+</body>
+</html>

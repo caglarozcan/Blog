@@ -1,0 +1,380 @@
+﻿@{
+	ViewBag.Title = "Blog Dashboard";
+	Layout = "~/Areas/Admin/Views/_Shared/_MainLayout.cshtml";
+}
+
+<div class="wrapper">
+	<div class="grid">
+		<!--Card-->
+		<div class="col-3">
+			<div class="card">
+				<div class="card-body pd">
+					<dv class="card-flex">
+						<div>
+							<span class="card-title">Kullanıcı</span>
+							<h3>256</h3>
+							<p class="card-subtext">Sisteme ekli kullanıcı sayısı.</p>
+						</div>
+						<div class="card-icon">
+							<i class="cdi cdi-groups"></i>
+						</div>
+					</dv>
+				</div>
+			</div>
+		</div>
+		<!--Card-->
+		<!--Card-->
+		<div class="col-3">
+			<div class="card">
+				<div class="card-body pd">
+					<dv class="card-flex">
+						<div>
+							<span class="card-title">Makale</span>
+							<h3>138</h3>
+							<p class="card-subtext">Yayında makale sayısı.</p>
+						</div>
+						<div class="card-icon">
+							<i class="cdi cdi-admin-post"></i>
+						</div>
+					</dv>
+				</div>
+			</div>
+		</div>
+		<!--Card-->
+		<!--Card-->
+		<div class="col-3">
+			<div class="card">
+				<div class="card-body pd">
+					<dv class="card-flex">
+						<div>
+							<span class="card-title">Yorum</span>
+							<h3>358</h3>
+							<p class="card-subtext">Makale-yorum sayısı.</p>
+						</div>
+						<div class="card-icon">
+							<i class="cdi cdi-admin-comments"></i>
+						</div>
+					</dv>
+				</div>
+			</div>
+		</div>
+		<!--Card-->
+		<!--Card-->
+		<div class="col-3">
+			<div class="card">
+				<div class="card-body pd">
+					<dv class="card-flex">
+						<div>
+							<span class="card-title">Toplam İçerik</span>
+							<h3>1658</h3>
+							<p class="card-subtext">Web sitesi toplam içerik.</p>
+						</div>
+						<div class="card-icon">
+							<i class="cdi cdi-paperclip"></i>
+						</div>
+					</dv>
+				</div>
+			</div>
+		</div>
+		<!--Card-->
+	</div>
+
+
+
+
+	<div class="grid">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<h4>Site İstatistikleri</h4>
+				</div>
+				<div class="card-body">
+					<div id="chartdiv" style="height:500px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="grid">
+		<div class="col-6">
+			<div class="card">
+				<div class="card-header">
+					<h4>En son gelen yorumlar</h4>
+				</div>
+				<div class="card-body">
+					<table class="border-btm">
+						<thead>
+							<tr>
+								<th>Makale</th>
+								<th>Tarih</th>
+								<th class="text-center">İşlem</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Buraya makale adı gelcek</td>
+								<td>10 Ekim 2021 09:15</td>
+								<td class="text-center">
+									<a href="#">
+										<i class="cdi cdi-yes"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Buraya makale adı gelcek</td>
+								<td>10 Ekim 2021 09:15</td>
+								<td class="text-center">
+									<a href="#">
+										<i class="cdi cdi-yes"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Buraya makale adı gelcek</td>
+								<td>10 Ekim 2021 09:15</td>
+								<td class="text-center">
+									<a href="#">
+										<i class="cdi cdi-yes"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Buraya makale adı gelcek</td>
+								<td>10 Ekim 2021 09:15</td>
+								<td class="text-center">
+									<a href="#">
+										<i class="cdi cdi-yes"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Buraya makale adı gelcek</td>
+								<td>10 Ekim 2021 09:15</td>
+								<td class="text-center">
+									<a href="#">
+										<i class="cdi cdi-yes"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Buraya makale adı gelcek</td>
+								<td>10 Ekim 2021 09:15</td>
+								<td class="text-center">
+									<a href="#">
+										<i class="cdi cdi-yes"></i>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-6">
+			<div class="card">
+				<div class="card-header">
+					<h4>En son gelen yorumlar</h4>
+				</div>
+				<div class="card-body">
+					<table class="border-btm">
+						<thead>
+							<tr>
+								<th>Makale</th>
+								<th>Tarih</th>
+								<th class="text-center">İşlem</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Buraya makale adı gelcek</td>
+								<td>10 Ekim 2021 09:15</td>
+								<td class="text-center">
+									<a href="#">
+										<i class="cdi cdi-yes"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Buraya makale adı gelcek</td>
+								<td>10 Ekim 2021 09:15</td>
+								<td class="text-center">
+									<a href="#">
+										<i class="cdi cdi-yes"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Buraya makale adı gelcek</td>
+								<td>10 Ekim 2021 09:15</td>
+								<td class="text-center">
+									<a href="#">
+										<i class="cdi cdi-yes"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Buraya makale adı gelcek</td>
+								<td>10 Ekim 2021 09:15</td>
+								<td class="text-center">
+									<a href="#">
+										<i class="cdi cdi-yes"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Buraya makale adı gelcek</td>
+								<td>10 Ekim 2021 09:15</td>
+								<td class="text-center">
+									<a href="#">
+										<i class="cdi cdi-yes"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Buraya makale adı gelcek</td>
+								<td>10 Ekim 2021 09:15</td>
+								<td class="text-center">
+									<a href="#">
+										<i class="cdi cdi-yes"></i>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+	am4core.ready(function () {
+
+		// Themes begin
+		am4core.useTheme(am4themes_animated);
+		// Themes end
+
+		// Create chart instance
+		var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+		//
+
+		// Increase contrast by taking evey second color
+		chart.colors.step = 2;
+
+		// Add data
+		chart.data = generateChartData();
+
+		// Create axes
+		var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+		dateAxis.renderer.minGridDistance = 50;
+
+		// Create series
+		function createAxisAndSeries(field, name, opposite, bullet) {
+			var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+			if (chart.yAxes.indexOf(valueAxis) != 0) {
+				valueAxis.syncWithAxis = chart.yAxes.getIndex(0);
+			}
+
+			var series = chart.series.push(new am4charts.LineSeries());
+			series.dataFields.valueY = field;
+			series.dataFields.dateX = "date";
+			series.strokeWidth = 2;
+			series.yAxis = valueAxis;
+			series.name = name;
+			series.tooltipText = "{name}: [bold]{valueY}[/]";
+			series.tensionX = 0.8;
+			series.showOnInit = true;
+
+			var interfaceColors = new am4core.InterfaceColorSet();
+
+			switch (bullet) {
+				case "triangle":
+					var bullet = series.bullets.push(new am4charts.Bullet());
+					bullet.width = 12;
+					bullet.height = 12;
+					bullet.horizontalCenter = "middle";
+					bullet.verticalCenter = "middle";
+
+					var triangle = bullet.createChild(am4core.Triangle);
+					triangle.stroke = interfaceColors.getFor("background");
+					triangle.strokeWidth = 2;
+					triangle.direction = "top";
+					triangle.width = 12;
+					triangle.height = 12;
+					break;
+				case "rectangle":
+					var bullet = series.bullets.push(new am4charts.Bullet());
+					bullet.width = 10;
+					bullet.height = 10;
+					bullet.horizontalCenter = "middle";
+					bullet.verticalCenter = "middle";
+
+					var rectangle = bullet.createChild(am4core.Rectangle);
+					rectangle.stroke = interfaceColors.getFor("background");
+					rectangle.strokeWidth = 2;
+					rectangle.width = 10;
+					rectangle.height = 10;
+					break;
+				default:
+					var bullet = series.bullets.push(new am4charts.CircleBullet());
+					bullet.circle.stroke = interfaceColors.getFor("background");
+					bullet.circle.strokeWidth = 2;
+					break;
+			}
+
+			valueAxis.renderer.line.strokeOpacity = 1;
+			valueAxis.renderer.line.strokeWidth = 2;
+			valueAxis.renderer.line.stroke = series.stroke;
+			valueAxis.renderer.labels.template.fill = series.stroke;
+			valueAxis.renderer.opposite = opposite;
+		}
+
+		createAxisAndSeries("visits", "Visits", false, "circle");
+		createAxisAndSeries("views", "Views", true, "triangle");
+		createAxisAndSeries("hits", "Hits", true, "rectangle");
+
+		// Add legend
+		chart.legend = new am4charts.Legend();
+
+		// Add cursor
+		chart.cursor = new am4charts.XYCursor();
+
+		// generate some random data, quite different range
+		function generateChartData() {
+			var chartData = [];
+			var firstDate = new Date();
+			firstDate.setDate(firstDate.getDate() - 100);
+			firstDate.setHours(0, 0, 0, 0);
+
+			var visits = 1600;
+			var hits = 2900;
+			var views = 8700;
+
+			for (var i = 0; i < 15; i++) {
+				var newDate = new Date(firstDate);
+				newDate.setDate(newDate.getDate() + i);
+
+				visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
+				hits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
+				views += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
+
+				chartData.push({
+					date: newDate,
+					visits: visits,
+					hits: hits,
+					views: views
+				});
+			}
+			return chartData;
+		}
+
+	}); // end am4core.ready()
+</script>

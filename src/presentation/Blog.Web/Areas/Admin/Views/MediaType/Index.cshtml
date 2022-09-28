@@ -1,0 +1,131 @@
+﻿@{
+	ViewBag.Title = "Medya Türü Yönetimi";
+	Layout = "~/Areas/Admin/Views/_Shared/_MainLayout.cshtml";
+}
+
+<div class="breadcrumbs">
+	<h4>Medya Türü Yönetimi</h4>
+	<ul>
+		<li><a asp-route="AdminHome">Anasayfa</a></li>
+		<li>
+			<i class="cdi cdi-arrow-right-alt2"></i>
+		</li>
+		<li>Medya Türü Yönetimi</li>
+	</ul>
+</div>
+
+<div class="wrapper">
+	<div class="grid">
+		<div class="col-5">
+			<div class="card">
+				<div class="card-header">
+					<h4>Medya Türü Ekle</h4>
+				</div>
+				<div class="card-body pd">
+					<form asp-route="CategoryInsert" method="post">
+						<div class="form-group">
+							<label class="label">Dosya Tür Adı</label>
+							<input type="text" name="Title" class="input" />
+						</div>
+						<div class="form-group">
+							<label class="label">Dosya Tipi (MIME Tipi)</label>
+							<input type="text" name="Title" class="input" />
+						</div>
+						<div class="form-group">
+							<label class="label">Dosya Uzantısı</label>
+							<input type="text" name="Title" class="input" />
+						</div>
+						<div class="form-group">
+							<label class="label">Yükleme Konumu</label>
+							<input type="text" name="Title" class="input" />
+						</div>
+						<div class="form-group">
+							<input type="submit" class="btn btn-blue" value="Medya Türü Ekle" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-7">
+			<div class="card">
+				<div class="card-header">
+					<h4>Medya Türleri</h4>
+				</div>
+				<div class="card-body pd">
+
+					<!--Makale listesi-->
+
+					<table class="border-btm">
+						<thead>
+							<tr>
+								<th>
+									<input type="checkbox" />
+								</th>
+								<th>Dosya Türü Adı</th>
+								<th>MIME Tipi</th>
+								<th class="text-center">Uzantısı</th>
+								<th class="text-center">Eklenme</th>
+								<th class="text-center">İşlem</th>
+							</tr>
+						</thead>
+						<tbody>
+							@for (int i = 1; i <= 20; i++)
+							{
+								<tr>
+									<td><input type="checkbox" /></td>
+									<td>Resim Dosyası</td>
+									<td>image/jpg</td>
+									<td class="text-center">.jpg</td>
+									<td class="text-center">10 Ekim 2021 23:36</td>
+									<td class="text-center">
+										<a href="#">
+											<i class="cdi cdi-ellipsis"></i>
+										</a>
+									</td>
+								</tr>
+							}
+
+						</tbody>
+					</table>
+
+					<ul class="pagination pg-direction-right">
+						<li class="arrow">
+							<a href="#">
+								<i class="cdi cdi-arrow-left-alt2"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#">1</a>
+						</li>
+						<li>
+							<a href="#">2</a>
+						</li>
+						<li>
+							<a href="#">3</a>
+						</li>
+						<li class="active">
+							<a href="#">4</a>
+						</li>
+						<li>
+							<a href="#">5</a>
+						</li>
+						<li>
+							<a href="#">6</a>
+						</li>
+						<li>
+							<a href="#">7</a>
+						</li>
+						<li class="arrow">
+							<a href="#">
+								<i class="cdi cdi-arrow-right-alt2"></i>
+							</a>
+						</li>
+					</ul>
+
+					<!--Makale listesi-->
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,62 @@
+{
+	"iisSettings": {
+		"windowsAuthentication": false,
+		"anonymousAuthentication": true,
+		"iisExpress": {
+			"applicationUrl": "http://localhost:5599",
+			"sslPort": 44307
+		}
+	},
+	"profiles": {
+		"Development": {
+			"commandName": "IISExpress",
+			"launchBrowser": true,
+			"dotnetRunMessages": "true",
+			"environmentVariables": {
+				"BLOG_ENVIRONMENT": "Development"
+			}
+		},
+		"Production": {
+			"commandName": "IISExpress",
+			"launchBrowser": true,
+			"dotnetRunMessages": "true",
+			"environmentVariables": {
+				"BLOG_ENVIRONMENT": "Development"
+			}
+		},
+		"Test": {
+			"commandName": "IISExpress",
+			"launchBrowser": true,
+			"dotnetRunMessages": "true",
+			"environmentVariables": {
+				"BLOG_ENVIRONMENT": "Development"
+			}
+		},
+		"Blog.Web": {
+			"commandName": "Project",
+			"launchBrowser": true,
+			"environmentVariables": {
+				"BLOG_ENVIRONMENT": "Development"
+			},
+			"dotnetRunMessages": true,
+			"applicationUrl": "https://localhost:7021;http://localhost:5021"
+		},
+		"IIS Express": {
+			"commandName": "IISExpress",
+			"launchBrowser": true,
+			"environmentVariables": {
+				"BLOG_ENVIRONMENT": "Development"
+			}
+		},
+		"WSL": {
+			"commandName": "WSL2",
+			"launchBrowser": true,
+			"launchUrl": "https://localhost:7021",
+			"environmentVariables": {
+				"BLOG_ENVIRONMENT": "Development",
+				"ASPNETCORE_URLS": "https://localhost:7021;http://localhost:5021"
+			},
+			"distributionName": ""
+		}
+	}
+}

@@ -1,0 +1,66 @@
+﻿using Blog.Application.Repository;
+using Blog.Application.UnitOfWork;
+using Blog.Persistence.EfContext;
+using Blog.Persistence.Repository;
+using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
+
+namespace Blog.Persistence
+{
+	public class UnitOfWork : IUnitOfWork
+	{
+		private readonly EfBlogContext _dbContext;
+
+		private readonly IArticleReadRepository _articleReadRepository;
+		private readonly IArticleWriteRepository _articleWriteRepository;
+		private readonly ICategoryReadRepository _categoryReadRepository;
+		private readonly ICategoryWriteRepository _categoryWriteRepository;
+		private readonly IMediaReadRepository _mediaReadRepository;
+		private readonly IMediaWriteRepository _mediaWriteRepository;
+		private readonly IMediaTypeReadRepository _mediaTypeReadRepository;
+		private readonly IMediaTypeWriteRepository _mediaTypeWriteRepository;
+		private readonly IRoleReadRepository _roleReadRepository;
+		private readonly IRoleWriteRepository _roleWriteRepository;
+		private readonly ITicketReadRepository _ticketReadRepository;
+		private readonly ITicketWriteRepository _ticketWriteRepository;
+		private readonly IUserReadRepository _userReadRepository;
+		private readonly IUserWriteRepository _userWriteRepository;
+		
+
+		public UnitOfWork(EfBlogContext dbContext)
+		{
+			this._dbContext = dbContext;
+		}
+
+		public IArticleReadRepository ArticleReadRepository => _articleReadRepository ?? new ArticleReadRepository(_dbContext);
+		public IArticleWriteRepository ArticleWriteRepository => _articleWriteRepository ?? new ArticleWriteRepository(_dbContext);
+
+		public ICategoryReadRepository CategoryReadRepository => _categoryReadRepository ?? new CategoryReadRepository(_dbContext);
+		public ICategoryWriteRepository CategoryWriteRepository => _categoryWriteRepository ?? new CategoryWriteRepository(_dbContext);
+
+		public IMediaReadRepository MediaReadRepository => _mediaReadRepository ?? new MediaReadRepository(_dbContext);
+		public IMediaWriteRepository MediaWriteRepository => _mediaWriteRepository ?? new MediaWriteRepository(_dbContext);
+
+		public IMediaTypeReadRepository MediaTypeReadRepository => _mediaTypeReadRepository ?? new MediaTypeReadRepository(_dbContext);
+		public IMediaTypeWriteRepository MediaTypeWriteRepository => _mediaTypeWriteRepository ?? new MediaTypeWriteRepository(_dbContext);
+
+		public IRoleReadRepository RoleReadRepository => _roleReadRepository ?? new RoleReadRepository(_dbContext);
+		public IRoleWriteRepository RoleWriteRepository => _roleWriteRepository ?? new RoleWriteRepository(_dbContext);
+
+		public ITicketReadRepository TicketReadRepository => _ticketReadRepository ?? new TicketReadRepository(_dbContext);
+		public ITicketWriteRepository TicketWriteRepository => _ticketWriteRepository ?? new TicketWriteRepository(_dbContext);
+
+		public IUserReadRepository UserReadRepository => _userReadRepository ?? new UserReadRepository(_dbContext);
+		public IUserWriteRepository UserWriteRepository => _userWriteRepository ?? new UserWriteRepository(_dbContext);
+
+		public async Task<int> SaveAsync()
+		{
+			return await _dbContext.SaveChangesAsync();
+		}
+
+		public async ValueTask DisposeAsync()
+		{
+			await _dbContext.DisposeAsync();
+		}
+	}
+}
