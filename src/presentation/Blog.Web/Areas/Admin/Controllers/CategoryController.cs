@@ -84,8 +84,5 @@ namespace Blog.Web.Areas.Admin.Controllers
 			return Ok(result);
 		}
 		#endregion
-
-
-		
 	}
 }
