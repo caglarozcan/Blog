@@ -22,7 +22,7 @@
 					<h4>Etiket Ekle</h4>
 				</div>
 				<div class="card-body pd">
-					<form asp-route="TagInsert" method="post" id="tag-insert-form">
+					<form asp-route="TagInsert" method="post" id="tag-insert-form" asp-antiforgery="true">
 						@Html.ValidationSummary(true)
 						<div class="form-group">
 							<label class="label">Etiket Adı</label>
@@ -53,7 +53,7 @@
 					<h4>Etiket Güncelle</h4>
 				</div>
 				<div class="card-body pd">
-					<form asp-route="TagEdit" method="post" id="tag-edit-form">
+					<form asp-route="TagEdit" method="post" id="tag-edit-form" asp-antiforgery="true">
 						@Html.ValidationSummary(true)
 						<input type="hidden" name="Id" />
 
@@ -257,7 +257,7 @@
 				{
 					name: 'Title',
 					rules: [
-						{ rule: 'required', message: 'Kategori ismi alanı zorunludur.' }
+						{ rule: 'required', message: 'Etiket ismi alanı zorunludur.' }
 					],
 				}
 			]
@@ -273,7 +273,7 @@
 				{
 					name: 'Title',
 					rules: [
-						{ rule: 'required', message: 'Kategori ismi alanı zorunludur.' }
+						{ rule: 'required', message: 'Etiket ismi alanı zorunludur.' }
 					],
 				}
 			]

@@ -22,7 +22,7 @@
 					<h4>Kategori Ekle</h4>
 				</div>
 				<div class="card-body pd">
-					<form asp-route="CategoryInsert" method="post" id="category-insert-form">
+					<form asp-route="CategoryInsert" method="post" id="category-insert-form" asp-antiforgery="true">
 						@Html.ValidationSummary(true)
 
 						<div class="form-group">
@@ -76,7 +76,7 @@
 					<h4>Kategori Güncelle</h4>
 				</div>
 				<div class="card-body pd">
-					<form asp-route="CategoryEdit" method="post" id="category-edit-form">
+					<form asp-route="CategoryEdit" method="post" id="category-edit-form" asp-antiforgery="true">
 						@Html.ValidationSummary(true)
 						<input type="hidden" name="Id" />
 
