@@ -23,7 +23,7 @@ Entity Framework yapılandırması için gerekli olan Entity sınıflarını bar
 
 ### Infrastructure Katmanı
 #### Blog.Infrastructure
-Uygulamanın iş mantığını (Business Logic) kısmını oluşturan servis sınıflarının somut hallerinin tutulduğu katmandır.
+Uygulamanın iş mantığı (Business Logic) kısmını oluşturan servis sınıflarının somut hallerinin tutulduğu katmandır.
 
 #### Blog.Persistence
 Entity Framework için gerekli olan DbContext ve Entity konfigürasyonlarının bulunduğu katmandır. Repository ve Unit Of Work tasarım deseni için gerekli somut sınıflar bulunur.
