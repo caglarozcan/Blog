@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Blog.Application.Request;
+using Blog.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Areas.Admin.Controllers
@@ -7,14 +9,32 @@ namespace Blog.Web.Areas.Admin.Controllers
 	[Authorize(Roles = "Administrator")]
 	public class UsersController : Controller
 	{
+		private IUserService _userService;
+
+		public UsersController(IUserService userService)
+		{
+			this._userService = userService;
+		}
+
 		public IActionResult Index()
 		{
 			return View();
 		}
 
+		#region Create
 		public IActionResult Insert()
 		{
 			return View();
 		}
+		#endregion
+
+		#region Read
+		public async Task<IActionResult> GetList(DataListRequest request)
+		{
+			var list = await _userService.GetUserListAsync(request);
+
+			return Ok(list);
+		}
+		#endregion
 	}
 }

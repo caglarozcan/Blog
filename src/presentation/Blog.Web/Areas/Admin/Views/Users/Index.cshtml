@@ -24,7 +24,7 @@
 							<i class="cdi cdi-search"></i>
 						</div>
 						<div class="search-box">
-							<input type="text" placeholder="Ara.." />
+							<input type="text" placeholder="Ara.." id="filter-box" />
 						</div>
 					</div>
 					<div class="dropdown">
@@ -40,89 +40,142 @@
 				</div>
 				<div class="card-body pd">
 
-					<!--Makale listesi-->
+					<!--Kullanıcı listesi-->
 
-					<table class="border-btm">
+					<table class="border-btm" id="table-user">
 						<thead>
 							<tr>
-								<th>
-									<input type="checkbox" />
-								</th>
+								<th>#</th>
 								<th>Adı</th>
 								<th>Soyadı</th>
 								<th>Nickname</th>
 								<th>Mail Adresi</th>
 								<th>Rolü</th>
-								<th class="text-center">Eklenme</th>
-								<th class="text-center">Son Giriş</th>
+								<th>Eklenme</th>
+								<th>Son Giriş</th>
 								<th class="text-center">Durum</th>
 								<th class="text-center">İşlem</th>
 							</tr>
 						</thead>
-						<tbody>
-							@for (int i = 1; i <= 20; i++)
-							{
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Çağlar</td>
-									<td>ÖZCAN</td>
-									<td>cahoocan</td>
-									<td>cglrozcan@gmail.com</td>
-									<td>Administrator</td>
-									<td class="text-center">10 Ekim 2021 23:36</td>
-									<td class="text-center">10 Ekim 2021 23:36</td>
-									<td class="text-center">
-										<span class="status-success">Aktif</span>
-									</td>
-									<td class="text-center">
-										<a href="#">
-											<i class="cdi cdi-ellipsis"></i>
-										</a>
-									</td>
-								</tr>
-							}
-
-						</tbody>
+						<tbody></tbody>
 					</table>
 
-					<ul class="pagination pg-direction-right">
-						<li class="arrow">
-							<a href="#">
-								<i class="cdi cdi-arrow-left-alt2"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#">1</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li class="active">
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#">6</a>
-						</li>
-						<li>
-							<a href="#">7</a>
-						</li>
-						<li class="arrow">
-							<a href="#">
-								<i class="cdi cdi-arrow-right-alt2"></i>
-							</a>
-						</li>
-					</ul>
-
-					<!--Makale listesi-->
+					<!--Kullanıcı listesi-->
 
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	window.addEventListener('DOMContentLoaded', (event) => {
+		//Kategori listesi için data table ayarlanması.
+		var dtUser = new DataTable('#table-user', {
+			method: 'GET',
+			url: 'https://localhost:44307/Admin/Users/GetList',
+			fixColumn: true,
+			dataPerPage: 15,
+			columns: [
+				{
+					'targets': 'AI',
+					'order': false,
+				},
+				{
+					'targets': 1,
+					'order': true,
+				},
+				{
+					'targets': 2,
+					'order': true,
+				},
+				{
+					'targets': 3,
+					'order': true,
+				},
+				{
+					'targets': 4,
+					'order': true,
+				},
+				{
+					'targets': 5,
+					'order': true,
+				},
+				{
+					'targets': 6,
+					'order': true,
+					'dateFormat': 'd MM yyyy H:i'
+				},
+				{
+					'targets': 7,
+					'order': true,
+					'dateFormat': 'd MM yyyy H:i'
+				},
+				{
+					'bind': 8,
+					'order': false,
+					'aling': 'center',
+					'render': function (data) {
+						return data == 1 ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
+					}
+				},
+				{
+					'bind': 0,
+					'order': false,
+					'aling': 'center',
+					'render': function (data) {
+						return '<div class="dropdown item-options"><a href="javascript:void(0)" data-dropdown="#cdi' + data.split('-')[0] + '">' +
+							'<i class="cdi cdi-ellipsis"></i>' +
+							'</a>' +
+							'<div class="drop-down" id="cdi' + data.split('-')[0] + '">' +
+							'<ul>' +
+							'<li><a href="javascript:void(0)" data-action="statusChange" data-id="' + data + '"><i class="cdi cdi-remove"></i>&nbsp;&nbsp;Aktif/Pasif</a></li>' +
+							'<li><a href="javascript:void(0)" data-action="edit" data-id="' + data + '"><i class="cdi cdi-edit"></i>&nbsp;&nbsp;Güncelle</a></li>' +
+							'<li class="seperator"></li>' +
+							'<li><a href="javascript:void(0)" data-action="delete" data-id="' + data + '"><i class="cdi cdi-trash"></i>&nbsp;&nbsp;Sil</a></li>' +
+							'</ul>' +
+							'</div></div>';
+					}
+				}
+			],
+			order: [2, 1],
+			onRendered: function () {
+				DropDown.init('.item-options');
+
+				//Kullanıcı status değiştirme işlemi.
+				var statusLinks = document.querySelectorAll('a[data-action="statusChange"]');
+				statusLinks.forEach(element => {
+					element.addEventListener('click', function (e) {
+						e.stopPropagation();
+						var target = e.currentTarget;
+						var id = target.dataset.id;
+						var statusTd = Util.findAll('td', target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)[5];
+
+						Ajax.send({
+							method: 'POST',
+							url: Util.urlHelper('Admin/Users/StatusChange'),
+							data: { "id": id }
+						}).then(responseData => {
+							statusTd.innerHTML = statusTd.innerHTML == '<span class="status-danger">Pasif</span>' ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
+							Dailog.init({
+								icon: responseData.success ? 'success' : 'danger',
+								title: responseData.success ? 'İşlem başarılı..' : 'İşlem başarısız!',
+								message: responseData.message,
+								buttonType: 'ok'
+							});
+						}).catch(error => {
+							Dailog.init({
+								icon: 'danger',
+								title: 'İşlem başarısız!',
+								message: 'İşlem sırasında bir hata oluştu.. Daha sonra tekrar deneyiniz.',
+								buttonType: 'ok'
+							});
+						});
+					});
+				});
+			},
+			filter: {
+				element: '#filter-box'
+			}
+		});
+	});
+</script>

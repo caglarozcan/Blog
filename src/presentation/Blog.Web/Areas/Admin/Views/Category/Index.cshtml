@@ -211,7 +211,7 @@
 					'order': false,
 					'aling': 'center',
 					'render': function (data) {
-						return '<div class="dropdown"><a href="javascript:void(0)" data-dropdown="#cdi' + data.split('-')[0] + '">' +
+						return '<div class="dropdown row-option"><a href="javascript:void(0)" data-dropdown="#cdi' + data.split('-')[0] + '">' +
 							'<i class="cdi cdi-ellipsis"></i>' +
 							'</a>' +
 							'<div class="drop-down" id="cdi' + data.split('-')[0] + '">' +
@@ -227,7 +227,7 @@
 			],
 			order: [2, 1],
 			onRendered: function () {
-				DropDown.init();
+				DropDown.init('.row-option');
 
 				//Kategori status değiştirme işlemi.
 				var statusLinks = document.querySelectorAll('a[data-action="statusChange"]');

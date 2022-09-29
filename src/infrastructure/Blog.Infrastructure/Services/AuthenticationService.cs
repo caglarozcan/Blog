@@ -41,6 +41,10 @@ namespace Blog.Infrastructure.Services
 				var identity = new ClaimsIdentity(claims, "UserLoginCookie");
 				ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
 
+				user.LastLogin = DateTime.Now;
+				await _unitOfWork.UserWriteRepository.UpdateAsync(user);
+				await _unitOfWork.SaveAsync();
+
 				return new Response<ClaimsPrincipal>(message: "Oturum açma işlemi başarılı.", success: true, value: claimsPrincipal);
 			}
 		}

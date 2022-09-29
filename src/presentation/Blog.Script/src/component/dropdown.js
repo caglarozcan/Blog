@@ -1,11 +1,14 @@
 "use strict";
 
+var dropDowns = [];
+
 var DropDownComponent = function () {
 	const DROPDOWN = '.dropdown';
 	const DROPDOWN_BUTTON = '[data-dropdown]';
 	const DROPDOWN_MENU_CONTAINER = '.drop-down';
 
 	var initComponent = function (element) {
+
 		var ddButton = Util.find(DROPDOWN_BUTTON, element);
 
 		ddButton.addEventListener('click', (e) => {
@@ -28,8 +31,8 @@ var DropDownComponent = function () {
 	}
 
 	return {
-		init: function () {
-			Util.findAll(DROPDOWN).forEach(function (el) {
+		init: function (selector) {
+			Util.findAll(selector).forEach(function (el) {
 				initComponent(el);
 			});
 		}
@@ -37,7 +40,7 @@ var DropDownComponent = function () {
 }();
 
 Util.onDOMContentLoaded(function () {
-	DropDownComponent.init();
+	DropDownComponent.init('.dropdown');
 	
 	window.onclick = function (event) {
 		if (!event.target.matches("[data-dropdown]")) {

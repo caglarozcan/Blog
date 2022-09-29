@@ -1,4 +1,7 @@
-﻿using Blog.Application.Services;
+﻿using Blog.Application.Dto.UserDto;
+using Blog.Application.Request;
+using Blog.Application.Response;
+using Blog.Application.Services;
 using Blog.Application.UnitOfWork;
 
 namespace Blog.Infrastructure.Services
@@ -11,5 +14,14 @@ namespace Blog.Infrastructure.Services
 		{
 			this._unitOfWork = unitOfWork;
 		}
+
+		#region Read
+		public async Task<PagingDataResponse<UserListDto>> GetUserListAsync(DataListRequest request)
+		{
+			var userList = await _unitOfWork.UserReadRepository.GetUserListAsync(request);
+
+			return userList;
+		}
+		#endregion
 	}
 }
