@@ -1,6 +1,5 @@
 ﻿using Blog.Application.Dto.CategoryDto;
 using Blog.Application.Services;
-using Blog.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Areas.Admin.ViewComponents
