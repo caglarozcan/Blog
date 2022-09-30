@@ -92,6 +92,11 @@ namespace Blog.Infrastructure.Services
 				Title = category.Title
 			});
 		}
+
+		public async Task<List<CategorySelectDto>> GetSelectCategories()
+		{
+			return await _unitOfWork.CategoryReadRepository.GetCategorySelect();
+		}
 		#endregion
 
 		#region Update

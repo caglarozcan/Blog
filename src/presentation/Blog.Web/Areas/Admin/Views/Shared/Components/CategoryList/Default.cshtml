@@ -1,0 +1,5 @@
+﻿@model IEnumerable<Blog.Application.Dto.CategoryDto.CategorySelectDto>
+
+<select name="ParentId" asp-items="@(new SelectList(Model, nameof(Blog.Application.Dto.CategoryDto.CategorySelectDto.Id), nameof(Blog.Application.Dto.CategoryDto.CategorySelectDto.Name)))">
+    <option>Üst kategori yok.</option>
+</select>

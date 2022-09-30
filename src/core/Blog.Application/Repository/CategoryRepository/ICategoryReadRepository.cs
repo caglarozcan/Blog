@@ -8,5 +8,7 @@ namespace Blog.Application.Repository
 	public interface ICategoryReadRepository : IReadRepository<Category>
 	{
 		Task<PagingDataResponse<CategoryListDto>> GetCategoryListAsync(DataListRequest request);
+
+		Task<List<CategorySelectDto>> GetCategorySelect();
 	}
 }

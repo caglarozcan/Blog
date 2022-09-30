@@ -11,7 +11,7 @@ namespace Blog.Persistence.Repository
 {
 	public class CategoryReadRepository : ReadRepository<Category>, ICategoryReadRepository
 	{
-		public CategoryReadRepository(DbContext dbContext) 
+		public CategoryReadRepository(DbContext dbContext)
 			: base(dbContext)
 		{
 		}
@@ -41,6 +41,15 @@ namespace Blog.Persistence.Repository
 			}
 
 			return await query.ToPagingData(request.PerData, request.Page);
+		}
+
+		public async Task<List<CategorySelectDto>> GetCategorySelect()
+		{
+			return await Table.Where(c => !c.ParentId.HasValue).Select(s => new CategorySelectDto()
+			{
+				Id = s.Id,
+				Name = s.Title
+			}).ToListAsync();
 		}
 	}
 }

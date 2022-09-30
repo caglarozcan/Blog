@@ -1,6 +1,6 @@
 ﻿@{
 	ViewBag.Title = "Etiket Yönetimi";
-	Layout = "~/Areas/Admin/Views/_Shared/_MainLayout.cshtml";
+	Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
 }
 
 <div class="breadcrumbs">
@@ -252,6 +252,9 @@
 			sendAjax: true,
 			ajaxAfter: function () {
 				dtTag.renderBody();
+				var insertForm = document.getElementById('tag-insert-container');
+				Util.find('input[name="Title"]', insertForm).value = '';
+				Util.find('input[name="Slug"]', insertForm).value = '';
 			},
 			inputs: [
 				{

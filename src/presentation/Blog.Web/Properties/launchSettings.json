@@ -1,42 +1,36 @@
 {
-	"iisSettings": {
-		"windowsAuthentication": false,
-		"anonymousAuthentication": true,
-		"iisExpress": {
-			"applicationUrl": "http://localhost:5599",
-			"sslPort": 44307
-		}
-	},
 	"profiles": {
 		"Development": {
 			"commandName": "IISExpress",
 			"launchBrowser": true,
-			"dotnetRunMessages": "true",
 			"environmentVariables": {
-				"BLOG_ENVIRONMENT": "Development"
-			}
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			},
+			"dotnetRunMessages": true,
+			"nativeDebugging": true,
+			"sqlDebugging": true
 		},
 		"Production": {
 			"commandName": "IISExpress",
 			"launchBrowser": true,
-			"dotnetRunMessages": "true",
 			"environmentVariables": {
-				"BLOG_ENVIRONMENT": "Development"
-			}
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			},
+			"dotnetRunMessages": true
 		},
 		"Test": {
 			"commandName": "IISExpress",
 			"launchBrowser": true,
-			"dotnetRunMessages": "true",
 			"environmentVariables": {
-				"BLOG_ENVIRONMENT": "Development"
-			}
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			},
+			"dotnetRunMessages": true
 		},
 		"Blog.Web": {
 			"commandName": "Project",
 			"launchBrowser": true,
 			"environmentVariables": {
-				"BLOG_ENVIRONMENT": "Development"
+				"ASPNETCORE_ENVIRONMENT": "Development"
 			},
 			"dotnetRunMessages": true,
 			"applicationUrl": "https://localhost:7021;http://localhost:5021"
@@ -45,7 +39,7 @@
 			"commandName": "IISExpress",
 			"launchBrowser": true,
 			"environmentVariables": {
-				"BLOG_ENVIRONMENT": "Development"
+				"ASPNETCORE_ENVIRONMENT": "Development"
 			}
 		},
 		"WSL": {
@@ -53,10 +47,18 @@
 			"launchBrowser": true,
 			"launchUrl": "https://localhost:7021",
 			"environmentVariables": {
-				"BLOG_ENVIRONMENT": "Development",
+				"ASPNETCORE_ENVIRONMENT": "Development",
 				"ASPNETCORE_URLS": "https://localhost:7021;http://localhost:5021"
 			},
 			"distributionName": ""
+		}
+	},
+	"iisSettings": {
+		"windowsAuthentication": false,
+		"anonymousAuthentication": true,
+		"iisExpress": {
+			"applicationUrl": "http://localhost:5599",
+			"sslPort": 44307
 		}
 	}
 }

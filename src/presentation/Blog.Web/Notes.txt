@@ -40,3 +40,13 @@ In CSS, identifiers (including element names, classes, and IDs in selectors) can
 Use a value like b22 for the ID attribute and your code will work.
 Since you want to select an element by ID you can also use .getElementById method:
 CSS 3'ten sonra id değerleri sayı ile başlayamaz, seçici hatası verir.
+-----------------------------------------------------------------------------------------------
+Docker üzerinde SQL Server container'ı oluşturma:
+docker run 
+	-e "ACCEPT_EULA=Y" 
+	-e "MSSQL_SA_PASSWORD=Pwd12345!" 
+	-e "MSSQL_COLLATION=Turkish_CI_AS" 
+	--name SQLServer2022 
+	-p 1433:1433 
+	-d mcr.microsoft.com/mssql/server:2022-latest
+-----------------------------------------------------------------------------------------------

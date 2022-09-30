@@ -80,7 +80,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 //Resource işlemleri
-/*List<CultureInfo> cultures = new List<CultureInfo>()
+/*List<CultureInfo> cultures = new List<CultureInfo>() 
 {
 	new CultureInfo("tr-TR"),
 	new CultureInfo("en-US")
@@ -103,7 +103,7 @@ localizerOptions.RequestCultureProviders.Insert(0, new CustomRequestCultureProvi
 
 app.UseRequestLocalization(localizerOptions);*/
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();

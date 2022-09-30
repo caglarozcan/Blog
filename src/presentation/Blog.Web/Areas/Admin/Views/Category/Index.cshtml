@@ -1,6 +1,6 @@
 ﻿@{
 	ViewBag.Title = "Kategori Yönetimi";
-	Layout = "~/Areas/Admin/Views/_Shared/_MainLayout.cshtml";
+	Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
 }
 
 <div class="breadcrumbs">
@@ -32,9 +32,7 @@
 						</div>
 						<div class="form-group">
 							<label class="label">Üst Kategori</label>
-							<select name="ParentId">
-								<option value="">Kategori Seçiniz</option>
-							</select>
+							@await Component.InvokeAsync("CategoryList")
 						</div>
 						<div class="form-group">
 							<label class="label">Url (Slug)</label>
@@ -87,9 +85,7 @@
 						</div>
 						<div class="form-group">
 							<label class="label">Üst Kategori</label>
-							<select name="ParentId">
-								<option value="">Kategori Seçiniz</option>
-							</select>
+							@await Component.InvokeAsync("CategoryList")
 						</div>
 						<div class="form-group">
 							<label class="label">Url (Slug)</label>

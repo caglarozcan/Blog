@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.Persistence.Migrations
 {
     [DbContext(typeof(EfBlogContext))]
-    [Migration("20220923191450_mig2")]
-    partial class mig2
+    [Migration("20220930182252_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
