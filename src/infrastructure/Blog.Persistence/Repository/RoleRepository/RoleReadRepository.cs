@@ -11,5 +11,15 @@ namespace Blog.Persistence.Repository
 			: base(dbContext)
 		{
 		}
+
+		#region Read
+		public async Task<List<RoleSelectDto>> GetSelectRolesAsync()
+		{
+			return await Table.Select(s => new RoleSelectDto() { 
+				Id = s.Id,
+				Name = s.Name
+			}).ToListAsync();
+		}
+		#endregion
 	}
 }

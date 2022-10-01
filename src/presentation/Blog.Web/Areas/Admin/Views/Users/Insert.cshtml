@@ -83,12 +83,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label class="label">Rolü</label>
-                                    <select asp-for="RoleId">
-                                        <option>Rol Seçiniz</option>
-                                        <option>Administrator</option>
-                                        <option>Editör</option>
-                                        <option>Yazar</option>
-                                    </select>
+                                    @await Component.InvokeAsync("RoleList")
                                     <span class="vld-RoleId"></span>
                                 </div>
                             </div>
@@ -130,3 +125,58 @@
         </div>
     </div>
 </div>
+
+<script>
+	window.addEventListener('DOMContentLoaded', (event) => {
+
+		FormValidation.init({
+			formSelector: '#user-insert-from',
+			sendAjax: true,
+			inputs: [
+				{
+                    name: 'Name',
+					rules: [
+						{ rule: 'required', message: 'İsim alanı zorunludur.' }
+					],
+				},
+				{
+                    name: 'LastName',
+					rules: [
+						{ rule: 'required', message: 'Soyad alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Email',
+					rules: [
+						{ rule: 'required', message: 'Email alanı zorunludur.' },
+                        { rule: 'valid-email', message: 'Geçerli bir email adresi giriniz.' }
+					],
+				},
+				{
+                    name: 'NickName',
+					rules: [
+						{ rule: 'required', message: 'Takma isim alanı zorunludur.' }
+					],
+				},
+                {
+                    name: 'Password',
+                    rules: [
+                        { rule: 'required', message: 'Şifre alanı zorunludur.' }
+                    ],
+                },
+                {
+                    name: 'ConfirmPassword',
+                    rules: [
+                        { rule: 'required', message: 'Şifre onay alanı zorunludur.' }
+                    ],
+                },
+                {
+                    name: 'RoleId',
+                    rules: [
+                        { rule: 'required', message: 'Kullanıcı için rol seçmelisiniz.' }
+                    ],
+                }
+			]
+		});
+	});
+</script>

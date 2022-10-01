@@ -15,6 +15,7 @@ namespace Blog.Infrastructure
 			collection.AddTransient<IMailService, MailService>();
 			collection.AddTransient<IMediaService, MediaService>();
 			collection.AddTransient<IMediaTypeService, MediaTypeService>();
+			collection.AddTransient<IRoleService, RoleService>();
 			collection.AddTransient<ITextService, TextService>();
 			collection.AddTransient<ITicketService, TicketService>();
 			collection.AddTransient<IUserService, UserService>();
