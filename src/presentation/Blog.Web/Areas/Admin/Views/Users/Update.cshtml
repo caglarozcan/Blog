@@ -1,11 +1,11 @@
-﻿@model Blog.Application.Dto.UserDto.UserInsertDto
+﻿@model Blog.Application.Dto.UserDto.UserUpdateDto
 @{
     ViewBag.Title = "Kullanıcı Yönetimi";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
 }
 
 <div class="breadcrumbs">
-    <h4>Kullanıcı Ekle</h4>
+    <h4>Kullanıcı Düzenle</h4>
     <ul>
         <li><a asp-route="AdminHome">Anasayfa</a></li>
         <li>
@@ -15,18 +15,19 @@
         <li>
             <i class="cdi cdi-arrow-right-alt2"></i>
         </li>
-        <li>Kullanıcı Ekle</li>
+        <li>Kullanıcı Düzenle</li>
     </ul>
 </div>
 
 <div class="wrapper">
     <div class="grid">
         <div class="col-12">
-            <form asp-route="UserInsert" asp-antiforgery="true" method="post" id="user-insert-from">
+            <form asp-route="UserUpdate" asp-antiforgery="true" method="post" id="user-update-from">
+                <input type="hidden" asp-for="Id" />
                 <div class="card">
                     <div class="card-header">
-                        <h4>Yeni Kullanıcı Bilgileri</h4>
-                        <input type="submit" class="btn btn-blue" value="Kullanıcı Ekle" />
+                        <h4>Kullanıcı Bilgileri</h4>
+                        <input type="submit" class="btn btn-blue" value="Kullanıcı Düzenle" />
                     </div>
                     <div class="card-body pd">
 
@@ -130,7 +131,7 @@
 	window.addEventListener('DOMContentLoaded', (event) => {
 
 		FormValidation.init({
-			formSelector: '#user-insert-from',
+			formSelector: '#user-update-from',
 			sendAjax: true,
 			inputs: [
 				{
@@ -158,18 +159,6 @@
 						{ rule: 'required', message: 'Takma isim alanı zorunludur.' }
 					],
 				},
-                {
-                    name: 'Password',
-                    rules: [
-                        { rule: 'required', message: 'Şifre alanı zorunludur.' }
-                    ],
-                },
-                {
-                    name: 'ConfirmPassword',
-                    rules: [
-                        { rule: 'required', message: 'Şifre onay alanı zorunludur.' }
-                    ],
-                },
                 {
                     name: 'RoleId',
                     rules: [

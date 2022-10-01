@@ -190,6 +190,12 @@ app.UseEndpoints(endpoints =>
 		pattern: "yonetim/kullanici-ekle",
 		defaults: new { area = "Admin", controller = "Users", action = "Insert" }
 	);
+	endpoints.MapAreaControllerRoute(
+		name: "UserUpdate",
+		areaName: "Admin",
+		pattern: "yonetim/kullanici-duzenle/{id}",
+		defaults: new { area = "Admin", controller = "Users", action = "Update" }
+	);
 	#endregion
 	
 	#region Media

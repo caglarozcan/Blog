@@ -14,10 +14,12 @@ namespace Blog.Application.Services
 
 		#region Read
 		Task<PagingDataResponse<UserListDto>> GetUserListAsync(DataListRequest request);
+
+		Task<UserUpdateDto> GetUpdatedUserAsync(Guid id);
 		#endregion
 
 		#region Update
-
+		Task<Response<ProblemDetails>> UpdateAsync(UserUpdateDto data, ModelStateDictionary modelState);
 		#endregion
 
 		#region Delete

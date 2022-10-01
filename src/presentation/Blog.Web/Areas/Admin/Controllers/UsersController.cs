@@ -1,6 +1,7 @@
 ﻿using Blog.Application.Dto.UserDto;
 using Blog.Application.Request;
 using Blog.Application.Services;
+using Blog.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -49,6 +50,28 @@ namespace Blog.Web.Areas.Admin.Controllers
 			var list = await _userService.GetUserListAsync(request);
 
 			return Ok(list);
+		}
+		#endregion
+
+		#region Update
+		public async Task<IActionResult> Update(Guid id)
+		{
+			var user = await _userService.GetUpdatedUserAsync(id);
+			return View(user);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Update(UserUpdateDto data)
+		{
+			var result = await _userService.UpdateAsync(data, ModelState);
+
+			if (true.Equals(result.Success))
+				return Ok(result);
+
+			return new ObjectResult(result.Value != null ? result.Value : result)
+			{
+				StatusCode = 400
+			};
 		}
 		#endregion
 	}
