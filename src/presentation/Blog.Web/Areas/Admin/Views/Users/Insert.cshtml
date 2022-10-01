@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Blog.Application.Dto.UserDto.UserInsertDto
+@{
     ViewBag.Title = "Kullanıcı Yönetimi";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
 }
@@ -21,101 +22,111 @@
 <div class="wrapper">
     <div class="grid">
         <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Yeni Kullanıcı Bilgileri</h4>
-                    <input type="submit" class="btn btn-blue" value="Kullanıcı Ekle" />
-                </div>
-                <div class="card-body pd">
+            <form asp-route="UserInsert" asp-antiforgery="true" method="post" id="user-insert-from">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Yeni Kullanıcı Bilgileri</h4>
+                        <input type="submit" class="btn btn-blue" value="Kullanıcı Ekle" />
+                    </div>
+                    <div class="card-body pd">
 
-                    <!--Kullanıcı ekleme-->
-                    <div class="grid">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label">Adı</label>
-                                <input type="text" name="Title" class="input" />
+                        <!--Kullanıcı ekleme-->
+                        <div class="grid">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="label">Adı</label>
+                                    <input type="text" asp-for="Name" class="input" />
+                                    <span class="vld-Name"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="label">Soyadı</label>
+                                    <input type="text" asp-for="LastName" class="input" />
+                                    <span class="vld-LastName"></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label">Soyadı</label>
-                                <input type="text" name="Title" class="input" />
+                        <div class="grid">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="label">Email Adresi</label>
+                                    <input type="text" asp-for="Email" class="input" />
+                                    <span class="vld-Email"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="label">Nickname</label>
+                                    <input type="text" asp-for="NickName" class="input" />
+                                    <span class="vld-NickName"></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="grid">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label">Email Adresi</label>
-                                <input type="text" name="Title" class="input" />
+                        <div class="grid">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="label">Şifre</label>
+                                    <input type="text" asp-for="Password" class="input" />
+                                    <span class="vld-Password"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="label">Şifre Onay</label>
+                                    <input type="text" asp-for="ConfirmPassword" class="input" />
+                                    <span class="vld-ConfirmPassword"></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label">Nickname</label>
-                                <input type="text" name="Title" class="input" />
+                        <div class="grid">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="label">Rolü</label>
+                                    <select asp-for="RoleId">
+                                        <option>Rol Seçiniz</option>
+                                        <option>Administrator</option>
+                                        <option>Editör</option>
+                                        <option>Yazar</option>
+                                    </select>
+                                    <span class="vld-RoleId"></span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="label">Slug</label>
+                                    <input type="text" asp-for="Slug" class="input" />
+                                    <small><i>Boş bırakırsanız otomatik oluşturulacak.</i></small>
+                                    <span class="vld-Slug"></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="grid">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label">Şifre</label>
-                                <input type="text" name="Title" class="input" />
+                        <div class="grid">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="label">Kullanıcı Durumu</label>
+                                    <select asp-for="Status">
+                                        <option value="1" selected>Aktif Kullanıcı</option>
+                                        <option value="0">Pasif Kullanıcı</option>
+                                    </select>
+                                    <span class="vld-Status"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label">Şifre Onay</label>
-                                <input type="text" name="Title" class="input" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label">Rolü</label>
-                                <select>
-                                    <option>Rol Seçiniz</option>
-                                    <option>Administrator</option>
-                                    <option>Editör</option>
-                                    <option>Yazar</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label">Slug</label>
-                                <input type="text" name="Title" class="input" />
-                                <small><i>Boş bırakırsanız otomatik oluşturulacak.</i></small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label">Kullanıcı Durumu</label>
-                                <select>
-                                    <option>Durum Seçiniz</option>
-                                    <option>Aktif Kullanıcı</option>
-                                    <option>Pasif Kullanıcı</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="label">Bildirim</label>
-                                <label class="label">
-                                    <input type="checkbox" />&nbsp;&nbsp;&nbsp;Kullanıcı bilgileri e-posta ile gönderilsin.
-                                </label>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="label">Bildirim</label>
+                                    <label class="label">
+                                        <input type="checkbox" asp-for="SendMail" />&nbsp;&nbsp;&nbsp;Kullanıcı bilgileri e-posta ile gönderilsin.
+                                    </label>
                                 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!--Kullanıcı ekleme-->
+                        <!--Kullanıcı ekleme-->
 
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

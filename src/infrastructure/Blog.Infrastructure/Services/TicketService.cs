@@ -30,7 +30,7 @@ namespace Blog.Infrastructure.Services
 			if (String.IsNullOrWhiteSpace(data.Slug))
 				data.Slug = _textService.Slug(data.Title);
 
-			if (await _unitOfWork.TicketReadRepository.AnyAsync(c => c.Title.Equals(data.Title) || c.Slug.Equals(data.Slug)))
+			if (await _unitOfWork.TicketReadRepository.AnyAsync(c => c.Title.Equals(data.Title.Trim()) || c.Slug.Equals(data.Slug.Trim())))
 			{
 				return new Response<ProblemDetails>(message: "Aynı isimde kategori sistemde tanımlı. Farklı bir isim giriniz.", success: false);
 			}
@@ -38,8 +38,8 @@ namespace Blog.Infrastructure.Services
 			{
 				await _unitOfWork.TicketWriteRepository.InsertAsync(new Domain.Entities.Ticket()
 				{
-					Title = data.Title,
-					Slug = data.Slug,
+					Title = data.Title.Trim(),
+					Slug = data.Slug.Trim(),
 					Status = data.Status,
 					CreatedDate = DateTime.Now
 				});

@@ -31,7 +31,7 @@ namespace Blog.Infrastructure.Services
 			if (String.IsNullOrWhiteSpace(data.Slug))
 				data.Slug = _textService.Slug(data.Title);
 
-			if (await _unitOfWork.CategoryReadRepository.AnyAsync(c => c.Title.Equals(data.Title) || c.Slug.Equals(data.Slug)))
+			if (await _unitOfWork.CategoryReadRepository.AnyAsync(c => c.Title.Equals(data.Title.Trim()) || c.Slug.Equals(data.Slug.Trim())))
 			{
 				return new Response<ProblemDetails>(message: "Aynı isimde kategori sistemde tanımlı. Farklı bir isim giriniz.", success: false);
 			}
@@ -39,13 +39,13 @@ namespace Blog.Infrastructure.Services
 			{
 				await _unitOfWork.CategoryWriteRepository.InsertAsync(new Domain.Entities.Category()
 				{
-					Title = data.Title,
-					Icon = data.Icon,
-					Slug = data.Slug,
-					Color = data.Color,
+					Title = data.Title.Trim(),
+					Icon = data.Icon.Trim(),
+					Slug = data.Slug.Trim(),
+					Color = data.Color.Trim(),
 					ParentId = data.ParentId,
 					Status = data.Status,
-					Description = data.Description
+					Description = data.Description.Trim()
 				});
 
 				int result = await _unitOfWork.SaveAsync();
@@ -110,7 +110,7 @@ namespace Blog.Infrastructure.Services
 			if (String.IsNullOrWhiteSpace(data.Slug))
 				data.Slug = _textService.Slug(data.Title);
 
-			if (await _unitOfWork.CategoryReadRepository.AnyAsync(c => !c.Id.Equals(data.Id) && (c.Title.Equals(data.Title) || c.Slug.Equals(data.Slug))))
+			if (await _unitOfWork.CategoryReadRepository.AnyAsync(c => !c.Id.Equals(data.Id) && (c.Title.Equals(data.Title.Trim()) || c.Slug.Equals(data.Slug.Trim()))))
 			{
 				return new Response<ProblemDetails>(message: "Aynı isimde kategori sistemde tanımlı. Farklı bir isim giriniz.", success: false);
 			}
@@ -120,13 +120,13 @@ namespace Blog.Infrastructure.Services
 				
 				if(category != null)
 				{
-					category.Color = data.Color;
-					category.Description = data.Description;
-					category.Icon = data.Icon;
+					category.Color = data.Color.Trim();
+					category.Description = data.Description.Trim();
+					category.Icon = data.Icon.Trim();
 					category.ParentId = data.ParentId;
-					category.Title = data.Title;
+					category.Title = data.Title.Trim();
 					category.UpdatedDate = DateTime.Now;
-					category.Slug =data.Slug;
+					category.Slug =data.Slug.Trim();
 					category.Status = data.Status;
 
 					await _unitOfWork.CategoryWriteRepository.UpdateAsync(category);
