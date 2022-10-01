@@ -1,16 +1,11 @@
 ﻿using Blog.Application.Dto.RoleDto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Application.Services
 {
-    public interface IRoleService
+	public interface IRoleService
     {
 		#region Read
-		Task<List<RoleSelectDto>> GetSelectRolesAsync();
+		Task<RoleSelectDto> GetSelectRolesAsync(Guid? id);
 		#endregion
 	}
 }

@@ -17,7 +17,7 @@ namespace Blog.Application.Services
 
 		Task<Response<CategoryListDto>> GetUpdatedCategoryInfoAsync(Guid id);
 
-		Task<List<CategorySelectDto>> GetSelectCategories();
+		Task<CategorySelectDto> GetSelectCategories(Guid? id);
 		#endregion
 
 		#region Update

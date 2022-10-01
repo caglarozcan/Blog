@@ -13,15 +13,15 @@ namespace Blog.Web.Areas.Admin.ViewComponents
 			_roleService = roleService;
 		}
 
-		public async Task<IViewComponentResult> InvokeAsync()
+		public async Task<IViewComponentResult> InvokeAsync(Guid? id)
 		{
-			var items = await GetItemsAsync();
+			var items = await GetItemsAsync(id);
 			return View(items);
 		}
 
-		private Task<List<RoleSelectDto>> GetItemsAsync()
+		private Task<RoleSelectDto> GetItemsAsync(Guid? id)
 		{
-			return _roleService.GetSelectRolesAsync();
+			return _roleService.GetSelectRolesAsync(id);
 		}
 	}
 }

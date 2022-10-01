@@ -6,7 +6,7 @@ namespace Blog.Application.Repository
 	public interface IRoleReadRepository : IReadRepository<Role>
 	{
 		#region Read
-		Task<List<RoleSelectDto>> GetSelectRolesAsync();
+		Task<RoleSelectDto> GetSelectRolesAsync(Guid? id);
 		#endregion
 	}
 }

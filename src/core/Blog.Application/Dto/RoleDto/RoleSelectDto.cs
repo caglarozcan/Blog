@@ -2,8 +2,8 @@
 {
 	public class RoleSelectDto
     {
-		public Guid Id { get; set; }
+		public Guid? RoleId { get; set; }
 
-		public string Name { get; set; }
+		public List<SelectOptionsDto> Options { get; set; }
 	}
 }

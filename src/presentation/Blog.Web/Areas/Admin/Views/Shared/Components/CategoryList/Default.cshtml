@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Blog.Application.Dto.CategoryDto.CategorySelectDto>
+﻿@model Blog.Application.Dto.CategoryDto.CategorySelectDto
 
-<select name="ParentId" asp-items="@(new SelectList(Model, nameof(Blog.Application.Dto.CategoryDto.CategorySelectDto.Id), nameof(Blog.Application.Dto.CategoryDto.CategorySelectDto.Name)))">
-    <option>Üst kategori yok.</option>
+<select asp-for="ParentId" asp-items="@(new SelectList(Model.Options, "Value", "Text"))">
+    <option value="">Üst kategori yok.</option>
 </select>

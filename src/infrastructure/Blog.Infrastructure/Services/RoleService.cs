@@ -19,9 +19,9 @@ namespace Blog.Infrastructure.Services
 		}
 
 		#region Read
-		public async Task<List<RoleSelectDto>> GetSelectRolesAsync()
+		public async Task<RoleSelectDto> GetSelectRolesAsync(Guid? id)
         {
-			return await _unitOfWork.RoleReadRepository.GetSelectRolesAsync();
+			return await _unitOfWork.RoleReadRepository.GetSelectRolesAsync(id);
 		}
 		#endregion
 	}

@@ -1,4 +1,5 @@
-﻿using Blog.Application.Dto.RoleDto;
+﻿using Blog.Application.Dto;
+using Blog.Application.Dto.RoleDto;
 using Blog.Application.Repository;
 using Blog.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +14,18 @@ namespace Blog.Persistence.Repository
 		}
 
 		#region Read
-		public async Task<List<RoleSelectDto>> GetSelectRolesAsync()
+		public async Task<RoleSelectDto> GetSelectRolesAsync(Guid? id)
 		{
-			return await Table.Select(s => new RoleSelectDto() { 
-				Id = s.Id,
-				Name = s.Name
+			var options = await Table.Select(s => new SelectOptionsDto() { 
+				Value = s.Id.ToString(),
+				Text = s.Name
 			}).ToListAsync();
+
+			return new RoleSelectDto()
+			{
+				RoleId = id,
+				Options = options
+			};
 		}
 		#endregion
 	}

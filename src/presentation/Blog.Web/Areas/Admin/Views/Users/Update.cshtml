@@ -84,7 +84,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label class="label">Rolü</label>
-                                    @await Component.InvokeAsync("RoleList")
+                                    @await Component.InvokeAsync("RoleList", Model.RoleId)
                                     <span class="vld-RoleId"></span>
                                 </div>
                             </div>

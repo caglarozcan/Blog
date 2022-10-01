@@ -9,6 +9,6 @@ namespace Blog.Application.Repository
 	{
 		Task<PagingDataResponse<CategoryListDto>> GetCategoryListAsync(DataListRequest request);
 
-		Task<List<CategorySelectDto>> GetCategorySelect();
+		Task<CategorySelectDto> GetCategorySelect(Guid? id);
 	}
 }

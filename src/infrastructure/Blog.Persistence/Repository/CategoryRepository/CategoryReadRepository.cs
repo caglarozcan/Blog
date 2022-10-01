@@ -1,4 +1,5 @@
-﻿using Blog.Application.Dto.CategoryDto;
+﻿using Blog.Application.Dto;
+using Blog.Application.Dto.CategoryDto;
 using Blog.Application.Extension.Pagination;
 using Blog.Application.Extension.PredicateBuilder;
 using Blog.Application.Repository;
@@ -43,13 +44,19 @@ namespace Blog.Persistence.Repository
 			return await query.ToPagingData(request.PerData, request.Page);
 		}
 
-		public async Task<List<CategorySelectDto>> GetCategorySelect()
+		public async Task<CategorySelectDto> GetCategorySelect(Guid? id)
 		{
-			return await Table.Where(c => !c.ParentId.HasValue).Select(s => new CategorySelectDto()
+			var options = await Table.Where(c => !c.ParentId.HasValue).Select(s => new SelectOptionsDto()
 			{
-				Id = s.Id,
-				Name = s.Title
+				Value = s.Id.ToString(),
+				Text = s.Title
 			}).ToListAsync();
+
+			return new CategorySelectDto()
+			{
+				ParentId = id.HasValue ? id.Value : null,
+				Options = options
+			};
 		}
 	}
 }

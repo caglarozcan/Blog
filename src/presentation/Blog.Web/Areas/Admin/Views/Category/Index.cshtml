@@ -32,7 +32,7 @@
 						</div>
 						<div class="form-group">
 							<label class="label">Üst Kategori</label>
-							@await Component.InvokeAsync("CategoryList")
+							@await Component.InvokeAsync("CategoryList", null)
 						</div>
 						<div class="form-group">
 							<label class="label">Url (Slug)</label>
@@ -309,7 +309,9 @@
 								Util.find('input[name="Icon"]', editForm).value = responseData.value.icon;
 								Util.find('input[name="Color"]', editForm).value = responseData.value.color;
 								Util.find('textarea[name="Description"]', editForm).value = responseData.value.description;
-								Util.find('select[name="ParentId"]', editForm).value = responseData.value.parentId;
+								if(responseData.value.parentId){
+									Util.find('select[name="ParentId"]', editForm).value = responseData.value.parentId.toUpperCase();
+								}
 
 								insertForm.style.display = 'none';
 								editForm.style.display = 'block';

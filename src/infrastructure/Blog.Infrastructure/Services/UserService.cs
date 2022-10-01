@@ -4,7 +4,6 @@ using Blog.Application.Request;
 using Blog.Application.Response;
 using Blog.Application.Services;
 using Blog.Application.UnitOfWork;
-using Blog.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 

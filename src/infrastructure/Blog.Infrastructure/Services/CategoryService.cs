@@ -93,9 +93,9 @@ namespace Blog.Infrastructure.Services
 			});
 		}
 
-		public async Task<List<CategorySelectDto>> GetSelectCategories()
+		public async Task<CategorySelectDto> GetSelectCategories(Guid? id)
 		{
-			return await _unitOfWork.CategoryReadRepository.GetCategorySelect();
+			return await _unitOfWork.CategoryReadRepository.GetCategorySelect(id);
 		}
 		#endregion
 

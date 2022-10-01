@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Blog.Application.Dto.RoleDto.RoleSelectDto>
+﻿@model Blog.Application.Dto.RoleDto.RoleSelectDto
 
-<select name="RoleId" asp-items="@(new SelectList(Model, nameof(Blog.Application.Dto.RoleDto.RoleSelectDto.Id), nameof(Blog.Application.Dto.RoleDto.RoleSelectDto.Name)))">
-    <option>Kullanıcı rolü seçiniz.</option>
+<select asp-for="RoleId" asp-items="@(new SelectList(Model.Options, "Value", "Text"))">
+    <option value="">Kullanıcı rolü seçiniz.</option>
 </select>

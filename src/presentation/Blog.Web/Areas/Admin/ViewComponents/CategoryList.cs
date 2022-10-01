@@ -13,15 +13,15 @@ namespace Blog.Web.Areas.Admin.ViewComponents
 			_categoryService = categoryService;
 		}
 
-		public async Task<IViewComponentResult> InvokeAsync()
+		public async Task<IViewComponentResult> InvokeAsync(Guid? id)
 		{
-			var items = await GetItemsAsync();
+			var items = await GetItemsAsync(id);
 			return View(items);
 		}
 
-		private Task<List<CategorySelectDto>> GetItemsAsync()
+		private Task<CategorySelectDto> GetItemsAsync(Guid? id)
 		{
-			return _categoryService.GetSelectCategories();
+			return _categoryService.GetSelectCategories(id);
 		}
 	}
 }
