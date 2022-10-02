@@ -193,6 +193,43 @@ namespace Blog.Infrastructure.Services
 				return new Response<ProblemDetails>(message: "Kullanıcı bilgileri güncelleme sırasında bir hata oluştu. Daha sonra tekrar deneyiniz.", success: false);
 			}
 		}
+
+		public async Task<Response> StatusChangeAsync(Guid id)
+		{
+			var user = await _unitOfWork.UserReadRepository.GetAsync(u => u.Id.Equals(id));
+
+			if (user == null)
+				return new Response("İşlem yapmak istediğiniz kullanıcı sistemde bulunamadı.", false);
+
+			user.Status = (byte)(user.Status == 1 ? Status.Passive : Status.Active);
+			await _unitOfWork.UserWriteRepository.UpdateAsync(user);
+
+			int result = await _unitOfWork.SaveAsync();
+
+			if (!result.Equals(1))
+				return new Response("Kullanıcı durumu değiştirme sırasında bir hata oluştu. Daha sonra tekrar deneyiniz.", false);
+
+			return new Response("Kullanıcı durumu değiştirilmiştir.", true);
+		}
+		#endregion
+
+		#region Delete
+		public async Task<Response> DeleteAsync(Guid id)
+		{
+			var user = await _unitOfWork.UserReadRepository.GetAsync(u => u.Id.Equals(id));
+
+			if (user == null)
+				return new Response("İşlem yapmak istediğiniz kullanıcı sistemde bulunamadı.", false);
+
+			//TODO : sadece kullanıcı silme yeterli değil. Kullanıcının eklediği makaleler filan olabilir. Onlarda silinmeli.
+			await _unitOfWork.UserWriteRepository.DeleteAsync(user);
+			int result = await _unitOfWork.SaveAsync();
+
+			if (!result.Equals(1))
+				return new Response("Kullanıcı silme sırasında bir hata oluştu. Daha sonra tekrar deneyiniz.", false);
+
+			return new Response("Kullanıcı başarıyla silinmiştir.", true);
+		}
 		#endregion
 	}
 }

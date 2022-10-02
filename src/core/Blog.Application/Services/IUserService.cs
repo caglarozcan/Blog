@@ -20,10 +20,12 @@ namespace Blog.Application.Services
 
 		#region Update
 		Task<Response<ProblemDetails>> UpdateAsync(UserUpdateDto data, ModelStateDictionary modelState);
+
+		Task<Response.Response> StatusChangeAsync(Guid id);
 		#endregion
 
 		#region Delete
-
+		Task<Response.Response> DeleteAsync(Guid id);
 		#endregion
 
 

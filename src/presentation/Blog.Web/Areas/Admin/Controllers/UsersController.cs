@@ -73,6 +73,22 @@ namespace Blog.Web.Areas.Admin.Controllers
 				StatusCode = 400
 			};
 		}
+
+		[HttpPost]
+		public async Task<IActionResult> StatusChange(Guid id)
+		{
+			var result = await _userService.StatusChangeAsync(id);
+			return Ok(result);
+		}
+		#endregion
+
+		#region Delete
+		[HttpPost]
+		public async Task<IActionResult> Delete(Guid id)
+		{
+			var result = await _userService.DeleteAsync(id);
+			return Ok(result);
+		}
 		#endregion
 	}
 }

@@ -148,7 +148,7 @@
 						e.stopPropagation();
 						var target = e.currentTarget;
 						var id = target.dataset.id;
-						var statusTd = Util.findAll('td', target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)[5];
+						var statusTd = Util.findAll('td', target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)[8];
 
 						Ajax.send({
 							method: 'POST',
@@ -169,6 +169,31 @@
 								message: 'İşlem sırasında bir hata oluştu.. Daha sonra tekrar deneyiniz.',
 								buttonType: 'ok'
 							});
+						});
+					});
+				});
+
+				//Kullanıcı silme işlemi.
+				var deleteLinks = document.querySelectorAll('a[data-action="delete"]');
+				deleteLinks.forEach(element => {
+					element.addEventListener('click', function (e) {
+						e.stopPropagation();
+						var target = e.currentTarget;
+						var id = target.dataset.id;
+
+						Dailog.init({
+							icon: 'question',
+							title: 'Silme işlemi onayla!',
+							message: 'Kullanıcı sistemden silinecek! İşleme devam etmek istediğinizden emin misiniz?',
+							buttonType: 'yesNo',
+							ajax: {
+								url: Util.urlHelper('Admin/Users/Delete'),
+								method: 'POST',
+								data: { "id": id }
+							},
+							ajaxAfter: function () {
+								dtUser.renderBody();
+							}
 						});
 					});
 				});
