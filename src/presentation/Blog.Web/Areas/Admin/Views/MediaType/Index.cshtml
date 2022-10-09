@@ -17,30 +17,69 @@
 <div class="wrapper">
 	<div class="grid">
 		<div class="col-5">
-			<div class="card">
+			<div class="card" id="mediatype-insert-container">
 				<div class="card-header">
 					<h4>Medya Türü Ekle</h4>
 				</div>
 				<div class="card-body pd">
-					<form asp-route="CategoryInsert" method="post">
+					<form asp-route="MediaTypeInsert" method="post" id="mediatype-insert-form">
 						<div class="form-group">
 							<label class="label">Dosya Tür Adı</label>
 							<input type="text" name="Title" class="input" />
+							<span class="vld-Title"></span>
 						</div>
 						<div class="form-group">
 							<label class="label">Dosya Tipi (MIME Tipi)</label>
-							<input type="text" name="Title" class="input" />
+							<input type="text" name="MimeType" class="input" />
+							<span class="vld-MimeType"></span>
 						</div>
 						<div class="form-group">
 							<label class="label">Dosya Uzantısı</label>
-							<input type="text" name="Title" class="input" />
+							<input type="text" name="FileExtension" class="input" />
+							<span class="vld-FileExtension"></span>
 						</div>
 						<div class="form-group">
 							<label class="label">Yükleme Konumu</label>
-							<input type="text" name="Title" class="input" />
+							<input type="text" name="UploadDir" class="input" />
+							<span class="vld-UploadDir"></span>
 						</div>
 						<div class="form-group">
 							<input type="submit" class="btn btn-blue" value="Medya Türü Ekle" />
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="card" id="mediatype-edit-container" style="display:none;">
+				<div class="card-header">
+					<h4>Medya Türü Düzenle</h4>
+				</div>
+				<div class="card-body pd">
+					<form asp-route="MediaTypeUpdate" method="post" id="mediatype-edit-form">
+						<input type="hidden" name="Id" />
+						<div class="form-group">
+							<label class="label">Dosya Tür Adı</label>
+							<input type="text" name="Title" class="input" />
+							<span class="vld-Title"></span>
+						</div>
+						<div class="form-group">
+							<label class="label">Dosya Tipi (MIME Tipi)</label>
+							<input type="text" name="MimeType" class="input" />
+							<span class="vld-MimeType"></span>
+						</div>
+						<div class="form-group">
+							<label class="label">Dosya Uzantısı</label>
+							<input type="text" name="FileExtension" class="input" />
+							<span class="vld-FileExtension"></span>
+						</div>
+						<div class="form-group">
+							<label class="label">Yükleme Konumu</label>
+							<input type="text" name="UploadDir" class="input" />
+							<span class="vld-UploadDir"></span>
+						</div>
+						<div class="form-group">
+							<input type="submit" class="btn btn-blue" value="Medya Türü Düzenle" />
+							<input type="reset" class="btn btn-default" value="İptal" id="edit-canel-btn" />
 						</div>
 					</form>
 				</div>
@@ -50,17 +89,23 @@
 			<div class="card">
 				<div class="card-header">
 					<h4>Medya Türleri</h4>
+					<div class="search">
+						<div class="search-icon">
+							<i class="cdi cdi-search"></i>
+						</div>
+						<div class="search-box">
+							<input type="text" placeholder="Ara.." id="filter-box" />
+						</div>
+					</div>
 				</div>
 				<div class="card-body pd">
 
 					<!--Makale listesi-->
 
-					<table class="border-btm">
+					<table class="border-btm" id="table-mediatype">
 						<thead>
 							<tr>
-								<th>
-									<input type="checkbox" />
-								</th>
+								<th>#</th>
 								<th>Dosya Türü Adı</th>
 								<th>MIME Tipi</th>
 								<th class="text-center">Uzantısı</th>
@@ -68,64 +113,257 @@
 								<th class="text-center">İşlem</th>
 							</tr>
 						</thead>
-						<tbody>
-							@for (int i = 1; i <= 20; i++)
-							{
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Resim Dosyası</td>
-									<td>image/jpg</td>
-									<td class="text-center">.jpg</td>
-									<td class="text-center">10 Ekim 2021 23:36</td>
-									<td class="text-center">
-										<a href="#">
-											<i class="cdi cdi-ellipsis"></i>
-										</a>
-									</td>
-								</tr>
-							}
-
-						</tbody>
+						<tbody></tbody>
 					</table>
-
-					<ul class="pagination pg-direction-right">
-						<li class="arrow">
-							<a href="#">
-								<i class="cdi cdi-arrow-left-alt2"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#">1</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li class="active">
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#">6</a>
-						</li>
-						<li>
-							<a href="#">7</a>
-						</li>
-						<li class="arrow">
-							<a href="#">
-								<i class="cdi cdi-arrow-right-alt2"></i>
-							</a>
-						</li>
-					</ul>
-
 					<!--Makale listesi-->
-
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+	window.addEventListener('DOMContentLoaded', (event) => {
+		//Medya Türü listesi için data table ayarlanması.
+		var dtMediaType = new DataTable('#table-mediatype', {
+			method: 'GET',
+			url: 'https://localhost:44307/Admin/MediaType/GetList',
+			fixColumn: true,
+			dataPerPage: 15,
+			columns: [
+				{
+					'targets': 'AI',
+					'order': false,
+				},
+				{
+					'targets': 1,
+					'order': true,
+				},
+				
+				{
+					'targets': 2,
+					'order': false,
+					'aling': 'center',
+				},
+				{
+					'targets': 3,
+					'order': false,
+					'aling': 'center',
+				},
+				{
+					'targets': 4,
+					'order': true,
+					'dateFormat': 'd MM yyyy H:i'
+				},
+				{
+					'bind': 5,
+					'order': false,
+					'aling': 'center',
+					'render': function (data) {
+						return data == 1 ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
+					}
+				},
+				{
+					'bind': 0,
+					'order': false,
+					'aling': 'center',
+					'render': function (data) {
+						return '<div class="dropdown row-option"><a href="javascript:void(0)" data-dropdown="#cdi' + data.split('-')[0] + '">' +
+							'<i class="cdi cdi-ellipsis"></i>' +
+							'</a>' +
+							'<div class="drop-down" id="cdi' + data.split('-')[0] + '">' +
+							'<ul>' +
+							'<li><a href="javascript:void(0)" data-action="statusChange" data-id="' + data + '"><i class="cdi cdi-remove"></i>&nbsp;&nbsp;Aktif/Pasif</a></li>' +
+							'<li><a href="javascript:void(0)" data-action="edit" data-id="' + data + '"><i class="cdi cdi-edit"></i>&nbsp;&nbsp;Güncelle</a></li>' +
+							'<li class="seperator"></li>' +
+							'<li><a href="javascript:void(0)" data-action="delete" data-id="' + data + '"><i class="cdi cdi-trash"></i>&nbsp;&nbsp;Sil</a></li>' +
+							'</ul>' +
+							'</div></div>';
+					}
+				}
+			],
+			order: [2, 1],
+			onRendered: function () {
+				DropDown.init('.row-option');
+
+				//Medya tipi status değiştirme işlemi.
+				var statusLinks = document.querySelectorAll('a[data-action="statusChange"]');
+				statusLinks.forEach(element => {
+					element.addEventListener('click', function (e) {
+						e.stopPropagation();
+						var target = e.currentTarget;
+						var id = target.dataset.id;
+						var statusTd = Util.findAll('td', target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)[5];
+
+						Ajax.send({
+							method: 'POST',
+							url: Util.urlHelper('Admin/MediaType/StatusChange'),
+							data: { "id": id }
+						}).then(responseData => {
+							statusTd.innerHTML = statusTd.innerHTML == '<span class="status-danger">Pasif</span>' ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
+							Dailog.init({
+								icon: responseData.success ? 'success' : 'danger',
+								title: responseData.success ? 'İşlem başarılı..' : 'İşlem başarısız!',
+								message: responseData.message,
+								buttonType: 'ok'
+							});
+						}).catch(error => {
+							Dailog.init({
+								icon: 'danger',
+								title: 'İşlem başarısız!',
+								message: 'İşlem sırasında bir hata oluştu.. Daha sonra tekrar deneyiniz.',
+								buttonType: 'ok'
+							});
+						});
+					});
+				});
+
+				//Medya tipi silme işlemi.
+				var deleteLinks = document.querySelectorAll('a[data-action="delete"]');
+				deleteLinks.forEach(element => {
+					element.addEventListener('click', function (e) {
+						e.stopPropagation();
+						var target = e.currentTarget;
+						var id = target.dataset.id;
+
+						Dailog.init({
+							icon: 'question',
+							title: 'Silme işlemi onayla!',
+							message: 'Medya türü sistemden silinecek! İşleme devam etmek istediğinizden emin misiniz?',
+							buttonType: 'yesNo',
+							ajax: {
+								url: Util.urlHelper('Admin/MediaType/Delete'),
+								method: 'POST',
+								data: { "id": id }
+							},
+							ajaxAfter: function () {
+								dtMediaType.renderBody();
+							}
+						});
+					});
+				});
+
+				//Medya tipi düzenleme işlemi.
+				var editLinks = document.querySelectorAll('a[data-action="edit"]');
+				editLinks.forEach(element => {
+					element.addEventListener('click', function (e) {
+						var target = e.currentTarget;
+						var id = target.dataset.id;
+						var cancelBtn = document.getElementById('edit-canel-btn');
+
+						Ajax.send({
+							method: 'POST',
+							url: Util.urlHelper('Admin/MediaType/EditInfo'),
+							data: { "id": id }
+						}).then(responseData => {
+
+							if (responseData.success) {
+								var insertForm = document.getElementById('mediatype-insert-container');
+								var editForm = document.getElementById('mediatype-edit-container');
+
+								Util.find('input[name="Id"]', editForm).value = responseData.value.id;
+								Util.find('input[name="Title"]', editForm).value = responseData.value.title;
+								Util.find('input[name="MimeType"]', editForm).value = responseData.value.mimeType
+								Util.find('input[name="FileExtension"]', editForm).value = responseData.value.fileExtension;
+								Util.find('input[name="UploadDir"]', editForm).value = responseData.value.uploadDir;
+						
+								insertForm.style.display = 'none';
+								editForm.style.display = 'block';
+
+								cancelBtn.addEventListener('click', function () {
+									editForm.style.display = 'none';
+									insertForm.style.display = 'block';
+								});
+							} else {
+								Dailog.init({
+									icon: 'danger',
+									title: 'İşlem başarısız!',
+									message: responseData.message,
+									buttonType: 'ok'
+								});
+							}
+						}).catch(error => {
+							Dailog.init({
+								icon: 'danger',
+								title: 'İşlem başarısız!',
+								message: 'Düzenlenecek medya türü bilgileri alınamadı. Daha sonra tekrar deneyiniz.',
+								buttonType: 'ok'
+							});
+						});
+					});
+				});
+			},
+			filter: {
+				element: '#filter-box'
+			}
+		});
+
+		FormValidation.init({
+			formSelector: '#mediatype-insert-form',
+			sendAjax: true,
+			ajaxAfter: function () {
+				dtMediaType.renderBody();
+			},
+			inputs: [
+				{
+					name: 'Title',
+					rules: [
+						{ rule: 'required', message: 'Medya türü adı zorunludur.' }
+					],
+				},
+				{
+					name: 'MimeType',
+					rules: [
+						{ rule: 'required', message: 'Mime tipi alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'FileExtension',
+					rules: [
+						{ rule: 'required', message: 'Dosya uzantısı alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'UploadDir',
+					rules: [
+						{ rule: 'required', message: 'Dosya yükleme konumu alanı zorunludur.' }
+					],
+				}
+			]
+		});
+
+		FormValidation.init({
+			formSelector: '#mediatype-edit-form',
+			sendAjax: true,
+			ajaxAfter: function () {
+				dtMediaType.renderBody();
+			},
+			inputs: [
+				{
+					name: 'Title',
+					rules: [
+						{ rule: 'required', message: 'Medya türü adı zorunludur.' }
+					],
+				},
+				{
+					name: 'MimeType',
+					rules: [
+						{ rule: 'required', message: 'Mime tipi alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'FileExtension',
+					rules: [
+						{ rule: 'required', message: 'Dosya uzantısı alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'UploadDir',
+					rules: [
+						{ rule: 'required', message: 'Dosya yükleme konumu alanı zorunludur.' }
+					],
+				}
+			]
+		});
+	});
+</script>

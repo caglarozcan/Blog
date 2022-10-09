@@ -28,28 +28,42 @@ namespace Blog.Persistence.EfContext.EntityMapping
 
 			builder.Property(p => p.MimeType)
 				.HasColumnName("MimeType")
-				.HasColumnType("varchar(10)")
-				.HasMaxLength(10)
+				.HasColumnType("varchar(30)")
+				.HasMaxLength(30)
 				.HasColumnOrder(2)
+				.IsRequired(true);
+			
+			builder.Property(p => p.FileExtension)
+				.HasColumnName("FileExtension")
+				.HasColumnType("varchar(5)")
+				.HasMaxLength(5)
+				.HasColumnOrder(3)
+				.IsRequired(true);
+			
+			builder.Property(p => p.UploadDir)
+				.HasColumnName("UploadDir")
+				.HasColumnType("varchar(200)")
+				.HasMaxLength(200)
+				.HasColumnOrder(4)
 				.IsRequired(true);
 
 			builder.Property(p => p.CreatedDate)
 				.HasColumnName("CreatedDate")
 				.HasColumnType("datetime")
-				.HasColumnOrder(3)
+				.HasColumnOrder(5)
 				.HasDefaultValueSql("GETDATE()")
 				.IsRequired(true);
 
 			builder.Property(p => p.UpdatedDate)
 				.HasColumnName("UpdatedDate")
 				.HasColumnType("datetime")
-				.HasColumnOrder(4)
+				.HasColumnOrder(6)
 				.IsRequired(false);
 
 			builder.Property(p => p.Status)
 				.HasColumnName("Status")
 				.HasColumnType("tinyint")
-				.HasColumnOrder(5)
+				.HasColumnOrder(7)
 				.HasDefaultValue(1)
 				.IsRequired(true);
 		}

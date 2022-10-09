@@ -1,12 +1,7 @@
 ﻿using Blog.Infrastructure;
 using Blog.Persistence;
 using Blog.Persistence.EfContext;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -218,7 +213,22 @@ app.UseEndpoints(endpoints =>
 		defaults: new { area = "Admin", controller = "MediaType", action = "Index" }
 	);
 	#endregion
-	
+
+	#region MediaType
+	endpoints.MapAreaControllerRoute(
+		name: "MediaTypeInsert",
+		areaName: "Admin",
+		pattern: "yonetim/medya-turu-ekle",
+		defaults: new { area = "Admin", controller = "MediaType", action = "Insert" }
+	);
+	endpoints.MapAreaControllerRoute(
+		name: "MediaTypeUpdate",
+		areaName: "Admin",
+		pattern: "yonetim/medya-turu-duzenle",
+		defaults: new { area = "Admin", controller = "MediaType", action = "Edit" }
+	);
+	#endregion
+
 	#region Settgins
 	endpoints.MapAreaControllerRoute(
 		name: "AdminSettings",
