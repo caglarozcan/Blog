@@ -39,6 +39,16 @@
 							<span class="vld-FileExtension"></span>
 						</div>
 						<div class="form-group">
+							<label class="label">Dosya Icon'u</label>
+							<input type="text" name="Icon" class="input" />
+							<span class="vld-Icon"></span>
+						</div>
+						<div class="form-group">
+							<label class="label">Icon Rengi</label>
+							<input type="text" name="Color" class="input" />
+							<span class="vld-Color"></span>
+						</div>
+						<div class="form-group">
 							<label class="label">Yükleme Konumu</label>
 							<input type="text" name="UploadDir" class="input" />
 							<span class="vld-UploadDir"></span>
@@ -71,6 +81,16 @@
 							<label class="label">Dosya Uzantısı</label>
 							<input type="text" name="FileExtension" class="input" />
 							<span class="vld-FileExtension"></span>
+						</div>
+						<div class="form-group">
+							<label class="label">Dosya Icon'u</label>
+							<input type="text" name="Icon" class="input" />
+							<span class="vld-Icon"></span>
+						</div>
+						<div class="form-group">
+							<label class="label">Icon Rengi</label>
+							<input type="text" name="Color" class="input" />
+							<span class="vld-Color"></span>
 						</div>
 						<div class="form-group">
 							<label class="label">Yükleme Konumu</label>
@@ -265,6 +285,8 @@
 								Util.find('input[name="Title"]', editForm).value = responseData.value.title;
 								Util.find('input[name="MimeType"]', editForm).value = responseData.value.mimeType
 								Util.find('input[name="FileExtension"]', editForm).value = responseData.value.fileExtension;
+								Util.find('input[name="Icon"]', editForm).value = responseData.value.icon;
+								Util.find('input[name="Color"]', editForm).value = responseData.value.color;
 								Util.find('input[name="UploadDir"]', editForm).value = responseData.value.uploadDir;
 						
 								insertForm.style.display = 'none';
@@ -324,6 +346,18 @@
 					],
 				},
 				{
+					name: 'Icon',
+					rules: [
+						{ rule: 'required', message: 'Dosya ikonu alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Color',
+					rules: [
+						{ rule: 'required', message: 'Dosya ikon rengi alanı zorunludur.' }
+					],
+				},
+				{
 					name: 'UploadDir',
 					rules: [
 						{ rule: 'required', message: 'Dosya yükleme konumu alanı zorunludur.' }
@@ -355,6 +389,18 @@
 					name: 'FileExtension',
 					rules: [
 						{ rule: 'required', message: 'Dosya uzantısı alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Icon',
+					rules: [
+						{ rule: 'required', message: 'Dosya ikonu alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Color',
+					rules: [
+						{ rule: 'required', message: 'Dosya ikon rengi alanı zorunludur.' }
 					],
 				},
 				{

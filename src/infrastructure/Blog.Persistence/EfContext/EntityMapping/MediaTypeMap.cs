@@ -39,31 +39,45 @@ namespace Blog.Persistence.EfContext.EntityMapping
 				.HasMaxLength(5)
 				.HasColumnOrder(3)
 				.IsRequired(true);
-			
+
+			builder.Property(p => p.Icon)
+				.HasColumnName("Icon")
+				.HasColumnType("varchar(20)")
+				.HasMaxLength(20)
+				.HasColumnOrder(4)
+				.IsRequired(true);
+
+			builder.Property(p => p.Color)
+				.HasColumnName("Color")
+				.HasColumnType("varchar(10)")
+				.HasMaxLength(10)
+				.HasColumnOrder(5)
+				.IsRequired(true);
+
 			builder.Property(p => p.UploadDir)
 				.HasColumnName("UploadDir")
 				.HasColumnType("varchar(200)")
 				.HasMaxLength(200)
-				.HasColumnOrder(4)
+				.HasColumnOrder(6)
 				.IsRequired(true);
 
 			builder.Property(p => p.CreatedDate)
 				.HasColumnName("CreatedDate")
 				.HasColumnType("datetime")
-				.HasColumnOrder(5)
+				.HasColumnOrder(7)
 				.HasDefaultValueSql("GETDATE()")
 				.IsRequired(true);
 
 			builder.Property(p => p.UpdatedDate)
 				.HasColumnName("UpdatedDate")
 				.HasColumnType("datetime")
-				.HasColumnOrder(6)
+				.HasColumnOrder(8)
 				.IsRequired(false);
 
 			builder.Property(p => p.Status)
 				.HasColumnName("Status")
 				.HasColumnType("tinyint")
-				.HasColumnOrder(7)
+				.HasColumnOrder(9)
 				.HasDefaultValue(1)
 				.IsRequired(true);
 		}

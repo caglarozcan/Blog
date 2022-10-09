@@ -12,6 +12,10 @@
         public string MimeType { get; set; }
 
         public string FileExtension { get; set; }
+        
+        public string Icon { get; set; }
+        
+        public string Color { get; set; }
 
         public string UploadDir { get; set; }
 

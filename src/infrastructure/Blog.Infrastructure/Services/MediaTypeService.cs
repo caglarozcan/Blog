@@ -1,5 +1,4 @@
 ﻿using Blog.Application.Dto.MediaTypeDto;
-using Blog.Application.Dto.UserDto;
 using Blog.Application.Enums;
 using Blog.Application.Request;
 using Blog.Application.Response;
@@ -40,6 +39,8 @@ namespace Blog.Infrastructure.Services
 					MimeType = data.MimeType,
 					FileExtension = data.FileExtension,
 					UploadDir = data.UploadDir,
+					Icon = data.Icon,
+					Color = data.Color,
 					CreatedDate = DateTime.Now,
 					Status = (byte)Status.Active
 				});
@@ -75,9 +76,11 @@ namespace Blog.Infrastructure.Services
 			{
 				Id = mediaType.Id,
 				Title = mediaType.Title,
-				FileExtension= mediaType.FileExtension,
+				FileExtension = mediaType.FileExtension,
 				MimeType = mediaType.MimeType,
-				UploadDir= mediaType.UploadDir
+				UploadDir = mediaType.UploadDir,
+				Icon = mediaType.Icon,
+				Color = mediaType.Color
 			});
 		}
 		#endregion
@@ -87,9 +90,9 @@ namespace Blog.Infrastructure.Services
 		{
 			var mediaType = await _unitOfWork.MediaTypeReadRepository.GetAsync(m => m.Id.Equals(id));
 
-			if(mediaType == null)
+			if (mediaType == null)
 				return new Response("İşlem yapmak istediğiniz medya türü sistemde bulunamadı.", false);
-			
+
 			mediaType.Status = (byte)(mediaType.Status == 1 ? Status.Passive : Status.Active);
 
 			await _unitOfWork.MediaTypeWriteRepository.UpdateAsync(mediaType);
@@ -126,6 +129,8 @@ namespace Blog.Infrastructure.Services
 					mediaType.MimeType = data.MimeType;
 					mediaType.FileExtension = data.FileExtension;
 					mediaType.UploadDir = data.UploadDir;
+					mediaType.Icon = data.Icon;
+					mediaType.Color = data.Color;
 					mediaType.UpdatedDate = DateTime.Now;
 
 					await _unitOfWork.MediaTypeWriteRepository.UpdateAsync(mediaType);
@@ -159,7 +164,7 @@ namespace Blog.Infrastructure.Services
 			if (!result.Equals(1))
 				return new Response("Medya türü silinirken bir hata oluştu. Daha sonra tekrar deneyiniz.", true);
 
-			return new Response("Medya türü balşarıyla silinmiştir.", true);	
+			return new Response("Medya türü balşarıyla silinmiştir.", true);
 		}
 		#endregion
 		#endregion

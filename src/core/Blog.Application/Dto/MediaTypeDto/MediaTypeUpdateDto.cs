@@ -27,6 +27,18 @@ namespace Blog.Application.Dto.MediaTypeDto
 		public string FileExtension { get; set; }
 
 		[DataType(DataType.Text)]
+		[DisplayName("Dosya Icon'u")]
+		[Required(ErrorMessage = "Dosya icon'u alanı zorunludur.")]
+		[MaxLength(20, ErrorMessage = "Dosya icon'u en fazla 20 karakter olabilir.")]
+		public string Icon { get; set; }
+
+		[DataType(DataType.Text)]
+		[DisplayName("Dosya Icon Rengi")]
+		[Required(ErrorMessage = "Dosya icon rengi alanı zorunludur.")]
+		[MaxLength(10, ErrorMessage = "Dosya icon rengi en fazla 10 karakter olabilir.")]
+		public string Color { get; set; }
+
+		[DataType(DataType.Text)]
 		[DisplayName("Dosya Yükleme Yolu")]
 		[Required(ErrorMessage = "Dosya yükleme yolu alanı zorunludur.")]
 		[MaxLength(200, ErrorMessage = "Dosya yükleme yolu en fazla 200 karakter olabilir.")]
