@@ -22,6 +22,7 @@ namespace Blog.Web.Areas.Admin.Controllers
 			return View();
 		}
 
+		#region Functions
 		#region Create
 		[HttpPost]
 		public async Task<IActionResult> Insert(TagInsertDto data)
@@ -79,6 +80,7 @@ namespace Blog.Web.Areas.Admin.Controllers
 
 			return Ok(result);
 		}
+		#endregion
 		#endregion
 	}
 }

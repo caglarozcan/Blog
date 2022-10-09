@@ -18,11 +18,7 @@ namespace Blog.Web.Areas.Admin.Controllers
 			this._userService = userService;
 		}
 
-		public IActionResult Index()
-		{
-			return View();
-		}
-
+		#region Functions
 		#region Create
 		public IActionResult Insert()
 		{
@@ -45,6 +41,11 @@ namespace Blog.Web.Areas.Admin.Controllers
 		#endregion
 
 		#region Read
+		public async Task<IActionResult> Index()
+		{
+			return View();
+		}
+
 		public async Task<IActionResult> GetList(DataListRequest request)
 		{
 			var list = await _userService.GetUserListAsync(request);
@@ -89,6 +90,7 @@ namespace Blog.Web.Areas.Admin.Controllers
 			var result = await _userService.DeleteAsync(id);
 			return Ok(result);
 		}
+		#endregion
 		#endregion
 	}
 }
