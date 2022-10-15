@@ -16,5 +16,11 @@ namespace Blog.Web.Areas.Admin.Controllers
 		{
 			return View();
 		}
+
+		[HttpPost]
+		public IActionResult FileUpload(List<IFormFile> file)
+		{
+			return Ok();
+		}
 	}
 }

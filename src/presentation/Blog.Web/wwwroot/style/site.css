@@ -171,10 +171,32 @@ footer {
   border: 2px dashed #dee2e6;
   text-align: center;
 }
+.file-upload.highlight {
+  border: 3px dashed #319DB5;
+}
 .file-upload span {
   font-size: 1.5rem;
   display: inline-block;
   margin-top: 150px;
   color: #6c7293;
   font-weight: 300;
+}
+
+.image-preview-container {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+.image-preview-container .image-upload-preview {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 5px;
+  padding: 8px;
+  border: 1px solid #dee2e6;
+  border-radius: 3px;
+}
+.image-preview-container .image-upload-preview img {
+  max-width: 80px;
+  max-height: 80px;
+  margin-right: 15px;
 }

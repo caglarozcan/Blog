@@ -24,12 +24,166 @@
 			<div class="card">
 				<div class="card-body pd">
 
-					<div class="file-upload">
+					<div class="file-upload" id="upload-area" draggable="true">
 						<span>Yüklemek istediğiniz dosyaları bu alana sürükleyiniz.</span>
+						
 					</div>
 
 				</div>
 			</div>
 		</div>
+
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body pd" id="upload-progress">
+					<span>Yükleniyor :</span>
+					<progress id="progress-bar" max=100 value=0 style="width:400px"></progress>
+					<span>%25</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body" style="padding:5px;">
+					<div class="image-preview-container" id="upload-preview"></div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+
+<script>
+
+	document.addEventListener('DOMContentLoaded', (event) => {
+		var uploadArea = document.getElementById('upload-area');
+
+		['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+			uploadArea.addEventListener(eventName, (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+			}, false);
+		});
+
+		['dragenter', 'dragover'].forEach(eventName => {
+			uploadArea.addEventListener(eventName, () => {
+				uploadArea.classList.add('highlight');
+			}, false);
+		});
+
+		['dragleave', 'drop'].forEach(eventName => {
+			uploadArea.addEventListener(eventName, () => {
+				uploadArea.classList.remove('highlight');
+			}, false);
+		});
+
+		uploadArea.addEventListener('drop', handleDrop, false);
+
+		let filesDone = 0;
+		let filesToDo = 0;
+		let uploadProgress = [];
+		let progressBar = document.getElementById('progress-bar');
+
+		function handleDrop(e) {
+			let dt = e.dataTransfer;
+			let files = dt.files;
+
+			preview(files);
+			initializeProgress(files.length);
+
+			for(var i = 0; i < files.length; i++){
+				var url = 'https://localhost:44307/yonetim/dosya-yukle';
+				var xhr = new XMLHttpRequest();
+				var formData = new FormData();
+				xhr.open('POST', url, true);
+
+				xhr.upload.addEventListener("progress", function (e) {
+					updateProgress(i, (e.loaded * 100.0 / e.total) || 100);
+					//console.log('update edildi.');
+				});
+
+				xhr.addEventListener('readystatechange', function (e) {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						// Done. Inform the user
+						//console.log('yüklendi.');
+					}
+					else if (xhr.readyState == 4 && xhr.status != 200) {
+						// Error. Inform the user
+						//console.log('yüklenemedi.');
+					}
+				});
+
+				formData.append('file', files[i]);
+				xhr.send(formData);
+			}
+		}
+
+		function preview(files){
+			let previewBox = document.getElementById('upload-preview');
+			for(var i = 0; i < files.length; i++){
+
+				let reader = new FileReader();
+				reader.readAsDataURL(files[i]);
+
+				let fileName = files[i].name;
+				let fileSize = (files[i].size / 1024).toFixed(2) + ' KB';
+				let fileType = files[i].type;
+
+				reader.onloadend = function() {
+					let previewContainer = document.createElement('div');
+					previewContainer.classList.add('image-upload-preview');
+
+					let img = document.createElement('img');
+					if(fileType.search('image') > -1){
+						img.src = reader.result;
+					}else{
+						img.src = '/images/file.png';
+					}
+					previewContainer.appendChild(img);
+
+					let imageInfoContainer = document.createElement('div');
+
+					let imageInfoUl = document.createElement('ul');
+					
+					let imageNameLi = document.createElement('li');
+					imageNameLi.innerHTML = 'Adı : ' + fileName;
+					imageInfoUl.appendChild(imageNameLi);
+
+					let imageSizeLi = document.createElement('li');
+					imageSizeLi.innerHTML = 'Boyutu : ' + fileSize;
+					imageInfoUl.appendChild(imageSizeLi);
+
+					let imageTypeLi = document.createElement('li');
+					imageTypeLi.innerHTML = 'Türü : ' + fileType;
+					imageInfoUl.appendChild(imageTypeLi);
+
+					previewContainer.appendChild(imageInfoUl);
+
+					previewBox.appendChild(previewContainer);
+				}
+			}
+		}
+
+		function initializeProgress(numFiles) {
+			progressBar.value = 0;
+			uploadProgress = [];
+
+			for (let i = numFiles; i > 0; i--) {
+				uploadProgress.push(0);
+			}
+		}
+
+		function updateProgress(fileNumber, percent) {
+			//console.log(percent);
+			uploadProgress[fileNumber] = percent;
+			let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length;
+			progressBar.value = total;
+			//console.log(total);
+		}
+
+		function progressDone() {
+			filesDone++;
+			progressBar.value = filesDone / filesToDo * 100;
+		}
+	});
+
+</script>
