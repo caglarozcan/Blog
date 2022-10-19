@@ -40,7 +40,11 @@ namespace Blog.Persistence.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Title = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
-                    MimeType = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
+                    MimeType = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
+                    FileExtension = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false),
+                    Icon = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
+                    Color = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
+                    UploadDir = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "GETDATE()"),
                     UpdatedDate = table.Column<DateTime>(type: "datetime", nullable: true),
                     Status = table.Column<byte>(type: "tinyint", nullable: false, defaultValue: (byte)1)

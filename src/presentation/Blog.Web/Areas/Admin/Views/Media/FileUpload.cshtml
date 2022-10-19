@@ -91,7 +91,8 @@
 			initializeProgress(files.length);
 
 			for(var i = 0; i < files.length; i++){
-				var url = 'https://localhost:44307/yonetim/dosya-yukle';
+				console.log(files[i]);
+				var url = 'https://localhost:9000/yonetim/dosya-yukle';
 				var xhr = new XMLHttpRequest();
 				var formData = new FormData();
 				xhr.open('POST', url, true);
@@ -113,6 +114,7 @@
 				});
 
 				formData.append('file', files[i]);
+				xhr.setRequestHeader("Content-Type", "multipart/form-data");
 				xhr.send(formData);
 			}
 		}

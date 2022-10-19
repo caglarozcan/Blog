@@ -147,7 +147,7 @@
 		//Medya Türü listesi için data table ayarlanması.
 		var dtMediaType = new DataTable('#table-mediatype', {
 			method: 'GET',
-			url: 'https://localhost:44307/Admin/MediaType/GetList',
+			url: 'https://localhost:9000/Admin/MediaType/GetList',
 			fixColumn: true,
 			dataPerPage: 15,
 			columns: [
@@ -202,7 +202,7 @@
 					}
 				}
 			],
-			order: [2, 1],
+			order: [1, 2],
 			onRendered: function () {
 				DropDown.init('.row-option');
 

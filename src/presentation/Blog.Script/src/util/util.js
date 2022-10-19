@@ -13,7 +13,7 @@ var Util = function () {
 		},
 
 		urlHelper: function (endpoint) {
-			return 'https://localhost:44307/' + endpoint.replace(/^\/|\/$/g, '');
+			return 'https://localhost:9000/' + endpoint.replace(/^\/|\/$/g, '');
 		},
 
 		isElement: function (element) {

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.Persistence.Migrations
 {
     [DbContext(typeof(EfBlogContext))]
-    [Migration("20220930182252_mig1")]
+    [Migration("20221018103404_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -313,17 +313,38 @@ namespace Blog.Persistence.Migrations
                         .HasColumnName("Id")
                         .HasColumnOrder(0);
 
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("Color")
+                        .HasColumnOrder(5);
+
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasColumnName("CreatedDate")
-                        .HasColumnOrder(3)
+                        .HasColumnOrder(7)
                         .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("FileExtension")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("varchar(5)")
+                        .HasColumnName("FileExtension")
+                        .HasColumnOrder(3);
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("Icon")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("MimeType")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar(10)")
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)")
                         .HasColumnName("MimeType")
                         .HasColumnOrder(2);
 
@@ -332,7 +353,7 @@ namespace Blog.Persistence.Migrations
                         .HasColumnType("tinyint")
                         .HasDefaultValue((byte)1)
                         .HasColumnName("Status")
-                        .HasColumnOrder(5);
+                        .HasColumnOrder(9);
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -344,7 +365,14 @@ namespace Blog.Persistence.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime")
                         .HasColumnName("UpdatedDate")
-                        .HasColumnOrder(4);
+                        .HasColumnOrder(8);
+
+                    b.Property<string>("UploadDir")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("UploadDir")
+                        .HasColumnOrder(6);
 
                     b.HasKey("Id")
                         .HasName("PK_MediaType_Id");
