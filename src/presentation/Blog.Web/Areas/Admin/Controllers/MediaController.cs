@@ -1,12 +1,20 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Blog.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Areas.Admin.Controllers
 {
 	[Area("Admin")]
 	[Authorize(Roles = "Administrator, Editör")]
-	public class MediaController : Controller
+	public class MediaController : BaseController
 	{
+		private IMediaService _mediaService;
+
+		public MediaController(IMediaService mediaService)
+		{
+			_mediaService = mediaService;
+		}
+
 		public IActionResult Index()
 		{
 			return View();
@@ -18,7 +26,7 @@ namespace Blog.Web.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult FileUpload(IFormFile file)
+		public async Task<IActionResult> FileUpload(IFormFile file)
 		{
 			return Ok();
 		}

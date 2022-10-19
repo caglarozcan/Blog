@@ -114,7 +114,7 @@
 				});
 
 				formData.append('file', files[i]);
-				xhr.setRequestHeader("Content-Type", "multipart/form-data");
+				xhr.setRequestHeader("mimeType", "multipart/form-data");
 				xhr.send(formData);
 			}
 		}
