@@ -8,5 +8,7 @@ namespace Blog.Application.Repository
 	public interface IMediaTypeReadRepository : IReadRepository<MediaType>
 	{
 		Task<PagingDataResponse<MediaTypeListDto>> GetMediaTypeListAsync(DataListRequest request);
+
+		Task<List<MediaTypeWhiteListDto>> GetMediaTypeWhiteListAsync();
 	}
 }

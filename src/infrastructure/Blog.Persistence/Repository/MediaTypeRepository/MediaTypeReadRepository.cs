@@ -40,5 +40,16 @@ namespace Blog.Persistence.Repository
 
 			return await query.ToPagingData(request.PerData, request.Page);
 		}
+
+		public async Task<List<MediaTypeWhiteListDto>> GetMediaTypeWhiteListAsync()
+		{
+			return await Table.Where(m => m.Status == 1).Select(s => new MediaTypeWhiteListDto()
+			{
+				Id = s.Id,
+				FileExtension = s.FileExtension,
+				MimeType = s.MimeType,
+				UploadDir = s.UploadDir
+			}).ToListAsync();
+		}
 	}
 }

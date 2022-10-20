@@ -50,3 +50,5 @@ docker run
 	-p 1433:1433 
 	-d mcr.microsoft.com/mssql/server:2022-latest
 -----------------------------------------------------------------------------------------------
+https://learn.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-6.0
+Dosya yüklemek için MS dökümanı.

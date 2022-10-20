@@ -28,7 +28,7 @@ namespace Blog.Web.Areas.Admin.Controllers
 		[HttpPost]
 		public async Task<IActionResult> FileUpload(IFormFile file)
 		{
-			return Ok();
+			return Ok(await _mediaService.FileUploadAsync(file));
 		}
 	}
 }

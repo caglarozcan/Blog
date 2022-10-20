@@ -1,5 +1,7 @@
-﻿using Blog.Application.Services;
+﻿using Blog.Application.Response;
+using Blog.Application.Services;
 using Blog.Application.UnitOfWork;
+using Microsoft.AspNetCore.Http;
 
 namespace Blog.Infrastructure.Services
 {
@@ -12,6 +14,14 @@ namespace Blog.Infrastructure.Services
 		{
 			this._unitOfWork = unitOfWork;
 			this._fileIOService = fileIOService;
+		}
+
+		public async Task<Response> FileUploadAsync(IFormFile file)
+		{
+			if(file == null)
+				return new Response("Yüklenecek dosya seçilmeli", false);
+
+			return await _fileIOService.Create(file);
 		}
 	}
 }

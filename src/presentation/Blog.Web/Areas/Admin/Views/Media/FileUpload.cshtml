@@ -91,7 +91,6 @@
 			initializeProgress(files.length);
 
 			for(var i = 0; i < files.length; i++){
-				console.log(files[i]);
 				var url = 'https://localhost:9000/yonetim/dosya-yukle';
 				var xhr = new XMLHttpRequest();
 				var formData = new FormData();
@@ -99,17 +98,21 @@
 
 				xhr.upload.addEventListener("progress", function (e) {
 					updateProgress(i, (e.loaded * 100.0 / e.total) || 100);
-					//console.log('update edildi.');
 				});
 
 				xhr.addEventListener('readystatechange', function (e) {
 					if (xhr.readyState == 4 && xhr.status == 200) {
-						// Done. Inform the user
-						//console.log('yüklendi.');
+						//sonuç başarılıysa
+						let response = JSON.parse(xhr.responseText);
+
+						if(response.status === true){
+							alert(response.message);
+						}else{
+							alert(response.message);
+						}
 					}
 					else if (xhr.readyState == 4 && xhr.status != 200) {
-						// Error. Inform the user
-						//console.log('yüklenemedi.');
+						//hata durumunda
 					}
 				});
 
@@ -175,11 +178,9 @@
 		}
 
 		function updateProgress(fileNumber, percent) {
-			//console.log(percent);
 			uploadProgress[fileNumber] = percent;
 			let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length;
 			progressBar.value = total;
-			//console.log(total);
 		}
 
 		function progressDone() {
