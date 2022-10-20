@@ -2,21 +2,18 @@
 using Blog.Application.Services;
 using Blog.Application.UnitOfWork;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Infrastructure.Services
 {
 	public class FileIOService : IFileIOService
 	{
 		private IUnitOfWork _unitOfWork { get; }
+		private IAuthUserInfoService _authUserInfoService;
 
-		public FileIOService(IUnitOfWork unitOfWork)
+		public FileIOService(IUnitOfWork unitOfWork, IAuthUserInfoService authUserInfoService)
 		{
 			this._unitOfWork = unitOfWork;
+			this._authUserInfoService = authUserInfoService;
 		}
 
 		#region Info
@@ -41,11 +38,11 @@ namespace Blog.Infrastructure.Services
 				await _unitOfWork.MediaWriteRepository.InsertAsync(new Domain.Entities.Media()
 				{
 					CreatedDate = DateTime.Now,
-					Description = "",
+					Description = "Blog dosyası.",
 					MediaTypeId = fileInfo.Id,
 					Name = newFileName,
 					OriginalName = file.Name,
-					UserId = Guid.Parse("")
+					UserId = _authUserInfoService.Id
 				});
 
 				int status = await _unitOfWork.SaveAsync();
@@ -54,7 +51,7 @@ namespace Blog.Infrastructure.Services
 			}
 			else
 			{
-				return new Response(file.ContentType + " bu türde dosya yüklenemez.", false);
+				return new Response(String.Concat(file.ContentType, " bu türde dosya yüklenemez."), false);
 			}
 		}
 

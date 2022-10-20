@@ -10,6 +10,7 @@ namespace Blog.Infrastructure
 		{
 			collection.AddTransient<IArticleService, ArticleService>();
 			collection.AddTransient<IAuthenticationService, AuthenticationService>();
+			collection.AddTransient<IAuthUserInfoService, AuthUserInfoService>();
 			collection.AddTransient<ICategoryService, CategoryService>();
 			collection.AddTransient<IHashService, HashService>();
 			collection.AddTransient<IMailService, MailService>();

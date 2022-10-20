@@ -19,6 +19,7 @@ namespace Blog.Infrastructure.Services
 
 		public async Task<Response<ClaimsPrincipal>> LoginAsync(UserLoginDto data)
 		{
+
 			data.Password = _hashService.Hash(data.Password);
 
 			var user = await _unitOfWork.UserReadRepository.GetAsync(u => u.Email.Equals(data.Email) && u.Password.Equals(data.Password));
@@ -32,9 +33,11 @@ namespace Blog.Infrastructure.Services
 				var role = await _unitOfWork.UserReadRepository.GetAuthenticatedUserRolesAsync(user.Id);
 
 				var claims = new List<Claim> {
-					new Claim("Id", user.Id.ToString()),
+					new Claim(ClaimTypes.SerialNumber, user.Id.ToString()),
 					new Claim(ClaimTypes.Email, user.Email),
-					new Claim(ClaimTypes.Name, String.Concat(user.Name, " ", user.LastName)),
+					new Claim(ClaimTypes.Name, user.Name),
+					new Claim(ClaimTypes.Surname, user.LastName),
+					new Claim(ClaimTypes.GivenName, String.Concat(user.Name, " ", user.LastName)),
 					new Claim(ClaimTypes.Role, role.Name)
 				};
 

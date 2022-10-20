@@ -32,6 +32,8 @@ builder.Services.AddDbContext<EfBlogContext>(options =>
 builder.Services.AddInfrastructureServices();
 builder.Services.AddPersistenceServices();
 
+builder.Services.AddHttpContextAccessor();
+
 //Sessions ve Cookie Authentication
 builder.Services.AddSession();
 builder.Services.AddAuthentication("CookieAuthentication").AddCookie("CookieAuthentication", option =>

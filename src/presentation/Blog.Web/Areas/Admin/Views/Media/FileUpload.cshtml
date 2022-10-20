@@ -89,37 +89,39 @@
 
 			preview(files);
 			initializeProgress(files.length);
+			setTimeout(function(files){
+				for (var i = 0; i < files.length; i++) {
+					var url = 'https://localhost:9000/yonetim/dosya-yukle';
+					var xhr = new XMLHttpRequest();
+					var formData = new FormData();
+					xhr.open('POST', url, true);
 
-			for(var i = 0; i < files.length; i++){
-				var url = 'https://localhost:9000/yonetim/dosya-yukle';
-				var xhr = new XMLHttpRequest();
-				var formData = new FormData();
-				xhr.open('POST', url, true);
+					xhr.upload.addEventListener("progress", function (e) {
+						updateProgress(i, (e.loaded * 100.0 / e.total) || 100);
+					});
 
-				xhr.upload.addEventListener("progress", function (e) {
-					updateProgress(i, (e.loaded * 100.0 / e.total) || 100);
-				});
+					xhr.addEventListener('readystatechange', function (e) {
+						if (xhr.readyState == 4 && xhr.status == 200) {
+							//sonuç başarılıysa
+							let response = JSON.parse(xhr.responseText);
 
-				xhr.addEventListener('readystatechange', function (e) {
-					if (xhr.readyState == 4 && xhr.status == 200) {
-						//sonuç başarılıysa
-						let response = JSON.parse(xhr.responseText);
-
-						if(response.status === true){
-							alert(response.message);
-						}else{
-							alert(response.message);
+							if (response.status === true) {
+								alert(response.message);
+							} else {
+								alert(response.message);
+							}
 						}
-					}
-					else if (xhr.readyState == 4 && xhr.status != 200) {
-						//hata durumunda
-					}
-				});
+						else if (xhr.readyState == 4 && xhr.status != 200) {
+							//hata durumunda
+						}
+					});
 
-				formData.append('file', files[i]);
-				xhr.setRequestHeader("mimeType", "multipart/form-data");
-				xhr.send(formData);
-			}
+					formData.append('file', files[i]);
+					xhr.setRequestHeader("mimeType", "multipart/form-data");
+					xhr.send(formData);
+				}
+			}, 3000)
+			
 		}
 
 		function preview(files){

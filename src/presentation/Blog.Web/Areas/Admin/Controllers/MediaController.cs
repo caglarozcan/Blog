@@ -9,10 +9,12 @@ namespace Blog.Web.Areas.Admin.Controllers
 	public class MediaController : BaseController
 	{
 		private IMediaService _mediaService;
+		private IAuthUserInfoService _authUserInfoService;
 
-		public MediaController(IMediaService mediaService)
+		public MediaController(IMediaService mediaService, IAuthUserInfoService authUserInfoService)
 		{
 			_mediaService = mediaService;
+			_authUserInfoService = authUserInfoService;
 		}
 
 		public IActionResult Index()
