@@ -144,6 +144,10 @@ namespace Blog.Persistence.EfContext
 
 		public DbSet<Role> Role { get; set; }
 
+		public DbSet<SettingGroup> SettingGroups { get; set; }
+
+		public DbSet<Settings> Settings { get; set; }
+
 		public DbSet<UserRoles> UserRoles { get; set; }
 
 		public DbSet<User> Users { get; set; }
