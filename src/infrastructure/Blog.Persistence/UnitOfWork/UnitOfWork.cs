@@ -2,8 +2,6 @@
 using Blog.Application.UnitOfWork;
 using Blog.Persistence.EfContext;
 using Blog.Persistence.Repository;
-using Microsoft.EntityFrameworkCore;
-using System.Runtime.CompilerServices;
 
 namespace Blog.Persistence
 {
@@ -21,6 +19,10 @@ namespace Blog.Persistence
 		private readonly IMediaTypeWriteRepository _mediaTypeWriteRepository;
 		private readonly IRoleReadRepository _roleReadRepository;
 		private readonly IRoleWriteRepository _roleWriteRepository;
+		private readonly ISettingGroupReadRepository _settingGroupReadRepository;
+		private readonly ISettingGroupWriteRespository _settingGroupWriteRespository;
+		private readonly ISettingsReadRepository _settingsReadRepository;
+		private readonly ISettingsWriteRepository _settingsWriteRepository;
 		private readonly ITicketReadRepository _ticketReadRepository;
 		private readonly ITicketWriteRepository _ticketWriteRepository;
 		private readonly IUserReadRepository _userReadRepository;
@@ -46,6 +48,12 @@ namespace Blog.Persistence
 
 		public IRoleReadRepository RoleReadRepository => _roleReadRepository ?? new RoleReadRepository(_dbContext);
 		public IRoleWriteRepository RoleWriteRepository => _roleWriteRepository ?? new RoleWriteRepository(_dbContext);
+
+		public ISettingGroupReadRepository SettingGroupReadRepository => _settingGroupReadRepository ?? new SettingGroupReadRepository(_dbContext);
+		public ISettingGroupWriteRespository SettingGroupWriteRespository => _settingGroupWriteRespository ?? new SettingGroupWriteRepository(_dbContext);
+
+		public ISettingsReadRepository SettingsReadRepository => _settingsReadRepository ?? new SettingsReadRepository(_dbContext);
+		public ISettingsWriteRepository SettingsWriteRepository => _settingsWriteRepository ?? new SettingsWriteRepository(_dbContext);
 
 		public ITicketReadRepository TicketReadRepository => _ticketReadRepository ?? new TicketReadRepository(_dbContext);
 		public ITicketWriteRepository TicketWriteRepository => _ticketWriteRepository ?? new TicketWriteRepository(_dbContext);

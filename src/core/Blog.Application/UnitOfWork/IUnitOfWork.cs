@@ -22,6 +22,12 @@ namespace Blog.Application.UnitOfWork
 		IRoleReadRepository RoleReadRepository { get; }
 		IRoleWriteRepository RoleWriteRepository { get; }
 
+		ISettingGroupReadRepository SettingGroupReadRepository { get; }
+		ISettingGroupWriteRespository SettingGroupWriteRespository { get; }
+
+		ISettingsReadRepository SettingsReadRepository { get; }
+		ISettingsWriteRepository SettingsWriteRepository { get; }
+
 		IUserReadRepository UserReadRepository { get; }
 		IUserWriteRepository UserWriteRepository { get; }
 
