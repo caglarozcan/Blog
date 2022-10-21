@@ -1,4 +1,174 @@
 ﻿@{
-	ViewBag.Title = "Blog Ayarları";
-	Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
+    ViewBag.Title = "Blog Ayarları";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
 }
+
+<div class="wrapper">
+    <div class="grid">
+        <!--Genel ayarlar-->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Genel Ayarlar</h4>
+                </div>
+                <div class="card-body pd">
+                    <div class="form-group">
+                        <label class="label"><strong>Site URL</strong></label>
+                        <input type="text" name="SiteUrl" class="input" />
+                        <span class="vld-UserPaging"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label"><strong>Site Başlığı</strong></label>
+                        <input type="text" name="SiteTitle" class="input" />
+                        <span class="vld-UserPaging"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label"><strong>Site Slogan</strong></label>
+                        <input type="text" name="SiteComment" class="input" />
+                        <span class="vld-UserPaging"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label"><strong>Site Açıklama</strong></label>
+                        <textarea name="SiteDescription" class="input"></textarea>
+                        <span class="vld-UserPaging"></span>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" class="btn btn-blue" value="Kaydet" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Genel ayarlar-->
+        <!--Sayfalama Ayarları-->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Sayfalama Ayarları</h4>
+                </div>
+                <div class="card-body pd">
+                    <div class="form-group">
+                        <label class="label"><strong>Kullanıcı Sayfalama Değeri</strong></label>
+                        <input type="text" name="UserPaging" class="input" />
+                        <span class="vld-UserPaging"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label"><strong>Admin Sayfalama Değeri</strong></label>
+                        <input type="text" name="AdminPaging" class="input" />
+                        <span class="vld-AdminPaging"></span>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" class="btn btn-blue" value="Kaydet" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Sayfalama Ayarları-->
+        <!--Yorum Ayarları-->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Yorum Ayarları</h4>
+                </div>
+                <div class="card-body pd">
+                    <div class="form-group">
+                        <label class="label"><strong>Yorum Gösterim</strong></label>
+                        <label class="label">
+                            <input type="checkbox"/>&nbsp;&nbsp;&nbsp;Yorumlar yönetici onayından sonra yayınlansın.
+                        </label>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" class="btn btn-blue" value="Kaydet" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Yorum Ayarları-->
+        <!--Resim Yükleme Ayarları-->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Resim Yükleme Ayarları</h4>
+                </div>
+                <div class="card-body pd">
+                    <div class="form-group">
+                        <label class="label"><strong>Küçük Resim (Thumbnail)</strong></label>
+                        <div class="grid">
+                            <div class="col-5">
+                                <input type="text" name="small" class="input" placeholder="Genişlik" />
+                            </div>
+                            <div class="col-2 text-center">
+                                <i class="cdi cdi-no-alt"></i>
+                            </div>
+                            <div class="col-5">
+                                <input type="text" name="small" class="input" placeholder="Yükseklik" />
+                            </div>
+                        </div>
+                        <span class="vld-small"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label"><strong>Orta Resim</strong></label>
+                        <div class="grid">
+                            <div class="col-5">
+                                <input type="text" name="small" class="input" placeholder="Genişlik" />
+                            </div>
+                            <div class="col-2 text-center">
+                                <i class="cdi cdi-no-alt"></i>
+                            </div>
+                            <div class="col-5">
+                                <input type="text" name="small" class="input" placeholder="Yükseklik" />
+                            </div>
+                        </div>
+                        <span class="vld-medium"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label"><strong>Büyük Resim</strong></label>
+                        <div class="grid">
+                            <div class="col-5">
+                                <input type="text" name="small" class="input" placeholder="Genişlik" />
+                            </div>
+                            <div class="col-2 text-center">
+                                <i class="cdi cdi-no-alt"></i>
+                            </div>
+                            <div class="col-5">
+                                <input type="text" name="small" class="input" placeholder="Yükseklik" />
+                            </div>
+                        </div>
+                        <span class="vld-big"></span>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" class="btn btn-blue" value="Kaydet" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Resim Yükleme Ayarları-->
+        <!--Mail Ayarları-->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Mail Ayarları</h4>
+                </div>
+                <div class="card-body pd">
+                    <div class="form-group">
+                        <label class="label"><strong>Mail Adresi</strong></label>
+                        <input type="text" name="EmailAddress" class="input" />
+                        <span class="vld-EmailAddress"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label"><strong>Mail Şifresi</strong></label>
+                        <input type="password" name="EmailPassword" class="input" />
+                        <span class="vld-EmailPassword"></span>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" class="btn btn-blue" value="Kaydet" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Mail Ayarları-->
+    </div>
+</div>
