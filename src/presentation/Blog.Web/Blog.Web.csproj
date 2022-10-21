@@ -40,6 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Uploads\" />
     <Folder Include="wwwroot\fonts\" />
     <Folder Include="wwwroot\third-party\" />
   </ItemGroup>
