@@ -20,8 +20,8 @@ table {
 			color: #878a99;
 			font-weight: 500;
 
-			i{
-				color:$color-gray-light;
+			i {
+				color: $color-gray-light;
 			}
 		}
 	}
@@ -32,6 +32,18 @@ table {
 
 	th {
 		padding: 0.3rem 0.45rem;
+		
+		&.sortable{
+			cursor:pointer !important;
+		}
+	}
+
+	&.table-hovered tbody tr:hover {
+		background: $color-gray-lightl !important;
+	}
+
+	&.table-striped tbody tr:nth-child(odd) {
+		background: #f0f0f0;
 	}
 
 	td {

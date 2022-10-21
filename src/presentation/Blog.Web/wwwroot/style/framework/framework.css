@@ -1404,6 +1404,15 @@ table tbody {
 table th {
   padding: 0.3rem 0.45rem;
 }
+table th.sortable {
+  cursor: pointer !important;
+}
+table.table-hovered tbody tr:hover {
+  background: #dee2e6 !important;
+}
+table.table-striped tbody tr:nth-child(odd) {
+  background: #f0f0f0;
+}
 table td {
   color: #212529;
   vertical-align: middle;
