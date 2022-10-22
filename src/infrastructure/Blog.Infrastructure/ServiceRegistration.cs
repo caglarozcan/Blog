@@ -21,6 +21,7 @@ namespace Blog.Infrastructure
 			collection.AddTransient<ITicketService, TicketService>();
 			collection.AddTransient<IUserService, UserService>();
 			collection.AddTransient<IFileIOService, FileIOService>();
+			collection.AddTransient<ISettingService, SettingService>();
 		}
 	}
 }

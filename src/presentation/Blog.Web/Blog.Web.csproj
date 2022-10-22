@@ -40,7 +40,37 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Uploads\" />
+    <Folder Include="Uploads\files\csv\" />
+    <Folder Include="Uploads\files\mp3\" />
+    <Folder Include="Uploads\files\txt\" />
+    <Folder Include="Uploads\files\pdf\" />
+    <Folder Include="Uploads\files\rar\" />
+    <Folder Include="Uploads\files\zip\" />
+    <Folder Include="Uploads\files\xls\" />
+    <Folder Include="Uploads\images\bmp\middle\" />
+    <Folder Include="Uploads\images\bmp\large\" />
+    <Folder Include="Uploads\images\bmp\original\" />
+    <Folder Include="Uploads\images\bmp\thumbnail\" />
+    <Folder Include="Uploads\images\gif\large\" />
+    <Folder Include="Uploads\images\gif\middle\" />
+    <Folder Include="Uploads\images\gif\original\" />
+    <Folder Include="Uploads\images\gif\thumbnail\" />
+    <Folder Include="Uploads\images\jpeg\large\" />
+    <Folder Include="Uploads\images\jpeg\middle\" />
+    <Folder Include="Uploads\images\jpeg\original\" />
+    <Folder Include="Uploads\images\jpeg\thumbnail\" />
+    <Folder Include="Uploads\images\jpg\large\" />
+    <Folder Include="Uploads\images\jpg\middle\" />
+    <Folder Include="Uploads\images\jpg\original\" />
+    <Folder Include="Uploads\images\jpg\thumbnail\" />
+    <Folder Include="Uploads\images\svg\large\" />
+    <Folder Include="Uploads\images\svg\middle\" />
+    <Folder Include="Uploads\images\svg\original\" />
+    <Folder Include="Uploads\images\svg\thumbnail\" />
+    <Folder Include="Uploads\images\png\large\" />
+    <Folder Include="Uploads\images\png\middle\" />
+    <Folder Include="Uploads\images\png\original\" />
+    <Folder Include="Uploads\images\png\thumbnail\" />
     <Folder Include="wwwroot\fonts\" />
     <Folder Include="wwwroot\third-party\" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Blog.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Web.Areas.Admin.Controllers
@@ -7,7 +8,14 @@ namespace Blog.Web.Areas.Admin.Controllers
 	[Authorize(Roles = "Administrator")]
 	public class SettingController : Controller
 	{
-		public IActionResult Index()
+		private ISettingService _settingService;
+
+		public SettingController(ISettingService settingService)
+		{
+			_settingService = settingService;
+		}
+
+		public async Task<IActionResult> Index()
 		{
 			return View();
 		}
