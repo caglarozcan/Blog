@@ -87,6 +87,7 @@ namespace Blog.Persistence.EfContext.EntityMapping
 				.HasDefaultValue(1)
 				.IsRequired(true);
 
+			#region Seed Data
 			builder.HasData(new User()
 			{
 				CreatedDate = DateTime.Now,
@@ -98,6 +99,7 @@ namespace Blog.Persistence.EfContext.EntityMapping
 				Slug = "caglar-ozcan",
 				Status = 1
 			});
+			#endregion
 		}
 	}
 }

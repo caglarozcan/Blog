@@ -88,6 +88,7 @@ namespace Blog.Persistence.EfContext.EntityMapping
 				.OnDelete(DeleteBehavior.NoAction);
 			#endregion
 
+			#region Seed Data
 			builder.HasData(new Category()
 			{
 				Color = "--",
@@ -98,6 +99,7 @@ namespace Blog.Persistence.EfContext.EntityMapping
 				Slug = "genel",
 				Status = 1
 			});
+			#endregion
 		}
 	}
 }
