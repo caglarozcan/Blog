@@ -43,7 +43,7 @@ In CSS, identifiers (including element names, classes, and IDs in selectors) can
 hyphen followed by a digit.
 Use a value like b22 for the ID attribute and your code will work.
 Since you want to select an element by ID you can also use .getElementById method:
-CSS 3'ten sonra id değerleri sayı ile başlayamaz, seçici hatası verir.
+CSS 3'ten sonra id değerleri sayı ile başlayamaz, seçici hatası verir. Javascript için
 -----------------------------------------------------------------------------------------------
 Docker üzerinde SQL Server container'ı oluşturma:
 docker run 
@@ -59,6 +59,11 @@ Dosya yüklemek için MS dökümanı.
 -----------------------------------------------------------------------------------------------
 https://www.youtube.com/watch?v=-KxUlMi6bMw Resim dosyası yükleme ve boyutlandırma.
 -----------------------------------------------------------------------------------------------
+https://gist.github.com/ErikNoren/5ab952ce93558ed1a79a97cd9a34bd37
+https://mousavi310.github.io/posts/a-refreshable-sql-server-configuration-provider-for-net-core/
+https://learn.microsoft.com/en-us/dotnet/core/extensions/custom-configuration-provider
+https://stackoverflow.com/questions/60330342/can-i-move-configuration-from-appsettings-json-to-database-in-an-asp-net-core-mv
+Veri tabanı temelli konfigurasyon
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------

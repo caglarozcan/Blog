@@ -87,6 +87,17 @@ namespace Blog.Persistence.EfContext.EntityMapping
 				.HasConstraintName("FK_Category_Parent_Id")
 				.OnDelete(DeleteBehavior.NoAction);
 			#endregion
+
+			builder.HasData(new Category()
+			{
+				Color = "--",
+				CreatedDate = DateTime.Now,
+				Description = "Genel Kategorisi.",
+				Icon = "--",
+				Title = "Genel",
+				Slug = "genel",
+				Status = 1
+			});
 		}
 	}
 }

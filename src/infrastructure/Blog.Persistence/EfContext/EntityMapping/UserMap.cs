@@ -86,6 +86,18 @@ namespace Blog.Persistence.EfContext.EntityMapping
 				.HasColumnOrder(10)
 				.HasDefaultValue(1)
 				.IsRequired(true);
+
+			builder.HasData(new User()
+			{
+				CreatedDate = DateTime.Now,
+				Email = "cglrozcan@gmail.com",
+				Name = "Çağlar",
+				LastName = "ÖZCAN",
+				NickName = "cahoo",
+				Password = "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92", //: 123456
+				Slug = "caglar-ozcan",
+				Status = 1
+			});
 		}
 	}
 }

@@ -59,6 +59,12 @@ namespace Blog.Persistence.EfContext.EntityMapping
 				.HasColumnOrder(6)
 				.HasDefaultValue(1)
 				.IsRequired(true);
+
+			builder.HasData(
+				new Role() { CanLogin = true, CreatedDate = DateTime.Now, Description = "Admin Kullanıcısı", Name = "Administrator", Status = 1 },
+				new Role() { CanLogin = true, CreatedDate = DateTime.Now, Description = "Editör Kullanıcısı", Name = "Editör", Status = 1 },
+				new Role() { CanLogin = true, CreatedDate = DateTime.Now, Description = "Yazar Kullanıcısı", Name = "Yazar", Status = 1 }
+			);
 		}
 	}
 }
