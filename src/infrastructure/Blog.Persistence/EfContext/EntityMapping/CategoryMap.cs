@@ -89,7 +89,7 @@ namespace Blog.Persistence.EfContext.EntityMapping
 			#endregion
 
 			#region Seed Data
-			builder.HasData(new Category()
+			/*builder.HasData(new Category()
 			{
 				Color = "--",
 				CreatedDate = DateTime.Now,
@@ -98,7 +98,7 @@ namespace Blog.Persistence.EfContext.EntityMapping
 				Title = "Genel",
 				Slug = "genel",
 				Status = 1
-			});
+			});*/
 			#endregion
 		}
 	}

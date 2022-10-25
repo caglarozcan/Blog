@@ -61,7 +61,7 @@ namespace Blog.Persistence.EfContext.EntityMapping
 				.IsRequired(true);
 
 			#region Seed Data
-			builder.HasData(
+			/*builder.HasData(
 				new Role()
 				{
 					CanLogin = true,
@@ -86,7 +86,7 @@ namespace Blog.Persistence.EfContext.EntityMapping
 					Name = "Yazar",
 					Status = 1
 				}
-			);
+			);*/
 			#endregion
 		}
 	}

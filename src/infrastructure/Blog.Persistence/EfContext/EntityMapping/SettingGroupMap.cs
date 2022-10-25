@@ -59,6 +59,146 @@ namespace Blog.Persistence.EfContext.EntityMapping
 					.HasForeignKey(f => f.SettingGroupId)
 					.HasConstraintName("FK_Settings_SettingGroup_Id");
 			#endregion
+
+			#region Seed Data
+			/*builder.HasData(
+				new SettingGroup()
+				{
+					Id = Guid.NewGuid(),
+					Name = "Genel Site",
+					Description = "Genel site seçenekleri.",
+					CreatedDate = DateTime.Now,
+					Status = 1,
+					Settings = new List<Settings>()
+					{
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "Site URL",
+							Value = "https://localhost:9000/",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						},
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "Site Başlığı",
+							Value = "Simple Blog",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						},
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "Site Slogan",
+							Value = "Yazılım günlüğüm.",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						},
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "Site Açıklama",
+							Value = "Yazılım deneyimlerimi paylaştığım blog sitem.",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						}
+					}
+				},
+				new SettingGroup()
+				{
+					Name = "Dosya Yükleme",
+					Description = "Resim dosyası yükleme seçenekleri.",
+					CreatedDate = DateTime.Now,
+					Status = 1,
+					Settings = new List<Settings>()
+					{
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "Dosya Yükleme Yeri (Genel Dizin)",
+							Value = "uploads/images",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						},
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "Dizin Şekli",
+							Value = "1",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						},
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "Küçük Resim",
+							Value = "150x150",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						},
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "Orta Resim",
+							Value = "500x500",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						},
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "Büyük Resim",
+							Value = "1024x1024",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						}
+					}
+				},
+				new SettingGroup()
+				{
+					Id = Guid.NewGuid(),
+					Name = "E-Posta",
+					Description = "E-Posta gönderimi için ayarlar.",
+					CreatedDate = DateTime.Now,
+					Status = 1,
+					Settings = new List<Settings>()
+					{
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "E-Posta Sunucusu\r\n",
+							Value = "smtp.caglarozcan.com.tr",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						},
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "E-Posta Adresi",
+							Value = "mail@caglarozcan.com.tr",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						},
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "E-Posta Şifresi",
+							Value = "*****",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						},
+						new Settings()
+						{
+							Id = Guid.NewGuid(),
+							Name = "E-Posta Sunucu Port Numarası",
+							Value = "512",
+							CreatedDate = DateTime.Now,
+							Status = 1
+						}
+					}
+				});*/
+			#endregion
 		}
 	}
 }

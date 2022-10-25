@@ -82,7 +82,7 @@ namespace Blog.Persistence.EfContext.EntityMapping
 				.IsRequired(true);
 
 			#region Seed Data
-			builder.HasData(
+			/*builder.HasData(
 				new MediaType()
 				{
 					Title = "PNG Dosyasi",
@@ -232,7 +232,7 @@ namespace Blog.Persistence.EfContext.EntityMapping
 					Color = "-",
 					UploadDir = "files/zip",
 					CreatedDate = DateTime.Now
-				});
+				});*/
 			#endregion
 		}
 	}
