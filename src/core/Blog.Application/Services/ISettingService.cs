@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Blog.Application.Dto.SettingDto;
 
 namespace Blog.Application.Services
 {
 	public interface ISettingService
 	{
+		Task<List<SettingGroupListDto>> GetSettingsAsync();
 	}
 }
