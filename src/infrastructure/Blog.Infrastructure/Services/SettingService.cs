@@ -13,6 +13,7 @@ namespace Blog.Infrastructure.Services
 			this._unitOfWork = unitOfWork;
 		}
 
+		#region Read
 		public async Task<List<SettingGroupListDto>> GetSettingsAsync()
 		{
 			var settings = await _unitOfWork.SettingGroupReadRepository.GetAllAsync(includes: i => i.Settings);
@@ -31,5 +32,6 @@ namespace Blog.Infrastructure.Services
 				}).ToList()
 			}).ToList();
 		}
+		#endregion
 	}
 }
