@@ -17,11 +17,6 @@ namespace Blog.Web.Areas.Admin.Controllers
 			_ticketService = ticketService;
 		}
 
-		public IActionResult Index()
-		{
-			return View();
-		}
-
 		#region Functions
 		#region Create
 		[HttpPost]
@@ -40,6 +35,11 @@ namespace Blog.Web.Areas.Admin.Controllers
 		#endregion
 
 		#region Read
+		public IActionResult Index()
+		{
+			return View();
+		}
+
 		public async Task<IActionResult> GetList(DataListRequest request)
 		{
 			var list = await _ticketService.ListAsync(request);
