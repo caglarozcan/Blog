@@ -7,6 +7,6 @@ namespace Blog.Application.Repository
 {
 	public interface IMediaReadRepository : IReadRepository<Media>
 	{
-		Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request);
+		Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request, Guid userId);
 	}
 }

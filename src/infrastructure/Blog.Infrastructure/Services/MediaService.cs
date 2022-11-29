@@ -10,12 +10,14 @@ namespace Blog.Infrastructure.Services
 	public class MediaService : BaseService, IMediaService
 	{
 		private readonly IUnitOfWork _unitOfWork;
+		private readonly IAuthUserInfoService _authUserInfoService;
 		private IFileIOService _fileIOService;
 
-		public MediaService(IUnitOfWork unitOfWork, IFileIOService fileIOService)
+		public MediaService(IUnitOfWork unitOfWork, IFileIOService fileIOService, IAuthUserInfoService authUserInfoService)
 		{
 			this._unitOfWork = unitOfWork;
 			this._fileIOService = fileIOService;
+			this._authUserInfoService = authUserInfoService;
 		}
 
 		#region Functions
@@ -32,7 +34,7 @@ namespace Blog.Infrastructure.Services
 		#region Read
 		public async Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request)
 		{
-			return await _unitOfWork.MediaReadRepository.GetMediaListAsync(request);
+			return await _unitOfWork.MediaReadRepository.GetMediaListAsync(request, _authUserInfoService.Id);
 		}
 		#endregion
 

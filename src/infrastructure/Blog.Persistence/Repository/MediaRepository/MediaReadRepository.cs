@@ -11,17 +11,14 @@ namespace Blog.Persistence.Repository
 {
 	public class MediaReadRepository : ReadRepository<Media>, IMediaReadRepository
 	{
-		private readonly IAuthUserInfoService _authUserInfoService;
-
-		public MediaReadRepository(IAuthUserInfoService authUserInfoService, DbContext dbContext) 
+		public MediaReadRepository(DbContext dbContext) 
 			: base(dbContext)
 		{
-			_authUserInfoService = authUserInfoService;
 		}
 
-		public async Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request)
+		public async Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request, Guid userId)
 		{
-			var query = Table.Include(i => i.MediaType).Where(m => m.UserId.Equals(_authUserInfoService.Id)).Select(s => new MediaListDto()
+			var query = Table.Include(i => i.MediaType).Where(m => m.UserId.Equals(userId)).Select(s => new MediaListDto()
 			{
 				Id	= s.Id,
 				Name = s.Name,
