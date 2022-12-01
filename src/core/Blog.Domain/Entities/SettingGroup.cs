@@ -13,6 +13,8 @@ namespace Blog.Domain.Entities
 
 		public string Description { get; set; }
 
+		public string SettingKey { get; set; }
+
 		public virtual ICollection<Settings> Settings { get; set; }
 	}
 }

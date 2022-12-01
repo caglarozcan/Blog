@@ -18,7 +18,7 @@ namespace Blog.Infrastructure.Services
 		{
 			var settings = await _unitOfWork.SettingGroupReadRepository.GetAllAsync(includes: i => i.Settings);
 
-			return settings.Select(s => new SettingGroupListDto()
+			var result =  settings.Select(s => new SettingGroupListDto()
 			{
 				Id = s.Id,
 				Name = s.Name,
@@ -31,6 +31,8 @@ namespace Blog.Infrastructure.Services
 					Value = t.Value
 				}).ToList()
 			}).ToList();
+
+			return result;
 		}
 		#endregion
 	}

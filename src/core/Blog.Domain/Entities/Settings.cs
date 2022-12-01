@@ -8,6 +8,8 @@
 
 		public string Value { get; set; }
 
+		public string SettingKey { get; set; }
+
 		public virtual SettingGroup SettingGroup { get; set; }
 	}
 }

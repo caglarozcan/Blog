@@ -17,7 +17,8 @@ namespace Blog.Web.Areas.Admin.Controllers
 
 		public async Task<IActionResult> Index()
 		{
-			return View(await _settingService.GetSettingsAsync());
+			var settings = await _settingService.GetSettingsAsync();
+			return View(settings);
 		}
 	}
 }

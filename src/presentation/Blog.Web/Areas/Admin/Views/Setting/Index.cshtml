@@ -1,6 +1,9 @@
-﻿@{
+﻿@model IEnumerable<Blog.Application.Dto.SettingDto.SettingGroupListDto>
+@{
 	ViewBag.Title = "Blog Ayarları";
 	Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
+
+	var generalSetting = Model.FirstOrDefault(s => s.Id.Equals("A004DC8D-EB3D-44FA-A31F-5001C71E1E36".ToLower()));
 }
 
 <div class="wrapper">
@@ -54,22 +57,22 @@
 							<div class="tab-item show" id="general-setting">
 								<div class="form-group">
 									<label class="label"><strong>Site URL</strong></label>
-									<input type="text" name="SiteUrl" class="input" />
+									<input type="text" name="SiteUrl" class="input" value="@generalSetting.Settings.FirstOrDefault(s => s.Id.Equals("AF50A786-E41C-4F15-B151-8957B26192B0")).Value" />
 									<span class="vld-UserPaging"></span>
 								</div>
 								<div class="form-group">
 									<label class="label"><strong>Site Başlığı</strong></label>
-									<input type="text" name="SiteTitle" class="input" />
+									<input type="text" name="SiteTitle" class="input" value="@generalSetting.Settings.FirstOrDefault(s => s.Id.Equals("C1CBEA85-54C2-4D07-89FD-9DA59765792A")).Value" />
 									<span class="vld-UserPaging"></span>
 								</div>
 								<div class="form-group">
 									<label class="label"><strong>Site Slogan</strong></label>
-									<input type="text" name="SiteComment" class="input" />
+									<input type="text" name="SiteComment" class="input" value="@generalSetting.Settings.FirstOrDefault(s => s.Id.Equals("2AB2348B-A1CF-4E57-80B3-CF6DD9E72848")).Value" />
 									<span class="vld-UserPaging"></span>
 								</div>
 								<div class="form-group">
 									<label class="label"><strong>Site Açıklama</strong></label>
-									<textarea name="SiteDescription" class="input"></textarea>
+									<textarea name="SiteDescription" class="input" value="@generalSetting.Settings.FirstOrDefault(s => s.Id.Equals("D780898C-CECE-49E6-AFD6-9A1547662662")).Value"></textarea>
 									<span class="vld-UserPaging"></span>
 								</div>
 								<div class="form-group text-center">

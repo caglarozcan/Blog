@@ -39,23 +39,30 @@ namespace Blog.Persistence.EfContext.EntityMapping
 				.HasColumnOrder(3)
 				.IsRequired(true);
 
+			builder.Property(p => p.SettingKey)
+				.HasColumnName("SettingKey")
+				.HasColumnType("varchar(20)")
+				.HasMaxLength(20)
+				.HasColumnOrder(4)
+				.IsRequired(true);
+
 			builder.Property(p => p.CreatedDate)
 				.HasColumnName("CreatedDate")
 				.HasColumnType("datetime")
-				.HasColumnOrder(4)
+				.HasColumnOrder(5)
 				.HasDefaultValueSql("GETDATE()")
 				.IsRequired(true);
 
 			builder.Property(p => p.UpdatedDate)
 				.HasColumnName("UpdatedDate")
 				.HasColumnType("datetime")
-				.HasColumnOrder(5)
+				.HasColumnOrder(6)
 				.IsRequired(false);
 
 			builder.Property(p => p.Status)
 				.HasColumnName("Status")
 				.HasColumnType("tinyint")
-				.HasColumnOrder(6)
+				.HasColumnOrder(7)
 				.HasDefaultValue(1)
 				.IsRequired(true);
 		}

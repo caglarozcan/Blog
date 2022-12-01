@@ -51,13 +51,5 @@ namespace Blog.Web.Areas.Admin.Controllers
 
 		#endregion
 		#endregion
-
-
-
-
-
-
-
-
 	}
 }

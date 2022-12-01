@@ -1,6 +1,5 @@
 ﻿using Blog.Application.Repository;
 using Blog.Domain.Entities;
-using Blog.Persistence.EfContext;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
