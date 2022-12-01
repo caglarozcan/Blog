@@ -42,7 +42,9 @@ namespace Blog.Infrastructure.Services
 					var fileInfo = mimeTypeWhiteList.FirstOrDefault(m => m.MimeType.Equals(file.ContentType));
 					string newFileName = String.Concat(Guid.NewGuid().ToString(), fileInfo.FileExtension);
 
-					var uploadPath = Path.Combine(@"C:\Users\caglar.ozcan\source\Workspaces\Blog\src\presentation\Blog.Web\Uploads\", fileInfo.UploadDir, @"\", newFileName);
+					//var uploadPath = Path.Combine(@"C:\Users\caglar.ozcan\source\Workspaces\Blog\src\presentation\Blog.Web\Uploads\", fileInfo.UploadDir, @"\", newFileName);
+
+					string uploadPath = @"C:\Users\caglar.ozcan\source\Workspaces\Blog\src\presentation\Blog.Web\Uploads\" + fileInfo.UploadDir.Replace("/", "\\") + @"\" + newFileName;
 
 					using (var stream = System.IO.File.Create(uploadPath))
 					{
@@ -55,7 +57,7 @@ namespace Blog.Infrastructure.Services
 						Description = "Blog dosyası.",
 						MediaTypeId = fileInfo.Id,
 						Name = newFileName,
-						OriginalName = file.Name,
+						OriginalName = file.FileName,
 						UserId = _authUserInfoService.Id
 					});
 
