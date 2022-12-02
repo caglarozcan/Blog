@@ -13,27 +13,9 @@ namespace Blog.Infrastructure.Services
 			this._unitOfWork = unitOfWork;
 		}
 
-		#region Read
 		public async Task<List<SettingGroupListDto>> GetSettingsAsync()
 		{
-			var settings = await _unitOfWork.SettingGroupReadRepository.GetAllAsync(includes: i => i.Settings);
-
-			var result =  settings.Select(s => new SettingGroupListDto()
-			{
-				Id = s.Id,
-				Name = s.Name,
-				Description = s.Description,
-				Settings = s.Settings.Select(t => new SettingsListDto()
-				{
-					Id = t.Id,
-					SettingGroupId = t.SettingGroupId,
-					Name = t.Name,
-					Value = t.Value
-				}).ToList()
-			}).ToList();
-
-			return result;
+			return await _unitOfWork.SettingGroupReadRepository.GetSettingsAsync();
 		}
-		#endregion
 	}
 }

@@ -1,4 +1,5 @@
-﻿using Blog.Domain.Entities;
+﻿using Blog.Application.Dto.SettingDto;
+using Blog.Domain.Entities;
 
 namespace Blog.Application.Repository
 {

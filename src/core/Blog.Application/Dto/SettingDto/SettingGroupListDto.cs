@@ -8,6 +8,8 @@
 
 		public string Description { get; set; }
 
+		public string SettingGroupKey { get; set; }
+
 		public List<SettingsListDto> Settings { get; set; }
 	}
 }
