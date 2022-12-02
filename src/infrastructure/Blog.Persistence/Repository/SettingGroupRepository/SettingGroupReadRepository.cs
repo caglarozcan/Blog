@@ -40,7 +40,7 @@ namespace Blog.Persistence.Repository
 					SettingGroupId = t.SettingGroupId,
 					Name = t.Name,
 					Value = t.Value,
-					SettingKey = s.SettingKey
+					SettingKey = t.SettingKey
 				}).ToList()
 			}).ToListAsync();
 		}

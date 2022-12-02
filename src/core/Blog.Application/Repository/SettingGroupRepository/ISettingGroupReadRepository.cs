@@ -9,6 +9,6 @@ namespace Blog.Application.Repository
 		Task<List<BlogOptionsDto>> GetBlogOptionsAsync();
 
 		Task<List<SettingGroupListDto>> GetSettingsAsync();
-		#region
+		#endregion
 	}
 }
