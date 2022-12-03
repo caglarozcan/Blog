@@ -34,8 +34,8 @@ namespace Blog.Persistence.EfContext.EntityMapping
 
 			builder.Property(p => p.Value)
 				.HasColumnName("Value")
-				.HasColumnType("varchar(50)")
-				.HasMaxLength(50)
+				.HasColumnType("varchar(250)")
+				.HasMaxLength(250)
 				.HasColumnOrder(3)
 				.IsRequired(true);
 

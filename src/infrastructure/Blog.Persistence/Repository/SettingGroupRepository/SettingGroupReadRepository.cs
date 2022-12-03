@@ -13,19 +13,6 @@ namespace Blog.Persistence.Repository
 		}
 
 		#region Read
-		public async Task<List<BlogOptionsDto>> GetBlogOptionsAsync()
-		{
-			return await Table.Include(i => i.Settings).Select(s => new BlogOptionsDto()
-			{
-				SettingGroupKey = s.SettingKey,
-				Options = s.Settings.Select(o => new BlogOptionsSubDto()
-				{
-					SettingKey = o.SettingKey,
-					Value = o.Value
-				}).ToList()
-			}).ToListAsync();
-		}
-
 		public async Task<List<SettingGroupListDto>> GetSettingsAsync()
 		{
 			return await Table.Include(i => i.Settings).Select(s => new SettingGroupListDto()

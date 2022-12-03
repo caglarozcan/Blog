@@ -6,6 +6,9 @@
 	var generalSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("GeneralSettings"));
 	var maillSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("EmailSettings"));
 	var pagingSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("PagingSettings"));
+	var fileUploadSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("FileUploadSettings"));
+	var articleSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("ArticleSettings"));
+	var commentSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("CommentSettings"));
 }
 
 <div class="wrapper">
@@ -57,167 +60,176 @@
 						<div class="tab-content">
 							<!--Genel Ayarlar içeriği-->
 							<div class="tab-item show" id="general-setting">
-								<div class="form-group">
-									<label class="label"><strong>Site URL</strong></label>
-									<input type="text" name="SiteUrl" class="input" value="@generalSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("Url")).Value" />
-									<span class="vld-UserPaging"></span>
-								</div>
-								<div class="form-group">
-									<label class="label"><strong>Site Başlığı</strong></label>
-									<input type="text" name="SiteTitle" class="input" value="@generalSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("Title")).Value" />
-									<span class="vld-UserPaging"></span>
-								</div>
-								<div class="form-group">
-									<label class="label"><strong>Site Slogan</strong></label>
-									<input type="text" name="SiteComment" class="input" value="@generalSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("Slogan")).Value" />
-									<span class="vld-UserPaging"></span>
-								</div>
-								<div class="form-group">
-									<label class="label"><strong>Site Açıklama</strong></label>
-									<textarea name="SiteDescription" class="input">@generalSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("Description")).Value</textarea>
-									<span class="vld-UserPaging"></span>
-								</div>
-								<div class="form-group text-center">
-									<input type="submit" class="btn btn-blue" value="Kaydet" />
-								</div>
+								<form asp-action="/Admin/Setting/SaveGeneralSettings" method="post" id="general-settings-form">
+									<div class="form-group">
+										<label class="label"><strong>Site URL</strong></label>
+										<input type="text" name="SiteUrl" class="input" value="@generalSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("SiteUrl")).Value" />
+										<span class="vld-UserPaging"></span>
+									</div>
+									<div class="form-group">
+										<label class="label"><strong>Site Başlığı</strong></label>
+										<input type="text" name="SiteTitle" class="input" value="@generalSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("SiteTitle")).Value" />
+										<span class="vld-UserPaging"></span>
+									</div>
+									<div class="form-group">
+										<label class="label"><strong>Site Slogan</strong></label>
+										<input type="text" name="SiteComment" class="input" value="@generalSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("SiteSlogan")).Value" />
+										<span class="vld-UserPaging"></span>
+									</div>
+									<div class="form-group">
+										<label class="label"><strong>Site Açıklama</strong></label>
+										<textarea name="SiteDescription" class="input">@generalSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("SiteDescription")).Value</textarea>
+										<span class="vld-UserPaging"></span>
+									</div>
+									<div class="form-group text-center">
+										<input type="submit" class="btn btn-blue" value="Kaydet" />
+									</div>
+								</form>
 							</div>
 							<!--Genel Ayarlar içeriği-->
 							<!--Makale Ayarları-->
 							<div class="tab-item" id="article-setting">
+								<form asp-action="SaveArticleSettings" method="post" id="article-settings-form">
 								<div class="form-group">
 									<label class="label"><strong>Varsayılan Kategori</strong></label>
-									<select class="input">
-										<option>Genel</option>
-									</select>
-									<span class="vld-EmailAddress"></span>
+									@await Component.InvokeAsync("CategoryList", new { id = Guid.Parse(articleSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("DefaultCategoryId")).Value)})
+									<span class="vld-DefaultCategoryId"></span>
 								</div>
+
 								<div class="form-group">
 									<label class="label"><strong>Yorum Gösterim</strong></label>
 									<label class="label">
-										<input type="checkbox" />&nbsp;&nbsp;&nbsp;Yorumlar yönetici onayından sonra yayınlansın.
+										<input type="checkbox" name="IsShowComment" @(commentSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("IsShowComment")).Value == "1" ? "checked" : "") />&nbsp;&nbsp;&nbsp;Makale yorumlarını göster.
 									</label>
 								</div>
 
 								<div class="form-group text-center">
 									<input type="submit" class="btn btn-blue" value="Kaydet" />
 								</div>
+								</form>
 							</div>
 							<!--Makale Ayarlar-->
 							<!--Resim Yükleme Ayarları-->
 							<div class="tab-item" id="image-setting">
+								<form asp-action="SaveFileUploadSettings" method="post" id="fileUpload-settings-form">
 								<div class="form-group">
 									<label class="label"><strong>Dosya Yükleme Yeri (Genel Dizin)</strong></label>
-									<input type="text" name="SiteUrl" class="input" />
+									<input type="text" name="UploadPath" class="input" value="@fileUploadSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("UploadPath")).Value" />
 									<span class="vld-UserPaging"></span>
 								</div>
 								<div class="form-group">
 									<label class="label"><strong>Dizin Şekli</strong></label>
 									<label class="label">
-										<input type="checkbox" />&nbsp;&nbsp;&nbsp;Yüklemeleri aylık -ve yıllık- bazda klasörlerde tut.
+										<input type="checkbox" name="UploadDirType" @(fileUploadSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("UploadDirType")).Value == "1" ? "checked" : "") />&nbsp;&nbsp;&nbsp;Yüklemeleri aylık -ve yıllık- bazda klasörlerde tut.
 									</label>
 								</div>
 								<div class="form-group">
-									<h5 >Görsel Boyutları</h5>
+									<h5>Görsel Boyutları</h5>
 								</div>
 								<div class="form-group">
 									<label class="label"><strong>Küçük Resim (Thumbnail)</strong></label>
 									<div class="input-group">
-										<input type="text" name="small" class="input" placeholder="Genişlik" />
+										<input type="number" name="ImageSmallWidth" class="input" placeholder="Genişlik" value="@fileUploadSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("ImageSmallWidth")).Value" />
 										<div class="group-text">
 											<i class="cdi cdi-no-alt"></i>
 										</div>
-										<input type="text" name="small" class="input" placeholder="Yükseklik" />
+										<input type="number" name="ImageSmallHeight" class="input" placeholder="Yükseklik" value="@fileUploadSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("ImageSmallHeight")).Value" />
 									</div>
 									<span class="vld-small"></span>
 								</div>
 								<div class="form-group">
 									<label class="label"><strong>Orta Resim</strong></label>
 									<div class="input-group">
-										<input type="text" name="small" class="input" placeholder="Genişlik" />
+										<input type="number" name="ImageMediumWidth" class="input" placeholder="Genişlik" value="@fileUploadSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("ImageMediumWidth")).Value" />
 										<div class="group-text">
 											<i class="cdi cdi-no-alt"></i>
 										</div>
-										<input type="text" name="small" class="input" placeholder="Yükseklik" />
+										<input type="number" name="ImageMediumHeight" class="input" placeholder="Yükseklik" value="@fileUploadSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("ImageMediumHeight")).Value" />
 									</div>
 									<span class="vld-medium"></span>
 								</div>
 								<div class="form-group">
 									<label class="label"><strong>Büyük Resim</strong></label>
 									<div class="input-group">
-										<input type="text" name="small" class="input" placeholder="Genişlik" />
+										<input type="number" name="ImageLargeWidth" class="input" placeholder="Genişlik" value="@fileUploadSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("ImageLargeWidth")).Value" />
 										<div class="group-text">
 											<i class="cdi cdi-no-alt"></i>
 										</div>
-										<input type="text" name="small" class="input" placeholder="Yükseklik" />
+										<input type="number" name="ImageLargeHeight" class="input" placeholder="Yükseklik" value="@fileUploadSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("ImageLargeHeight")).Value" />
 									</div>
 									<span class="vld-big"></span>
 								</div>
 
-								
-
 								<div class="form-group text-center">
 									<input type="submit" class="btn btn-blue" value="Kaydet" />
 								</div>
+								</form>
 							</div>
 							<!--Resim Yükleme Ayarları-->
 							<!--Mail Ayarları-->
 							<div class="tab-item" id="mail-setting">
+								<form asp-action="SaveMailSettings" method="post" id="mail-settings-form">
 								<div class="form-group">
 									<label class="label"><strong>E-Posta Sunucusu</strong></label>
-									<input type="text" name="EmailAddress" class="input" value="@maillSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("Host")).Value" />
-									<span class="vld-EmailAddress"></span>
+									<input type="text" name="EmailHost" class="input" value="@maillSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("EmailHost")).Value" />
+									<span class="vld-EmailHost"></span>
 								</div>
 								<div class="form-group">
 									<label class="label"><strong>E-Posta Adresi</strong></label>
-									<input type="text" name="EmailAddress" class="input" value="@maillSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("From")).Value" />
-									<span class="vld-EmailAddress"></span>
+									<input type="text" name="EmailFrom" class="input" value="@maillSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("EmailFrom")).Value" />
+									<span class="vld-EmailFrom"></span>
 								</div>
 								<div class="form-group">
 									<label class="label"><strong>E-Posta Şifresi</strong></label>
-									<input type="password" name="EmailPassword" class="input" value="@maillSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("Password")).Value" />
+									<input type="password" name="EmailPassword" class="input" value="@maillSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("EmailPassword")).Value" />
 									<span class="vld-EmailPassword"></span>
 								</div>
 								<div class="form-group">
 									<label class="label"><strong>E-Posta Sunucu Port Numarası</strong></label>
-									<input type="password" name="EmailPassword" class="input" value="@maillSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("Port")).Value"/> 
-									<span class="vld-EmailPassword"></span>
+									<input type="number" name="EmailPort" class="input" value="@maillSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("EmailPort")).Value" />
+									<span class="vld-EmailPort"></span>
 								</div>
 
 								<div class="form-group text-center">
 									<input type="submit" class="btn btn-blue" value="Kaydet" />
 								</div>
+								</form>
 							</div>
 							<!--Mail Ayarları-->
 							<!--Yorum Ayarları-->
 							<div class="tab-item" id="comment-setting">
+								<form asp-action="SaveCommentSettings" method="post" id="comment-settings-form">
 								<div class="form-group">
 									<label class="label"><strong>Yorum Gösterim</strong></label>
 									<label class="label">
-										<input type="checkbox" />&nbsp;&nbsp;&nbsp;Yorumlar yönetici onayından sonra yayınlansın.
+										<input type="checkbox" name="" @(commentSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("IsApproveComment")).Value == "1" ? "checked" : "") />&nbsp;&nbsp;&nbsp;Yorumlar yönetici onayından sonra yayınlansın.
 									</label>
 								</div>
 
 								<div class="form-group text-center">
 									<input type="submit" class="btn btn-blue" value="Kaydet" />
 								</div>
+								</form>
 							</div>
 							<!--Yorum Ayarları-->
 							<!--Sayfalama Ayarları-->
 							<div class="tab-item" id="paging-setting">
+								<form asp-action="SavePagingSettings" method="post" id="paging-settings-form">
 								<div class="form-group">
 									<label class="label"><strong>Kullanıcı Sayfalama Değeri</strong></label>
-									<input type="text" name="UserPaging" class="input" value="@pagingSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("UserPage")).Value" />
-									<span class="vld-UserPaging"></span>
+									<input type="text" name="UserPagingSize" class="input" value="@pagingSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("UserPagingSize")).Value" />
+									<span class="vld-UserPagingSize"></span>
 								</div>
 								<div class="form-group">
 									<label class="label"><strong>Admin Sayfalama Değeri</strong></label>
-									<input type="text" name="AdminPaging" class="input" value="@pagingSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("AdminPage")).Value" />
-									<span class="vld-AdminPaging"></span>
+									<input type="text" name="AdminPagingSize" class="input" value="@pagingSetting.Settings.FirstOrDefault(s => s.SettingKey.Equals("AdminPagingSize")).Value" />
+									<span class="vld-AdminPagingSize"></span>
 								</div>
 
 								<div class="form-group text-center">
 									<input type="submit" class="btn btn-blue" value="Kaydet" />
 								</div>
+								</form>
 							</div>
 							<!--Sayfalama Ayarları-->
 						</div>

@@ -2,6 +2,7 @@
 using Blog.Persistence;
 using Blog.Persistence.EfContext;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,10 @@ builder.Services.AddControllersWithViews(config =>
 	config.Filters.Add(new AuthorizeFilter(policy));
 });*/
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddMvcOptions(o =>
+{
+	o.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => "Geçersiz değer girildi. Kontrol ediniz.");
+});
 
 //Resource dosyaları için
 /*builder.Services.AddLocalization(l =>
@@ -173,7 +177,7 @@ app.UseEndpoints(endpoints =>
 		defaults: new { area = "Admin", controller = "Article", action = "Series" }
 	);
 	#endregion
-	
+
 	#region User
 	endpoints.MapAreaControllerRoute(
 		name: "AdminUsers",
@@ -194,7 +198,7 @@ app.UseEndpoints(endpoints =>
 		defaults: new { area = "Admin", controller = "Users", action = "Update" }
 	);
 	#endregion
-	
+
 	#region Media
 	endpoints.MapAreaControllerRoute(
 		name: "AdminMedias",
@@ -239,7 +243,7 @@ app.UseEndpoints(endpoints =>
 		defaults: new { area = "Admin", controller = "Setting", action = "Index" }
 	);
 	#endregion
-	
+
 	#region Tags
 	endpoints.MapAreaControllerRoute(
 		name: "AdminTags",
