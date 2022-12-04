@@ -29,6 +29,9 @@ namespace Blog.Web.Areas.Admin.Controllers
 		#endregion
 
 		#region Upate
+		/*
+		 * Update işlemi için kullanılan modellerin özellikleri Settings tablosundaki SettingKey ile aynı olmak zorunda.
+		 */
 		[HttpPost]
 		public async Task<IActionResult> SaveGeneralSettings(GeneralSettingUpdateDto data)
 		{

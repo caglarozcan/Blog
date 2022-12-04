@@ -7,7 +7,7 @@ namespace Blog.Application.Dto.SettingDto
 		[Required(ErrorMessage = "Medya yükleme dizini alanı zorunludur.")]
 		public string UploadPath { get; set; }
 
-		public string UploadDirType { get; set; }
+		public bool UploadDirType { get; set; }
 
 		[Required(ErrorMessage = "Küçük resim genişliği alanı zorunludur.")]
 		public int ImageSmallWidth { get; set; }
