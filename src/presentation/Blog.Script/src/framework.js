@@ -12,4 +12,4 @@ window.Dailog = require('./component/dialog.js');
 window.Select = require('./component/select.js');
 
 //plugins
-//window.Ticket = require('./plugin/ticket.js');
+window.PhotoGallery = require('./plugin/photoGallery.js');

@@ -42,9 +42,8 @@ namespace Blog.Infrastructure.Services
 					var fileInfo = mimeTypeWhiteList.FirstOrDefault(m => m.MimeType.Equals(file.ContentType));
 					string newFileName = String.Concat(Guid.NewGuid().ToString(), fileInfo.FileExtension);
 
-					//var uploadPath = Path.Combine(@"C:\Users\caglar.ozcan\source\Workspaces\Blog\src\presentation\Blog.Web\Uploads\", fileInfo.UploadDir, @"\", newFileName);
-
-					string uploadPath = @"C:\Users\caglar.ozcan\source\Workspaces\Blog\src\presentation\Blog.Web\Uploads\" + fileInfo.UploadDir.Replace("/", "\\") + @"\" + newFileName;
+					//string uploadPath = @"C:\Users\caglar.ozcan\source\Workspaces\Blog\src\presentation\Blog.Web\Uploads\" + fileInfo.UploadDir.Replace("/", "\\") + @"\" + newFileName;
+					string uploadPath = @"D:\Projects\Visualstudio\Blog\src\presentation\Blog.Web\Uploads\" + fileInfo.UploadDir.Replace("/", "\\") + @"\" + newFileName;
 
 					using (var stream = System.IO.File.Create(uploadPath))
 					{

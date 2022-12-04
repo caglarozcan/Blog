@@ -45,6 +45,9 @@
     <Content Include="src\lib\passwordMeter.js" />
     <Content Include="src\lib\validation.js" />
     <Content Include="src\plugin\dataTable.js" />
+    <Content Include="src\plugin\photoGallery.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\plugin\ticket.js" />
     <Content Include="src\util\util.js" />
     <Content Include="webpack.config.js" />

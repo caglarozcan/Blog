@@ -37,7 +37,7 @@
 
 					<!--Makale listesi-->
 					<!--Gallery-->
-					<div class="gallery" data-columns="8">
+					<div class="gallery" data-columns="8" id="main-gallery">
 						@for (int i = 0; i < 10; i++)
 						{
 							<div class="gallery-item">
@@ -84,16 +84,16 @@
 <script>
 
 	let imageLayout = '<div class="gallery-item">\
-							<div class="attachment">\
-								<div class="thumbnail">\
-									<div class="centered">\
-										<img src="{imgUrl}" />\
+								<div class="attachment">\
+									<div class="thumbnail">\
+										<div class="centered">\
+											<img src="{imgUrl}" />\
+										</div>\
 									</div>\
+									<button type="button" class="check" value="{id}">\
+										<i class="cdi cdi-yes"></i>\
+									</button>\
 								</div>\
-								<button type="button" class="check" value="{id}">\
-									<i class="cdi cdi-yes"></i>\
-								</button>\
-							</div>\
-						</div>';
-
+							</div>';
+	var gallery = new PhotoGallery({ selector: '#main-gallery', perData: 32 });
 </script>
