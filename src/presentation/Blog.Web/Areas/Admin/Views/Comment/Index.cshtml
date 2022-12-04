@@ -2,3 +2,126 @@
 	ViewBag.Title = "Yorum Yönetimi";
 	Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
 }
+
+<div class="breadcrumbs">
+	<h4>Yorum Yönetimi</h4>
+	<ul>
+		<li><a asp-route="AdminHome">Anasayfa</a></li>
+		<li>
+			<i class="cdi cdi-arrow-right-alt2"></i>
+		</li>
+		<li>Yorum Yönetimi</li>
+	</ul>
+</div>
+
+<div class="wrapper">
+	<div class="grid">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<h4>Yorumlar</h4>
+				</div>
+				<div class="card-body pd">
+
+					<!--Makale listesi-->
+
+					<table class="border-btm">
+						<thead>
+							<tr>
+								<th>
+									<input type="checkbox" />
+								</th>
+								<th>Başlık</th>
+								<th>Ekleyen</th>
+								<th>Kategori</th>
+								<th class="text-center">Eklenme</th>
+								<th class="text-center">Okunma</th>
+								<th class="text-center">Yorum</th>
+								<th class="text-center">Durum</th>
+								<th class="text-center">İşlem</th>
+							</tr>
+						</thead>
+						<tbody>
+							@for (int i = 1; i <= 20; i++)
+							{
+								<tr>
+									<td><input type="checkbox" /></td>
+									<td>Buraya makale başlığı gelecek</td>
+									<td>
+										<a href="#">Çağlar ÖZCAN</a>
+									</td>
+									<td>
+										<a href="#">kategori1</a>,
+										<a href="#">kategori2</a>,
+										<a href="#">kategori3</a>
+									</td>
+									<td class="text-center">10 Ekim 2021 23:36</td>
+									<td class="text-center font-numeric">100</td>
+									<td class="text-center font-numeric">15</td>
+									<td class="text-center">
+										<span class="status-success">Yayında</span>
+									</td>
+									<td class="text-center">
+										<div class="dropdown">
+											<a href="javascript:void(0)" data-dropdown="#tbl-menu@(Html.Raw(i))">
+												<i class="cdi cdi-ellipsis"></i>
+											</a>
+
+											<div class="drop-down" id="tbl-menu@(Html.Raw(i))">
+												<ul>
+													<li><a href="#"><i class="cdi cdi-admin-post"></i>&nbsp;&nbsp;Sabitle</a></li>
+													<li><a href="#"><i class="cdi cdi-remove"></i>&nbsp;&nbsp;Engelle</a></li>
+													<li><a href="#"><i class="cdi cdi-edit"></i>&nbsp;&nbsp;Güncelle</a></li>
+													<li><a href="#"><i class="cdi cdi-menu-alt"></i>&nbsp;&nbsp;Detaylar</a></li>
+													<li class="seperator"></li>
+													<li><a href="#"><i class="cdi cdi-trash"></i>&nbsp;&nbsp;Sil</a></li>
+												</ul>
+											</div>
+										</div>
+									</td>
+								</tr>
+							}
+
+						</tbody>
+					</table>
+
+					<ul class="pagination pg-direction-right">
+						<li class="arrow">
+							<a href="#">
+								<i class="cdi cdi-arrow-left-alt2"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#">1</a>
+						</li>
+						<li>
+							<a href="#">2</a>
+						</li>
+						<li>
+							<a href="#">3</a>
+						</li>
+						<li class="active">
+							<a href="#">4</a>
+						</li>
+						<li>
+							<a href="#">5</a>
+						</li>
+						<li>
+							<a href="#">6</a>
+						</li>
+						<li>
+							<a href="#">7</a>
+						</li>
+						<li class="arrow">
+							<a href="#">
+								<i class="cdi cdi-arrow-right-alt2"></i>
+							</a>
+						</li>
+					</ul>
+
+					<!--Makale listesi-->
+
+				</div>
+			</div>
+		</div>
+	</div>

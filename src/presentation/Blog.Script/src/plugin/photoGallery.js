@@ -63,7 +63,6 @@ var PhotoGallery = function (options) {
 					} else {
 						element.insertAdjacentHTML('beforeend', imageLayout.replace('{imgUrl}', message.data[i].uploadDir + '/' + message.data[i].name));
 					}
-					
 				}
 			}).catch((message) => {
 				throw new Error('Veriler al?namad?.');
