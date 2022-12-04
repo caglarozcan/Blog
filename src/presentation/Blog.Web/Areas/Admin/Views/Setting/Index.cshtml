@@ -4,11 +4,11 @@
 	Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
 
 	var generalSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("GeneralSettings"));
-	var maillSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("EmailSettings"));
-	var pagingSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("PagingSettings"));
-	var fileUploadSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("FileUploadSettings"));
 	var articleSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("ArticleSettings"));
+	var fileUploadSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("FileUploadSettings"));
+	var maillSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("EmailSettings"));
 	var commentSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("CommentSettings"));
+	var pagingSetting = Model.FirstOrDefault(s => s.SettingGroupKey.Equals("PagingSettings"));
 }
 
 <div class="wrapper">
@@ -250,7 +250,49 @@
 		<!--Genel ayarlar-->
 		<!--Genel ayarlar-->
 		<div class="col-4">
-			Buraya ne yazacağız??
+
+			<div class="card">
+				<div class="card-header">
+					<h4>@generalSetting.Name</h4>
+				</div>
+				<div class="card-body pd">@generalSetting.Description</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header">
+					<h4>@articleSetting.Name</h4>
+				</div>
+				<div class="card-body pd">@articleSetting.Description</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header">
+					<h4>@fileUploadSetting.Name</h4>
+				</div>
+				<div class="card-body pd">@fileUploadSetting.Description</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header">
+					<h4>@maillSetting.Name</h4>
+				</div>
+				<div class="card-body pd">@maillSetting.Description</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header">
+					<h4>@commentSetting.Name</h4>
+				</div>
+				<div class="card-body pd">@commentSetting.Description</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header">
+					<h4>@pagingSetting.Name</h4>
+				</div>
+				<div class="card-body pd">@pagingSetting.Description</div>
+			</div>
+
 		</div>
 		<!--Genel ayarlar-->
 
@@ -282,7 +324,7 @@
 				chk_value.value = 'False';
 			}
 		});
-		
+
 		var chkUploadDirType = document.getElementById('chk_UploadDirType')
 		chkUploadDirType.addEventListener('change', function (e) {
 			var chk_value = document.getElementById('UploadDirType');
