@@ -36,6 +36,7 @@ bld/
 
 #migrations
 Migrations/
+Uploads/
 EfBlogContextModelSnapshot.cs
 #Uploads/
 

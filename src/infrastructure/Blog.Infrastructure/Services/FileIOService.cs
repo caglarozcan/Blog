@@ -43,7 +43,7 @@ namespace Blog.Infrastructure.Services
 					string newFileName = String.Concat(Guid.NewGuid().ToString(), fileInfo.FileExtension);
 
 					//string uploadPath = @"C:\Users\caglar.ozcan\source\Workspaces\Blog\src\presentation\Blog.Web\Uploads\" + fileInfo.UploadDir.Replace("/", "\\") + @"\" + newFileName;
-					string uploadPath = @"D:\Projects\Visualstudio\Blog\src\presentation\Blog.Web\Uploads\" + fileInfo.UploadDir.Replace("/", "\\") + @"\" + newFileName;
+					string uploadPath = @"D:\Projects\Visualstudio\Blog\src\presentation\Blog.Web\wwwroot\Uploads\" + fileInfo.UploadDir.Replace("/", "\\") + @"\" + newFileName;
 
 					using (var stream = System.IO.File.Create(uploadPath))
 					{
