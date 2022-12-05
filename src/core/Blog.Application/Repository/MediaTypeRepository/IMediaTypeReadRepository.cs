@@ -10,5 +10,7 @@ namespace Blog.Application.Repository
 		Task<PagingDataResponse<MediaTypeListDto>> GetMediaTypeListAsync(DataListRequest request);
 
 		Task<List<MediaTypeWhiteListDto>> GetMediaTypeWhiteListAsync();
+
+		Task<MediaTypeSelectDto> GetMediaTypeSelectAsync(Guid? id);
 	}
 }

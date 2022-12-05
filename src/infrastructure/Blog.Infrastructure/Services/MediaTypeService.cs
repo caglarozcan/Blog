@@ -83,6 +83,11 @@ namespace Blog.Infrastructure.Services
 				Color = mediaType.Color
 			});
 		}
+
+		public async Task<MediaTypeSelectDto> GetMediaTypeSelectAsync(Guid? id)
+		{
+			return await _unitOfWork.MediaTypeReadRepository.GetMediaTypeSelectAsync(id);
+		}
 		#endregion
 
 		#region Update

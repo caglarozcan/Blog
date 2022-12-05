@@ -16,6 +16,8 @@ namespace Blog.Application.Services
 		Task<PagingDataResponse<MediaTypeListDto>> GetMediaTypeListAsync(DataListRequest request);
 
 		Task<Response<MediaTypeUpdateDto>> GetUpdatedMediaTypeAsync(Guid id);
+
+		Task<MediaTypeSelectDto> GetMediaTypeSelectAsync(Guid? id);
 		#endregion
 
 		#region Update

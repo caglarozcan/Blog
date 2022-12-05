@@ -1,0 +1,5 @@
+﻿@model Blog.Application.Dto.MediaTypeDto.MediaTypeSelectDto
+
+<select asp-for="MediaTypeId" asp-items="@(new SelectList(Model.Options, "Value", "Text"))">
+    <option value="">Medya türü seçiniz.</option>
+</select>

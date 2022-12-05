@@ -1,4 +1,5 @@
-﻿using Blog.Application.Dto.MediaTypeDto;
+﻿using Blog.Application.Dto;
+using Blog.Application.Dto.MediaTypeDto;
 using Blog.Application.Extension.Pagination;
 using Blog.Application.Extension.PredicateBuilder;
 using Blog.Application.Repository;
@@ -50,6 +51,19 @@ namespace Blog.Persistence.Repository
 				MimeType = s.MimeType,
 				UploadDir = s.UploadDir
 			}).ToListAsync();
+		}
+
+		public async Task<MediaTypeSelectDto> GetMediaTypeSelectAsync(Guid? id)
+		{
+			return new MediaTypeSelectDto()
+			{
+				MediaTypeId = id,
+				Options = await Table.Select(s => new SelectOptionsDto()
+				{
+					Text = s.Title,
+					Value = s.Id.ToString()
+				}).ToListAsync()
+			};
 		}
 	}
 }
