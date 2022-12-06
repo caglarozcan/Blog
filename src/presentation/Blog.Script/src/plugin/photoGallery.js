@@ -10,7 +10,7 @@ var PhotoGallery = function (options) {
 							<div class="attachment">\
 								<div class="thumbnail">\
 									<div class="centered">\
-										<img src="https://localhost:9000/Uploads/{imgUrl}" />\
+										<img src="'+ Util.urlHelper('Uploads/')+'{imgUrl}" />\
 									</div>\
 								</div>\
 								<button type="button" class="check" value="{id}">\
@@ -23,7 +23,7 @@ var PhotoGallery = function (options) {
 							<div class="attachment">\
 								<div class="thumbnail">\
 									<div class="centered">\
-										<img src="https://localhost:9000/images/file.png" />\
+										<img src="'+ Util.urlHelper('images/file.png')+'" />\
 									</div>\
 									<div class="filename">{fileName}</div>\
 								</div>\
@@ -36,7 +36,7 @@ var PhotoGallery = function (options) {
 	var Plugin = {
 		construct: function (options) {
 			if (!options.hasOwnProperty('selector')) {
-				throw new Error('Galeri se蓾ci bulunamad?.');
+				throw new Error('Galeri se癟ici bulunamad覺.');
 			}
 
 			element = Util.find(options.selector);
@@ -45,7 +45,7 @@ var PhotoGallery = function (options) {
 				the.options = options;
 				Plugin.init();
 			} else {
-				throw new Error('Galeri elementi bulunamad?.');
+				throw new Error('Galeri elementi bulunamad覺.');
 			}
 
 			return the;
@@ -54,7 +54,7 @@ var PhotoGallery = function (options) {
 		init: function () {
 			Ajax.send({
 				method: 'GET',
-				url: 'https://localhost:9000/Admin/Media/GetMediaList',
+				url: Util.urlHelper('Admin/Media/GetMediaList'),
 				data: { Page: 1, PerData: 34 }
 			}).then((message) => {
 				for (var i = 0; i < message.data.length; i++) {
@@ -65,7 +65,7 @@ var PhotoGallery = function (options) {
 					}
 				}
 			}).catch((message) => {
-				throw new Error('Veriler al?namad?.');
+				throw new Error('Veriler al覺namad覺.');
 			});
 		}
 	}
