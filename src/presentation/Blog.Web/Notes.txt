@@ -65,6 +65,7 @@ https://learn.microsoft.com/en-us/dotnet/core/extensions/custom-configuration-pr
 https://stackoverflow.com/questions/60330342/can-i-move-configuration-from-appsettings-json-to-database-in-an-asp-net-core-mv
 Veri tabanı temelli konfigurasyon
 -----------------------------------------------------------------------------------------------
+Ardalis Specification pattern araştır.
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
