@@ -49,7 +49,7 @@ namespace Blog.Application.Extension.PredicateBuilder
 					//Buarada aynı zamanda string alana göre de arama yapılabilir. Çünkü string ifade içerisinde bir sayı geçiyor olabilir.
 					if (item.PropertyType.Name == typeof(string).Name)
 					{
-						var parameter = Expression.Parameter(typeof(T), typeof(T).FullName); ;
+						var parameter = Expression.Parameter(typeof(T), typeof(T).FullName);
 						var containsMethod = typeof(string).GetMethod("Contains", new[] { typeof(string) });
 						var paramValue = Expression.Constant(filterText, typeof(string));
 						var containsCall = Expression.Call(Expression.Property(parameter, item.Name), containsMethod, new Expression[1] { paramValue });
