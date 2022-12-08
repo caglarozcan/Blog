@@ -38,7 +38,13 @@ bld/
 Migrations/
 Uploads/
 EfBlogContextModelSnapshot.cs
-#Uploads/
+
+#Ignore production environment appsettings jsons
+**/appsettings.Development.json
+**/appsettings.Production.json
+**/appsettings.Staging.json
+**/appsettings.Test.json
+**/appsettings.json
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
