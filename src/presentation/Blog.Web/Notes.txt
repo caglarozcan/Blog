@@ -66,6 +66,11 @@ https://stackoverflow.com/questions/60330342/can-i-move-configuration-from-appse
 Veri tabanı temelli konfigurasyon
 -----------------------------------------------------------------------------------------------
 Ardalis Specification pattern araştır.
+https://medium.com/software-development-turkey/specification-pattern-nedir-a87f0dd9be20
+https://codewithmukesh.com/blog/specification-pattern-in-aspnet-core/
+https://www.automatetheplanet.com/advanced-specification-design-pattern/
+https://github.com/jnicolau/NSpecifications/blob/be595d9e50c494a568eb91dcdceec02a58648935/Nspecifications/NotSpecification.cs
+https://medium.com/@rudyzio92/net-core-using-the-specification-pattern-alongside-a-generic-repository-318cd4eea4aa
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------

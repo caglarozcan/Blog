@@ -6,6 +6,7 @@ using Blog.Application.Repository;
 using Blog.Application.Request;
 using Blog.Application.Response;
 using Blog.Domain.Entities;
+using Blog.Persistence.Specification.Specifications.CategorySpecifications;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Persistence.Repository
@@ -19,7 +20,9 @@ namespace Blog.Persistence.Repository
 
 		public async Task<PagingDataResponse<CategoryListDto>> GetCategoryListAsync(DataListRequest request)
 		{
-			var query = Table.Select(s => new CategoryListDto()
+			var search = new SearchCategorySpecification(request.SearchValue);
+
+			var query = Table.Where(search.ToExpression()).Select(s => new CategoryListDto()
 			{
 				Id = s.Id,
 				Title = s.Title,
@@ -30,11 +33,6 @@ namespace Blog.Persistence.Repository
 				CreatedDate = s.CreatedDate,
 				Status = s.Status
 			});
-
-			if (!String.IsNullOrWhiteSpace(request.SearchValue))
-			{
-				query = query.WherePredicate(request.SearchValue);
-			}
 
 			if (request.SortType.HasValue)
 			{
