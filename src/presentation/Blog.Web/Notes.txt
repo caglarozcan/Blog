@@ -72,6 +72,7 @@ https://www.automatetheplanet.com/advanced-specification-design-pattern/
 https://github.com/jnicolau/NSpecifications/blob/be595d9e50c494a568eb91dcdceec02a58648935/Nspecifications/NotSpecification.cs
 https://medium.com/@rudyzio92/net-core-using-the-specification-pattern-alongside-a-generic-repository-318cd4eea4aa
 -----------------------------------------------------------------------------------------------
+Birazda OOP : https://medium.com/software-development-turkey/abstract-class-ve-interface-aras%C4%B1ndaki-farklar-nelerdir-3c0a4f956eba
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------

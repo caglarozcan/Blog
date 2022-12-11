@@ -6,7 +6,9 @@ using Blog.Application.Repository;
 using Blog.Application.Request;
 using Blog.Application.Response;
 using Blog.Domain.Entities;
+using Blog.Persistence.Specification.Specifications.MediaTypeSpecifications;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Blog.Persistence.Repository
 {
@@ -19,7 +21,9 @@ namespace Blog.Persistence.Repository
 
 		public async Task<PagingDataResponse<MediaTypeListDto>> GetMediaTypeListAsync(DataListRequest request)
 		{
-			var query = Table.Select(s => new MediaTypeListDto()
+			SearchMediaTypeSpecification mediaTypeSearchSpecification = new(request.SearchValue);
+
+			var query = Table.Where(mediaTypeSearchSpecification.ToExpression()).Select(s => new MediaTypeListDto()
 			{
 				Id = s.Id,
 				Title = s.Title,
@@ -28,11 +32,6 @@ namespace Blog.Persistence.Repository
 				CreatedDate = s.CreatedDate,
 				Status = s.Status
 			});
-
-			if (!String.IsNullOrWhiteSpace(request.SearchValue))
-			{
-				query = query.WherePredicate(request.SearchValue);
-			}
 
 			if (request.SortType.HasValue)
 			{

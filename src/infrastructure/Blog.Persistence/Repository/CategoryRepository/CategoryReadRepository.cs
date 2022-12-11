@@ -20,9 +20,9 @@ namespace Blog.Persistence.Repository
 
 		public async Task<PagingDataResponse<CategoryListDto>> GetCategoryListAsync(DataListRequest request)
 		{
-			var search = new SearchCategorySpecification(request.SearchValue);
+			SearchCategorySpecification searchCategorySpecification = new(request.SearchValue);
 
-			var query = Table.Where(search.ToExpression()).Select(s => new CategoryListDto()
+			var query = Table.Where(searchCategorySpecification.ToExpression()).Select(s => new CategoryListDto()
 			{
 				Id = s.Id,
 				Title = s.Title,
