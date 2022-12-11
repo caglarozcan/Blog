@@ -10,12 +10,6 @@ namespace Blog.Persistence.Specification
 		
 		ISpecification<T> And(ISpecification<T> other);
 		
-		ISpecification<T> AndNot(ISpecification<T> other);
-		
 		ISpecification<T> Or(ISpecification<T> other);
-		
-		ISpecification<T> OrNot(ISpecification<T> other);
-
-		ISpecification<T> Not(ISpecification<T> other);
 	}
 }

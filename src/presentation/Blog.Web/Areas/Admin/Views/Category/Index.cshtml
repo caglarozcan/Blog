@@ -296,8 +296,6 @@
 							url: Util.urlHelper('Admin/Category/EditInfo'),
 							data: { "id": id }
 						}).then(responseData => {
-							//burada gelen form gösterilecek.
-							//console.log(responseData);
 
 							if (responseData.success) {
 								var insertForm = document.getElementById('category-insert-container');
@@ -329,7 +327,6 @@
 								});
 							}
 						}).catch(error => {
-							//console.log(error);
 							Dailog.init({
 								icon: 'danger',
 								title: 'İşlem başarısız!',

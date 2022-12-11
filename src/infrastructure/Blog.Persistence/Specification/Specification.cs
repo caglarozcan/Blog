@@ -16,24 +16,9 @@ namespace Blog.Persistence.Specification
 			return new AndSpecification<T>(this, other);
 		}
 
-		public ISpecification<T> AndNot(ISpecification<T> other)
-		{
-			throw new NotImplementedException();
-		}
-
-		public ISpecification<T> Not(ISpecification<T> other)
-		{
-			throw new NotImplementedException();
-		}
-
 		public ISpecification<T> Or(ISpecification<T> other)
 		{
 			return new OrSpecification<T>(this, other);
 		}
-
-		public ISpecification<T> OrNot(ISpecification<T> other)
-		{
-			throw new NotImplementedException();
-		}		
 	}
 }

@@ -49,13 +49,13 @@ namespace Blog.Application.Extension.PredicateBuilder
 					//Buarada aynı zamanda string alana göre de arama yapılabilir. Çünkü string ifade içerisinde bir sayı geçiyor olabilir.
 					if (item.PropertyType.Name == typeof(string).Name)
 					{
-						var parameter = Expression.Parameter(typeof(T), typeof(T).FullName);
+						ParameterExpression pe = Expression.Parameter(typeof(T), typeof(T).FullName);
 						var containsMethod = typeof(string).GetMethod("Contains", new[] { typeof(string) });
-						var paramValue = Expression.Constant(filterText, typeof(string));
-						var containsCall = Expression.Call(Expression.Property(parameter, item.Name), containsMethod, new Expression[1] { paramValue });
+						ConstantExpression ce = Expression.Constant(filterText, typeof(string));
+						var containsCall = Expression.Call(Expression.Property(pe, item.Name), containsMethod, new Expression[1] { ce });
 						var isRight = Expression.Constant(true, typeof(bool));
 						BinaryExpression body = Expression.Equal(containsCall, isRight);
-						var exp = Expression.Lambda<Func<T, bool>>(body, new[] { parameter });
+						var exp = Expression.Lambda<Func<T, bool>>(body, new[] { pe });
 						where = where.Or<T>(exp);
 					}
 				}
