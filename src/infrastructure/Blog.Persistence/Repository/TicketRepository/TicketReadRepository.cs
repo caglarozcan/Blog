@@ -5,6 +5,7 @@ using Blog.Application.Repository;
 using Blog.Application.Request;
 using Blog.Application.Response;
 using Blog.Domain.Entities;
+using Blog.Persistence.Specification.Specifications.TicketSpecifications;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Persistence.Repository
@@ -18,7 +19,9 @@ namespace Blog.Persistence.Repository
 
 		public async Task<PagingDataResponse<TagListDto>> ListAsync(DataListRequest request)
 		{
-			var query = Table.Select(s => new TagListDto()
+			SearchTicketSpecification spec = new(request.SearchValue);
+
+			var query = Table.Where(spec.ToExpression()).Select(s => new TagListDto()
 			{
 				Id = s.Id,
 				Title = s.Title,
@@ -26,11 +29,6 @@ namespace Blog.Persistence.Repository
 				Slug = s.Slug,
 				Status = s.Status
 			});
-
-			if (!String.IsNullOrWhiteSpace(request.SearchValue))
-			{
-				query = query.WherePredicate(request.SearchValue);
-			}
 
 			if (request.SortType.HasValue)
 			{

@@ -43,7 +43,9 @@ namespace Blog.Persistence.Repository
 
 		public async Task<List<MediaTypeWhiteListDto>> GetMediaTypeWhiteListAsync()
 		{
-			return await Table.Where(m => m.Status == 1).Select(s => new MediaTypeWhiteListDto()
+			GetActiveMediaTypesSpecification spec = new();
+
+			return await Table.Where(spec.ToExpression()).Select(s => new MediaTypeWhiteListDto()
 			{
 				Id = s.Id,
 				FileExtension = s.FileExtension,

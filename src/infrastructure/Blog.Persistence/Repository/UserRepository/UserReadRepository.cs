@@ -6,8 +6,8 @@ using Blog.Application.Repository;
 using Blog.Application.Request;
 using Blog.Application.Response;
 using Blog.Domain.Entities;
+using Blog.Persistence.Specification.Specifications.UserSpecifications;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Persistence.Repository
 {
@@ -34,7 +34,9 @@ namespace Blog.Persistence.Repository
 
 		public async Task<PagingDataResponse<UserListDto>> GetUserListAsync(DataListRequest request)
 		{
-			var query = Table.Include(i => i.Roles).Select(s => new UserListDto()
+			SearchUserSpecification spec = new(request.SearchValue);
+
+			var query = Table.Include(i => i.Roles).Where(spec.ToExpression()).Select(s => new UserListDto()
 			{
 				Id = s.Id,
 				Name = s.Name,
@@ -46,11 +48,6 @@ namespace Blog.Persistence.Repository
 				RoleName = s.Roles.First().Role.Name,
 				Status = s.Status
 			});
-
-			if (!String.IsNullOrWhiteSpace(request.SearchValue))
-			{
-				query = query.WherePredicate(request.SearchValue);
-			}
 
 			if (request.SortType.HasValue)
 			{
