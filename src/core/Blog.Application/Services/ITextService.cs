@@ -1,11 +1,10 @@
-﻿namespace Blog.Application.Services
+﻿namespace Blog.Application.Services;
+
+public interface ITextService
 {
-	public interface ITextService
-	{
-		string Slug(string text);
+	string Slug(string text);
 
-		string GenerateFileName(string name, string path);
+	string GenerateFileName(string name, string path);
 
-		string GeneratePassword(int length = 8);
-	}
+	string GeneratePassword(int length = 8);
 }

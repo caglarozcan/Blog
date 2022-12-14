@@ -1,30 +1,28 @@
 ﻿using Blog.Application.Dto.TagsDto;
 using Blog.Application.Request;
 using Blog.Application.Response;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc;
-using Blog.Application.Dto.CategoryDto;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Blog.Application.Services
+namespace Blog.Application.Services;
+
+public interface ITicketService
 {
-	public interface ITicketService
-	{
-		#region Create
-		Task<Response<ProblemDetails>> InsertAsync(TagInsertDto data, ModelStateDictionary modelState);
-		#endregion
+	#region Create
+	Task<Response<ProblemDetails>> InsertAsync(TagInsertDto data, ModelStateDictionary modelState);
+	#endregion
 
-		#region Read
-		Task<PagingDataResponse<TagListDto>> ListAsync(DataListRequest request);
+	#region Read
+	Task<PagingDataResponse<TagListDto>> ListAsync(DataListRequest request);
 
-		Task<Response<TagListDto>> GetUpdatedTicketAsync(Guid id);
-		#endregion
+	Task<Response<TagListDto>> GetUpdatedTicketAsync(Guid id);
+	#endregion
 
-		#region Update
-		Task<Response<ProblemDetails>> EditAsync(TagEditDto data, ModelStateDictionary modelState);
-		#endregion
+	#region Update
+	Task<Response<ProblemDetails>> EditAsync(TagEditDto data, ModelStateDictionary modelState);
+	#endregion
 
-		#region Delete
-		Task<Response.Response> DeleteAsync(Guid id);
-		#endregion
-	}
+	#region Delete
+	Task<Response.Response> DeleteAsync(Guid id);
+	#endregion
 }

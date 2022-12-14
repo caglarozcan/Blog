@@ -1,15 +1,13 @@
-﻿using Blog.Application.Dto.SettingDto;
-using Blog.Application.Repository;
+﻿using Blog.Application.Repository;
 using Blog.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Persistence.Repository
+namespace Blog.Persistence.Repository;
+
+public class SettingsReadRepository : ReadRepository<Settings>, ISettingsReadRepository
 {
-	public class SettingsReadRepository : ReadRepository<Settings>, ISettingsReadRepository
+	public SettingsReadRepository(DbContext dbContext) 
+		: base(dbContext)
 	{
-		public SettingsReadRepository(DbContext dbContext) 
-			: base(dbContext)
-		{
-		}
 	}
 }

@@ -3,32 +3,30 @@ using Blog.Application.Extension.Pagination;
 using Blog.Application.Repository;
 using Blog.Application.Request;
 using Blog.Application.Response;
-using Blog.Application.Services;
 using Blog.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Persistence.Repository
+namespace Blog.Persistence.Repository;
+
+public class MediaReadRepository : ReadRepository<Media>, IMediaReadRepository
 {
-	public class MediaReadRepository : ReadRepository<Media>, IMediaReadRepository
+	public MediaReadRepository(DbContext dbContext) 
+		: base(dbContext)
 	{
-		public MediaReadRepository(DbContext dbContext) 
-			: base(dbContext)
-		{
-		}
+	}
 
-		public async Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request, Guid userId)
+	public async Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request, Guid userId)
+	{
+		var query = Table.AsNoTracking().Include(i => i.MediaType).Where(m => m.UserId.Equals(userId)).Select(s => new MediaListDto()
 		{
-			var query = Table.AsNoTracking().Include(i => i.MediaType).Where(m => m.UserId.Equals(userId)).Select(s => new MediaListDto()
-			{
-				Id	= s.Id,
-				Name = s.Name,
-				OriginalName = s.OriginalName,
-				Icon = s.MediaType.Icon,
-				MimeType = s.MediaType.MimeType,
-				UploadDir = s.MediaType.UploadDir
-			});
+			Id	= s.Id,
+			Name = s.Name,
+			OriginalName = s.OriginalName,
+			Icon = s.MediaType.Icon,
+			MimeType = s.MediaType.MimeType,
+			UploadDir = s.MediaType.UploadDir
+		});
 
-			return await query.ToPagingData(request.PerData, request.Page);
-		}
+		return await query.ToPagingData(request.PerData, request.Page);
 	}
 }

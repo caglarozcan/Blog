@@ -1,15 +1,14 @@
-﻿namespace Blog.Application.Services
+﻿namespace Blog.Application.Services;
+
+public interface IAuthUserInfoService
 {
-	public interface IAuthUserInfoService
-	{
-		Guid Id { get; }
+	Guid Id { get; }
 
-		string FirstName { get; }
+	string FirstName { get; }
 
-		string LastName { get; }
+	string LastName { get; }
 
-		string FullName { get; }
+	string FullName { get; }
 
-		string Email { get; }
-	}
+	string Email { get; }
 }

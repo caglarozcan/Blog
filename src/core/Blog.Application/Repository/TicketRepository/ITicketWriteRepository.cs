@@ -1,8 +1,7 @@
 ﻿using Blog.Domain.Entities;
 
-namespace Blog.Application.Repository
+namespace Blog.Application.Repository;
+
+public interface ITicketWriteRepository : IWriteRepository<Ticket>
 {
-	public interface ITicketWriteRepository : IWriteRepository<Ticket>
-	{
-	}
 }

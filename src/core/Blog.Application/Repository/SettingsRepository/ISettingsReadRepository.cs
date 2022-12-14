@@ -1,9 +1,7 @@
-﻿using Blog.Application.Dto.SettingDto;
-using Blog.Domain.Entities;
+﻿using Blog.Domain.Entities;
 
-namespace Blog.Application.Repository
+namespace Blog.Application.Repository;
+
+public interface ISettingsReadRepository : IReadRepository<Settings>
 {
-	public interface ISettingsReadRepository : IReadRepository<Settings>
-	{
-	}
 }

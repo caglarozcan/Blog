@@ -1,13 +1,12 @@
 ﻿using Blog.Application.UnitOfWork;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Blog.Persistence
+namespace Blog.Persistence;
+
+public static class ServiceRegistration
 {
-	public static class ServiceRegistration
+	public static void AddPersistenceServices(this IServiceCollection collection)
 	{
-		public static void AddPersistenceServices(this IServiceCollection collection)
-		{
-			collection.AddTransient<IUnitOfWork, UnitOfWork>();
-		}
+		collection.AddTransient<IUnitOfWork, UnitOfWork>();
 	}
 }

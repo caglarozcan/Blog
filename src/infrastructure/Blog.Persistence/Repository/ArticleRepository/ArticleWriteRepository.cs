@@ -2,13 +2,12 @@
 using Blog.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Persistence.Repository
+namespace Blog.Persistence.Repository;
+
+public class ArticleWriteRepository : WriteRepository<Article>, IArticleWriteRepository
 {
-	public class ArticleWriteRepository : WriteRepository<Article>, IArticleWriteRepository
+	public ArticleWriteRepository(DbContext dbContext) 
+		: base(dbContext)
 	{
-		public ArticleWriteRepository(DbContext dbContext) 
-			: base(dbContext)
-		{
-		}
 	}
 }

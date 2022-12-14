@@ -1,6 +1,5 @@
-﻿namespace Blog.Application.Services
+﻿namespace Blog.Application.Services;
+
+public interface IArticleService
 {
-	public interface IArticleService
-	{
-	}
 }

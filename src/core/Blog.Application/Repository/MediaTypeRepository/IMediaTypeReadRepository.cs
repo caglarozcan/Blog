@@ -3,14 +3,13 @@ using Blog.Application.Request;
 using Blog.Application.Response;
 using Blog.Domain.Entities;
 
-namespace Blog.Application.Repository
+namespace Blog.Application.Repository;
+
+public interface IMediaTypeReadRepository : IReadRepository<MediaType>
 {
-	public interface IMediaTypeReadRepository : IReadRepository<MediaType>
-	{
-		Task<PagingDataResponse<MediaTypeListDto>> GetMediaTypeListAsync(DataListRequest request);
+	Task<PagingDataResponse<MediaTypeListDto>> GetMediaTypeListAsync(DataListRequest request);
 
-		Task<List<MediaTypeWhiteListDto>> GetMediaTypeWhiteListAsync();
+	Task<List<MediaTypeWhiteListDto>> GetMediaTypeWhiteListAsync();
 
-		Task<MediaTypeSelectDto> GetMediaTypeSelectAsync(Guid? id);
-	}
+	Task<MediaTypeSelectDto> GetMediaTypeSelectAsync(Guid? id);
 }

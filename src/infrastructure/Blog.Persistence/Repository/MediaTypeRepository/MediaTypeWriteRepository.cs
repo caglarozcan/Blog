@@ -2,13 +2,12 @@
 using Blog.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Persistence.Repository
+namespace Blog.Persistence.Repository;
+
+public class MediaTypeWriteRepository : WriteRepository<MediaType>, IMediaTypeWriteRepository
 {
-	public class MediaTypeWriteRepository : WriteRepository<MediaType>, IMediaTypeWriteRepository
+	public MediaTypeWriteRepository(DbContext dbContext) 
+		: base(dbContext)
 	{
-		public MediaTypeWriteRepository(DbContext dbContext) 
-			: base(dbContext)
-		{
-		}
 	}
 }

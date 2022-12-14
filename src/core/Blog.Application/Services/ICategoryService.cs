@@ -4,30 +4,29 @@ using Blog.Application.Response;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Blog.Application.Services
+namespace Blog.Application.Services;
+
+public interface ICategoryService
 {
-	public interface ICategoryService
-	{
-		#region Create
-		Task<Response<ProblemDetails>> InsertAsync(CategoryInsertDto data, ModelStateDictionary modelState);
-		#endregion
+	#region Create
+	Task<Response<ProblemDetails>> InsertAsync(CategoryInsertDto data, ModelStateDictionary modelState);
+	#endregion
 
-		#region Read
-		Task<PagingDataResponse<CategoryListDto>> GetCategoryListAsync(DataListRequest request);
+	#region Read
+	Task<PagingDataResponse<CategoryListDto>> GetCategoryListAsync(DataListRequest request);
 
-		Task<Response<CategoryListDto>> GetUpdatedCategoryInfoAsync(Guid id);
+	Task<Response<CategoryListDto>> GetUpdatedCategoryInfoAsync(Guid id);
 
-		Task<CategorySelectDto> GetSelectCategories(Guid? id);
-		#endregion
+	Task<CategorySelectDto> GetSelectCategories(Guid? id);
+	#endregion
 
-		#region Update
-		Task<Response<ProblemDetails>> EditAsync(CategoryEditDto data, ModelStateDictionary modelState);
+	#region Update
+	Task<Response<ProblemDetails>> EditAsync(CategoryEditDto data, ModelStateDictionary modelState);
 
-		Task<Response.Response> StatusChangeAsync(Guid id);
-		#endregion
+	Task<Response.Response> StatusChangeAsync(Guid id);
+	#endregion
 
-		#region Delete
-		Task<Response.Response> DeleteAsync(Guid id);
-		#endregion
-	}
+	#region Delete
+	Task<Response.Response> DeleteAsync(Guid id);
+	#endregion
 }

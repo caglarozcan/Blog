@@ -3,10 +3,9 @@ using Blog.Application.Request;
 using Blog.Application.Response;
 using Blog.Domain.Entities;
 
-namespace Blog.Application.Repository
+namespace Blog.Application.Repository;
+
+public interface IMediaReadRepository : IReadRepository<Media>
 {
-	public interface IMediaReadRepository : IReadRepository<Media>
-	{
-		Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request, Guid userId);
-	}
+	Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request, Guid userId);
 }

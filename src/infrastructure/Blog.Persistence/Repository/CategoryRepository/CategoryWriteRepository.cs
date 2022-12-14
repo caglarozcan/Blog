@@ -2,13 +2,12 @@
 using Blog.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Persistence.Repository
+namespace Blog.Persistence.Repository;
+
+internal class CategoryWriteRepository : WriteRepository<Category>, ICategoryWriteRepository
 {
-	internal class CategoryWriteRepository : WriteRepository<Category>, ICategoryWriteRepository
+	public CategoryWriteRepository(DbContext dbContext) 
+		: base(dbContext)
 	{
-		public CategoryWriteRepository(DbContext dbContext) 
-			: base(dbContext)
-		{
-		}
 	}
 }

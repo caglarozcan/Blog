@@ -1,9 +1,8 @@
-﻿namespace Blog.Application.Dto.RoleDto
-{
-	public class RoleSelectDto
-    {
-		public Guid? RoleId { get; set; }
+﻿namespace Blog.Application.Dto.RoleDto;
 
-		public List<SelectOptionsDto> Options { get; set; }
-	}
+public class RoleSelectDto
+    {
+	public Guid? RoleId { get; set; }
+
+	public List<SelectOptionsDto> Options { get; set; }
 }

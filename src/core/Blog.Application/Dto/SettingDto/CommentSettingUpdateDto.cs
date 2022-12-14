@@ -1,9 +1,8 @@
-﻿namespace Blog.Application.Dto.SettingDto
-{
-	public class CommentSettingUpdateDto
-	{
-		public bool IsShowComment { get; set; }
+﻿namespace Blog.Application.Dto.SettingDto;
 
-		public bool IsApproveComment { get; set; }
-	}
+public class CommentSettingUpdateDto
+{
+	public bool IsShowComment { get; set; }
+
+	public bool IsApproveComment { get; set; }
 }

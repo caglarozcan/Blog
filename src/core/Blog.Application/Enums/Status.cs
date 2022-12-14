@@ -1,11 +1,10 @@
-﻿namespace Blog.Application.Enums
+﻿namespace Blog.Application.Enums;
+
+[Flags]
+public enum Status : byte
 {
-	[Flags]
-	public enum Status : byte
-	{
-		Passive = 0,
-		Active = 1,
-		Deleted = 2,
-		Waiting = 3
-	}
+	Passive = 0,
+	Active = 1,
+	Deleted = 2,
+	Waiting = 3
 }

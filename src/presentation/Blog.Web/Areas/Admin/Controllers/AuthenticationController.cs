@@ -1,50 +1,48 @@
 ﻿using Blog.Application.Dto.UserDto;
-using Blog.Application.Response;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Blog.Web.Areas.Admin.Controllers
+namespace Blog.Web.Areas.Admin.Controllers;
+
+[Area("Admin")]
+[AllowAnonymous]
+public class AuthenticationController : Controller
 {
-	[Area("Admin")]
-	[AllowAnonymous]
-	public class AuthenticationController : Controller
+	private readonly Blog.Application.Services.IAuthenticationService _authenticationService;
+
+	public AuthenticationController(Blog.Application.Services.IAuthenticationService authenticationService)
 	{
-		private readonly Blog.Application.Services.IAuthenticationService _authenticationService;
+		this._authenticationService = authenticationService;
+	}
 
-		public AuthenticationController(Blog.Application.Services.IAuthenticationService authenticationService)
+	public async Task<IActionResult> Index()
+	{
+		return View();
+	}
+
+	[HttpPost]
+	public async Task<IActionResult> Index(UserLoginDto data)
+	{
+		if(!ModelState.IsValid)
+			return View(data);
+
+		var result = await _authenticationService.LoginAsync(data);
+
+		if (true.Equals(result.Success))
 		{
-			this._authenticationService = authenticationService;
+			await HttpContext.SignInAsync(result.Value);
+			return RedirectToRoute("AdminHome");
 		}
-
-		public async Task<IActionResult> Index()
+		else
 		{
-			return View();
+			return View(data);
 		}
+	}
 
-		[HttpPost]
-		public async Task<IActionResult> Index(UserLoginDto data)
-		{
-			if(!ModelState.IsValid)
-				return View(data);
-
-			var result = await _authenticationService.LoginAsync(data);
-
-			if (true.Equals(result.Success))
-			{
-				await HttpContext.SignInAsync(result.Value);
-				return RedirectToRoute("AdminHome");
-			}
-			else
-			{
-				return View(data);
-			}
-		}
-
-		public async Task<IActionResult> LogOut()
-		{
-			await HttpContext.SignOutAsync();
-			return RedirectToAction("Index");
-		}
+	public async Task<IActionResult> LogOut()
+	{
+		await HttpContext.SignOutAsync();
+		return RedirectToAction("Index");
 	}
 }

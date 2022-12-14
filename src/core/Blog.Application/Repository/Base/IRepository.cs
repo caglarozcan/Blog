@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Application.Repository
+namespace Blog.Application.Repository;
+
+public interface IRepository<T> where T : class, new()
 {
-	public interface IRepository<T> where T : class, new()
-	{
-		DbSet<T> Table { get; }
-	}
+	DbSet<T> Table { get; }
 }

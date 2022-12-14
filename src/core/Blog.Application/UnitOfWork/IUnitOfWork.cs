@@ -1,36 +1,35 @@
 ﻿using Blog.Application.Repository;
 
-namespace Blog.Application.UnitOfWork
+namespace Blog.Application.UnitOfWork;
+
+public interface IUnitOfWork : IAsyncDisposable
 {
-	public interface IUnitOfWork : IAsyncDisposable
-	{
-		IArticleReadRepository ArticleReadRepository { get; }
-		IArticleWriteRepository ArticleWriteRepository { get; }
+	IArticleReadRepository ArticleReadRepository { get; }
+	IArticleWriteRepository ArticleWriteRepository { get; }
 
-		ICategoryReadRepository CategoryReadRepository { get; }
-		ICategoryWriteRepository CategoryWriteRepository { get; }
+	ICategoryReadRepository CategoryReadRepository { get; }
+	ICategoryWriteRepository CategoryWriteRepository { get; }
 
-		IMediaReadRepository MediaReadRepository { get; }
-		IMediaWriteRepository MediaWriteRepository { get; }
+	IMediaReadRepository MediaReadRepository { get; }
+	IMediaWriteRepository MediaWriteRepository { get; }
 
-		IMediaTypeReadRepository MediaTypeReadRepository { get; }
-		IMediaTypeWriteRepository MediaTypeWriteRepository { get; }
+	IMediaTypeReadRepository MediaTypeReadRepository { get; }
+	IMediaTypeWriteRepository MediaTypeWriteRepository { get; }
 
-		ITicketReadRepository TicketReadRepository { get; }
-		ITicketWriteRepository TicketWriteRepository { get; }
+	ITicketReadRepository TicketReadRepository { get; }
+	ITicketWriteRepository TicketWriteRepository { get; }
 
-		IRoleReadRepository RoleReadRepository { get; }
-		IRoleWriteRepository RoleWriteRepository { get; }
+	IRoleReadRepository RoleReadRepository { get; }
+	IRoleWriteRepository RoleWriteRepository { get; }
 
-		ISettingGroupReadRepository SettingGroupReadRepository { get; }
-		ISettingGroupWriteRespository SettingGroupWriteRespository { get; }
+	ISettingGroupReadRepository SettingGroupReadRepository { get; }
+	ISettingGroupWriteRespository SettingGroupWriteRespository { get; }
 
-		ISettingsReadRepository SettingsReadRepository { get; }
-		ISettingsWriteRepository SettingsWriteRepository { get; }
+	ISettingsReadRepository SettingsReadRepository { get; }
+	ISettingsWriteRepository SettingsWriteRepository { get; }
 
-		IUserReadRepository UserReadRepository { get; }
-		IUserWriteRepository UserWriteRepository { get; }
+	IUserReadRepository UserReadRepository { get; }
+	IUserWriteRepository UserWriteRepository { get; }
 
-		Task<int> SaveAsync(CancellationToken cancellationToken = default);
-	}
+	Task<int> SaveAsync(CancellationToken cancellationToken = default);
 }

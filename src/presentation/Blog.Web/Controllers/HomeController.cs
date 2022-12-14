@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Blog.Web.Controllers
+namespace Blog.Web.Controllers;
+
+public class HomeController : Controller
 {
-	public class HomeController : Controller
+	public IActionResult Index()
 	{
-		public IActionResult Index()
-		{
-			return View();
-		}
+		return View();
 	}
 }

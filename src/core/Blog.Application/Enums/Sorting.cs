@@ -1,9 +1,8 @@
-﻿namespace Blog.Application.Enums
+﻿namespace Blog.Application.Enums;
+
+[Flags]
+public enum Sorting
 {
-	[Flags]
-	public enum Sorting
-	{
-		Ascending,
-		Descending,
-	}
+	Ascending,
+	Descending,
 }

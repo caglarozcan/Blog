@@ -1,8 +1,7 @@
 ﻿using Blog.Domain.Entities;
 
-namespace Blog.Application.Repository
+namespace Blog.Application.Repository;
+
+public interface IMediaTypeWriteRepository : IWriteRepository<MediaType>
 {
-	public interface IMediaTypeWriteRepository : IWriteRepository<MediaType>
-	{
-	}
 }

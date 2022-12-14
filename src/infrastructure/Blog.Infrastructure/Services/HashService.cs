@@ -2,28 +2,27 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Blog.Infrastructure.Services
+namespace Blog.Infrastructure.Services;
+
+public class HashService : IHashService
 {
-	public class HashService : IHashService
+	public bool Compare(string text, string hashedText)
 	{
-		public bool Compare(string text, string hashedText)
-		{
-			return (Hash(text) == hashedText);
-		}
+		return (Hash(text) == hashedText);
+	}
 
-		public string Hash(string text)
+	public string Hash(string text)
+	{
+		using (SHA256 sha256Hash = SHA256.Create())
 		{
-			using (SHA256 sha256Hash = SHA256.Create())
+			byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(text));
+
+			StringBuilder builder = new StringBuilder();
+			for (int i = 0; i < bytes.Length; i++)
 			{
-				byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(text));
-
-				StringBuilder builder = new StringBuilder();
-				for (int i = 0; i < bytes.Length; i++)
-				{
-					builder.Append(bytes[i].ToString("x2"));
-				}
-				return builder.ToString();
+				builder.Append(bytes[i].ToString("x2"));
 			}
+			return builder.ToString();
 		}
 	}
 }

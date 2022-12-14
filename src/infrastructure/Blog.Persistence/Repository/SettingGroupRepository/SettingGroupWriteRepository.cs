@@ -2,13 +2,12 @@
 using Blog.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Persistence.Repository
+namespace Blog.Persistence.Repository;
+
+public class SettingGroupWriteRepository : WriteRepository<SettingGroup>, ISettingGroupWriteRespository
 {
-	public class SettingGroupWriteRepository : WriteRepository<SettingGroup>, ISettingGroupWriteRespository
+	public SettingGroupWriteRepository(DbContext dbContext) 
+		: base(dbContext)
 	{
-		public SettingGroupWriteRepository(DbContext dbContext) 
-			: base(dbContext)
-		{
-		}
 	}
 }
