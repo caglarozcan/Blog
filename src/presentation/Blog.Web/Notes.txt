@@ -63,6 +63,7 @@ https://gist.github.com/ErikNoren/5ab952ce93558ed1a79a97cd9a34bd37
 https://mousavi310.github.io/posts/a-refreshable-sql-server-configuration-provider-for-net-core/
 https://learn.microsoft.com/en-us/dotnet/core/extensions/custom-configuration-provider
 https://stackoverflow.com/questions/60330342/can-i-move-configuration-from-appsettings-json-to-database-in-an-asp-net-core-mv
+https://mousavi310.github.io/posts/a-refreshable-sql-server-configuration-provider-for-net-core/
 Veri tabanı temelli konfigurasyon
 -----------------------------------------------------------------------------------------------
 Ardalis Specification pattern araştır.
