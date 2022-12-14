@@ -22,7 +22,7 @@ namespace Blog.Persistence.Repository
 		{
 			SearchCategorySpecification searchCategorySpecification = new(request.SearchValue);
 
-			var query = Table.Where(searchCategorySpecification.ToExpression()).Select(s => new CategoryListDto()
+			var query = Table.AsNoTracking().Where(searchCategorySpecification.ToExpression()).Select(s => new CategoryListDto()
 			{
 				Id = s.Id,
 				Title = s.Title,
@@ -44,7 +44,7 @@ namespace Blog.Persistence.Repository
 
 		public async Task<CategorySelectDto> GetCategorySelect(Guid? id)
 		{
-			var options = await Table.Where(c => !c.ParentId.HasValue).Select(s => new SelectOptionsDto()
+			var options = await Table.AsNoTracking().Where(c => !c.ParentId.HasValue).Select(s => new SelectOptionsDto()
 			{
 				Value = s.Id.ToString(),
 				Text = s.Title

@@ -18,7 +18,7 @@ namespace Blog.Persistence.Repository
 
 		public async Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request, Guid userId)
 		{
-			var query = Table.Include(i => i.MediaType).Where(m => m.UserId.Equals(userId)).Select(s => new MediaListDto()
+			var query = Table.AsNoTracking().Include(i => i.MediaType).Where(m => m.UserId.Equals(userId)).Select(s => new MediaListDto()
 			{
 				Id	= s.Id,
 				Name = s.Name,

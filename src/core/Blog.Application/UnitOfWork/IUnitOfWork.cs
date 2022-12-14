@@ -31,6 +31,6 @@ namespace Blog.Application.UnitOfWork
 		IUserReadRepository UserReadRepository { get; }
 		IUserWriteRepository UserWriteRepository { get; }
 
-		Task<int> SaveAsync();
+		Task<int> SaveAsync(CancellationToken cancellationToken = default);
 	}
 }

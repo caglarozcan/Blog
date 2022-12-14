@@ -2,7 +2,7 @@
 {
 	public interface IWriteRepository<T> : IRepository<T> where T : class, new()
 	{
-		Task<bool> InsertAsync(T entity);
+		Task<bool> InsertAsync(T entity, CancellationToken cancellationToken = default);
 
 		Task<bool> UpdateAsync(T entity);
 

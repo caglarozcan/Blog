@@ -61,9 +61,9 @@ namespace Blog.Persistence
 		public IUserReadRepository UserReadRepository => _userReadRepository ?? new UserReadRepository(_dbContext);
 		public IUserWriteRepository UserWriteRepository => _userWriteRepository ?? new UserWriteRepository(_dbContext);
 
-		public async Task<int> SaveAsync()
+		public async Task<int> SaveAsync(CancellationToken cancellationToken = default)
 		{
-			return await _dbContext.SaveChangesAsync();
+			return await _dbContext.SaveChangesAsync(cancellationToken);
 		}
 
 		public async ValueTask DisposeAsync()

@@ -16,7 +16,7 @@ namespace Blog.Persistence.Repository
 		#region Read
 		public async Task<RoleSelectDto> GetSelectRolesAsync(Guid? id)
 		{
-			var options = await Table.Select(s => new SelectOptionsDto() { 
+			var options = await Table.AsNoTracking().Select(s => new SelectOptionsDto() { 
 				Value = s.Id.ToString(),
 				Text = s.Name
 			}).ToListAsync();

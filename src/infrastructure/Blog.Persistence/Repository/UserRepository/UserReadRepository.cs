@@ -23,7 +23,7 @@ namespace Blog.Persistence.Repository
 
 		public async Task<UserRoleDto> GetAuthenticatedUserRolesAsync(Guid userId)
 		{
-			var role = await _userRoleTable.Where(r => r.UserId == userId).Include(i => i.Role).FirstOrDefaultAsync();
+			var role = await _userRoleTable.AsNoTracking().Where(r => r.UserId == userId).Include(i => i.Role).FirstOrDefaultAsync();
 
 			return new UserRoleDto()
 			{
@@ -36,7 +36,7 @@ namespace Blog.Persistence.Repository
 		{
 			SearchUserSpecification spec = new(request.SearchValue);
 
-			var query = Table.Include(i => i.Roles).Where(spec.ToExpression()).Select(s => new UserListDto()
+			var query = Table.AsNoTracking().Include(i => i.Roles).Where(spec.ToExpression()).Select(s => new UserListDto()
 			{
 				Id = s.Id,
 				Name = s.Name,

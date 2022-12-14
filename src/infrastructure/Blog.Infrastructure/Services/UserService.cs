@@ -102,7 +102,7 @@ namespace Blog.Infrastructure.Services
 
 		public async Task<UserUpdateDto> GetUpdatedUserAsync(Guid id)
 		{
-			var user = await _unitOfWork.UserReadRepository.GetAsync(u => u.Id.Equals(id), i => i.Roles);
+			var user = await _unitOfWork.UserReadRepository.GetAsync(u => u.Id.Equals(id), default, i => i.Roles);
 
 			return new UserUpdateDto()
 			{
@@ -136,7 +136,7 @@ namespace Blog.Infrastructure.Services
 				return new Response<ProblemDetails>(message: "Girilen mail adresi sistemde tanımlı. Başka bir mail adresi giriniz.", success: false);
 			}
 
-			var user = await _unitOfWork.UserReadRepository.GetAsync(u => u.Id.Equals(data.Id), i => i.Roles);
+			var user = await _unitOfWork.UserReadRepository.GetAsync(u => u.Id.Equals(data.Id), default, i => i.Roles);
 			user.Name = data.Name.Trim();
 			user.LastName = data.LastName.Trim();
 			user.Email = data.Email.Trim();

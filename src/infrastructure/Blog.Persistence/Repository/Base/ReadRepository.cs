@@ -16,19 +16,19 @@ namespace Blog.Persistence.Repository
 
 		public DbSet<T> Table => _dbContext.Set<T>();
 
-		public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
+		public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken = default)
 		{
-			return await Table.AnyAsync(expression);
+			return await Table.AsNoTracking().AnyAsync(expression, cancellationToken);
 		}
 
-		public async Task<int> CountAsync(Expression<Func<T, bool>> expression)
+		public async Task<int> CountAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken = default)
 		{
-			return expression == null ? await Table.CountAsync() : await Table.CountAsync(expression);
+			return expression == null ? await Table.AsNoTracking().CountAsync(cancellationToken) : await Table.AsNoTracking().CountAsync(expression, cancellationToken);
 		}
 
-		public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> expression = null, params Expression<Func<T, object>>[] includes)
+		public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> expression = null, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includes)
 		{
-			IQueryable<T> query = Table;
+			IQueryable<T> query = Table.AsNoTracking();
 
 			if (expression != null)
 			{
@@ -43,12 +43,12 @@ namespace Blog.Persistence.Repository
 				}
 			}
 
-			return await query.ToListAsync();
+			return await query.ToListAsync(cancellationToken);
 		}
 
-		public async Task<T> GetAsync(Expression<Func<T, bool>> expression, params Expression<Func<T, object>>[] includes)
+		public async Task<T> GetAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includes)
 		{
-			IQueryable<T> query = Table;
+			IQueryable<T> query = Table.AsNoTracking();
 
 			if (expression != null)
 			{
@@ -63,12 +63,12 @@ namespace Blog.Persistence.Repository
 				}
 			}
 
-			return await query.FirstOrDefaultAsync();
+			return await query.FirstOrDefaultAsync(cancellationToken);
 		}
 
-		public async Task<T> GetAsync(Guid id, params Expression<Func<T, object>>[] includes)
+		public async Task<T> GetAsync(Guid id, CancellationToken cancellationToken = default, params Expression<Func<T, object>>[] includes)
 		{
-			IQueryable<T> query = Table;
+			IQueryable<T> query = Table.AsNoTracking();
 
 			if (includes.Any())
 			{
@@ -78,7 +78,7 @@ namespace Blog.Persistence.Repository
 				}
 			}
 
-			return await query.FirstOrDefaultAsync(q => q.Id == id);
+			return await query.FirstOrDefaultAsync(q => q.Id == id, cancellationToken);
 		}
 	}
 }

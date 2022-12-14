@@ -27,9 +27,9 @@ namespace Blog.Persistence.Repository
 			return result.State == EntityState.Deleted;
 		}
 
-		public async Task<bool> InsertAsync(T entity)
+		public async Task<bool> InsertAsync(T entity, CancellationToken cancellationToken = default)
 		{
-			var result = await Table.AddAsync(entity);
+			var result = await Table.AddAsync(entity, cancellationToken);
 			return result.State == EntityState.Added;
 		}
 

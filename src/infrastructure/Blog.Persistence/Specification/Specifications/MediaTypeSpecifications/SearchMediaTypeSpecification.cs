@@ -20,7 +20,7 @@ namespace Blog.Persistence.Specification.Specifications.MediaTypeSpecifications
 				return c => c.CreatedDate.Equals(searchDate);
 			}
 
-			return String.IsNullOrEmpty(_searchValue) ? 
+			return String.IsNullOrWhiteSpace(_searchValue) ? 
 				(c => true) : 
 				(c => c.Title.Contains(_searchValue) || c.FileExtension.Contains(_searchValue) || c.MimeType.Contains(_searchValue));
 		}

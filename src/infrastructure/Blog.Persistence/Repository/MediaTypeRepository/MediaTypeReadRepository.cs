@@ -8,13 +8,12 @@ using Blog.Application.Response;
 using Blog.Domain.Entities;
 using Blog.Persistence.Specification.Specifications.MediaTypeSpecifications;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace Blog.Persistence.Repository
 {
 	internal class MediaTypeReadRepository : ReadRepository<MediaType>, IMediaTypeReadRepository
 	{
-		public MediaTypeReadRepository(DbContext dbContext) 
+		public MediaTypeReadRepository(DbContext dbContext)
 			: base(dbContext)
 		{
 		}
@@ -23,7 +22,7 @@ namespace Blog.Persistence.Repository
 		{
 			SearchMediaTypeSpecification mediaTypeSearchSpecification = new(request.SearchValue);
 
-			var query = Table.Where(mediaTypeSearchSpecification.ToExpression()).Select(s => new MediaTypeListDto()
+			var query = Table.AsNoTracking().Where(mediaTypeSearchSpecification.ToExpression()).Select(s => new MediaTypeListDto()
 			{
 				Id = s.Id,
 				Title = s.Title,
@@ -45,7 +44,7 @@ namespace Blog.Persistence.Repository
 		{
 			GetActiveMediaTypesSpecification spec = new();
 
-			return await Table.Where(spec.ToExpression()).Select(s => new MediaTypeWhiteListDto()
+			return await Table.AsNoTracking().Where(spec.ToExpression()).Select(s => new MediaTypeWhiteListDto()
 			{
 				Id = s.Id,
 				FileExtension = s.FileExtension,
@@ -59,7 +58,7 @@ namespace Blog.Persistence.Repository
 			return new MediaTypeSelectDto()
 			{
 				MediaTypeId = id,
-				Options = await Table.Select(s => new SelectOptionsDto()
+				Options = await Table.AsNoTracking().Select(s => new SelectOptionsDto()
 				{
 					Text = s.Title,
 					Value = s.Id.ToString()

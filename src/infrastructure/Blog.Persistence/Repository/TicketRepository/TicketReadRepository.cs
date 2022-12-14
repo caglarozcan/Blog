@@ -21,7 +21,7 @@ namespace Blog.Persistence.Repository
 		{
 			SearchTicketSpecification spec = new(request.SearchValue);
 
-			var query = Table.Where(spec.ToExpression()).Select(s => new TagListDto()
+			var query = Table.AsNoTracking().Where(spec.ToExpression()).Select(s => new TagListDto()
 			{
 				Id = s.Id,
 				Title = s.Title,
