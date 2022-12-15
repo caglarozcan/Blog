@@ -200,29 +200,29 @@
 					if (sortIndex == dt.sortedIndex) {
 						var sortIcon = find('i', thead);
 						sortIcon.classList.add('cdi');
-						dt.sortType = (dt.sortType === 0 ? 1 : 0);
 
+						dt.sortType = (dt.sortType === 0 ? 1 : 0);
+						
 						if (dt.sortType === 1) {
-							sortIcon.classList.remove('cdi-arrow-up');
-							sortIcon.classList.add('cdi-arrow-down');
-						} else {
 							sortIcon.classList.remove('cdi-arrow-down');
 							sortIcon.classList.add('cdi-arrow-up');
+						} else {
+							sortIcon.classList.remove('cdi-arrow-up');
+							sortIcon.classList.add('cdi-arrow-down');
 						}
 					} else {
+						dt.sortType = 0;
+
 						var sortIcons = findAll('i', dt.thead);
 						each(sortIcons, function (icon) {
 							icon.remove();
 						});
 
 						var sortIcon = document.createElement('i');
-						sortIcon.classList.add('cdi');
 						sortIcon.classList.add('cdi-arrow-down');
 
 						thead.appendChild(sortIcon);
-
 						dt.sortedIndex = sortIndex;
-						dt.sortType = 0;
 					}
 
 					dt.renderBody();

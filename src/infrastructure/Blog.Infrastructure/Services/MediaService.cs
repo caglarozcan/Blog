@@ -36,6 +36,24 @@ public class MediaService : BaseService, IMediaService
 	{
 		return await _unitOfWork.MediaReadRepository.GetMediaListAsync(request, _authUserInfoService.Id);
 	}
+
+	public async Task<MediaInfoDto> GetMediaInfoAsync(Guid id)
+	{
+		var media = await _unitOfWork.MediaReadRepository.GetAsync(m => m.Id.Equals(id), includes: i => i.MediaType);
+
+		return new MediaInfoDto()
+		{
+			Id = media.Id,
+			CreatedDate = media.CreatedDate,
+			UpdateDate = media.UpdatedDate,
+			Description = media.Description,
+			Status = media.Status,
+			FileExtension = media.MediaType.FileExtension,
+			MediaTypeName = media.MediaType.Title,
+			Name = media.Name,
+			OriginalName = media.OriginalName
+		};
+	}
 	#endregion
 
 	#region Update

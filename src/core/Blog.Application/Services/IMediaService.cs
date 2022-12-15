@@ -13,6 +13,8 @@ public interface IMediaService
 
 	#region Read
 	Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request);
+
+	Task<MediaInfoDto> GetMediaInfoAsync(Guid id);
 	#endregion
 
 	#region Update

@@ -37,6 +37,12 @@ public class MediaController : BaseController
 	}
 
 	[HttpGet]
+	public async Task<IActionResult> EditInfo(Guid id)
+	{
+		return Ok(await _mediaService.GetMediaInfoAsync(id));
+	}
+
+	[HttpGet]
 	public async Task<IActionResult> GetMediaList(DataListRequest request)
 	{
 		return Ok(await _mediaService.GetMediaListAsync(request));
