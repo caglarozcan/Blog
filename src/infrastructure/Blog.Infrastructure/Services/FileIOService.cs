@@ -72,9 +72,20 @@ public class FileIOService : IFileIOService
 
 				if (file.ContentType.StartsWith("image"))
 				{
-					_imageResizeService.ImageResizeThumbnail(file.OpenReadStream(), uploadPath, newFileName);
-					_imageResizeService.ImageResizeMedium(file.OpenReadStream(), uploadPath, newFileName);
-					_imageResizeService.ImageResizeLarge(file.OpenReadStream(), uploadPath, newFileName);
+					if (_fileUploadOptions.ThumbIsRatioResize)
+						_imageResizeService.ImageResizeThumbnailRatio(file.OpenReadStream(), uploadPath, newFileName);
+					else
+						_imageResizeService.ImageResizeThumbnail(file.OpenReadStream(), uploadPath, newFileName);
+
+					if (_fileUploadOptions.MediumIsRatioResize)
+						_imageResizeService.ImageResizeMediumRatio(file.OpenReadStream(), uploadPath, newFileName);
+					else
+						_imageResizeService.ImageResizeMedium(file.OpenReadStream(), uploadPath, newFileName);
+
+					if (_fileUploadOptions.LargeIsRatioResize)
+						_imageResizeService.ImageResizeLargeRatio(file.OpenReadStream(), uploadPath, newFileName);
+					else
+						_imageResizeService.ImageResizeLarge(file.OpenReadStream(), uploadPath, newFileName);
 				}
 
 				return new Response("Dosya başarıyla yüklendi.", true);

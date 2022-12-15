@@ -34,6 +34,24 @@ public class ImageResizeService : IImageResizeService
 	}
 
 	[SupportedOSPlatform("windows")]
+	public void ImageResizeLargeRatio(Stream image, string uploadPath, string fileName)
+	{
+		imageResizeRatio(image, _fileUploadOptions.ImageSmallWidth, _fileUploadOptions.ImageSmallHeight).Save(Path.Combine(uploadPath, "large", fileName));
+	}
+
+	[SupportedOSPlatform("windows")]
+	public void ImageResizeMediumRatio(Stream image, string uploadPath, string fileName)
+	{
+		imageResizeRatio(image, _fileUploadOptions.ImageSmallWidth, _fileUploadOptions.ImageSmallHeight).Save(Path.Combine(uploadPath, "large", fileName));
+	}
+
+	[SupportedOSPlatform("windows")]
+	public void ImageResizeThumbnailRatio(Stream image, string uploadPath, string fileName)
+	{
+		imageResizeRatio(image, _fileUploadOptions.ImageSmallWidth, _fileUploadOptions.ImageSmallHeight).Save(Path.Combine(uploadPath, "large", fileName));
+	}
+
+	[SupportedOSPlatform("windows")]
 	private Bitmap imageResize(Stream stream, int width, int height)
 	{
 		Image image = Image.FromStream(stream);
@@ -41,6 +59,39 @@ public class ImageResizeService : IImageResizeService
 		using (Graphics graphics = Graphics.FromImage((Image)bitmap))
 		{
 			graphics.DrawImage(image, 0, 0, width, height);
+			return bitmap;
+		}
+	}
+
+	[SupportedOSPlatform("windows")]
+	private Bitmap imageResizeRatio(Stream stream, int width, int height)
+	{
+		Image image = Image.FromStream(stream);
+		Size size = new Size(width, height);
+
+		int imageWidth = image.Width;
+		int imageHeight = image.Height;
+
+		double ratio = 0;
+		double ratioWidth = (double)size.Width / (double)imageWidth;
+		double ratioHeight = (double)size.Height / (double)imageHeight;
+
+		if (ratioWidth < ratioHeight)
+		{
+			ratio = ratioWidth;
+		}
+		else
+		{
+			ratio = ratioHeight;
+		}
+
+		Size newSize = new Size((int)(imageWidth * ratio), (int)(imageHeight * ratio));
+
+		Bitmap bitmap = new Bitmap(newSize.Width, newSize.Height);
+		using (Graphics graphics = Graphics.FromImage((Image)bitmap))
+		{
+			graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+			graphics.DrawImage(image, 0, 0, newSize.Width, newSize.Height);
 			return bitmap;
 		}
 	}
