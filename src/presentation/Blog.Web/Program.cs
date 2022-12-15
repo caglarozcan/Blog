@@ -1,10 +1,12 @@
-﻿using Blog.Infrastructure;
+﻿using Blog.Application.Dto.SettingDto.BlogOptions;
+using Blog.Infrastructure;
 using Blog.Persistence;
+using Blog.Persistence.Configuration;
 using Blog.Persistence.EfContext;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 /*
@@ -32,11 +34,25 @@ builder.Services.AddDbContext<EfBlogContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("BlogContext"), x => x.MigrationsAssembly("Blog.Persistence"));
 });
 
+builder.Host.ConfigureAppConfiguration(options =>
+{
+	options.AddSqlServer(builder.Configuration.GetConnectionString("BlogContext"));
+});
+
+
 //Blog.Infrastructure katmanı servisleri inject edilmesi.
 builder.Services.AddInfrastructureServices();
 builder.Services.AddPersistenceServices();
 
 builder.Services.AddHttpContextAccessor();
+
+//Blog Options
+builder.Services.Configure<ArticleOptions>(builder.Configuration.GetSection("ArticleSettings"));
+builder.Services.Configure<CommentOptions>(builder.Configuration.GetSection("CommentSettings"));
+builder.Services.Configure<EmailOptions>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.Configure<FileUploadOptions>(builder.Configuration.GetSection("FileUploadSettings"));
+builder.Services.Configure<GeneralSiteOptions>(builder.Configuration.GetSection("GeneralSettings"));
+builder.Services.Configure<PaginationOptions>(builder.Configuration.GetSection("PagingSettings"));
 
 //Sessions ve Cookie Authentication
 builder.Services.AddSession();
