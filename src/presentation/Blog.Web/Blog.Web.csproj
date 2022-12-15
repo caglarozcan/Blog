@@ -58,7 +58,6 @@
     <Folder Include="wwwroot\Uploads\images\jpeg\large\" />
     <Folder Include="wwwroot\Uploads\images\jpeg\middle\" />
     <Folder Include="wwwroot\Uploads\images\jpeg\original\" />
-    <Folder Include="wwwroot\Uploads\images\jpeg\thumbnail\" />
     <Folder Include="wwwroot\Uploads\images\jpg\large\" />
     <Folder Include="wwwroot\Uploads\images\jpg\middle\" />
     <Folder Include="wwwroot\Uploads\images\jpg\original\" />

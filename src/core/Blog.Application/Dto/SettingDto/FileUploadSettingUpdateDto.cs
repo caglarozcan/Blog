@@ -26,4 +26,10 @@ public class FileUploadSettingUpdateDto
 
 	[Required(ErrorMessage = "Büyük resim yüksekliği alanı zorunludur.")]
 	public int ImageLargeHeight { get; set; }
+
+	public bool ThumbIsRatioResize { get; set; }
+
+	public bool MediumIsRatioResize { get; set; }
+
+	public bool LargeIsRatioResize { get; set; }
 }

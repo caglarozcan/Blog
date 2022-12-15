@@ -24,7 +24,7 @@ public class MediaReadRepository : ReadRepository<Media>, IMediaReadRepository
 			OriginalName = s.OriginalName,
 			Icon = s.MediaType.Icon,
 			MimeType = s.MediaType.MimeType,
-			UploadDir = s.MediaType.UploadDir
+			UploadDir = s.MediaType.UploadDir + "/thumbnail"
 		});
 
 		return await query.ToPagingData(request.PerData, request.Page);

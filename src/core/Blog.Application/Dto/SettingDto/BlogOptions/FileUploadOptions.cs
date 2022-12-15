@@ -17,4 +17,10 @@ public class FileUploadOptions
 	public int ImageLargeWidth { get; set; }
 
 	public int ImageLargeHeight { get; set; }
+
+	public bool ThumbIsRatioResize { get; set; }
+
+	public bool MediumIsRatioResize { get; set; }
+
+	public bool LargeIsRatioResize { get; set; }
 }
