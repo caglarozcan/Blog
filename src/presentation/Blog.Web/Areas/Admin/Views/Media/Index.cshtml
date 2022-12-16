@@ -33,13 +33,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="card-body pd">
-
-					<!--Makale listesi-->
-					<!--Gallery-->
+				<div class="card-body pd" id="image-galley-content">
 					<div class="gallery" data-columns="10" id="main-gallery"></div>
-					<!--Makale listesi-->
-
 				</div>
 			</div>
 		</div>
@@ -49,6 +44,14 @@
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
 		var gallery = new PhotoGallery({ selector: '#main-gallery', perData: 32 });
+
+		const galleryContent = document.getElementById('image-galley-content');
+		const mainGallery = document.getElementById('main-gallery');
+		let idealColumnSize = galleryContent.clientWidth < 640 ? 135 : 150;
+
+		window.addEventListener('resize', (e) => {
+			let columnSize = Math.min(Math.round(galleryContent.clientWidth / idealColumnSize), 10) || 1;
+			mainGallery.setAttribute('data-columns', columnSize);
+		});
 	});
-	
 </script>
