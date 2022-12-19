@@ -167,7 +167,7 @@ footer {
 .file-upload {
   width: 100%;
   height: 350px;
-  border-radius: 15px;
+  border-radius: 8px;
   border: 2px dashed #dee2e6;
   text-align: center;
 }

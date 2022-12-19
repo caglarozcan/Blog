@@ -20,6 +20,7 @@
 
 <div class="wrapper">
     <div class="grid">
+        <!--Dosya yükleme alanı-->
         <div class="col-12">
             <div class="card">
                 <div class="card-body pd">
@@ -32,23 +33,29 @@
                 </div>
             </div>
         </div>
+        <!--Dosya yükleme alanı-->
 
-        <div class="col-12">
+        <!--Progress bar-->
+        <div class="col-12 hide">
             <div class="card">
                 <div class="card-body pd" id="upload-progress">
                     <span>Yükleniyor :</span>
                     <progress id="progress-bar" max=100 value=0 style="width:400px"></progress>
-                    <span>%25</span>
+                    <span>%0</span>
                 </div>
             </div>
         </div>
-        <div class="col-12">
+        <!--Progress bar-->
+
+        <!--Dosya yükleme önizleme-->
+        <div class="col-12 hide">
             <div class="card">
                 <div class="card-body" style="padding:5px;">
                     <div class="image-preview-container" id="upload-preview"></div>
                 </div>
             </div>
         </div>
+        <!--Dosya yükleme önizleme-->
     </div>
 </div>
 

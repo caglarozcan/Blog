@@ -23,6 +23,10 @@
 	animation: fadein .8s;
 }
 
+.hide {
+	display:none !important;
+}
+
 @keyframes fadein {
 	from {
 		opacity: 0;

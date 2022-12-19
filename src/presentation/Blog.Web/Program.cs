@@ -22,12 +22,6 @@ builder.Services.AddControllersWithViews().AddMvcOptions(o =>
 	o.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => "Geçersiz değer girildi. Kontrol ediniz.");
 });
 
-//Resource dosyaları için
-/*builder.Services.AddLocalization(l =>
-{
-	l.ResourcesPath = "Resources";
-});*/
-
 //Veritabanı için connection string tanımlaması.
 builder.Services.AddDbContext<EfBlogContext>(options =>
 {
@@ -95,30 +89,6 @@ if (!app.Environment.IsDevelopment())
 	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 	//app.UseHsts();
 }
-
-//Resource işlemleri
-/*List<CultureInfo> cultures = new List<CultureInfo>() 
-{
-	new CultureInfo("tr-TR"),
-	new CultureInfo("en-US")
-};
-
-RequestLocalizationOptions localizerOptions = new RequestLocalizationOptions
-{
-	DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("tr-TR"),
-	ApplyCurrentCultureToResponseHeaders = true,
-	SupportedUICultures = cultures,
-	SupportedCultures = cultures,
-};
-
-localizerOptions.SetDefaultCulture("tr-TR");
-
-localizerOptions.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async httpContext =>
-{
-	return new ProviderCultureResult("tr-TR");
-}));
-
-app.UseRequestLocalization(localizerOptions);*/
 
 //app.UseHttpsRedirection();
 app.UseStaticFiles();

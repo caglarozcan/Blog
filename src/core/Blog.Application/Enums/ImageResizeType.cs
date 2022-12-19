@@ -3,7 +3,7 @@
 [Flags]
 public enum ImageResizeType
 {
-	ResizeWithRatio,
-	ResizeWithoutRatio
+	ResizeRatio,
+	ResizeNormal
 }
 
