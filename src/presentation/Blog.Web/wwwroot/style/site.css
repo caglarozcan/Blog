@@ -45,8 +45,16 @@ nav ul li {
 nav ul li.selected a {
   background-color: #319DB5;
 }
-nav ul li.selected a, nav ul li.selected i, nav ul li.selected span {
+nav ul li.selected a, nav ul li.selected i, nav ul li.selected span:not(.svg-icon) {
   color: #ffffff;
+}
+nav ul li.selected svg g [fill] {
+  -webkit-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+  fill: #ffffff !important;
+}
+nav ul li.selected svg path {
+  fill: #ffffff !important;
 }
 nav ul li a {
   border-radius: 3px;
@@ -66,6 +74,14 @@ nav ul li a:hover > i {
 nav ul li a:hover > span {
   color: #ffffff;
 }
+nav ul li a:hover svg g [fill] {
+  -webkit-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+  fill: #ffffff !important;
+}
+nav ul li a:hover svg path {
+  fill: #ffffff !important;
+}
 nav ul li a i, nav ul li a span {
   color: #B5B5C3;
 }
@@ -80,6 +96,9 @@ nav ul li a span {
   text-transform: uppercase;
   font-weight: 300;
   font-size: 0.68rem;
+}
+nav ul li a .svg-icon {
+  margin-bottom: 10px;
 }
 
 #content {

@@ -1704,3 +1704,66 @@ table td a i {
     opacity: 1;
   }
 }
+.svg-icon svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.svg-icon svg g [fill] {
+  -webkit-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+  fill: #b5b5c3;
+}
+.svg-icon svg.svg-icon-primary svg g [fill] {
+  -webkit-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+  fill: #3699ff !important;
+}
+.svg-icon svg.svg-icon-primary svg:hover g [fill] {
+  -webkit-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+}
+.svg-icon svg.svg-logo-primary svg path {
+  fill: #3699ff !important;
+}
+.svg-icon svg.svg-icon-2x svg {
+  height: 2rem !important;
+  width: 2rem !important;
+}
+.svg-icon svg svg:hover g [fill] {
+  -webkit-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+}
+.svg-icon svg.svg-icon-3x svg {
+  height: 3rem !important;
+  width: 3rem !important;
+}
+.svg-icon svg.svg-icon-4x svg {
+  height: 4rem !important;
+  width: 4rem !important;
+}
+.svg-icon svg.svg-icon-5x svg {
+  height: 5rem !important;
+  width: 5rem !important;
+}
+.svg-icon svg.svg-icon-6x svg {
+  height: 6rem !important;
+  width: 6rem !important;
+}
+.svg-icon svg.svg-icon-7x svg {
+  height: 7rem !important;
+  width: 7rem !important;
+}
+.svg-icon svg.svg-icon-8x svg {
+  height: 8rem !important;
+  width: 8rem !important;
+}
+.svg-icon svg.svg-icon-9x svg {
+  height: 9rem !important;
+  width: 9rem !important;
+}
+.svg-icon svg.svg-icon-10x svg {
+  height: 10rem !important;
+  width: 10rem !important;
+}

@@ -79,7 +79,13 @@ ProjectTo mapper
 -----------------------------------------------------------------------------------------------
 Csharp string vs String : https://stackoverflow.com/questions/7074/what-is-the-difference-between-string-and-string-in-c
 -----------------------------------------------------------------------------------------------
+Blog Tasarımları:
+https://preview.keenthemes.com/metronic8/demo1/pages/blog/home.html
+https://preview.keenthemes.com/metronic8/demo1/pages/blog/post.html
+https://themesbrand.com/skote-symfony/layouts/blog-details.html
 -----------------------------------------------------------------------------------------------
+Admin Paneli Tasarımları:
+https://rocketman-vue.left4code.com/
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------

@@ -53,8 +53,18 @@ nav {
 					background-color: $color-blue;
 				}
 
-				a, i, span {
+				a, i, span:not(.svg-icon) {
 					color: $color-white;
+				}
+
+				svg g [fill] {
+					-webkit-transition: fill 0.3s ease;
+					transition: fill 0.3s ease;
+					fill: #ffffff !important;
+				}
+
+				svg path {
+					fill: #ffffff !important;
 				}
 			}
 
@@ -77,6 +87,16 @@ nav {
 					& > span {
 						color: $color-white;
 					}
+
+					svg g [fill] {
+						-webkit-transition: fill 0.3s ease;
+						transition: fill 0.3s ease;
+						fill: #ffffff !important;
+					}
+
+					svg path {
+						fill: #ffffff !important;
+					}
 				}
 
 				i, span {
@@ -95,6 +115,10 @@ nav {
 					text-transform: uppercase;
 					font-weight: 300;
 					font-size: 0.68rem;
+				}
+
+				.svg-icon {
+					margin-bottom: 10px;
 				}
 			}
 		}

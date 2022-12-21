@@ -71,7 +71,6 @@
     <Folder Include="wwwroot\Uploads\images\png\original\" />
     <Folder Include="wwwroot\Uploads\images\png\thumbnail\" />
     <Folder Include="wwwroot\fonts\" />
-    <Folder Include="wwwroot\third-party\" />
   </ItemGroup>
 
   <ItemGroup>
