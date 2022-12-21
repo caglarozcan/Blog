@@ -22,19 +22,20 @@
 
 html, body, div, header, nav, main, section, article, footer, menu, ul, ol,
 li, b, p, strong, a, h1, h2, h3, h4, h5, h6, table, thead, tbody tr,
-td, span, iframe, input, button, textarea, select, img, sub, sup, pre,
+td, span, iframe, input, button, textarea, select, option, img, sub, sup, pre,
 code, form, i {
 	font-size: 0.9rem;
 	vertical-align: baseline;
 	color: $color-font;
 	font-family: $font-poppins, sans-serif;
+	-webkit-font-smoothing: antialiased;
 }
 
 html {
 	tab-size: 4;
 	-webkit-text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	//-moz-osx-font-smoothing: grayscale;
 }
 
 body {

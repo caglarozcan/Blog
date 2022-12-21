@@ -17,7 +17,7 @@ textarea {
 	font-size: 0.9rem;
 	font-weight: 400;
 	line-height: 1.5;
-	font-family: $font-poppins;
+	font-family: $font-poppins !important;
 	display: block;
 	background-clip: padding-box;
 	color: $color-font;
