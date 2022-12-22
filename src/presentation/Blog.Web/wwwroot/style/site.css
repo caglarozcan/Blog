@@ -175,7 +175,6 @@ footer {
 
 .file-upload {
   width: 100%;
-  height: 350px;
   border-radius: 8px;
   border: 2px dashed #dee2e6;
   text-align: center;
@@ -183,12 +182,15 @@ footer {
 .file-upload.highlight {
   border: 3px dashed #319DB5;
 }
-.file-upload span {
-  font-size: 1.5rem;
+.file-upload .upload-text {
+  font-size: 1.9rem;
   display: inline-block;
-  margin-top: 150px;
+  margin: 70px 0 100px 0;
   color: #6c7293;
   font-weight: 300;
+}
+.file-upload .upload-text .svg-icon {
+  margin-bottom: 30px;
 }
 
 .image-preview-container {
