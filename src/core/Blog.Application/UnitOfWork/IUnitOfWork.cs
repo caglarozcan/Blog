@@ -28,6 +28,9 @@ public interface IUnitOfWork : IAsyncDisposable
 	ISettingsReadRepository SettingsReadRepository { get; }
 	ISettingsWriteRepository SettingsWriteRepository { get; }
 
+	ISubscriberReadRepository SubscriberReadRepository { get; }
+	ISubscriberWriteRepository SubscriberWriteRepository { get; }
+
 	IUserReadRepository UserReadRepository { get; }
 	IUserWriteRepository UserWriteRepository { get; }
 

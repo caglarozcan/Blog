@@ -21,6 +21,7 @@ public static class ServiceRegistration
 		collection.AddTransient<ITicketService, TicketService>();
 		collection.AddTransient<IUserService, UserService>();
 		collection.AddTransient<IFileIOService, FileIOService>();
+		collection.AddTransient<ISubscriberService, SubscriberService>();
 		collection.AddTransient<ISettingService, SettingService>();
 		collection.AddTransient<IImageResizeService, ImageResizeService>();
 	}

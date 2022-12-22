@@ -261,6 +261,15 @@ app.UseEndpoints(endpoints =>
 	#endregion
 	#endregion
 
+	#region Subscribers
+	endpoints.MapAreaControllerRoute(
+		name: "AdminSubscribers",
+		areaName: "Admin",
+		pattern: "yonetim/aboneler",
+		defaults: new { area = "Admin", controller = "Subscriber", action = "Index" }
+	);
+	#endregion
+
 	#region Base Routes
 	endpoints.MapControllerRoute(
 		name: "areas",

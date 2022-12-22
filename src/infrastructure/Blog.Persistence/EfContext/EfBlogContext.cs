@@ -40,6 +40,8 @@ public class EfBlogContext : DbContext
 
 	public DbSet<Settings> Settings { get; set; }
 
+	public DbSet<Subscriber> Subscribers { get; set; }
+
 	public DbSet<UserRoles> UserRoles { get; set; }
 
 	public DbSet<User> Users { get; set; }

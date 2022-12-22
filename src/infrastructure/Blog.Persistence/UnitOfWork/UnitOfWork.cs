@@ -23,6 +23,8 @@ public class UnitOfWork : IUnitOfWork
 	private readonly ISettingGroupWriteRespository _settingGroupWriteRespository;
 	private readonly ISettingsReadRepository _settingsReadRepository;
 	private readonly ISettingsWriteRepository _settingsWriteRepository;
+	private readonly ISubscriberReadRepository _subscriberReadRepository;
+	private readonly ISubscriberWriteRepository _subscriberWriteRepository;
 	private readonly ITicketReadRepository _ticketReadRepository;
 	private readonly ITicketWriteRepository _ticketWriteRepository;
 	private readonly IUserReadRepository _userReadRepository;
@@ -54,6 +56,9 @@ public class UnitOfWork : IUnitOfWork
 
 	public ISettingsReadRepository SettingsReadRepository => _settingsReadRepository ?? new SettingsReadRepository(_dbContext);
 	public ISettingsWriteRepository SettingsWriteRepository => _settingsWriteRepository ?? new SettingsWriteRepository(_dbContext);
+
+	public ISubscriberReadRepository SubscriberReadRepository => _subscriberReadRepository ?? new SubscriberReadRepository(_dbContext);
+	public ISubscriberWriteRepository SubscriberWriteRepository => _subscriberWriteRepository ?? new SubscriberWriteRepository(_dbContext);
 
 	public ITicketReadRepository TicketReadRepository => _ticketReadRepository ?? new TicketReadRepository(_dbContext);
 	public ITicketWriteRepository TicketWriteRepository => _ticketWriteRepository ?? new TicketWriteRepository(_dbContext);
