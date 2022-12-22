@@ -1,206 +1,216 @@
 ﻿@{
-	ViewBag.Title = "Kullanıcı Yönetimi";
-	Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
+    ViewBag.Title = "Kullanıcı Yönetimi";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
 }
 
 <div class="breadcrumbs">
-	<h4>Kullanıcı Yönetimi</h4>
-	<ul>
-		<li><a asp-route="AdminHome">Anasayfa</a></li>
-		<li>
-			<i class="cdi cdi-arrow-right-alt2"></i>
-		</li>
-		<li>Kullanıcı Yönetimi</li>
-	</ul>
+    <h4>
+        Kullanıcı Yönetimi
+    </h4>
+    <ul>
+        <li><a asp-route="AdminHome">Anasayfa</a></li>
+        <li>
+            <span class="svg-icon svg-icon-primary">
+                <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Navigation/Angle-right.svg-->
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <polygon points="0 0 24 0 24 24 0 24" />
+                        <path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999) " />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+        </li>
+        <li>Kullanıcı Yönetimi</li>
+    </ul>
 </div>
 
 <div class="wrapper">
-	<div class="grid">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-header">
-					<div class="search">
-						<div class="search-icon">
-							<i class="cdi cdi-search"></i>
-						</div>
-						<div class="search-box">
-							<input type="text" placeholder="Ara.." id="filter-box" />
-						</div>
-					</div>
-					<div class="dropdown">
-						<a href="javascript:void(0)" data-dropdown="#card-menu">
-							<i class="cdi cdi-menu"></i>
-						</a>
-						<div class="drop-down" id="card-menu">
-							<ul>
-								<li><a asp-route="UserInsert"><i class="cdi cdi-plus-alt2"></i>&nbsp;&nbsp;Kullanıcı Ekle</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="card-body pd">
+    <div class="grid">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="search">
+                        <div class="search-icon">
+                            <i class="cdi cdi-search"></i>
+                        </div>
+                        <div class="search-box">
+                            <input type="text" placeholder="Ara.." id="filter-box" />
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a href="javascript:void(0)" data-dropdown="#card-menu">
+                            <i class="cdi cdi-menu"></i>
+                        </a>
+                        <div class="drop-down" id="card-menu">
+                            <ul>
+                                <li><a asp-route="UserInsert"><i class="cdi cdi-plus-alt2"></i>&nbsp;&nbsp;Kullanıcı Ekle</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pd">
 
-					<!--Kullanıcı listesi-->
+                    <!--Kullanıcı listesi-->
 
-					<table class="border-btm" id="table-user">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Adı</th>
-								<th>Soyadı</th>
-								<th>Nickname</th>
-								<th>Mail Adresi</th>
-								<th>Rolü</th>
-								<th>Eklenme</th>
-								<th>Son Giriş</th>
-								<th class="text-center">Durum</th>
-								<th class="text-center">İşlem</th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					</table>
+                    <table class="border-btm" id="table-user">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Adı</th>
+                                <th>Soyadı</th>
+                                <th>Nickname</th>
+                                <th>Mail Adresi</th>
+                                <th>Rolü</th>
+                                <th>Eklenme</th>
+                                <th>Son Giriş</th>
+                                <th class="text-center">Durum</th>
+                                <th class="text-center">İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
 
-					<!--Kullanıcı listesi-->
+                    <!--Kullanıcı listesi-->
 
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
-	window.addEventListener('DOMContentLoaded', (event) => {
-		//Kategori listesi için data table ayarlanması.
-		var dtUser = new DataTable('#table-user', {
-			method: 'GET',
-			url: 'https://localhost:9000/Admin/Users/GetList',
-			fixColumn: true,
-			dataPerPage: 15,
-			columns: [
-				{
-					'targets': 'AI',
-					'order': false,
-				},
-				{
-					'targets': 1,
-					'order': true,
-				},
-				{
-					'targets': 2,
-					'order': true,
-				},
-				{
-					'targets': 3,
-					'order': true,
-				},
-				{
-					'targets': 4,
-					'order': true,
-				},
-				{
-					'targets': 5,
-					'order': true,
-				},
-				{
-					'targets': 6,
-					'order': true,
-					'dateFormat': 'd MM yyyy H:i'
-				},
-				{
-					'targets': 7,
-					'order': true,
-					'dateFormat': 'd MM yyyy H:i'
-				},
-				{
-					'bind': 8,
-					'order': false,
-					'aling': 'center',
-					'render': function (data) {
-						return data == 1 ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
-					}
-				},
-				{
-					'bind': 0,
-					'order': false,
-					'aling': 'center',
-					'render': function (data) {
-						return '<div class="dropdown item-options"><a href="javascript:void(0)" data-dropdown="#cdi' + data.split('-')[0] + '">' +
-							'<i class="cdi cdi-ellipsis"></i>' +
-							'</a>' +
-							'<div class="drop-down" id="cdi' + data.split('-')[0] + '">' +
-							'<ul>' +
-							'<li><a href="javascript:void(0)" data-action="statusChange" data-id="' + data + '"><i class="cdi cdi-remove"></i>&nbsp;&nbsp;Aktif/Pasif</a></li>' +
-							'<li><a href="/yonetim/kullanici-duzenle/' + data + '"><i class="cdi cdi-edit"></i>&nbsp;&nbsp;Güncelle</a></li>' +
-							'<li class="seperator"></li>' +
-							'<li><a href="javascript:void(0)" data-action="delete" data-id="' + data + '"><i class="cdi cdi-trash"></i>&nbsp;&nbsp;Sil</a></li>' +
-							'</ul>' +
-							'</div></div>';
-					}
-				}
-			],
-			order: [6, 1],
-			onRendered: function () {
-				DropDown.init('.item-options');
+    window.addEventListener('DOMContentLoaded', (event) => {
+        //Kategori listesi için data table ayarlanması.
+        var dtUser = new DataTable('#table-user', {
+            method: 'GET',
+            url: 'https://localhost:9000/Admin/Users/GetList',
+            fixColumn: true,
+            dataPerPage: 15,
+            columns: [
+                {
+                    'targets': 'AI',
+                    'order': false,
+                },
+                {
+                    'targets': 1,
+                    'order': true,
+                },
+                {
+                    'targets': 2,
+                    'order': true,
+                },
+                {
+                    'targets': 3,
+                    'order': true,
+                },
+                {
+                    'targets': 4,
+                    'order': true,
+                },
+                {
+                    'targets': 5,
+                    'order': true,
+                },
+                {
+                    'targets': 6,
+                    'order': true,
+                    'dateFormat': 'd MM yyyy H:i'
+                },
+                {
+                    'targets': 7,
+                    'order': true,
+                    'dateFormat': 'd MM yyyy H:i'
+                },
+                {
+                    'bind': 8,
+                    'order': false,
+                    'aling': 'center',
+                    'render': function (data) {
+                        return data == 1 ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
+                    }
+                },
+                {
+                    'bind': 0,
+                    'order': false,
+                    'aling': 'center',
+                    'render': function (data) {
+                        return '<div class="dropdown item-options"><a href="javascript:void(0)" data-dropdown="#cdi' + data.split('-')[0] + '">' +
+                            '<i class="cdi cdi-ellipsis"></i>' +
+                            '</a>' +
+                            '<div class="drop-down" id="cdi' + data.split('-')[0] + '">' +
+                            '<ul>' +
+                            '<li><a href="javascript:void(0)" data-action="statusChange" data-id="' + data + '"><i class="cdi cdi-remove"></i>&nbsp;&nbsp;Aktif/Pasif</a></li>' +
+                            '<li><a href="/yonetim/kullanici-duzenle/' + data + '"><i class="cdi cdi-edit"></i>&nbsp;&nbsp;Güncelle</a></li>' +
+                            '<li class="seperator"></li>' +
+                            '<li><a href="javascript:void(0)" data-action="delete" data-id="' + data + '"><i class="cdi cdi-trash"></i>&nbsp;&nbsp;Sil</a></li>' +
+                            '</ul>' +
+                            '</div></div>';
+                    }
+                }
+            ],
+            order: [6, 1],
+            onRendered: function () {
+                DropDown.init('.item-options');
 
-				//Kullanıcı status değiştirme işlemi.
-				var statusLinks = document.querySelectorAll('a[data-action="statusChange"]');
-				statusLinks.forEach(element => {
-					element.addEventListener('click', function (e) {
-						e.stopPropagation();
-						var target = e.currentTarget;
-						var id = target.dataset.id;
-						var statusTd = Util.findAll('td', target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)[8];
+                //Kullanıcı status değiştirme işlemi.
+                var statusLinks = document.querySelectorAll('a[data-action="statusChange"]');
+                statusLinks.forEach(element => {
+                    element.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        var target = e.currentTarget;
+                        var id = target.dataset.id;
+                        var statusTd = Util.findAll('td', target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)[8];
 
-						Ajax.send({
-							method: 'POST',
-							url: Util.urlHelper('Admin/Users/StatusChange'),
-							data: { "id": id }
-						}).then(responseData => {
-							statusTd.innerHTML = statusTd.innerHTML == '<span class="status-danger">Pasif</span>' ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
-							Dailog.init({
-								icon: responseData.success ? 'success' : 'danger',
-								title: responseData.success ? 'İşlem başarılı..' : 'İşlem başarısız!',
-								message: responseData.message,
-								buttonType: 'ok'
-							});
-						}).catch(error => {
-							Dailog.init({
-								icon: 'danger',
-								title: 'İşlem başarısız!',
-								message: 'İşlem sırasında bir hata oluştu.. Daha sonra tekrar deneyiniz.',
-								buttonType: 'ok'
-							});
-						});
-					});
-				});
+                        Ajax.send({
+                            method: 'POST',
+                            url: Util.urlHelper('Admin/Users/StatusChange'),
+                            data: { "id": id }
+                        }).then(responseData => {
+                            statusTd.innerHTML = statusTd.innerHTML == '<span class="status-danger">Pasif</span>' ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
+                            Dailog.init({
+                                icon: responseData.success ? 'success' : 'danger',
+                                title: responseData.success ? 'İşlem başarılı..' : 'İşlem başarısız!',
+                                message: responseData.message,
+                                buttonType: 'ok'
+                            });
+                        }).catch(error => {
+                            Dailog.init({
+                                icon: 'danger',
+                                title: 'İşlem başarısız!',
+                                message: 'İşlem sırasında bir hata oluştu.. Daha sonra tekrar deneyiniz.',
+                                buttonType: 'ok'
+                            });
+                        });
+                    });
+                });
 
-				//Kullanıcı silme işlemi.
-				var deleteLinks = document.querySelectorAll('a[data-action="delete"]');
-				deleteLinks.forEach(element => {
-					element.addEventListener('click', function (e) {
-						e.stopPropagation();
-						var target = e.currentTarget;
-						var id = target.dataset.id;
+                //Kullanıcı silme işlemi.
+                var deleteLinks = document.querySelectorAll('a[data-action="delete"]');
+                deleteLinks.forEach(element => {
+                    element.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        var target = e.currentTarget;
+                        var id = target.dataset.id;
 
-						Dailog.init({
-							icon: 'question',
-							title: 'Silme işlemi onayla!',
-							message: 'Kullanıcı sistemden silinecek! İşleme devam etmek istediğinizden emin misiniz?',
-							buttonType: 'yesNo',
-							ajax: {
-								url: Util.urlHelper('Admin/Users/Delete'),
-								method: 'POST',
-								data: { "id": id }
-							},
-							ajaxAfter: function () {
-								dtUser.renderBody();
-							}
-						});
-					});
-				});
-			},
-			filter: {
-				element: '#filter-box'
-			}
-		});
-	});
+                        Dailog.init({
+                            icon: 'question',
+                            title: 'Silme işlemi onayla!',
+                            message: 'Kullanıcı sistemden silinecek! İşleme devam etmek istediğinizden emin misiniz?',
+                            buttonType: 'yesNo',
+                            ajax: {
+                                url: Util.urlHelper('Admin/Users/Delete'),
+                                method: 'POST',
+                                data: { "id": id }
+                            },
+                            ajaxAfter: function () {
+                                dtUser.renderBody();
+                            }
+                        });
+                    });
+                });
+            },
+            filter: {
+                element: '#filter-box'
+            }
+        });
+    });
 </script>

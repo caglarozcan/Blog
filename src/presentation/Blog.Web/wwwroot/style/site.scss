@@ -57,13 +57,7 @@ nav {
 					color: $color-white;
 				}
 
-				svg g [fill] {
-					-webkit-transition: fill 0.3s ease;
-					transition: fill 0.3s ease;
-					fill: #ffffff !important;
-				}
-
-				svg path {
+				.menu-icon svg g [fill] {
 					fill: #ffffff !important;
 				}
 			}
@@ -88,13 +82,7 @@ nav {
 						color: $color-white;
 					}
 
-					svg g [fill] {
-						-webkit-transition: fill 0.3s ease;
-						transition: fill 0.3s ease;
-						fill: #ffffff !important;
-					}
-
-					svg path {
+					.menu-icon svg g [fill] {
 						fill: #ffffff !important;
 					}
 				}

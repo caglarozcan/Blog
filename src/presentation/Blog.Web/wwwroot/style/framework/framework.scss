@@ -1,17 +1,4 @@
-﻿@import 
-	'styles/fonts.scss', 
-	'styles/variable.scss', 
-	'styles/reset.scss', 
-	'styles/grid.scss', 
-	'styles/forms.scss', 
-	'styles/button.scss', 
-	'styles/tools.scss',
-	'styles/card.scss',
-	'styles/gallery.scss',
-	'styles/dropdown.scss',
-	'styles/dialog.scss',
-	'styles/tab.scss',
-	'styles/table.scss';
+﻿@import 'styles/fonts.scss', 'styles/variable.scss', 'styles/reset.scss', 'styles/grid.scss', 'styles/forms.scss', 'styles/button.scss', 'styles/tools.scss', 'styles/card.scss', 'styles/gallery.scss', 'styles/dropdown.scss', 'styles/dialog.scss', 'styles/tab.scss', 'styles/table.scss';
 
 //----------------------------------------------------
 //		STATUS
@@ -82,41 +69,44 @@
 //----------------------------------------------------
 //		SVG ICON
 //----------------------------------------------------
-.svg-icon svg {
-	height: 1.5rem;
-	width: 1.5rem;
-	overflow: hidden;
-	vertical-align: middle;
+.svg-icon {
+	display: inline-block;
+
+	&.header-icon svg{
+		height:1rem;
+		width:1rem;
+	}
+
+	svg {
+		height: 1.4rem;
+		width: 1.4rem;
+		overflow: hidden;
+		vertical-align: middle;
+	}
 
 	g [fill] {
-		-webkit-transition: fill 0.3s ease;
-		transition: fill 0.3s ease;
 		fill: #b5b5c3;
 	}
 
-	&.svg-icon-primary svg g [fill] {
-		-webkit-transition: fill 0.3s ease;
-		transition: fill 0.3s ease;
-		fill: #3699ff !important;
+	&.svg-icon-white svg g [fill] {
+		fill: #ffffff !important;
 	}
 
-	&.svg-icon-primary svg:hover g [fill] {
-		-webkit-transition: fill 0.3s ease;
-		transition: fill 0.3s ease;
+	&.menu-icon svg g [fill] {
+		fill: $color-gray-light !important;
+	}
+
+	&.svg-icon-primary svg g [fill] {
+		fill: $color-blue-icon !important;
 	}
 
 	&.svg-logo-primary svg path {
-		fill: #3699ff !important;
+		fill: $color-blue-icon !important;
 	}
 
 	&.svg-icon-2x svg {
 		height: 2rem !important;
 		width: 2rem !important;
-	}
-
-	svg:hover g [fill] {
-		-webkit-transition: fill 0.3s ease;
-		transition: fill 0.3s ease;
 	}
 
 	&.svg-icon-3x svg {
@@ -158,12 +148,4 @@
 		height: 10rem !important;
 		width: 10rem !important;
 	}
-} 
-
-.svg-icon-primary{
-
-} 
-
-.svg-icon-2x{
-
 }

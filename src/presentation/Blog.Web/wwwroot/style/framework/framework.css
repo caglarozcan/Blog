@@ -63,6 +63,7 @@ body {
 
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
+  vertical-align: middle;
 }
 
 ol, ul {
@@ -1444,6 +1445,14 @@ input[type=checkbox]:checked::before {
 .tab {
   width: 100%;
 }
+.tab.tab-bg {
+  background: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+.tab.soft-border {
+  box-shadow: 0 1px 2px rgba(56, 65, 74, 0.15);
+}
 .tab .tab-menu {
   width: 100%;
   display: flex;
@@ -1704,66 +1713,67 @@ table td a i {
     opacity: 1;
   }
 }
+.svg-icon {
+  display: inline-block;
+}
+.svg-icon.header-icon svg {
+  height: 1rem;
+  width: 1rem;
+}
 .svg-icon svg {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1.4rem;
+  width: 1.4rem;
   overflow: hidden;
   vertical-align: middle;
 }
-.svg-icon svg g [fill] {
-  -webkit-transition: fill 0.3s ease;
-  transition: fill 0.3s ease;
+.svg-icon g [fill] {
   fill: #b5b5c3;
 }
-.svg-icon svg.svg-icon-primary svg g [fill] {
-  -webkit-transition: fill 0.3s ease;
-  transition: fill 0.3s ease;
+.svg-icon.svg-icon-white svg g [fill] {
+  fill: #ffffff !important;
+}
+.svg-icon.menu-icon svg g [fill] {
+  fill: #B5B5C3 !important;
+}
+.svg-icon.svg-icon-primary svg g [fill] {
   fill: #3699ff !important;
 }
-.svg-icon svg.svg-icon-primary svg:hover g [fill] {
-  -webkit-transition: fill 0.3s ease;
-  transition: fill 0.3s ease;
-}
-.svg-icon svg.svg-logo-primary svg path {
+.svg-icon.svg-logo-primary svg path {
   fill: #3699ff !important;
 }
-.svg-icon svg.svg-icon-2x svg {
+.svg-icon.svg-icon-2x svg {
   height: 2rem !important;
   width: 2rem !important;
 }
-.svg-icon svg svg:hover g [fill] {
-  -webkit-transition: fill 0.3s ease;
-  transition: fill 0.3s ease;
-}
-.svg-icon svg.svg-icon-3x svg {
+.svg-icon.svg-icon-3x svg {
   height: 3rem !important;
   width: 3rem !important;
 }
-.svg-icon svg.svg-icon-4x svg {
+.svg-icon.svg-icon-4x svg {
   height: 4rem !important;
   width: 4rem !important;
 }
-.svg-icon svg.svg-icon-5x svg {
+.svg-icon.svg-icon-5x svg {
   height: 5rem !important;
   width: 5rem !important;
 }
-.svg-icon svg.svg-icon-6x svg {
+.svg-icon.svg-icon-6x svg {
   height: 6rem !important;
   width: 6rem !important;
 }
-.svg-icon svg.svg-icon-7x svg {
+.svg-icon.svg-icon-7x svg {
   height: 7rem !important;
   width: 7rem !important;
 }
-.svg-icon svg.svg-icon-8x svg {
+.svg-icon.svg-icon-8x svg {
   height: 8rem !important;
   width: 8rem !important;
 }
-.svg-icon svg.svg-icon-9x svg {
+.svg-icon.svg-icon-9x svg {
   height: 9rem !important;
   width: 9rem !important;
 }
-.svg-icon svg.svg-icon-10x svg {
+.svg-icon.svg-icon-10x svg {
   height: 10rem !important;
   width: 10rem !important;
 }
