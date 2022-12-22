@@ -34,7 +34,7 @@ public class BaseController : Controller
 			Status = 400,
 			Instance = null,
 			Detail = "Formda boş veya hatalı doldurulan alanlar var.",
-			Type = "https://example.com/validation-error"
+			Type = "https://www.caglarozcan.com.tr/validation-error"
 		};
 
 		problemdetails.Extensions.Add("invalidParams", ModelValidator(model));

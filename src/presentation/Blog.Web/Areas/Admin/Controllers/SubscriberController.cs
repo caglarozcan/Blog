@@ -15,8 +15,25 @@ public class SubscriberController : BaseController
 		_subscriberService = subscriberService;
 	}
 
+	#region Functions
+	#region Create
+
+	#endregion
+
+	#region Read
 	public async Task<IActionResult> Index()
 	{
 		return View();
 	}
+	#endregion
+
+	#region Update
+
+	#endregion
+
+	#region Delete
+
+	#endregion
+	#endregion
+
 }
