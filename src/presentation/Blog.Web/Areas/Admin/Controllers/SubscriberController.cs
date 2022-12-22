@@ -1,4 +1,5 @@
-﻿using Blog.Application.Services;
+﻿using Blog.Application.Request;
+using Blog.Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,14 +26,33 @@ public class SubscriberController : BaseController
 	{
 		return View();
 	}
+
+	public async Task<IActionResult> GetList(DataListRequest request)
+	{
+		var list = await _subscriberService.GetSubscriberListAsync(request);
+
+		return Ok(list);
+	}
 	#endregion
 
 	#region Update
+	[HttpPost]
+	public async Task<IActionResult> StatusChange(Guid id)
+	{
+		var result = await _subscriberService.StatusChangeAsync(id);
 
+		return Ok(result);
+	}
 	#endregion
 
 	#region Delete
+	[HttpPost]
+	public async Task<IActionResult> Delete(Guid id)
+	{
+		var result = await _subscriberService.DeleteAsync(id);
 
+		return Ok(result);
+	}
 	#endregion
 	#endregion
 

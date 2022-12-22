@@ -192,6 +192,21 @@
 			if (headingOptions[index].order) {
 				thead.classList.add('sortable');
 				thead.dataset.sortindex = headingOptions[index].targets;
+
+				if (headingOptions[index].targets == dt.sortedIndex) {
+					var sortIcon = document.createElement('i');
+					sortIcon.classList.add('cdi');
+
+					if (dt.sortType == 0) {
+						sortIcon.classList.add('cdi-arrow-down');
+					} else {
+						sortIcon.classList.add('cdi-arrow-up');
+					}
+
+					thead.appendChild(sortIcon);
+				}
+
+				//thead click start
 				on(thead, 'click', function (e) {
 					e.stopPropagation();
 					var thead = e.currentTarget;
@@ -219,6 +234,7 @@
 						});
 
 						var sortIcon = document.createElement('i');
+						sortIcon.classList.add('cdi');
 						sortIcon.classList.add('cdi-arrow-down');
 
 						thead.appendChild(sortIcon);
@@ -227,6 +243,7 @@
 
 					dt.renderBody();
 				});
+				//thead click end
 			}
 		});
 

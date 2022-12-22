@@ -1,135 +1,187 @@
 ﻿@{
-	ViewBag.Title = "Abone Yönetimi";
-	Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
+    ViewBag.Title = "Abone Yönetimi";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
 }
 
 <div class="breadcrumbs">
-	<h4>Abone Yönetimi</h4>
-	<ul>
-		<li><a asp-route="AdminHome">Anasayfa</a></li>
-		<li>
-			<span class="svg-icon svg-icon-primary">
-				<!--begin::Svg Icon-->
-				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-						<polygon points="0 0 24 0 24 24 0 24" />
-						<path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999) " />
-					</g>
-				</svg><!--end::Svg Icon-->
-			</span>
-		</li>
-		<li>Abone Yönetimi</li>
-	</ul>
+    <h4>Abone Yönetimi</h4>
+    <ul>
+        <li><a asp-route="AdminHome">Anasayfa</a></li>
+        <li>
+            <span class="svg-icon svg-icon-primary">
+                <!--begin::Svg Icon-->
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <polygon points="0 0 24 0 24 24 0 24" />
+                        <path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999) " />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+        </li>
+        <li>Abone Yönetimi</li>
+    </ul>
 </div>
 
 <div class="wrapper">
-	<div class="grid">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-header">
-					<h4>Aboneler</h4>
-				</div>
-				<div class="card-body pd">
+    <div class="grid">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Aboneler</h4>
+                </div>
+                <div class="card-body pd">
 
-					<!--Makale listesi-->
+                    <!--Abone listesi-->
+                    <table class="border-btm" id="table-subscriber">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Adı</th>
+                                <th>Soyadı</th>
+                                <th>Email Adresi</th>
+                                <th class="text-center">Ekleme</th>
+                                <th class="text-center">Düzenleme</th>
+                                <th class="text-center">Durum</th>
+                                <th class="text-center">İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <!--Abone listesi-->
 
-					<table class="border-btm">
-						<thead>
-							<tr>
-								<th>
-									<input type="checkbox" />
-								</th>
-								<th>Başlık</th>
-								<th>Ekleyen</th>
-								<th>Kategori</th>
-								<th class="text-center">Eklenme</th>
-								<th class="text-center">Okunma</th>
-								<th class="text-center">Yorum</th>
-								<th class="text-center">Durum</th>
-								<th class="text-center">İşlem</th>
-							</tr>
-						</thead>
-						<tbody>
-							@for (int i = 1; i <= 15; i++)
-							{
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Buraya makale başlığı gelecek</td>
-									<td>
-										<a href="#">Çağlar ÖZCAN</a>
-									</td>
-									<td>
-										<a href="#">kategori1</a>,
-										<a href="#">kategori2</a>,
-										<a href="#">kategori3</a>
-									</td>
-									<td class="text-center">10 Ekim 2021 23:36</td>
-									<td class="text-center font-numeric">100</td>
-									<td class="text-center font-numeric">15</td>
-									<td class="text-center">
-										<span class="status-success">Yayında</span>
-									</td>
-									<td class="text-center">
-										<div class="dropdown">
-											<a href="javascript:void(0)" data-dropdown="#tbl-menu@(Html.Raw(i))">
-												<i class="cdi cdi-ellipsis"></i>
-											</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-											<div class="drop-down" id="tbl-menu@(Html.Raw(i))">
-												<ul>
-													<li><a href="#"><i class="cdi cdi-admin-post"></i>&nbsp;&nbsp;Sabitle</a></li>
-													<li><a href="#"><i class="cdi cdi-remove"></i>&nbsp;&nbsp;Engelle</a></li>
-													<li><a href="#"><i class="cdi cdi-edit"></i>&nbsp;&nbsp;Güncelle</a></li>
-													<li><a href="#"><i class="cdi cdi-menu-alt"></i>&nbsp;&nbsp;Detaylar</a></li>
-													<li class="seperator"></li>
-													<li><a href="#"><i class="cdi cdi-trash"></i>&nbsp;&nbsp;Sil</a></li>
-												</ul>
-											</div>
-										</div>
-									</td>
-								</tr>
-							}
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        //Kategori listesi için data table ayarlanması.
+        var dtCategory = new DataTable('#table-subscriber', {
+            method: 'GET',
+            url: 'https://localhost:9000/Admin/Subscriber/GetList',
+            fixColumn: true,
+            dataPerPage: 15,
+            columns: [
+                {
+                    'targets': 'AI',
+                    'order': false,
+                },
+                {
+                    'targets': 1,
+                    'order': true,
+                },
+                {
+                    'targets': 2,
+                    'order': true,
+                },
+                {
+                    'targets': 3,
+                    'order': true,
+                },
+                {
+                    'targets': 4,
+                    'order': true,
+                    'aling': 'center',
+                    'dateFormat': 'd MM yyyy H:i'
+                },
+                {
+                    'targets': 5,
+                    'order': true,
+                    'aling': 'center',
+                    'dateFormat': 'd MM yyyy H:i'
+                },
+                {
+                    'bind': 6,
+                    'order': false,
+                    'aling': 'center',
+                    'render': function (data) {
+                        return data == 1 ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
+                    }
+                },
+                {
+                    'bind': 0,
+                    'order': false,
+                    'aling': 'center',
+                    'render': function (data) {
+                        return '<div class="dropdown row-option"><a href="javascript:void(0)" data-dropdown="#cdi' + data.split('-')[0] + '">' +
+                            '<i class="cdi cdi-ellipsis"></i>' +
+                            '</a>' +
+                            '<div class="drop-down" id="cdi' + data.split('-')[0] + '">' +
+                            '<ul>' +
+                            '<li><a href="javascript:void(0)" data-action="statusChange" data-id="' + data + '"><i class="cdi cdi-remove"></i>&nbsp;&nbsp;Aktif/Pasif</a></li>' +
+                            '<li class="seperator"></li>' +
+                            '<li><a href="javascript:void(0)" data-action="delete" data-id="' + data + '"><i class="cdi cdi-trash"></i>&nbsp;&nbsp;Sil</a></li>' +
+                            '</ul>' +
+                            '</div></div>';
+                    }
+                }
+            ],
+            order: [1, 1], //[sortedIndex, sortType]
+            onRendered: function () {
+                DropDown.init('.row-option');
 
-						</tbody>
-					</table>
+                //Abone status değiştirme işlemi.
+                var statusLinks = document.querySelectorAll('a[data-action="statusChange"]');
+                statusLinks.forEach(element => {
+                    element.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        var target = e.currentTarget;
+                        var id = target.dataset.id;
+                        var statusTd = Util.findAll('td', target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)[6];
 
-					<ul class="pagination pg-direction-right">
-						<li class="arrow">
-							<a href="#">
-								<i class="cdi cdi-arrow-left-alt2"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#">1</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li class="active">
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#">6</a>
-						</li>
-						<li>
-							<a href="#">7</a>
-						</li>
-						<li class="arrow">
-							<a href="#">
-								<i class="cdi cdi-arrow-right-alt2"></i>
-							</a>
-						</li>
-					</ul>
+                        Ajax.send({
+                            method: 'POST',
+                            url: Util.urlHelper('Admin/Subscriber/StatusChange'),
+                            data: { "id": id }
+                        }).then(responseData => {
+                            statusTd.innerHTML = statusTd.innerHTML == '<span class="status-danger">Pasif</span>' ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
+                            Dailog.init({
+                                icon: responseData.success ? 'success' : 'danger',
+                                title: responseData.success ? 'İşlem başarılı..' : 'İşlem başarısız!',
+                                message: responseData.message,
+                                buttonType: 'ok'
+                            });
+                        }).catch(error => {
+                            Dailog.init({
+                                icon: 'danger',
+                                title: 'İşlem başarısız!',
+                                message: 'İşlem sırasında bir hata oluştu.. Daha sonra tekrar deneyiniz.',
+                                buttonType: 'ok'
+                            });
+                        });
+                    });
+                });
 
-					<!--Makale listesi-->
+                //Abone silme işlemi.
+                var deleteLinks = document.querySelectorAll('a[data-action="delete"]');
+                deleteLinks.forEach(element => {
+                    element.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        var target = e.currentTarget;
+                        var id = target.dataset.id;
 
-				</div>
-			</div>
-		</div>
-	</div>
+                        Dailog.init({
+                            icon: 'question',
+                            title: 'Silme işlemi onayla!',
+                            message: 'Abone sistemden silinecek! İşleme devam etmek istediğinizden emin misiniz?',
+                            buttonType: 'yesNo',
+                            ajax: {
+                                url: Util.urlHelper('Admin/Subscriber/Delete'),
+                                method: 'POST',
+                                data: { "id": id }
+                            },
+                            ajaxAfter: function () {
+                                dtCategory.renderBody();
+                            }
+                        });
+                    });
+                });                
+            },
+            filter: {
+                element: '#filter-box'
+            }
+        });
+    });
+</script>
