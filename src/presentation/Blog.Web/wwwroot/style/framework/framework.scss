@@ -72,9 +72,9 @@
 .svg-icon {
 	display: inline-block;
 
-	&.header-icon svg{
-		height:1rem;
-		width:1rem;
+	&.header-icon svg {
+		height: 1rem;
+		width: 1rem;
 	}
 
 	svg {
@@ -102,6 +102,11 @@
 
 	&.svg-logo-primary svg path {
 		fill: $color-blue-icon !important;
+	}
+
+	&.svg-icon-x svg {
+		height: 1.6rem !important;
+		width: 1.6rem !important;
 	}
 
 	&.svg-icon-2x svg {
