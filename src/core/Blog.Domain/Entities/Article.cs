@@ -7,6 +7,7 @@
             this.Categories = new HashSet<ArticleCategories>();
             this.Tickets = new HashSet<ArticleTickets>();
             this.Medias = new HashSet<ArticleMedias>();
+            this.Comments = new HashSet<Comment>();
         }
 
         public Guid UserId { get; set; }
@@ -30,5 +31,7 @@
         public virtual ICollection<ArticleTickets> Tickets { get; set; }
 
         public virtual ICollection<ArticleMedias> Medias { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

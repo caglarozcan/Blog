@@ -12,18 +12,20 @@ public static class ServiceRegistration
 		collection.AddTransient<IAuthenticationService, AuthenticationService>();
 		collection.AddTransient<IAuthUserInfoService, AuthUserInfoService>();
 		collection.AddTransient<ICategoryService, CategoryService>();
+		collection.AddTransient<ICommentService, CommentService>();
 		collection.AddTransient<IDashboardService, DashboardService>();
+		collection.AddTransient<IFileIOService, FileIOService>();
 		collection.AddTransient<IHashService, HashService>();
+		collection.AddTransient<IImageResizeService, ImageResizeService>();
 		collection.AddTransient<IMailService, MailService>();
 		collection.AddTransient<IMediaService, MediaService>();
 		collection.AddTransient<IMediaTypeService, MediaTypeService>();
 		collection.AddTransient<IRoleService, RoleService>();
 		collection.AddTransient<ITextService, TextService>();
 		collection.AddTransient<ITicketService, TicketService>();
-		collection.AddTransient<IUserService, UserService>();
-		collection.AddTransient<IFileIOService, FileIOService>();
-		collection.AddTransient<ISubscriberService, SubscriberService>();
 		collection.AddTransient<ISettingService, SettingService>();
-		collection.AddTransient<IImageResizeService, ImageResizeService>();
+		collection.AddTransient<ISubscriberService, SubscriberService>();
+		collection.AddTransient<IUserService, UserService>();
+
 	}
 }

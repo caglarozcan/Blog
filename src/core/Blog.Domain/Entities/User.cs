@@ -7,6 +7,7 @@
             this.Articles = new HashSet<Article>();
             this.Medias = new HashSet<Media>();
             this.Roles = new HashSet<UserRoles>();
+            this.Comments = new HashSet<Comment>();
         }
 
 		public string Name { get; set; }
@@ -28,5 +29,7 @@
         public virtual ICollection<Article> Articles { get; set; }
 
         public virtual ICollection<Media> Medias { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

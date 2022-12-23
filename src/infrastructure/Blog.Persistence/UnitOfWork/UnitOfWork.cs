@@ -13,6 +13,8 @@ public class UnitOfWork : IUnitOfWork
 	private readonly IArticleWriteRepository _articleWriteRepository;
 	private readonly ICategoryReadRepository _categoryReadRepository;
 	private readonly ICategoryWriteRepository _categoryWriteRepository;
+	private readonly ICommentReadRepository _commentReadRepository;
+	private readonly ICommentWriteRepository _commentWriteRepository;
 	private readonly IMediaReadRepository _mediaReadRepository;
 	private readonly IMediaWriteRepository _mediaWriteRepository;
 	private readonly IMediaTypeReadRepository _mediaTypeReadRepository;
@@ -41,6 +43,9 @@ public class UnitOfWork : IUnitOfWork
 
 	public ICategoryReadRepository CategoryReadRepository => _categoryReadRepository ?? new CategoryReadRepository(_dbContext);
 	public ICategoryWriteRepository CategoryWriteRepository => _categoryWriteRepository ?? new CategoryWriteRepository(_dbContext);
+
+	public ICommentReadRepository CommentReadRepository => _commentReadRepository ?? new CommentReadRepository(_dbContext);
+	public ICommentWriteRepository CommentWriteRepository => _commentWriteRepository ?? new CommentWriteRepository(_dbContext);
 
 	public IMediaReadRepository MediaReadRepository => _mediaReadRepository ?? new MediaReadRepository(_dbContext);
 	public IMediaWriteRepository MediaWriteRepository => _mediaWriteRepository ?? new MediaWriteRepository(_dbContext);

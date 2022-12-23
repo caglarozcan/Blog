@@ -10,6 +10,9 @@ public interface IUnitOfWork : IAsyncDisposable
 	ICategoryReadRepository CategoryReadRepository { get; }
 	ICategoryWriteRepository CategoryWriteRepository { get; }
 
+	ICommentReadRepository CommentReadRepository { get; }
+	ICommentWriteRepository CommentWriteRepository { get; }
+
 	IMediaReadRepository MediaReadRepository { get; }
 	IMediaWriteRepository MediaWriteRepository { get; }
 

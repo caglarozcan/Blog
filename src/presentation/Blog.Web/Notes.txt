@@ -87,6 +87,23 @@ https://themesbrand.com/skote-symfony/layouts/blog-details.html
 Admin Paneli Tasarımları:
 https://rocketman-vue.left4code.com/
 -----------------------------------------------------------------------------------------------
+#region Functions
+#region Create
+
+#endregion
+
+#region Read
+
+#endregion
+
+#region Update
+
+#endregion
+
+#region Delete
+
+#endregion
+#endregion
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------

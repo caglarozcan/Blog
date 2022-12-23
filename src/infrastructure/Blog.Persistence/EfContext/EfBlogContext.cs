@@ -22,6 +22,8 @@ public class EfBlogContext : DbContext
 
 	public DbSet<Category> Categories { get; set; }
 
+	public DbSet<Comment> Comments { get; set; }
+
 	public DbSet<Ticket> Tickets { get; set; }
 
 	public DbSet<Media> Medias { get; set; }
