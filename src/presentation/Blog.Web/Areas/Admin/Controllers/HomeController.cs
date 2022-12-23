@@ -15,7 +15,7 @@ public class HomeController : Controller
 		_dashboardService = dashboardService;
 	}
 
-	public IActionResult Index()
+	public async Task<IActionResult> Index()
 	{
 		return View();
 	}
