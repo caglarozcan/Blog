@@ -20,10 +20,15 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\style\framework\styles\editor.scss" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="compilerconfig.json.defaults" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\style\framework\styles\editor.scss" />
   </ItemGroup>
 
   <ItemGroup>
@@ -75,6 +80,7 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\style\framework\styles\editor.scss" />
     <None Include="wwwroot\Uploads\images\jpeg\1301eff6-4387-4603-8da5-844e0ad6e4a7.jpeg" />
     <None Include="wwwroot\Uploads\images\jpeg\233d554f-2cbe-4fef-a948-e01843dd959e.jpeg" />
     <None Include="wwwroot\Uploads\images\jpeg\4ba9e8a8-0660-4d1b-9d19-03f35b60d670.jpeg" />

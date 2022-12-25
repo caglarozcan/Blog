@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Blog.Application.Dto.CategoryDto.HierarchicalCategoryListDto>
+
+<div class="tree-view">
+	<ul class="tree">
+		@foreach (var item in Model)
+		{
+			<li>
+				<details open>
+					<summary>
+						<input type="checkbox" value="@item.Id" name="CategoryId" />&nbsp;&nbsp;@item.Title
+					</summary>
+					@if (@item.ChildCategories.Count() > 0)
+					{
+						<ul>
+							@foreach (var subItem in item.ChildCategories)
+							{
+								<li><input type="checkbox" value="@subItem.Id" name="CategoryId" />&nbsp;&nbsp;@subItem.Title</li>
+							}
+						</ul>
+					}
+				</details>
+			</li>
+		}
+	</ul>
+</div>

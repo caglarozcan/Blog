@@ -93,9 +93,33 @@ public class CategoryService : BaseService, ICategoryService
 		});
 	}
 
-	public async Task<CategorySelectDto> GetSelectCategories(Guid? id)
+	public async Task<CategorySelectDto> GetSelectCategoriesAsync(Guid? id)
 	{
 		return await _unitOfWork.CategoryReadRepository.GetCategorySelect(id);
+	}
+
+	public async Task<List<HierarchicalCategoryListDto>> GetHierarchicalCategoryListsync()
+	{
+		var query = await _unitOfWork.CategoryReadRepository.GetAllAsync(c => !c.ParentId.HasValue, includes: i => i.Childs);
+
+		return query.Select(s => new HierarchicalCategoryListDto()
+		{
+			Id = s.Id,
+			Title = s.Title,
+			Icon = s.Icon,
+			Color = s.Color,
+			Description = s.Description,
+			Slug = s.Slug,
+			ChildCategories = s.Childs.Select(c => new CategoryListDto()
+			{
+				Id= c.Id,
+				Title = c.Title,
+				Icon = c.Icon,
+				Color = c.Color,
+				Description = c.Description,
+				Slug = c.Slug
+			}).ToList()
+		}).ToList();
 	}
 	#endregion
 

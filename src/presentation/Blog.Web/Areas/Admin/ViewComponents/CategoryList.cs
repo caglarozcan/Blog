@@ -21,6 +21,6 @@ public class CategoryList : ViewComponent
 
 	private Task<CategorySelectDto> GetItemsAsync(Guid? id)
 	{
-		return _categoryService.GetSelectCategories(id);
+		return _categoryService.GetSelectCategoriesAsync(id);
 	}
 }

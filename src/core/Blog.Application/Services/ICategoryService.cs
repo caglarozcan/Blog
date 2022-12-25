@@ -17,7 +17,9 @@ public interface ICategoryService
 
 	Task<Response<CategoryListDto>> GetUpdatedCategoryInfoAsync(Guid id);
 
-	Task<CategorySelectDto> GetSelectCategories(Guid? id);
+	Task<CategorySelectDto> GetSelectCategoriesAsync(Guid? id);
+
+	Task<List<HierarchicalCategoryListDto>> GetHierarchicalCategoryListsync();
 	#endregion
 
 	#region Update
