@@ -164,6 +164,15 @@ app.UseEndpoints(endpoints =>
 	);
 	#endregion
 
+	#region Bibliography
+	endpoints.MapAreaControllerRoute(
+		name: "AdminBibliographies",
+		areaName: "Admin",
+		pattern: "yonetim/kaynakca",
+		defaults: new { area = "Admin", controller = "Bibliography", action = "Index" }
+	);
+	#endregion
+
 	#region User
 	endpoints.MapAreaControllerRoute(
 		name: "AdminUsers",
