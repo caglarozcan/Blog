@@ -11,6 +11,7 @@ public static class ServiceRegistration
 		collection.AddTransient<IArticleService, ArticleService>();
 		collection.AddTransient<IAuthenticationService, AuthenticationService>();
 		collection.AddTransient<IAuthUserInfoService, AuthUserInfoService>();
+		collection.AddTransient<IBibliographyService, BibliographyService>();
 		collection.AddTransient<ICategoryService, CategoryService>();
 		collection.AddTransient<ICommentService, CommentService>();
 		collection.AddTransient<IDashboardService, DashboardService>();
