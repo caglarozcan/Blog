@@ -8,6 +8,7 @@
             this.Medias = new HashSet<Media>();
             this.Roles = new HashSet<UserRoles>();
             this.Comments = new HashSet<Comment>();
+            this.Bibliographies = new HashSet<Bibliography>();
         }
 
 		public string Name { get; set; }
@@ -27,6 +28,8 @@
         public virtual ICollection<UserRoles> Roles { get; set; }
 
         public virtual ICollection<Article> Articles { get; set; }
+
+        public virtual ICollection<Bibliography> Bibliographies { get; set; }
 
         public virtual ICollection<Media> Medias { get; set; }
 

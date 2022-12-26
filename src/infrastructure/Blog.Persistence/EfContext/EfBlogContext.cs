@@ -20,6 +20,8 @@ public class EfBlogContext : DbContext
 	#region DbSets
 	public DbSet<Article> Articles { get; set; }
 
+	public DbSet<Bibliography> Bibliographies { get; set; }
+
 	public DbSet<Category> Categories { get; set; }
 
 	public DbSet<Comment> Comments { get; set; }
@@ -29,6 +31,8 @@ public class EfBlogContext : DbContext
 	public DbSet<Media> Medias { get; set; }
 
 	public DbSet<MediaType> MediaTypes { get; set; }
+
+	public DbSet<ArticleBibliographies> ArticleBibliographies { get; set; }
 
 	public DbSet<ArticleCategories> ArticleCategories { get; set; }
 

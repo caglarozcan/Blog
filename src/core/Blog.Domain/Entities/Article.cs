@@ -5,6 +5,7 @@
         public Article()
         {
             this.Categories = new HashSet<ArticleCategories>();
+            this.Bibliographies = new HashSet<ArticleBibliographies>();
             this.Tickets = new HashSet<ArticleTickets>();
             this.Medias = new HashSet<ArticleMedias>();
             this.Comments = new HashSet<Comment>();
@@ -27,6 +28,8 @@
         public virtual User User { get; set; }
 
         public virtual ICollection<ArticleCategories> Categories { get; set; }
+
+        public virtual ICollection<ArticleBibliographies> Bibliographies { get; set; }
 
         public virtual ICollection<ArticleTickets> Tickets { get; set; }
 
