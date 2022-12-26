@@ -11,6 +11,8 @@ public class UnitOfWork : IUnitOfWork
 
 	private readonly IArticleReadRepository _articleReadRepository;
 	private readonly IArticleWriteRepository _articleWriteRepository;
+	private readonly IBibliographyReadRepository _bibliographyReadRepository;
+	private readonly IBibliographyWriteRepository _bibliographyWriteRepository;
 	private readonly ICategoryReadRepository _categoryReadRepository;
 	private readonly ICategoryWriteRepository _categoryWriteRepository;
 	private readonly ICommentReadRepository _commentReadRepository;
@@ -40,6 +42,9 @@ public class UnitOfWork : IUnitOfWork
 
 	public IArticleReadRepository ArticleReadRepository => _articleReadRepository ?? new ArticleReadRepository(_dbContext);
 	public IArticleWriteRepository ArticleWriteRepository => _articleWriteRepository ?? new ArticleWriteRepository(_dbContext);
+
+	public IBibliographyReadRepository BibliographyReadRepository => _bibliographyReadRepository ?? new BibliographyReadRepository(_dbContext);
+	public IBibliographyWriteRepository BibliographyWriteRepository => _bibliographyWriteRepository ?? new BibliographyWriteRepository(_dbContext);
 
 	public ICategoryReadRepository CategoryReadRepository => _categoryReadRepository ?? new CategoryReadRepository(_dbContext);
 	public ICategoryWriteRepository CategoryWriteRepository => _categoryWriteRepository ?? new CategoryWriteRepository(_dbContext);

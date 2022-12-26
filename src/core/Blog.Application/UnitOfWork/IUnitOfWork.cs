@@ -7,6 +7,9 @@ public interface IUnitOfWork : IAsyncDisposable
 	IArticleReadRepository ArticleReadRepository { get; }
 	IArticleWriteRepository ArticleWriteRepository { get; }
 
+	IBibliographyReadRepository BibliographyReadRepository { get; }
+	IBibliographyWriteRepository BibliographyWriteRepository { get; }
+
 	ICategoryReadRepository CategoryReadRepository { get; }
 	ICategoryWriteRepository CategoryWriteRepository { get; }
 
