@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.RoleDto;
 
-public class UserRoleDto
+public sealed class UserRoleDto
 {
 	public Guid Id { get; set; }
 

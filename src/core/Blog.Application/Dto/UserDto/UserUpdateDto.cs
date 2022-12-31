@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Application.Dto.UserDto;
 
-public class UserUpdateDto
+public sealed class UserUpdateDto
 {
 	[Required(ErrorMessage = "Id alanı dolu olmalıdır.")]
 	public Guid Id { get; set; }

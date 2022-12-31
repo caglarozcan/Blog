@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.MediaDto;
 
-public class MediaListDto
+public sealed class MediaListDto
 {
 	public Guid Id { get; set; }
 

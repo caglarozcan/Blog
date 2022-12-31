@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Application.Dto.MediaDto;
 
-public class MediaInfoDto
+public sealed class MediaInfoDto
 {
 	[Required(ErrorMessage = "ID alanı zorunludur.")]
 	public Guid Id { get; set; }

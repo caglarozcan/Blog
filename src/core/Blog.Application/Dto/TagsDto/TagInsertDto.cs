@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Application.Dto.TagsDto;
 
-public class TagInsertDto
+public sealed class TagInsertDto
 {
 	[DataType(DataType.Text)]
 	[DisplayName("Etiket İsmi")]

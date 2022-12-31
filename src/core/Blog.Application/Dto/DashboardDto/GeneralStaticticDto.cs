@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.DashboardDto;
 
-public class GeneralStaticticDto
+public sealed class GeneralStaticticDto
 {
 	public int UserCount { get; set; }
 

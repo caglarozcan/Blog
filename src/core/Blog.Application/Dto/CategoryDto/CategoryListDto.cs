@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.CategoryDto;
 
-public class CategoryListDto
+public sealed class CategoryListDto
 {
 	public Guid Id { get; set; }
 

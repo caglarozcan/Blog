@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.UserDto;
 
-public class UserListDto
+public sealed class UserListDto
 {
 	public Guid Id { get; set; }
 

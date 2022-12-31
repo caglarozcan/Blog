@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.SettingDto.BlogOptions;
 
-public class EmailOptions
+public sealed class EmailOptions
 {
 	public string EmailFrom { get; set; }
 

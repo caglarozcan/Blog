@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Application.Dto.MediaTypeDto;
 
-public class MediaTypeUpdateDto
+public sealed class MediaTypeUpdateDto
 {
 	[Required(ErrorMessage = "ID alanı zorunludur.")]
 	public Guid Id { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Blog.Application.Dto.SettingDto;
 
-public class PagingSettingUpdateDto
+public sealed class PagingSettingUpdateDto
 {
 	[Required(ErrorMessage = "Kullanıcı sayfalama boyutu alanı zorunludur.")]
 	public int UserPagingSize { get; set; }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Application.Dto.UserDto;
 
-public class UserInsertDto
+public sealed class UserInsertDto
 {
 	[DisplayName("Kullanıcı Rolü")]
 	[DataType(DataType.Text)]

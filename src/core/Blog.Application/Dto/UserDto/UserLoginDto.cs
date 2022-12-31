@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Application.Dto.UserDto;
 
-public class UserLoginDto
+public sealed class UserLoginDto
 {
 	[DisplayName("Email Adresi")]
 	[DataType(DataType.EmailAddress)]

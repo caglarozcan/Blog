@@ -1,16 +1,15 @@
-﻿namespace Blog.Domain.Entities
+﻿namespace Blog.Domain.Entities;
+
+public class Ticket : BaseEntity
 {
-    public class Ticket : BaseEntity
+    public Ticket()
     {
-        public Ticket()
-        {
-            this.Articles = new HashSet<ArticleTickets>();
-        }
-
-        public string Title { get; set; }
-
-        public string Slug { get; set; }
-
-        public virtual ICollection<ArticleTickets> Articles { get; set; }
+        this.Articles = new HashSet<ArticleTickets>();
     }
+
+    public string Title { get; set; }
+
+    public string Slug { get; set; }
+
+    public virtual ICollection<ArticleTickets> Articles { get; set; }
 }

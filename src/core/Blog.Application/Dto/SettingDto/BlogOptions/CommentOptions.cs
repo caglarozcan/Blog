@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.SettingDto.BlogOptions;
 
-public class CommentOptions
+public sealed class CommentOptions
 {
 	public bool IsShowComment { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto;
 
-public class SelectOptionsDto
+public sealed class SelectOptionsDto
 {
     public string Text { get; set; } = String.Empty;
 

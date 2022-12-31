@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.SettingDto;
 
-public class CommentSettingUpdateDto
+public sealed class CommentSettingUpdateDto
 {
 	public bool IsShowComment { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.SettingDto.BlogOptions;
 
-public class PaginationOptions
+public sealed class PaginationOptions
 {
 	public int UserPagingSize { get; set; }
 

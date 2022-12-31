@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Application.Dto.CategoryDto;
 
-public class CategoryInsertDto
+public sealed class CategoryInsertDto
 {
 	[DisplayName("Üst Kategori")]
 	public Guid? ParentId { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.CategoryDto;
 
-public class HierarchicalCategoryListDto
+public sealed class HierarchicalCategoryListDto
 {
 	public HierarchicalCategoryListDto()
 	{

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Application.Dto.TagsDto;
 
-public class TagEditDto
+public sealed class TagEditDto
 {
 	[Required(ErrorMessage = "Id alanı zorunludur.")]
 	public Guid Id { get; set; }

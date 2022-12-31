@@ -2,7 +2,7 @@
 
 namespace Blog.Application.Dto.SettingDto;
 
-public class GeneralSettingUpdateDto
+public sealed class GeneralSettingUpdateDto
 {
 	[Required(ErrorMessage = "Sita başlığı alanı zorunludur.")]
 	[MaxLength(ErrorMessage = "Site başlığı en fazla 250 karakter olabilir.")]

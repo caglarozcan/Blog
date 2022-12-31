@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.SettingDto.BlogOptions;
 
-public class FileUploadOptions
+public sealed class FileUploadOptions
 {
 	public string UploadPath { get; set; }
 

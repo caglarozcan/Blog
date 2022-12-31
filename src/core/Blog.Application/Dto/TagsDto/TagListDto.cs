@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.TagsDto;
 
-public class TagListDto
+public sealed class TagListDto
 {
 	public Guid Id { get; set; }
 

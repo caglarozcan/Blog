@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.MediaTypeDto;
 
-public class MediaTypeSelectDto
+public sealed class MediaTypeSelectDto
 {
 	public Guid? MediaTypeId { get; set; }
 

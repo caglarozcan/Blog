@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Application.Dto.MediaTypeDto;
 
-public class MediaTypeInsertDto
+public sealed class MediaTypeInsertDto
 {
 	[DataType(DataType.Text)]
 	[DisplayName("Dosya Tür Adı")]

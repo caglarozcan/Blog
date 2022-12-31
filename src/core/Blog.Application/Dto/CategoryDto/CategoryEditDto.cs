@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Application.Dto.CategoryDto;
 
-public class CategoryEditDto
+public sealed class CategoryEditDto
 {
 	[Required(ErrorMessage = "Kategori Id alanı zorunludur.")]
 	public Guid Id { get; set; }

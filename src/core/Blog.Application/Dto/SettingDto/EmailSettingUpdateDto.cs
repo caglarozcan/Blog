@@ -2,7 +2,7 @@
 
 namespace Blog.Application.Dto.SettingDto;
 
-public class EmailSettingUpdateDto
+public sealed class EmailSettingUpdateDto
 {
 	[Required(ErrorMessage = "Email adresi alanı zorunludur.")]
 	[EmailAddress(ErrorMessage = "Girilen email adresi geçersizdir.")]

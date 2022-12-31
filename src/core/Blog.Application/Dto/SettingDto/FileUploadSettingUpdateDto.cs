@@ -2,7 +2,7 @@
 
 namespace Blog.Application.Dto.SettingDto;
 
-public class FileUploadSettingUpdateDto
+public sealed class FileUploadSettingUpdateDto
 {
 	[Required(ErrorMessage = "Medya yükleme dizini alanı zorunludur.")]
 	public string UploadPath { get; set; }

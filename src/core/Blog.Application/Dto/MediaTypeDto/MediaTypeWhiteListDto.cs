@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.MediaTypeDto;
 
-public class MediaTypeWhiteListDto
+public sealed class MediaTypeWhiteListDto
 {
 	public Guid Id { get; set; }
 

@@ -2,7 +2,7 @@
 
 namespace Blog.Application.Dto.SettingDto;
 
-public class ArticleSettingUpdateDto
+public sealed class ArticleSettingUpdateDto
 {
 	[Required(ErrorMessage = "Varsayılan kategori seçilmesi zorunludur.")]
 	public Guid DefaultCategoryId { get; set; }

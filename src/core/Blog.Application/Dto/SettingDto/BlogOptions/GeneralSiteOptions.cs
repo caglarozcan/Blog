@@ -1,6 +1,6 @@
 ﻿namespace Blog.Application.Dto.SettingDto.BlogOptions;
 
-public class GeneralSiteOptions
+public sealed class GeneralSiteOptions
 {
 	public string SiteTitle { get; set; }
 
