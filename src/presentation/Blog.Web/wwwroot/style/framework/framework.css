@@ -1,6 +1,16 @@
 ﻿@charset "UTF-8";
 @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap);
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600&display=swap");
+:root {
+  --primary-bg-color: #8fbd56;
+  --primary-bg-hover: #82c035;
+  --primary-bg-border: #8fbd56;
+  --dark-body: #2c2f3e;
+  --dark-theme: rgba(0, 0, 0, 0.3);
+  --dark-bg: rgba(0, 0, 0, 0.2);
+  --dark-border: rgba(255, 255, 255, 0.15);
+}
+
 /*@font-face {
 	font-family: 'Inter var';
 	font-weight: 100 900;
@@ -959,7 +969,7 @@ input[type=checkbox]:checked::before {
   border-radius: 3px;
 }
 .gallery .gallery-item:hover {
-  background: #319DB5;
+  background: #164E63;
 }
 .gallery .gallery-item .attachment {
   position: relative;
@@ -1092,7 +1102,7 @@ input[type=checkbox]:checked::before {
 .dropdown .drop-down ul li a i {
   margin-right: 5px;
   line-height: 12px !important;
-  color: #319DB5;
+  color: #164E63;
 }
 
 .dialog {
@@ -1151,7 +1161,7 @@ input[type=checkbox]:checked::before {
   color: #d95b44;
 }
 .dialog .dialog-wrapper .dialog-content .dialog-body .message-text.info {
-  color: #319DB5;
+  color: #164E63;
 }
 .dialog .dialog-wrapper .dialog-content .dialog-body .dialog-button {
   display: block;
@@ -1746,7 +1756,7 @@ table td a i {
   width: auto !important;
   padding: 0;
   height: 0;
-  color: #319DB5;
+  color: #164E63;
 }
 .pagination li a {
   padding: 0.3rem 0.65rem;

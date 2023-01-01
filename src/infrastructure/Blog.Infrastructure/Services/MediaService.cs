@@ -11,7 +11,7 @@ public class MediaService : BaseService, IMediaService
 {
 	private readonly IUnitOfWork _unitOfWork;
 	private readonly IAuthUserInfoService _authUserInfoService;
-	private IFileIOService _fileIOService;
+	private readonly IFileIOService _fileIOService;
 
 	public MediaService(IUnitOfWork unitOfWork, IFileIOService fileIOService, IAuthUserInfoService authUserInfoService)
 	{

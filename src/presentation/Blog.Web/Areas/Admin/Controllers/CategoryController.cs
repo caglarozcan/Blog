@@ -17,10 +17,7 @@ public class CategoryController : BaseController
 		_categoryService = categoryService;
 	}
 
-	public IActionResult Index()
-	{
-		return View();
-	}
+	
 
 	#region Functions
 	#region Create
@@ -39,6 +36,11 @@ public class CategoryController : BaseController
 	#endregion
 
 	#region Read
+	public async Task<IActionResult> Index()
+	{
+		return View();
+	}
+
 	public async Task<IActionResult> GetList(DataListRequest request)
 	{
 		var list = await _categoryService.GetCategoryListAsync(request);

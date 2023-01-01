@@ -1,4 +1,6 @@
-﻿using Blog.Application.Services;
+﻿using Blog.Application.Dto.BibliographyDto;
+using Blog.Application.Request;
+using Blog.Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,13 +19,22 @@ public class BibliographyController : BaseController
 
 	#region Functions
 	#region Create
-
+	public async Task<IActionResult> Insert(BibliographyInsertDto data)
+	{
+		return Ok(data);
+	}
 	#endregion
 
 	#region Read
 	public async Task<IActionResult> Index()
 	{
 		return View();
+	}
+
+	[HttpGet]
+	public async Task<IActionResult> GetList(DataListRequest request)
+	{
+		return Ok(await _bibliographyService.GetBibliographyListAsync(request));
 	}
 	#endregion
 

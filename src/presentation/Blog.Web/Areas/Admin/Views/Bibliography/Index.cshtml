@@ -1,5 +1,5 @@
 ﻿@{
-	ViewBag.Title = "Seri Makaleler";
+	ViewBag.Title = "Kaynakça Yönetimi";
 	Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
 }
 
@@ -24,112 +24,328 @@
 
 <div class="wrapper">
 	<div class="grid">
-		<div class="col-12">
+		<div class="col-5">
+			<div class="card" id="bibliography-insert-container">
+				<div class="card-header">
+					<h4>Kaynakça Ekle</h4>
+				</div>
+				<div class="card-body pd">
+					<form asp-route="BibliographyInsert" method="post" id="bibliography-insert-form" asp-antiforgery="true">
+						@Html.ValidationSummary(true)
+
+						<div class="form-group">
+							<label class="label">Kaynakça Adı</label>
+							<input type="text" name="Title" class="input" />
+							<span class="vld-Title"></span>
+							<small><i>Makalalerde görünecek isim.</i></small>
+						</div>
+
+						<div class="form-group">
+							<label class="label">Bağlantı Adresi</label>
+							<textarea class="input" name="Url"></textarea>
+							<span class="vld-Url"></span>
+						</div>
+						
+						<div class="form-group">
+							<label class="label">Durumu</label>
+							<select name="Status">
+								<option value="1" selected>Aktif</option>
+								<option value="0">Pasif</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" class="btn btn-blue" value="Kaynakça Ekle" />
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="card" id="bibliography-edit-container" style="display:none;">
+				<div class="card-header">
+					<h4>Kaynakça Güncelle</h4>
+				</div>
+				<div class="card-body pd">
+					<form asp-route="BibliographyEdit" method="post" id="bibliography-edit-form" asp-antiforgery="true">
+						@Html.ValidationSummary(true)
+						<input type="hidden" name="Id" />
+
+						<div class="form-group">
+							<label class="label">Kaynakça Adı</label>
+							<input type="text" name="Title" class="input" />
+							<span class="vld-Title"></span>
+							<small><i>Makalalerde görünecek isim.</i></small>
+						</div>
+
+						<div class="form-group">
+							<label class="label">Bağlantı Adresi</label>
+							<textarea class="input" name="Url"></textarea>
+							<span class="vld-Url"></span>
+						</div>
+
+						<div class="form-group">
+							<label class="label">Durumu</label>
+							<select name="Status">
+								<option value="1" selected>Aktif</option>
+								<option value="0">Pasif</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" class="btn btn-blue" value="Kaynakça Güncelle" />
+							<input type="reset" class="btn btn-default" value="İptal" id="edit-canel-btn" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-7">
 			<div class="card">
-				<div class="card-header pd-x">
-					<h4>Kaynakça</h4>
+				<div class="card-header">
+					<h4>Kaynakça Listesi</h4>
+					<div class="search">
+						<div class="search-icon">
+							<i class="cdi cdi-search"></i>
+						</div>
+						<div class="search-box">
+							<input type="text" placeholder="Ara.." id="filter-box" />
+						</div>
+					</div>
 				</div>
 				<div class="card-body pd">
 
-					<!--Makale listesi-->
-
-					<table class="border-btm">
+					<!--Kaynakça listesi-->
+					<table class="border-btm" id="table-bibliography">
 						<thead>
 							<tr>
-								<th>
-									<input type="checkbox" />
-								</th>
-								<th>Başlık</th>
-								<th>Ekleyen</th>
-								<th>Kategori</th>
-								<th class="text-center">Eklenme</th>
-								<th class="text-center">Okunma</th>
-								<th class="text-center">Yorum</th>
+								<th>#</th>
+								<th>Kaynakça Adı</th>
+								<th>Ekleyen Kullanıcı</th>
+								<th>Eklenme</th>
 								<th class="text-center">Durum</th>
 								<th class="text-center">İşlem</th>
 							</tr>
 						</thead>
-						<tbody>
-							@for (int i = 1; i <= 20; i++)
-							{
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Buraya makale başlığı gelecek</td>
-									<td>
-										<a href="#">Çağlar ÖZCAN</a>
-									</td>
-									<td>
-										<a href="#">kategori1</a>,
-										<a href="#">kategori2</a>,
-										<a href="#">kategori3</a>
-									</td>
-									<td class="text-center">10 Ekim 2021 23:36</td>
-									<td class="text-center font-numeric">100</td>
-									<td class="text-center font-numeric">15</td>
-									<td class="text-center">
-										<span class="status-success">Yayında</span>
-									</td>
-									<td class="text-center">
-										<div class="dropdown">
-											<a href="javascript:void(0)" data-dropdown="#tbl-menu@(Html.Raw(i))">
-												<i class="cdi cdi-ellipsis"></i>
-											</a>
-
-											<div class="drop-down" id="tbl-menu@(Html.Raw(i))">
-												<ul>
-													<li><a href="#"><i class="cdi cdi-admin-post"></i>&nbsp;&nbsp;Sabitle</a></li>
-													<li><a href="#"><i class="cdi cdi-remove"></i>&nbsp;&nbsp;Engelle</a></li>
-													<li><a href="#"><i class="cdi cdi-edit"></i>&nbsp;&nbsp;Güncelle</a></li>
-													<li class="seperator"></li>
-													<li><a href="#"><i class="cdi cdi-trash"></i>&nbsp;&nbsp;Sil</a></li>
-												</ul>
-											</div>
-										</div>
-									</td>
-								</tr>
-							}
-
-						</tbody>
+						<tbody></tbody>
 					</table>
-
-					<ul class="pagination pg-direction-right">
-						<li class="arrow">
-							<a href="#">
-								<i class="cdi cdi-arrow-left-alt2"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#">1</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li class="active">
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#">6</a>
-						</li>
-						<li>
-							<a href="#">7</a>
-						</li>
-						<li class="arrow">
-							<a href="#">
-								<i class="cdi cdi-arrow-right-alt2"></i>
-							</a>
-						</li>
-					</ul>
-
-					<!--Makale listesi-->
+					<!--Kaynakça listesi-->
 
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+<script>
+	window.addEventListener('DOMContentLoaded', (event) => {
+		//Kaynakça listesi için data table ayarlanması.
+		var dtCategory = new DataTable('#table-bibliography', {
+			method: 'GET',
+			url: 'https://localhost:9000/Admin/Bibliography/GetList',
+			fixColumn: true,
+			dataPerPage: 15,
+			columns: [
+				{
+					'targets': 'AI',
+					'order': false,
+				},
+				{
+					'targets': 1,
+					'order': true,
+				},
+				{
+					'targets': 3,
+					'order': true,
+				},
+				{
+					'targets': 4,
+					'order': true,
+					'dateFormat': 'd MM yyyy H:i'
+				},
+				{
+					'bind': 5,
+					'order': false,
+					'aling': 'center',
+					'render': function (data) {
+						return data == 1 ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
+					}
+				},
+				{
+					'bind': 0,
+					'order': false,
+					'aling': 'center',
+					'render': function (data) {
+						return '<div class="dropdown row-option"><a href="javascript:void(0)" data-dropdown="#cdi' + data.split('-')[0] + '">' +
+							'<i class="cdi cdi-ellipsis"></i>' +
+							'</a>' +
+							'<div class="drop-down" id="cdi' + data.split('-')[0] + '">' +
+							'<ul>' +
+							'<li><a href="javascript:void(0)" data-action="statusChange" data-id="' + data + '"><i class="cdi cdi-remove"></i>&nbsp;&nbsp;Aktif/Pasif</a></li>' +
+							'<li><a href="javascript:void(0)" data-action="edit" data-id="' + data + '"><i class="cdi cdi-edit"></i>&nbsp;&nbsp;Güncelle</a></li>' +
+							'<li class="seperator"></li>' +
+							'<li><a href="javascript:void(0)" data-action="delete" data-id="' + data + '"><i class="cdi cdi-trash"></i>&nbsp;&nbsp;Sil</a></li>' +
+							'</ul>' +
+							'</div></div>';
+					}
+				}
+			],
+			order: [4, 1], //[sortedIndex, sortType]
+			onRendered: function () {
+				DropDown.init('.row-option');
+
+				//Kategori status değiştirme işlemi.
+				var statusLinks = document.querySelectorAll('a[data-action="statusChange"]');
+				statusLinks.forEach(element => {
+					element.addEventListener('click', function (e) {
+						e.stopPropagation();
+						var target = e.currentTarget;
+						var id = target.dataset.id;
+						var statusTd = Util.findAll('td', target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)[4];
+
+						Ajax.send({
+							method: 'POST',
+							url: Util.urlHelper('Admin/Bibliography/StatusChange'),
+							data: { "id": id }
+						}).then(responseData => {
+							statusTd.innerHTML = statusTd.innerHTML == '<span class="status-danger">Pasif</span>' ? '<span class="status-success">Aktif</span>' : '<span class="status-danger">Pasif</span>';
+							Dailog.init({
+								icon: responseData.success ? 'success' : 'danger',
+								title: responseData.success ? 'İşlem başarılı..' : 'İşlem başarısız!',
+								message: responseData.message,
+								buttonType: 'ok'
+							});
+						}).catch(error => {
+							Dailog.init({
+								icon: 'danger',
+								title: 'İşlem başarısız!',
+								message: 'İşlem sırasında bir hata oluştu.. Daha sonra tekrar deneyiniz.',
+								buttonType: 'ok'
+							});
+						});
+					});
+				});
+
+				//Kategori silme işlemi.
+				var deleteLinks = document.querySelectorAll('a[data-action="delete"]');
+				deleteLinks.forEach(element => {
+					element.addEventListener('click', function (e) {
+						e.stopPropagation();
+						var target = e.currentTarget;
+						var id = target.dataset.id;
+
+						Dailog.init({
+							icon: 'question',
+							title: 'Silme işlemi onayla!',
+							message: 'Kaynakça sistemden silinecek! İşleme devam etmek istediğinizden emin misiniz?',
+							buttonType: 'yesNo',
+							ajax: {
+								url: Util.urlHelper('Admin/Bibliography/Delete'),
+								method: 'POST',
+								data: { "id": id }
+							},
+							ajaxAfter: function () {
+								dtCategory.renderBody();
+							}
+						});
+					});
+				});
+
+				//Kategori düzenleme işlemi.
+				var editLinks = document.querySelectorAll('a[data-action="edit"]');
+				editLinks.forEach(element => {
+					element.addEventListener('click', function (e) {
+						//e.stopPropagation();
+						var target = e.currentTarget;
+						var id = target.dataset.id;
+						var cancelBtn = document.getElementById('edit-canel-btn');
+
+						Ajax.send({
+							method: 'POST',
+							url: Util.urlHelper('Admin/Bibliography/EditInfo'),
+							data: { "id": id }
+						}).then(responseData => {
+
+							if (responseData.success) {
+								var insertForm = document.getElementById('category-insert-container');
+								var editForm = document.getElementById('category-edit-container');
+
+								Util.find('input[name="Id"]', editForm).value = responseData.value.id;
+								Util.find('input[name="Title"]', editForm).value = responseData.value.title;
+								Util.find('textarea[name="Url"]', editForm).value = responseData.value.url;
+
+								insertForm.style.display = 'none';
+								editForm.style.display = 'block';
+
+								cancelBtn.addEventListener('click', function () {
+									editForm.style.display = 'none';
+									insertForm.style.display = 'block';
+								});
+							} else {
+								Dailog.init({
+									icon: 'danger',
+									title: 'İşlem başarısız!',
+									message: responseData.message,
+									buttonType: 'ok'
+								});
+							}
+						}).catch(error => {
+							Dailog.init({
+								icon: 'danger',
+								title: 'İşlem başarısız!',
+								message: 'Düzenlenecek kaynakça bilgileri alınamadı. Daha sonra tekrar deneyiniz.',
+								buttonType: 'ok'
+							});
+						});
+					});
+				});
+			},
+			filter: {
+				element: '#filter-box'
+			}
+		});
+
+		FormValidation.init({
+			formSelector: '#bibliography-insert-form',
+			sendAjax: true,
+			ajaxAfter: function () {
+				dtCategory.renderBody();
+			},
+			inputs: [
+				{
+					name: 'Title',
+					rules: [
+						{ rule: 'required', message: 'Kaynakça ismi alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Url',
+					rules: [
+						{ rule: 'required', message: 'Kaynakça bağlantı adresi alanı zorunludur.' }
+					],
+				}
+			]
+		});
+
+		FormValidation.init({
+			formSelector: '#bibliography-edit-form',
+			sendAjax: true,
+			ajaxAfter: function () {
+				dtCategory.renderBody();
+			},
+			inputs: [
+				{
+					name: 'Title',
+					rules: [
+						{ rule: 'required', message: 'Kaynakça ismi alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Url',
+					rules: [
+						{ rule: 'required', message: 'Kaynakça bağlantı adresi alanı zorunludur.' }
+					],
+				}
+			]
+		});
+	});
+</script>
