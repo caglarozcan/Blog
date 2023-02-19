@@ -54,13 +54,13 @@
 
 					&:hover, &:hover i {
 						background-color: #319db5;
-						color: #ffffff;
+						color: #ffffff !important;
 					}
 
 					i {
 						margin-right: 5px;
 						line-height: 12px !important;
-						color: $color-blue;
+						color: $color-gray-light !important;
 					}
 				}
 			}

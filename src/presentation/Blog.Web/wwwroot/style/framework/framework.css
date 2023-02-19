@@ -1097,12 +1097,12 @@ input[type=checkbox]:checked::before {
 }
 .dropdown .drop-down ul li a:hover, .dropdown .drop-down ul li a:hover i {
   background-color: #319db5;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 .dropdown .drop-down ul li a i {
   margin-right: 5px;
   line-height: 12px !important;
-  color: #164E63;
+  color: #B5B5C3 !important;
 }
 
 .dialog {
