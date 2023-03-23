@@ -91,6 +91,15 @@
     <None Include="wwwroot\Uploads\images\jpeg\d1cf75e3-324e-4a88-94fc-f58a426f808c.jpeg" />
     <None Include="wwwroot\Uploads\images\jpeg\f96d864e-ccda-4c20-a143-99a5ea46514d.jpeg" />
     <None Include="wwwroot\Uploads\images\png\8549909c-97f2-4bea-b18c-015e5884e4b2.png" />
+    <None Include="wwwroot\third-party\DuotoneIcons\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\third-party\DuotoneIcons\webfonts\fa-duotone-900.woff2" />
+    <None Include="wwwroot\third-party\DuotoneIcons\webfonts\fa-light-300.woff2" />
+    <None Include="wwwroot\third-party\DuotoneIcons\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\third-party\DuotoneIcons\webfonts\fa-sharp-regular-400.woff2" />
+    <None Include="wwwroot\third-party\DuotoneIcons\webfonts\fa-sharp-solid-900.woff2" />
+    <None Include="wwwroot\third-party\DuotoneIcons\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\third-party\DuotoneIcons\webfonts\fa-thin-100.woff2" />
+    <None Include="wwwroot\third-party\DuotoneIcons\webfonts\fa-v4compatibility.woff2" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="https://docs.gradle.com/build-cache-node/schema/build-cache-node-config-schema-5.json" /></VisualStudio></ProjectExtensions>
