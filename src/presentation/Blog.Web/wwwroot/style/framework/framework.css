@@ -824,6 +824,32 @@ input[type=checkbox]:checked::before {
   height: 20px !important;
 }
 
+/*
+	FONTS
+*/
+.fs-15 {
+  font-size: 15px !important;
+}
+
+.fs-20 {
+  font-size: 20px !important;
+}
+
+.fs-25 {
+  font-size: 25px !important;
+}
+
+.fs-30 {
+  font-size: 30px !important;
+}
+
+/*
+	FONT COLOR
+*/
+.fc-blue {
+  color: #0088CC !important;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -969,7 +995,7 @@ input[type=checkbox]:checked::before {
   border-radius: 3px;
 }
 .gallery .gallery-item:hover {
-  background: #164E63;
+  background: #319DB5;
 }
 .gallery .gallery-item .attachment {
   position: relative;
@@ -1057,10 +1083,8 @@ input[type=checkbox]:checked::before {
   vertical-align: middle;
 }
 .dropdown a i {
-  width: 20px;
-  height: 10px !important;
   margin-top: 1px;
-  color: #6c7293;
+  color: #319DB5;
 }
 .dropdown .drop-down {
   display: none;
@@ -1161,7 +1185,7 @@ input[type=checkbox]:checked::before {
   color: #d95b44;
 }
 .dialog .dialog-wrapper .dialog-content .dialog-body .message-text.info {
-  color: #164E63;
+  color: #319DB5;
 }
 .dialog .dialog-wrapper .dialog-content .dialog-body .dialog-button {
   display: block;
@@ -1628,7 +1652,7 @@ input[type=checkbox]:checked::before {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 8px 25px 10px 25px;
+  padding: 8px 20px 10px 20px;
   cursor: pointer;
   color: #000000;
 }
@@ -1756,7 +1780,7 @@ table td a i {
   width: auto !important;
   padding: 0;
   height: 0;
-  color: #164E63;
+  color: #319DB5;
 }
 .pagination li a {
   padding: 0.3rem 0.65rem;

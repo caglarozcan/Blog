@@ -43,7 +43,7 @@ nav ul li {
   margin-bottom: 5px;
 }
 nav ul li.selected a {
-  background-color: #164E63;
+  background-color: #319DB5;
 }
 nav ul li.selected a, nav ul li.selected i, nav ul li.selected span:not(.svg-icon) {
   color: #ffffff;
@@ -60,7 +60,7 @@ nav ul li a {
   margin: 5px;
 }
 nav ul li a:hover {
-  background: #164E63;
+  background: #319DB5;
   color: #ffffff !important;
 }
 nav ul li a:hover > i {
@@ -180,7 +180,7 @@ footer {
   text-align: center;
 }
 .file-upload.highlight {
-  border: 3px dashed #164E63;
+  border: 3px dashed #319DB5;
 }
 .file-upload .upload-text {
   font-size: 1.9rem;

@@ -20,7 +20,7 @@ builder.Services.AddControllersWithViews(config =>
 builder.Services.AddControllersWithViews().AddMvcOptions(o =>
 {
 	o.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => "Geçersiz değer girildi. Kontrol ediniz.");
-});
+}).AddRazorRuntimeCompilation();
 
 //Veritabanı için connection string tanımlaması.
 builder.Services.AddDbContext<EfBlogContext>(options =>
