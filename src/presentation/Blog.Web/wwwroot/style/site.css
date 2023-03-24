@@ -255,10 +255,11 @@ footer {
 }
 
 .search {
-  border: 1px solid #dee2e6;
+  border: none;
   border-radius: 3px;
   padding: 3px 5px 3px 3px !important;
   min-width: 280px;
+  background-color: var(---color-gray-200);
 }
 .search .search-icon {
   display: inline-block;
@@ -272,7 +273,7 @@ footer {
 }
 .search .search-box input {
   border: none !important;
-  padding: 0 !important;
+  padding: 2px !important;
   min-width: 235px;
 }
 

@@ -173,10 +173,11 @@ footer {
 }
 
 .search {
-	border: 1px solid $color-gray-lightl;
+	border: none;
 	border-radius: 3px;
 	padding: 3px 5px 3px 3px !important;
 	min-width:280px;
+	background-color: var(---color-gray-200);
 
 	.search-icon {
 		display: inline-block;
@@ -192,7 +193,7 @@ footer {
 
 		input {
 			border: none !important;
-			padding: 0 !important;
+			padding: 2px !important;
 			min-width:235px;
 		}
 	}

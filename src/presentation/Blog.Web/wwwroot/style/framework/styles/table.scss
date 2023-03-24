@@ -130,11 +130,11 @@ table {
 		}
 
 		&.active a {
-			background: $color-link;
-			color: $color-white;
+			background: var(--link-color);
+			color: var(--color-white);
 
 			&:hover {
-				background: $color-link;
+				background: var(--link-color);
 			}
 		}
 
@@ -156,11 +156,11 @@ table {
 			border-radius: 0.25rem;
 			margin: 0 1px;
 			text-align: center;
-			color: $color-link;
+			color: var(--link-color);
 			text-decoration: none;
 
 			&:hover {
-				background: $color-gray-lightx;
+				background: var(--color-gray-300);
 			}
 		}
 	}

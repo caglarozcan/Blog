@@ -1880,11 +1880,11 @@ table td a i {
   margin-right: 0;
 }
 .pagination li.active a {
-  background: #319DB5;
-  color: #ffffff;
+  background: var(--link-color);
+  color: var(--color-white);
 }
 .pagination li.active a:hover {
-  background: #319DB5;
+  background: var(--link-color);
 }
 .pagination li.arrow a i {
   font-size: 14px;
@@ -1903,11 +1903,11 @@ table td a i {
   border-radius: 0.25rem;
   margin: 0 1px;
   text-align: center;
-  color: #319DB5;
+  color: var(--link-color);
   text-decoration: none;
 }
 .pagination li a:hover {
-  background: #f0f0f0;
+  background: var(--color-gray-300);
 }
 
 .web-editor {

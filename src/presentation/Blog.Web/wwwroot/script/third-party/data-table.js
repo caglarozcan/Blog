@@ -195,12 +195,12 @@
 
 				if (headingOptions[index].targets == dt.sortedIndex) {
 					var sortIcon = document.createElement('i');
-					sortIcon.classList.add('cdi');
+					sortIcon.classList.add('fa-duotone');
 
 					if (dt.sortType == 0) {
-						sortIcon.classList.add('cdi-arrow-down');
+						sortIcon.classList.add('fa-arrow-down-a-z');
 					} else {
-						sortIcon.classList.add('cdi-arrow-up');
+						sortIcon.classList.add('fa-arrow-down-z-a');
 					}
 
 					thead.appendChild(sortIcon);
@@ -214,16 +214,16 @@
 
 					if (sortIndex == dt.sortedIndex) {
 						var sortIcon = find('i', thead);
-						sortIcon.classList.add('cdi');
+						sortIcon.classList.add('fa-duotone');
 
 						dt.sortType = (dt.sortType === 0 ? 1 : 0);
 						
 						if (dt.sortType === 1) {
-							sortIcon.classList.remove('cdi-arrow-down');
-							sortIcon.classList.add('cdi-arrow-up');
+							sortIcon.classList.remove('fa-arrow-down-a-z');
+							sortIcon.classList.add('fa-arrow-down-z-a');
 						} else {
-							sortIcon.classList.remove('cdi-arrow-up');
-							sortIcon.classList.add('cdi-arrow-down');
+							sortIcon.classList.remove('fa-arrow-down-z-a');
+							sortIcon.classList.add('fa-arrow-down-a-z');
 						}
 					} else {
 						dt.sortType = 0;
@@ -234,8 +234,8 @@
 						});
 
 						var sortIcon = document.createElement('i');
-						sortIcon.classList.add('cdi');
-						sortIcon.classList.add('cdi-arrow-down');
+						sortIcon.classList.add('fa-duotone');
+						sortIcon.classList.add('fa-arrow-down-a-z');
 
 						thead.appendChild(sortIcon);
 						dt.sortedIndex = sortIndex;
@@ -386,7 +386,7 @@
 		var firstLink = document.createElement('a');
 		firstLink.classList.add('link-first');
 		firstLink.href = 'javascript:void(0)';
-		firstLink.innerHTML = '<i class="cdi cdi-arrow-left-alt"></i>';
+		firstLink.innerHTML = '<i class="fa-duotone fa-angles-left fa-fw"></i>';
 		on(firstLink, 'click', function (e) {
 			e.stopPropagation();
 			dt.currentPage = 1;
@@ -400,7 +400,7 @@
 		var previousLink = document.createElement('a');
 		previousLink.classList.add('link-first');
 		previousLink.href = 'javascript:void(0)';
-		previousLink.innerHTML = '<i class="cdi cdi-arrow-left-alt2"></i>';
+		previousLink.innerHTML = '<i class="fa-duotone fa-angle-left fa-fw"></i>';
 		on(previousLink, 'click', function (e) {
 			e.stopPropagation();
 			if (currentPage > 1) {
@@ -456,7 +456,7 @@
 		var nextLink = document.createElement('a');
 		nextLink.classList.add('link-first');
 		nextLink.href = 'javascript:void(0)';
-		nextLink.innerHTML = '<i class="cdi cdi-arrow-right-alt2"></i>';
+		nextLink.innerHTML = '<i class="fa-duotone fa-angle-right fa-fw"></i>';
 		on(nextLink, 'click', function (e) {
 			e.stopPropagation();
 			if (currentPage < pageSize) {
@@ -472,7 +472,7 @@
 		var lastLink = document.createElement('a');
 		lastLink.classList.add('link-first');
 		lastLink.href = 'javascript:void(0)';
-		lastLink.innerHTML = '<i class="cdi cdi-arrow-right-alt"></i>';
+		lastLink.innerHTML = '<i class="fa-duotone fa-angles-right fa-fw"></i>';
 		on(lastLink, 'click', function (e) {
 			e.stopPropagation();
 			dt.currentPage = pageSize;
