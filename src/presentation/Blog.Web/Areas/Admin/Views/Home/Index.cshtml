@@ -1,8 +1,34 @@
 ﻿@{
-    ViewBag.Title = "Blog Dashboard";
-    Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
+	ViewBag.Title = "Blog Dashboard";
+	Layout = "~/Areas/Admin/Views/Shared/_MainLayout.cshtml";
 }
 
 <div class="wrapper">
-    @await Component.InvokeAsync("GeneralStatisticComponent")
+	<div class="grid">
+		@await Component.InvokeAsync("GeneralStatisticComponent")
+
+
+		<div class="col-6">
+			<div class="card">
+				<div class="card-header pd-x">
+					<h4>Son Yorumlar</h4>
+				</div>
+				<div class="card-body pd">
+					Yorum listesi
+				</div>
+			</div>
+		</div>
+
+		<div class="col-6">
+			<div class="card">
+				<div class="card-header pd-x">
+					<h4>Son Yorumlar</h4>
+				</div>
+				<div class="card-body pd">
+					Yorum listesi
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+

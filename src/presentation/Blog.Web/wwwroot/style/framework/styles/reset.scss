@@ -26,7 +26,7 @@ td, span, iframe, input, button, textarea, select, option, img, sub, sup, pre,
 code, form, i {
 	font-size: 0.9rem;
 	vertical-align: baseline;
-	color: $color-font;
+	color: var(--body-font-color);
 	font-family: $font-poppins, sans-serif;
 	-webkit-font-smoothing: antialiased;
 }
@@ -55,7 +55,7 @@ ol, ul {
 
 a {
 	text-decoration: none;
-	color: $color-link;
+	color: var(--link-color);
 }
 
 b, strong {

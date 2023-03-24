@@ -9,7 +9,7 @@ table {
 	vertical-align: top;
 
 	&.border-btm > thead, &.border-btm > tbody > tr:not(:last-child) {
-		border-bottom: 1px solid #e9ebec;
+		border-bottom: 1px solid var(--table-border-color);
 	}
 
 	thead {
@@ -17,11 +17,14 @@ table {
 
 		th {
 			text-align: left;
-			color: #878a99;
 			font-weight: 500;
 
+			span {
+				color: var(--table-th-font-color);
+			}
+
 			i {
-				color: $color-gray-light;
+				color: var(--table-th-font-color);
 			}
 		}
 	}
@@ -32,9 +35,10 @@ table {
 
 	th {
 		padding: 0.3rem 0.45rem;
-		
-		&.sortable{
-			cursor:pointer !important;
+		color: var(--table-th-font-color);
+
+		&.sortable {
+			cursor: pointer !important;
 		}
 	}
 
@@ -47,7 +51,7 @@ table {
 	}
 
 	td {
-		color: #212529;
+		color: var(--table-td-font-color);
 		vertical-align: middle;
 		padding: 0.45rem 0.45rem;
 

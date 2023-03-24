@@ -14,22 +14,22 @@
 //		STATUS
 //----------------------------------------------------
 
-.status-success, .status-info, .status-primary, .status-danger {
+.status-success, .status-info, .status-primary, .status-danger, .status-warning {
 	display: inline-block;
-	padding: 2px 5px;
+	padding: 3px 5px;
 	border-radius: 4px;
-	font-size: 0.70em;
+	font-size: 0.80em;
 	font-weight: 500;
 }
 
 .status-success {
-	color: #1BC5BD;
-	background-color: #C9F7F5;
+	color: var(--color-success);
+	background-color: var(--color-success-light);
 }
 
 .status-info {
-	color: #8950FC;
-	background-color: #EEE5FF;
+	color: var(--color-info);
+	background-color: var(--color-info-light);
 }
 
 .status-primary {
@@ -38,8 +38,13 @@
 }
 
 .status-danger {
-	color: #F64E60;
-	background-color: #FFE2E5;
+	color: var(--color-danger);
+	background-color: var(--color-danger-light);
+}
+
+.status-warning {
+	color: var(--color-warning);
+	background-color: var(--color-warning-light);
 }
 
 //----------------------------------------------------
@@ -73,94 +78,5 @@
 
 	to {
 		opacity: 1;
-	}
-}
-
-//----------------------------------------------------
-//		SVG ICON
-//----------------------------------------------------
-.svg-icon {
-	display: inline-block;
-
-	&.header-icon svg {
-		height: 1rem;
-		width: 1rem;
-	}
-
-	svg {
-		height: 1.4rem;
-		width: 1.4rem;
-		overflow: hidden;
-		vertical-align: middle;
-	}
-
-	g [fill] {
-		fill: #b5b5c3;
-	}
-
-	&.svg-icon-white svg g [fill] {
-		fill: #ffffff !important;
-	}
-
-	&.menu-icon svg g [fill] {
-		fill: $color-gray-light !important;
-	}
-
-	&.svg-icon-primary svg g [fill] {
-		fill: $color-blue-icon !important;
-	}
-
-	&.svg-logo-primary svg path {
-		fill: $color-blue-icon !important;
-	}
-
-	&.svg-icon-x svg {
-		height: 1.6rem !important;
-		width: 1.6rem !important;
-	}
-
-	&.svg-icon-2x svg {
-		height: 2rem !important;
-		width: 2rem !important;
-	}
-
-	&.svg-icon-3x svg {
-		height: 3rem !important;
-		width: 3rem !important;
-	}
-
-	&.svg-icon-4x svg {
-		height: 4rem !important;
-		width: 4rem !important;
-	}
-
-	&.svg-icon-5x svg {
-		height: 5rem !important;
-		width: 5rem !important;
-	}
-
-	&.svg-icon-6x svg {
-		height: 6rem !important;
-		width: 6rem !important;
-	}
-
-	&.svg-icon-7x svg {
-		height: 7rem !important;
-		width: 7rem !important;
-	}
-
-	&.svg-icon-8x svg {
-		height: 8rem !important;
-		width: 8rem !important;
-	}
-
-	&.svg-icon-9x svg {
-		height: 9rem !important;
-		width: 9rem !important;
-	}
-
-	&.svg-icon-10x svg {
-		height: 10rem !important;
-		width: 10rem !important;
 	}
 }

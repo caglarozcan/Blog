@@ -3,12 +3,11 @@
 header {
 	position: fixed;
 	height: 35px;
-	background: $color-bg-hdr;
+	background: var(--nav-bg-color);
 	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 9999;
-	box-shadow: 0 2px 5px rgba(57, 63, 72, 0.25);
 
 	.header-content {
 		width: 100%;
@@ -36,7 +35,7 @@ nav {
 	left: 0;
 	bottom: 0;
 	overflow-y: auto;
-	background: $color-bg-hdr;
+	background: var(--nav-bg-color);
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 	z-index: 999;
 
@@ -50,11 +49,11 @@ nav {
 
 			&.selected {
 				a {
-					background-color: $color-blue;
+					background-color: var(--nav-active-bg-color);
 				}
 
 				a, i, span:not(.svg-icon) {
-					color: $color-white;
+					color: var(--color-white);
 				}
 
 				.menu-icon svg g [fill] {
@@ -71,28 +70,24 @@ nav {
 				margin: 5px;
 
 				&:hover {
-					background: $color-blue;
-					color: $color-white !important;
+					background: var(--nav-active-bg-color);
+					color: var(--color-white) !important;
 
 					& > i {
-						color: $color-white;
+						color: var(--color-white);
 					}
 
 					& > span {
-						color: $color-white;
-					}
-
-					.menu-icon svg g [fill] {
-						fill: #ffffff !important;
+						color: var(--color-white);
 					}
 				}
 
 				i, span {
-					color: $color-gray-light;
+					color: var(--nav-link-color);
 				}
 
 				i {
-					font-size: 26px !important;
+					font-size: 23px !important;
 					display: inline-block !important;
 					width: 40px !important;
 					height: 40px !important;
@@ -117,7 +112,7 @@ nav {
 	width: calc(100% - 90px);
 	margin-top: 35px;
 	margin-left: 90px;
-	background: #f3f3f9;
+	background: var(--body-bg);
 	min-height: calc(100vh - 85px);
 
 	.wrapper {
@@ -127,31 +122,28 @@ nav {
 }
 
 footer {
-	border-top: 1px solid #eaeaea;
+	border-top: 1px solid var(--footer-border-color);
 	display: block;
-	background: #f3f3f9;
+	background: var(--body-bg);
 	width: calc(100% - 90px);
 	margin-left: 90px;
 	height: 50px;
 	text-align: right;
 	padding: 15px 20px 0 0;
-	color: $color-gray-light;
+	color: var(--footer-font-color);
 }
 
 .breadcrumbs {
 	width: 100%;
-	border-bottom: 1px solid $color-gray-lightl;
-	background: #FFFFFF;
-	padding: 8px;
+	padding: 20px 20px 0 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
 	h4 {
 		font-size: 1.2rem;
-		color: $color-gray;
+		color: var(--body-font-color);
 		font-weight: 400;
-		padding-left: 8px;
 	}
 
 	ul {
@@ -174,7 +166,7 @@ footer {
 				color: $color-gray-light;
 				font-size: 12px;
 				margin-top: 4px;
-				height:10px;
+				height: 10px;
 			}
 		}
 	}
@@ -220,11 +212,11 @@ footer {
 		font-size: 1.9rem;
 		display: inline-block;
 		margin: 70px 0 100px 0;
-		color: $color-gray;
+		color: var(--color-gray);
 		font-weight: 300;
 
-		.svg-icon{
-			margin-bottom:30px;
+		.svg-icon {
+			margin-bottom: 30px;
 		}
 	}
 }

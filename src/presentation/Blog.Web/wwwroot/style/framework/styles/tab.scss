@@ -2,7 +2,7 @@
 	width: 100%;
 
 	&.tab-bg {
-		background: $color-white;
+		background: var(--tab-bg);
 		padding: 10px 20px;
 		border-radius: 8px;
 	}
@@ -23,11 +23,11 @@
 
 		.tab-menu-item {
 			flex: 1 0 0%;
-			border-bottom: 1px solid #f0f0f0;
+			border-bottom: 1px solid var(--tab-border-color);
 			background: #f8f8f8;
 
 			&:not(:first-child) {
-				border-left: 1px solid #f0f0f0;
+				border-left: 1px solid var(--tab-border-color);
 			}
 
 			&:first-child {
@@ -45,7 +45,7 @@
 
 			a {
 				text-decoration: none;
-				color: $color-font;
+				color: var(--body-font-color);
 				padding: 20px;
 				display: block;
 				cursor: pointer;
@@ -60,17 +60,17 @@
 		display: flex;
 		justify-content: flex-start;
 		flex-wrap: nowrap;
-		border-bottom: 1px solid #e8e8e8;
+		border-bottom: 1px solid var(--tab-border-color);
 
 		.tab-menu-item {
 			border-bottom: 2px solid transparent;
 
 			&.active {
-				border-bottom: 2px solid $color-green;
+				border-bottom: 2px solid var(--color-green);
 			}
 
 			&:not(.active):hover {
-				border-bottom-color: #d5d5d5;
+				border-bottom-color: var(--tab-hover-bg);
 				transform: scale(1);
 				transition: transform 0.3s;
 			}
@@ -81,7 +81,7 @@
 				width: 100%;
 				padding: 8px 20px 10px 20px;
 				cursor: pointer;
-				color: $color-font;
+				color: var(--body-font-color);
 
 				i {
 					margin-right: 10px;
@@ -96,7 +96,7 @@
 		.tab-item {
 			width: 100%;
 			padding: 20px 0 0 0;
-			background: #fff;
+			background: var(--tab-bg);
 			border-bottom-left-radius: 8px;
 			border-bottom-right-radius: 8px;
 			display: none;

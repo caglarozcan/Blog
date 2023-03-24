@@ -28,7 +28,7 @@
 		.dialog-content {
 			width: 100%;
 			padding: 30px 0;
-			background: #FFFFFF;
+			background: var(--dialog-bg);
 			border-radius: 8px;
 			box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
@@ -54,11 +54,11 @@
 					line-height: 1.6em;
 
 					&.success {
-						color: $color-green;
+						color: var(--color-green);
 					}
 
 					&.error {
-						color: $color-red;
+						color: var(--color-red);
 					}
 
 					&.info {

@@ -1,103 +1,127 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme-mode="dark" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="~/images/logo.png">
-    <link href="~/style/framework/framework.min.css" rel="stylesheet" />
-    <link href="~/style/site.min.css" rel="stylesheet" />
-    <!--Icon Css-->
-    <link href="~/third-party/duotoneicons/css/all.css" rel="stylesheet" />
-    <link href="~/third-party/duotoneicons/css/regular.css" rel="stylesheet" />
-    <link href="~/third-party/duotoneicons/css/solid.css" rel="stylesheet" />
-    <!--Icon Css-->
-    <script src="~/script/frameworkjs/framework.js"></script>
-    <script src="~/script/third-party/data-table.js"></script>
-    <title>@ViewBag.Title</title>
+	<link rel="shortcut icon" href="~/images/logo.png">
+	<link href="~/style/framework/framework.min.css" rel="stylesheet" />
+	<link href="~/style/site.min.css" rel="stylesheet" />
+	<!--Icon Css-->
+	<link href="~/third-party/duotoneicons/css/all.css" rel="stylesheet" />
+	<link href="~/third-party/duotoneicons/css/regular.css" rel="stylesheet" />
+	<link href="~/third-party/duotoneicons/css/solid.css" rel="stylesheet" />
+	<!--Icon Css-->
+	<script src="~/script/frameworkjs/framework.js"></script>
+	<script src="~/script/third-party/data-table.js"></script>
+	<title>@ViewBag.Title</title>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <img src="~/images/logo-main.png" />
-            </div>
-            <div class="system-menu"></div>
-        </div>
-    </header>
 
-    <nav>
-        <ul>
-            <li is-active="yonetim/panel">
-                <a asp-route="AdminHome">
-                    <i class="fa-duotone fa-house fa-fw"></i>
-                    <span>Anasayfa</span>
-                </a>
-            </li>
-            <li is-active="yonetim/makale,yonetim/makale-ekle,yonetim/seri-makaleler">
-                <a asp-route="AdminArticle">
-                    <i class="fa-duotone fa-pencil-mechanical fa-fw"></i>
-                    <span>Makale</span>
-                </a>
-            </li>
-            <li is-active="yonetim/kullanici,yonetim/kullanici-ekle">
-                <a asp-route="AdminUsers">
-                    <i class="fa-duotone fa-users fa-fw"></i>
-                    <span>Kullanıcı</span>
-                </a>
-            </li>
-            <li is-active="yonetim/kategori">
-                <a asp-route="AdminCategories">
-                    <i class="fa-duotone fa-sitemap fa-fw"></i>
-                    <span>Kategori</span>
-                </a>
-            </li>
-            <li is-active="yonetim/etiket">
-                <a asp-route="AdminTags">
-                    <i class="fa-duotone fa-tags fa-fw"></i>
-                    <span>Etiket</span>
-                </a>
-            </li>
-            <li is-active="yonetim/medya,yonetim/dosya-yukle,yonetim/dosya-turleri">
-                <a asp-route="AdminMedias">
-                    <i class="fa-duotone fa-film fa-fw"></i>
-                    <span>Medya</span>
-                </a>
-            </li>
-            <li is-active="yonetim/yorum">
-                <a asp-route="AdminComments">
-                    <i class="fa-duotone fa-comments fa-fw"></i>
-                    <span>Yorum</span>
-                </a>
-            </li>
-            <li is-active="yonetim/aboneler">
-                <a asp-route="AdminSubscribers">
-                    <i class="fa-duotone fa-rss fa-fw"></i>
-                    <span>Aboneler</span>
-                </a>
-            </li>
-            <li is-active="yonetim/ayarlar">
-                <a asp-route="AdminSettings">
-                    <i class="fa-duotone fa-gears fa-fw"></i>
-                    <span>Ayarlar</span>
-                </a>
-            </li>
-            <li>
-                <a asp-route="AdminLogout">
-                    <i class="fa-duotone fa-power-off fa-fw"></i>
-                    <span>Çıkış</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+	<script>
+		var defaultThemeMode = "light";
+		var themeMode;
 
-    <main id="content">
-        @RenderBody()
-    </main>
+		if (document.documentElement) {
+			if (document.documentElement.hasAttribute("data-theme-mode")) {
+				themeMode = document.documentElement.getAttribute("data-theme-mode");
+			} else {
+				if (localStorage.getItem("data-theme") !== null) {
+					themeMode = localStorage.getItem("data-theme");
+				} else {
+					themeMode = defaultThemeMode;
+				}
+			}
 
-    <footer>
-        &copy; Copyright 2002 Çağlar ÖZCAN.
-    </footer>
+			if (themeMode === "system") {
+				themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+			}
+
+			document.documentElement.setAttribute("data-theme", themeMode);
+		}
+	</script>
+
+	<header>
+		<div class="header-content">
+			<div class="logo">
+				<img src="~/images/logo-main.png" />
+			</div>
+			<div class="system-menu"></div>
+		</div>
+	</header>
+
+	<nav>
+		<ul>
+			<li is-active="yonetim/panel">
+				<a asp-route="AdminHome">
+					<i class="fa-duotone fa-house fa-fw"></i>
+					<span>Anasayfa</span>
+				</a>
+			</li>
+			<li is-active="yonetim/makale,yonetim/makale-ekle,yonetim/seri-makaleler">
+				<a asp-route="AdminArticle">
+					<i class="fa-duotone fa-pencil-mechanical fa-fw"></i>
+					<span>Makale</span>
+				</a>
+			</li>
+			<li is-active="yonetim/kullanici,yonetim/kullanici-ekle">
+				<a asp-route="AdminUsers">
+					<i class="fa-duotone fa-users fa-fw"></i>
+					<span>Kullanıcı</span>
+				</a>
+			</li>
+			<li is-active="yonetim/kategori">
+				<a asp-route="AdminCategories">
+					<i class="fa-duotone fa-sitemap fa-fw"></i>
+					<span>Kategori</span>
+				</a>
+			</li>
+			<li is-active="yonetim/etiket">
+				<a asp-route="AdminTags">
+					<i class="fa-duotone fa-tags fa-fw"></i>
+					<span>Etiket</span>
+				</a>
+			</li>
+			<li is-active="yonetim/medya,yonetim/dosya-yukle,yonetim/dosya-turleri">
+				<a asp-route="AdminMedias">
+					<i class="fa-duotone fa-film fa-fw"></i>
+					<span>Medya</span>
+				</a>
+			</li>
+			<li is-active="yonetim/yorum">
+				<a asp-route="AdminComments">
+					<i class="fa-duotone fa-comments fa-fw"></i>
+					<span>Yorum</span>
+				</a>
+			</li>
+			<li is-active="yonetim/aboneler">
+				<a asp-route="AdminSubscribers">
+					<i class="fa-duotone fa-rss fa-fw"></i>
+					<span>Aboneler</span>
+				</a>
+			</li>
+			<li is-active="yonetim/ayarlar">
+				<a asp-route="AdminSettings">
+					<i class="fa-duotone fa-gears fa-fw"></i>
+					<span>Ayarlar</span>
+				</a>
+			</li>
+			<li>
+				<a asp-route="AdminLogout">
+					<i class="fa-duotone fa-power-off fa-fw"></i>
+					<span>Çıkış</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+	<main id="content">
+		@RenderBody()
+	</main>
+
+	<footer>
+		&copy; Copyright 2002 Çağlar ÖZCAN.
+	</footer>
 </body>
 </html>
