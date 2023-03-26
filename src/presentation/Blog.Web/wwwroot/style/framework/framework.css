@@ -915,24 +915,23 @@ input[type=checkbox]:checked::before {
 }
 .ticket-container .ticket {
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-content: center;
-  padding: 5px;
+  align-items: center;
+  padding: 5px 8px;
   border-radius: 3px;
-  background: #C3E1FF;
-  margin: 3px;
+  background: var(--color-primary-light);
+  margin: 0 8px 8px 0;
 }
 .ticket-container .ticket span {
-  display: inline-block;
-  color: #808080;
+  color: var(--color-primary-text);
 }
 .ticket-container .ticket a {
-  display: inline-block;
   margin-left: 5px;
 }
 .ticket-container .ticket a i {
-  font-size: 18px;
-  height: 20px !important;
+  font-size: 13px;
+  color: var(--color-red);
 }
 
 /*
