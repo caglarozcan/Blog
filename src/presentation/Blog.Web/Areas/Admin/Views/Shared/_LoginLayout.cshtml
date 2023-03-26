@@ -13,6 +13,35 @@
 	<title>.:Yönetim Paneli Giriş:.</title>
 </head>
 <body>
+
+	<script>
+		window.addEventListener("DOMContentLoaded", (event) => {
+
+			var defaultThemeMode = "light";
+			var themeMode;
+
+			if (document.documentElement) {
+				if (document.documentElement.hasAttribute("data-theme-mode")) {
+					themeMode = document.documentElement.getAttribute("data-theme-mode");
+				} else {
+					if (localStorage.getItem("data-theme") !== null) {
+						themeMode = localStorage.getItem("data-theme");
+					} else {
+						themeMode = defaultThemeMode;
+						localStorage.setItem("data-theme", themeMode);
+					}
+				}
+
+				if (themeMode === "system") {
+					themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+				}
+
+				document.documentElement.setAttribute("data-theme", themeMode);
+				document.documentElement.setAttribute("data-theme-mode", themeMode);
+			}
+		});
+	</script>
+
     @RenderBody()
 
     <footer>&copy; Copyright 2002-2022 Çağlar ÖZCAN. Tüm Hakları Saklıdır.</footer>

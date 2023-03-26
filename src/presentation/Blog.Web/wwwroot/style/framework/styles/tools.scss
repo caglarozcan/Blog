@@ -75,7 +75,7 @@
 	}
 
 	.tree ul li {
-		border-left: 2px solid #ddd;
+		border-left: 2px solid var(--color-gray-400);
 	}
 
 	.tree ul li:last-child {
@@ -90,7 +90,7 @@
 		left: -2px;
 		width: calc(var(--spacing) + 2px);
 		height: calc(var(--spacing) + 1px);
-		border: solid #ddd;
+		border: solid var(--color-gray-400);
 		border-width: 0 0 2px 2px;
 	}
 
@@ -123,14 +123,14 @@
 		width: calc(2 * var(--radius));
 		height: calc(2 * var(--radius));
 		border-radius: 50%;
-		background: #ddd;
+		background: var(--color-gray-400);
 	}
 
 	.tree summary::before {
 		content: '+';
 		z-index: 1;
-		background: $color-green;
-		color: #fff;
+		background: var(--color-green);
+		color: var(--color-white);
 		line-height: calc(2 * var(--radius) - 2px);
 		text-align: center;
 		font-size: 16px;
@@ -201,4 +201,19 @@
 */
 .fc-blue {
 	color: #009ef7 !important;
+}
+
+.fc-white{
+	color: var(--color-white) !important;
+}
+
+/*
+	MARGINS
+*/
+.mt-1{
+	margin-top:1em;
+}
+
+.mt-2 {
+	margin-top: 2em;
 }

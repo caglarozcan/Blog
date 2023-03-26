@@ -1,24 +1,29 @@
 ﻿body {
-	background: url('../images/login-bg.jpg') #f3f3f3;
-	color: #455560;
+	background: var(--body-bg);
+	color: var(--body-font-color);
+	margin: 0;
+	padding: 0;
+	background-size: cover;
 }
 
 .login-box {
-	width: 100%;
 	max-width: 400px;
 	margin: 250px auto 0 auto;
-	padding:30px 20px 20px 20px;
+	padding: 30px 20px 20px 20px;
+	background: var(--card-bg);
+	border-radius: 8px;
+	border: 1px solid var(--card-border-color);
 }
 
-.login-box .logo{
-	display:block;
-	text-align:center;
-}
-
-	.login-box .logo img{
-		width:90px;
-		margin-bottom:15px;
+	.login-box .logo {
+		display: block;
+		text-align: center;
 	}
+
+		.login-box .logo img {
+			width: 90px;
+			margin-bottom: 15px;
+		}
 
 footer {
 	position: fixed;
@@ -27,5 +32,5 @@ footer {
 	right: 0;
 	bottom: 20px;
 	color: #878a99;
-	font-size:1rem;
+	font-size: 1rem;
 }
