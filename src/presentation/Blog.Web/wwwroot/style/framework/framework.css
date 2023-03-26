@@ -958,7 +958,7 @@ input[type=checkbox]:checked::before {
 	FONT COLOR
 */
 .fc-blue {
-  color: #0088CC !important;
+  color: #009ef7 !important;
 }
 
 .card {
@@ -1800,6 +1800,7 @@ table thead th {
 }
 table thead th span {
   color: var(--table-th-font-color);
+  padding-right: 5px;
 }
 table thead th i {
   color: var(--table-th-font-color);
@@ -1917,10 +1918,10 @@ table td a i {
   display: block;
   width: 100%;
   padding: 5px;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--card-border-color);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background: #f8f8f8;
+  background: var(--color-gray-100);
 }
 .web-editor .editor-menu .menu {
   display: table;
@@ -1938,7 +1939,7 @@ table td a i {
 .web-editor .editor-menu .menu li.seperator {
   margin: 0 5px;
   width: 0;
-  border-left: 1px solid #dee2e6;
+  border-left: 1px solid var(--card-border-color);
   height: 25px;
 }
 .web-editor .editor-menu .menu li select {
@@ -1947,28 +1948,32 @@ table td a i {
 }
 .web-editor .editor-menu .menu li a {
   display: inline-block;
-  padding: 3px;
+  padding: 5px 5px 3px 5px;
   margin: 0 4px;
   border-radius: 3px;
 }
 .web-editor .editor-menu .menu li a:hover {
-  background: #dee2e6;
+  background: var(--color-gray-300);
+}
+.web-editor .editor-menu .menu li a i {
+  color: var(--color-gray-800);
+  font-size: 18px;
 }
 .web-editor .editor-content {
   width: 100%;
   min-height: 650px;
   padding: 8px;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--card-border-color);
   border-top: none;
   border-bottom: none;
 }
 .web-editor .editor-footer {
   display: block;
-  background: #f8f8f8;
+  background: var(--color-gray-100);
   padding: 8px;
-  color: #6c7293;
+  color: var(--color-gray-700);
   font-size: 0.85em;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--card-border-color);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }

@@ -2,7 +2,7 @@
 
 header {
 	position: fixed;
-	height: 35px;
+	height: 50px;
 	background: var(--nav-bg-color);
 	top: 0;
 	left: 0;
@@ -12,18 +12,32 @@ header {
 	.header-content {
 		width: 100%;
 		display: flex;
+		justify-content: space-between;
 
 		.logo {
-			width: 200px;
-			padding: 5px;
+			width: 90px;
+			padding: 13px 0 0 20px;
 
 			img {
-				height: 25px;
+				height: 30px;
 			}
 		}
 
-		.system-menu {
-			text-align: right;
+		.system-content {
+			display: flex;
+			justify-content: flex-end;
+
+			.system-menu {
+				margin: 15px 15px 0 0;
+
+				&:last-child{
+					margin-right:25px;
+				}
+				
+				.sys-menu-icon{
+					font-size:20px;
+				}
+			}
 		}
 	}
 }
@@ -31,7 +45,7 @@ header {
 nav {
 	width: 90px;
 	position: fixed;
-	top: 35px;
+	top: 50px;
 	left: 0;
 	bottom: 0;
 	overflow-y: auto;
@@ -110,14 +124,14 @@ nav {
 
 #content {
 	width: calc(100% - 90px);
-	margin-top: 35px;
+	margin-top: 50px;
 	margin-left: 90px;
 	background: var(--body-bg);
 	min-height: calc(100vh - 85px);
 
 	.wrapper {
 		width: 100%;
-		padding: 1.3rem 1.3rem 0 1.3rem;
+		padding: 1.3rem;
 	}
 }
 

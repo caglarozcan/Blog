@@ -110,7 +110,7 @@
 
 header {
   position: fixed;
-  height: 35px;
+  height: 50px;
   background: var(--nav-bg-color);
   top: 0;
   left: 0;
@@ -120,22 +120,33 @@ header {
 header .header-content {
   width: 100%;
   display: flex;
+  justify-content: space-between;
 }
 header .header-content .logo {
-  width: 200px;
-  padding: 5px;
+  width: 90px;
+  padding: 13px 0 0 20px;
 }
 header .header-content .logo img {
-  height: 25px;
+  height: 30px;
 }
-header .header-content .system-menu {
-  text-align: right;
+header .header-content .system-content {
+  display: flex;
+  justify-content: flex-end;
+}
+header .header-content .system-content .system-menu {
+  margin: 15px 15px 0 0;
+}
+header .header-content .system-content .system-menu:last-child {
+  margin-right: 25px;
+}
+header .header-content .system-content .system-menu .sys-menu-icon {
+  font-size: 20px;
 }
 
 nav {
   width: 90px;
   position: fixed;
-  top: 35px;
+  top: 50px;
   left: 0;
   bottom: 0;
   overflow-y: auto;
@@ -199,14 +210,14 @@ nav ul li a .svg-icon {
 
 #content {
   width: calc(100% - 90px);
-  margin-top: 35px;
+  margin-top: 50px;
   margin-left: 90px;
   background: var(--body-bg);
   min-height: calc(100vh - 85px);
 }
 #content .wrapper {
   width: 100%;
-  padding: 1.3rem 1.3rem 0 1.3rem;
+  padding: 1.3rem;
 }
 
 footer {

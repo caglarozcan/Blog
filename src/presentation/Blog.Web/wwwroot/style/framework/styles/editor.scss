@@ -5,10 +5,10 @@
 		display: block;
 		width: 100%;
 		padding: 5px;
-		border: 1px solid $color-gray-lightl;
+		border: 1px solid var(--card-border-color);
 		border-top-left-radius: 5px;
 		border-top-right-radius: 5px;
-		background: #f8f8f8;
+		background: var(--color-gray-100);
 
 		.menu {
 			display: table;
@@ -28,7 +28,7 @@
 				&.seperator {
 					margin: 0 5px;
 					width: 0;
-					border-left: 1px solid $color-gray-lightl;
+					border-left: 1px solid var(--card-border-color);
 					height: 25px;
 				}
 
@@ -39,12 +39,17 @@
 
 				a {
 					display: inline-block;
-					padding: 3px;
+					padding: 5px 5px 3px 5px;
 					margin: 0 4px;
 					border-radius: 3px;
 
 					&:hover {
-						background: $color-gray-lightl;
+						background: var(--color-gray-300);
+					}
+
+					i {
+						color: var(--color-gray-800);
+						font-size: 18px;
 					}
 				}
 			}
@@ -55,18 +60,18 @@
 		width: 100%;
 		min-height: 650px;
 		padding: 8px;
-		border: 1px solid $color-gray-lightl;
+		border: 1px solid var(--card-border-color);
 		border-top: none;
 		border-bottom: none;
 	}
 
 	.editor-footer {
 		display: block;
-		background: #f8f8f8;
-		padding:8px;
-		color:$color-gray;
-		font-size:0.85em;
-		border: 1px solid $color-gray-lightl;
+		background: var(--color-gray-100);
+		padding: 8px;
+		color: var(--color-gray-700);
+		font-size: 0.85em;
+		border: 1px solid var(--card-border-color);
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 5px;
 	}

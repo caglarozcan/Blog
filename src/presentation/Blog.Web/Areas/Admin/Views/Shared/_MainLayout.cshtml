@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" data-theme-mode="dark" data-theme="dark">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,34 +20,107 @@
 <body>
 
 	<script>
-		var defaultThemeMode = "light";
-		var themeMode;
+		window.addEventListener("DOMContentLoaded", (event) => {
 
-		if (document.documentElement) {
-			if (document.documentElement.hasAttribute("data-theme-mode")) {
-				themeMode = document.documentElement.getAttribute("data-theme-mode");
-			} else {
-				if (localStorage.getItem("data-theme") !== null) {
-					themeMode = localStorage.getItem("data-theme");
+			var defaultThemeMode = "light";
+			var themeMode;
+			const themeIcon = document.getElementById('theme-icon');
+
+			if (document.documentElement) {
+				if (document.documentElement.hasAttribute("data-theme-mode")) {
+					themeMode = document.documentElement.getAttribute("data-theme-mode");
 				} else {
-					themeMode = defaultThemeMode;
+					if (localStorage.getItem("data-theme") !== null) {
+						themeMode = localStorage.getItem("data-theme");
+					} else {
+						themeMode = defaultThemeMode;
+						localStorage.setItem("data-theme", themeMode);
+					}
 				}
+
+				if (themeMode == 'light') {
+					themeIcon.classList.remove('fa-moon-stars');
+					themeIcon.classList.add('fa-sun');
+				} else {
+					themeIcon.classList.remove('fa-sun');
+					themeIcon.classList.add('fa-moon-stars');
+				}
+
+				if (themeMode === "system") {
+					themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+				}
+
+				document.documentElement.setAttribute("data-theme", themeMode);
+				document.documentElement.setAttribute("data-theme-mode", themeMode);
 			}
 
-			if (themeMode === "system") {
-				themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-			}
+			const lightBtn = document.getElementById('switchlight');
+			lightBtn.addEventListener('click', (e) => {
+				localStorage.setItem("data-theme", 'light');
+				themeIcon.classList.remove('fa-moon-stars');
+				themeIcon.classList.add('fa-sun');
+				document.documentElement.setAttribute("data-theme", 'light');
+				document.documentElement.setAttribute("data-theme-mode", 'light');
+			});
 
-			document.documentElement.setAttribute("data-theme", themeMode);
-		}
+			const darkBtn = document.getElementById('switchdark');
+			darkBtn.addEventListener('click', (e) => {
+				localStorage.setItem("data-theme", 'dark');
+				themeIcon.classList.remove('fa-sun');
+				themeIcon.classList.add('fa-moon-stars');
+				document.documentElement.setAttribute("data-theme", 'dark');
+				document.documentElement.setAttribute("data-theme-mode", 'dark');
+			});
+		});
 	</script>
 
 	<header>
 		<div class="header-content">
 			<div class="logo">
-				<img src="~/images/logo-main.png" />
+				<img src="~/images/logo.png" />
 			</div>
-			<div class="system-menu"></div>
+			<div class="system-content">
+				<div class="system-menu">
+					<div class="dropdown">
+						<a href="javascript:void(0)" data-dropdown="#theme-menu">
+							<i class="fa-duotone fa-sun fa-fw fc-blue sys-menu-icon" id="theme-icon"></i>
+						</a>
+						<div class="drop-down" id="theme-menu">
+							<ul>
+								<li>
+									<a href="javascript:void(0)" id="switchlight">
+										<i class="fa-duotone fa-sun fa-fw fc-blue"></i> Açık
+									</a>
+								</li>
+							</ul>
+							<ul>
+								<li>
+									<a href="javascript:void(0)" id="switchdark">
+										<i class="fa-duotone fa-moon-stars fa-fw fc-blue"></i> Koyu
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="system-menu">
+					<div class="dropdown">
+						<a href="javascript:void(0)" data-dropdown="#theme-menu">
+							<i class="fa-duotone fa-bars fa-fw fc-blue sys-menu-icon"></i>
+						</a>
+						<div class="drop-down" id="theme-menu">
+							<ul>
+								<li>
+									<a href="javascript:void(0)">
+										<i class="fa-duotone fa-user fa-fw fc-blue"></i> Profil
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</header>
 
