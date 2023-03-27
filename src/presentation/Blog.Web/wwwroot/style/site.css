@@ -5,7 +5,7 @@
   --card-bg: #FFFFFF;
   --card-border-color: #F4F4F4;
   --card-title-color: #495057;
-  --footer-border-color: #F4F4F4;
+  --footer-border-color: #e5e5e5;
   --footer-font-color: #B5B5C3;
   --nav-active-bg-color: #2A2A3C;
   --nav-bg-color: #1e1e2d;
@@ -217,7 +217,7 @@ nav ul li a .svg-icon {
   margin-top: 50px;
   margin-left: 90px;
   background: var(--body-bg);
-  min-height: calc(100vh - 85px);
+  min-height: calc(100vh - 100px);
 }
 #content .wrapper {
   width: 100%;
