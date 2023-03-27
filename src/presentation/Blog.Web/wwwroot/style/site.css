@@ -51,6 +51,7 @@
   --tab-title-color: #495057;
   --tab-hover-bg: #d5d5d5;
   --dialog-bg: #FFFFFF;
+  --dropdown-bg: #FFFFFF;
 }
 
 [data-theme=dark] {
@@ -106,6 +107,7 @@
   --tab-title-color: #FFFFFF;
   --tab-hover-bg: #6D6D80;
   --dialog-bg: #1e1e2d;
+  --dropdown-bg: #151521;
 }
 
 header {
