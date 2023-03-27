@@ -82,6 +82,7 @@
   --tab-hover-bg: #d5d5d5;
   --dialog-bg: #FFFFFF;
   --dropdown-bg: #FFFFFF;
+  --editor-seperator-border-color:#B5B5C3;
 }
 
 [data-theme=dark] {
@@ -138,6 +139,7 @@
   --tab-hover-bg: #6D6D80;
   --dialog-bg: #1e1e2d;
   --dropdown-bg: #151521;
+  --editor-seperator-border-color: #474761;
 }
 
 *, *::before, *::after {
@@ -1979,7 +1981,7 @@ table td a i {
 .web-editor .editor-menu .menu li.seperator {
   margin: 0 5px;
   width: 0;
-  border-left: 1px solid var(--card-border-color);
+  border-left: 1px solid var(--editor-seperator-border-color);
   height: 25px;
 }
 .web-editor .editor-menu .menu li select {
