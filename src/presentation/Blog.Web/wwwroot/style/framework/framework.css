@@ -325,6 +325,19 @@ small {
   width: 100%;
 }
 
+.flex {
+  display: flex;
+}
+.flex.flex-sb {
+  justify-content: space-between;
+}
+.flex.flex-ac {
+  align-items: center;
+}
+.flex .flex-seperator {
+  width: 20px;
+}
+
 input[type=text],
 input[type=password],
 input[type=date],
@@ -345,7 +358,7 @@ textarea {
   display: block;
   background-clip: padding-box;
   background-color: var(--color-gray-200);
-  color: var(--color-gray-700);
+  color: var(--color-gray-800);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 input[type=text]:focus,
@@ -385,6 +398,17 @@ textarea.input-sm {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   border-radius: 0.2rem;
+}
+input[type=text].fc-l,
+input[type=password].fc-l,
+input[type=date].fc-l,
+input[type=datetime-local].fc-l,
+input[type=number].fc-l,
+input[type=file].fc-l,
+select.fc-l,
+.select.fc-l,
+textarea.fc-l {
+  font-size: 1.2rem;
 }
 
 input[type=file] {

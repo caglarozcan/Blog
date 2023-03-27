@@ -66,7 +66,7 @@
 					<!--Genel Ayarlar içeriği-->
 					<div class="tab-item show" id="general-setting">
 						<div class="form-group">
-							<input type="text" name="Title" class="input" placeholder="Makale Başlığı..." />
+							<input type="text" name="Title" class="input fc-l" placeholder="Makale Başlığı..." />
 							<span class="vld-Title"></span>
 						</div>
 
@@ -322,6 +322,16 @@
 		<div class="col-3">
 			<div class="card">
 				<div class="card-body pd">
+					<div class="flex flex-sb">
+						<select name="SaveType" id="save-type">
+							<option value="1" selected>Kaydet ve Yayınla</option>
+							<option value="2">Taslak Olarak Kaydet</option>
+							<option value="3">PDF Olarak Kaydet</option>
+						</select>
+						<div class="flex-seperator"></div>
+						<button class="btn btn-primary">Kaydet</button>
+					</div>
+					
 				</div>
 			</div>
 		</div>

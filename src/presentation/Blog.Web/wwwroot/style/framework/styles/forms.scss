@@ -21,7 +21,7 @@ textarea {
 	display: block;
 	background-clip: padding-box;
 	background-color: var(--color-gray-200);
-	color: var(--color-gray-700);
+	color: var(--color-gray-800);
 	transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
 
 	&:focus {
@@ -39,6 +39,10 @@ textarea {
 		padding: 0.25rem 0.5rem;
 		font-size: 0.875rem;
 		border-radius: 0.2rem;
+	}
+
+	&.fc-l{
+		font-size:1.2rem;
 	}
 }
 

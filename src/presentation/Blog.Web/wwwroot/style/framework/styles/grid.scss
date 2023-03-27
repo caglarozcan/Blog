@@ -45,3 +45,19 @@
 		}
 	}
 }
+
+.flex {
+	display: flex;
+
+	&.flex-sb {
+		justify-content: space-between;
+	}
+
+	&.flex-ac{
+		align-items: center;
+	}
+
+	.flex-seperator{
+		width:20px;
+	}
+}
