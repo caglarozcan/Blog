@@ -56,7 +56,12 @@
 	--tab-hover-bg: #d5d5d5;
 	--dialog-bg: #FFFFFF;
 	--dropdown-bg: #FFFFFF;
-	--editor-seperator-border-color:#B5B5C3;
+	--editor-seperator-border-color: #B5B5C3;
+	--file-color: rgb(22, 78, 99);
+	--select-bg: #FFFFFF;
+	--select-option-hover-bg: #F4F4F4;
+	--select-hover-color: #319DB5;
+	--select-search-input-bg: #FFFFFF;
 }
 [data-theme=dark] {
 	--body-bg: #151521;
@@ -113,6 +118,11 @@
 	--dialog-bg: #1e1e2d;
 	--dropdown-bg: #151521;
 	--editor-seperator-border-color: #474761;
+	--file-color: rgb(21, 94, 117);
+	--select-bg: #1e1e2d;
+	--select-option-hover-bg: #151521;
+	--select-hover-color: #319DB5;
+	--select-search-input-bg: #1e1e2d;
 }
 
 $color-red: #d95b44;

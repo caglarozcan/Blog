@@ -309,11 +309,31 @@
 					<!--Resim Yükleme Ayarları-->
 					<!--Mail Ayarları-->
 					<div class="tab-item" id="mail-setting">
+						<div class="file-box">
+							@for (int i = 0; i < 12; i++)
+							{
+								<div class="file-item">
+									<div class="file-delete-button">
+										<a href="javascript:void(0)">
+											<i class="fa-duotone fa-xmark fa-fw"></i>
+										</a>
+									</div>
+									<div class="file-icon">
+										<i class="fa-duotone fa-file-lines fa-fw"></i>
+									</div>
+									<div class="file-name">
+										sample-data-formats.json
+									</div>
+									<div class="file-size">16 KB</div>
+								</div>
+							}
+						</div>
+						<div class="hr mt-2 mb-2"></div>
+						<button class="btn btn-primary mb-1">Dosya Ekle</button>
 					</div>
 					<!--Mail Ayarları-->
 					<!--Yorum Ayarları-->
 					<div class="tab-item" id="comment-setting">
-
 						<table>
 							<thead>
 								<tr>
@@ -330,7 +350,7 @@
 									<td>https://code-maze.com/global-error-handling-aspnetcore/</td>
 									<td class="text-center">
 										<a href="javascript:void(0)">
-											<i class="fa-duotone fa-trash-can fa-fw"></i>
+											<i class="fa-duotone fa-trash-can fa-fw fc-red"></i>
 										</a>
 									</td>
 								</tr>
@@ -374,8 +394,42 @@
 						<button class="btn btn-primary">Kaydet</button>
 					</div>
 
+					<br />
+					<br />
+					<br />
+
+					<div class="select" id="process-type" data-name="ProcessTypeId" data-placeholder="İşlem türü seçiniz.">
+						<div class="select-content" data-select="true">
+							<div class="selected-text"></div>
+							<i class="fa-duotone fa-chevron-down fa-fw"></i>
+						</div>
+						<div class="option-box hide">
+							<div class="option-search">
+								<input type="text" placeholder="Ara.." />
+							</div>
+							<ul>
+								<li class="selected">
+									<span>Kaydet ve Yayınla</span>
+									<i class="fa-duotone fa-check fa-fw"></i>
+								</li>
+								<li>
+									<span>Taslak Olarak Kaydet</span>
+								</li>
+								<li>
+									<span>PDF Olarak Kaydet</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+	var select = new ChSelect('#process-type', {
+		search: true
+	});
+</script>

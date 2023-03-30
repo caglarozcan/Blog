@@ -52,7 +52,12 @@
   --tab-hover-bg: #d5d5d5;
   --dialog-bg: #FFFFFF;
   --dropdown-bg: #FFFFFF;
-  --editor-seperator-border-color:#B5B5C3;
+  --editor-seperator-border-color: #B5B5C3;
+  --file-color: rgb(22, 78, 99);
+  --select-bg: #FFFFFF;
+  --select-option-hover-bg: #F4F4F4;
+  --select-hover-color: #319DB5;
+  --select-search-input-bg: #FFFFFF;
 }
 
 [data-theme=dark] {
@@ -110,6 +115,11 @@
   --dialog-bg: #1e1e2d;
   --dropdown-bg: #151521;
   --editor-seperator-border-color: #474761;
+  --file-color: rgb(21, 94, 117);
+  --select-bg: #1e1e2d;
+  --select-option-hover-bg: #151521;
+  --select-hover-color: #319DB5;
+  --select-search-input-bg: #1e1e2d;
 }
 
 header {
@@ -356,4 +366,91 @@ footer {
 .widget-menu .widget-item a span {
   display: block;
   margin-top: 13px;
+}
+
+.ticket-container {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+.ticket-container .ticket {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 3px;
+  background: var(--color-primary-light);
+  margin: 0 8px 8px 0;
+}
+.ticket-container .ticket span {
+  color: var(--color-primary-text);
+}
+.ticket-container .ticket a {
+  margin-left: 5px;
+}
+.ticket-container .ticket a i {
+  font-size: 13px;
+  color: var(--color-red);
+}
+
+.file-box {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.file-box .file-item {
+  width: 170px;
+  height: 170px;
+  border: 1px solid var(---color-gray-300);
+  border-radius: 5px;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+.file-box .file-item:hover .file-delete-button {
+  display: block;
+}
+.file-box .file-item:hover .file-name {
+  font-weight: 500;
+}
+.file-box .file-item .file-delete-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: none;
+}
+.file-box .file-item .file-delete-button a i {
+  color: var(--color-red);
+  font-size: 1.4em;
+}
+.file-box .file-item .file-icon {
+  width: 100%;
+  height: 80px;
+  text-align: center;
+}
+.file-box .file-item .file-icon i {
+  font-size: 73px;
+  color: var(--file-color);
+  width: 80px;
+}
+.file-box .file-item .file-name {
+  width: 100%;
+  text-align: center;
+  padding-top: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.file-box .file-item .file-size {
+  width: 100%;
+  text-align: center;
+  color: var(--color-gray-600);
+  font-family: "Barlow";
+  margin-top: 5px;
 }

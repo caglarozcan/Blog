@@ -82,7 +82,12 @@
   --tab-hover-bg: #d5d5d5;
   --dialog-bg: #FFFFFF;
   --dropdown-bg: #FFFFFF;
-  --editor-seperator-border-color:#B5B5C3;
+  --editor-seperator-border-color: #B5B5C3;
+  --file-color: rgb(22, 78, 99);
+  --select-bg: #FFFFFF;
+  --select-option-hover-bg: #F4F4F4;
+  --select-hover-color: #319DB5;
+  --select-search-input-bg: #FFFFFF;
 }
 
 [data-theme=dark] {
@@ -140,6 +145,11 @@
   --dialog-bg: #1e1e2d;
   --dropdown-bg: #151521;
   --editor-seperator-border-color: #474761;
+  --file-color: rgb(21, 94, 117);
+  --select-bg: #1e1e2d;
+  --select-option-hover-bg: #151521;
+  --select-hover-color: #319DB5;
+  --select-search-input-bg: #1e1e2d;
 }
 
 *, *::before, *::after {
@@ -349,7 +359,6 @@ input[type=datetime-local],
 input[type=number],
 input[type=file],
 select,
-.select,
 textarea {
   width: 100%;
   border: 1px solid var(--color-gray-300);
@@ -363,19 +372,10 @@ textarea {
   background-clip: padding-box;
   background-color: var(--color-gray-200);
   color: var(--color-gray-800);
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-}
-input[type=text]:focus,
-input[type=password]:focus,
-input[type=date]:focus,
-input[type=datetime-local]:focus,
-input[type=number]:focus,
-input[type=file]:focus,
-select:focus,
-.select:focus,
-textarea:focus {
-  border-color: #0088cc;
-  transition: 0.5s;
+  /*&:focus {
+  	border-color: #0088cc;
+  	transition: 0.5s;
+  }*/
 }
 input[type=text].input-lg,
 input[type=password].input-lg,
@@ -384,7 +384,6 @@ input[type=datetime-local].input-lg,
 input[type=number].input-lg,
 input[type=file].input-lg,
 select.input-lg,
-.select.input-lg,
 textarea.input-lg {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
@@ -397,7 +396,6 @@ input[type=datetime-local].input-sm,
 input[type=number].input-sm,
 input[type=file].input-sm,
 select.input-sm,
-.select.input-sm,
 textarea.input-sm {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
@@ -410,7 +408,6 @@ input[type=datetime-local].fc-l,
 input[type=number].fc-l,
 input[type=file].fc-l,
 select.fc-l,
-.select.fc-l,
 textarea.fc-l {
   font-size: 1.2rem;
 }
@@ -475,50 +472,56 @@ button {
   -webkit-appearance: button;
 }
 
-.select {
-  width: 100%;
-  position: relative;
-  padding-top: 10px;
-  cursor: pointer;
-}
-.select i {
-  float: right;
-}
-.select ul {
-  display: block;
-  width: 100%;
-  max-height: 300px;
-  overflow: auto;
-  background: #ffffff;
-  position: absolute;
-  top: 37px;
-  left: 0;
-  border: 1px solid #e0e0e0;
-  border-top: none;
-  display: none;
-}
-.select ul.select-active {
-  display: block !important;
-}
-.select ul li {
-  display: block;
-  cursor: pointer;
-  padding: 0.7rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.select ul li:not(:last-child) {
-  border-bottom: 1px solid #e0e0e0;
-}
-.select ul li:hover {
-  background: #f0f0f0;
-}
-.select ul li:active {
-  color: #ffffff;
-  background: #0088cc;
-}
+/*.select {
+	width: 100%;
+	position: relative;
+	padding-top: 10px;
+	cursor: pointer;
 
+	i {
+		float: right;
+	}
+
+	ul {
+		display: block;
+		width: 100%;
+		max-height: 300px;
+		overflow: auto;
+		background: #ffffff;
+		position: absolute;
+		top: 37px;
+		left: 0;
+		border: 1px solid #e0e0e0;
+		border-top: none;
+		display: none;
+
+		&.select-active {
+			display: block !important;
+		}
+
+		li {
+			display: block;
+			cursor: pointer;
+			padding: .7rem;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+
+			&:not(:last-child) {
+				border-bottom: 1px solid #e0e0e0;
+			}
+
+			&:hover {
+				background: #f0f0f0;
+			}
+
+			&:active {
+				color: #ffffff;
+				background: #0088cc;
+			}
+		}
+	}
+}*/
 input[type=radio] {
   font-size: 14px;
   position: relative;
@@ -703,6 +706,85 @@ input[type=checkbox]:checked::before {
   margin-left: -1px;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
+}
+
+/*
+	SELECT
+*/
+.select {
+  width: 100%;
+  position: relative;
+}
+.select .select-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 3px;
+  font-size: 0.9rem !important;
+  font-weight: 400;
+  font-family: "Poppins" !important;
+  background-clip: padding-box;
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-800);
+}
+.select .select-content .selected-text {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.select .option-box {
+  width: 100%;
+  max-height: 200px;
+  position: absolute;
+  list-style-type: none;
+  top: 34px;
+  left: 0;
+  background: var(--select-bg);
+  border-top: none;
+  border-radius: 5px;
+  padding: 12px 0;
+  box-shadow: 0px 0px 40px 0px rgba(82, 63, 105, 0.15);
+}
+.select .option-box .option-search {
+  width: 100%;
+  padding: 0 10px 10px 10px;
+}
+.select .option-box .option-search input[type=text] {
+  background: var(--select-search-input-bg);
+}
+.select .option-box ul {
+  width: 100%;
+}
+.select .option-box ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.select .option-box ul li.selected {
+  background: var(--select-option-hover-bg);
+  color: var(--select-hover-color);
+}
+.select .option-box ul li.selected i {
+  color: var(--select-hover-color);
+}
+.select .option-box ul li:hover {
+  background: var(--select-option-hover-bg);
+  color: var(--select-hover-color);
+}
+.select .option-box ul li span {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.85rem;
+  color: inherit;
 }
 
 .btn {
@@ -935,33 +1017,6 @@ input[type=checkbox]:checked::before {
   padding-top: 2px;
 }
 
-.ticket-container {
-  display: flex;
-  justify-content: start;
-  align-items: flex-start;
-  margin-bottom: 15px;
-}
-.ticket-container .ticket {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  align-items: center;
-  padding: 5px 8px;
-  border-radius: 3px;
-  background: var(--color-primary-light);
-  margin: 0 8px 8px 0;
-}
-.ticket-container .ticket span {
-  color: var(--color-primary-text);
-}
-.ticket-container .ticket a {
-  margin-left: 5px;
-}
-.ticket-container .ticket a i {
-  font-size: 13px;
-  color: var(--color-red);
-}
-
 /*
 	FONTS
 */
@@ -992,6 +1047,10 @@ input[type=checkbox]:checked::before {
   color: var(--color-white) !important;
 }
 
+.fc-red {
+  color: var(--color-red) !important;
+}
+
 /*
 	MARGINS
 */
@@ -1017,7 +1076,7 @@ input[type=checkbox]:checked::before {
 .hr {
   width: 100%;
   height: 1px;
-  background: var(--color-gray-400);
+  background: var(--color-gray-300);
 }
 
 .card {
