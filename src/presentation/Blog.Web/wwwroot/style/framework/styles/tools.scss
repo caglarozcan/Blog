@@ -163,6 +163,14 @@
 	font-size: 30px !important;
 }
 
+.fs-40 {
+	font-size: 40px !important;
+}
+
+.fs-50 {
+	font-size: 50px !important;
+}
+
 /*
 	FONT COLOR
 */
@@ -176,6 +184,10 @@
 
 .fc-red{
 	color: var(--color-red) !important;
+}
+
+.fc-gray{
+	color: var(--color-gray-600);
 }
 
 /*
@@ -195,6 +207,10 @@
 
 .mb-2{
 	margin-bottom: 2em !important;
+}
+
+.mb-3 {
+	margin-bottom: 3em !important;
 }
 
 /*

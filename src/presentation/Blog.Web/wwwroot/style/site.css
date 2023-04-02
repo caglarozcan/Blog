@@ -6,7 +6,7 @@
   --card-border-color: #F4F4F4;
   --card-title-color: #495057;
   --footer-border-color: #e5e5e5;
-  --footer-font-color: #B5B5C3;
+  --footer-font-color: #5E6278;
   --nav-active-bg-color: #2A2A3C;
   --nav-bg-color: #1e1e2d;
   --nav-link-color: #9D9DA6;
@@ -53,6 +53,7 @@
   --dialog-bg: #FFFFFF;
   --dropdown-bg: #FFFFFF;
   --editor-seperator-border-color: #B5B5C3;
+  --editor-icon-color: #009ef7;
   --file-color: rgb(22, 78, 99);
   --select-bg: #FFFFFF;
   --select-option-hover-bg: #F4F4F4;
@@ -115,6 +116,7 @@
   --dialog-bg: #1e1e2d;
   --dropdown-bg: #151521;
   --editor-seperator-border-color: #474761;
+  --editor-icon-color: var(--color-gray-800);
   --file-color: rgb(21, 94, 117);
   --select-bg: #1e1e2d;
   --select-option-hover-bg: #151521;
