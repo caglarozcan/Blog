@@ -58,6 +58,27 @@
 
 		var selectDropdown = find('.option-box', select.rootElement);
 
+
+		var inputHidden = document.createElement('input');
+		inputHidden.type = 'hidden';
+		inputHidden.name = name;
+		select.rootElement.appendChild(inputHidden);
+
+
+		var selectOptionContainer = find('ul', selectDropdown);
+
+		var options = findAll('li', selectOptionContainer);
+		options.forEach(function (item) {
+			if (item.classList.contains('selected')) {
+				inputHidden.value = item.dataset.value;
+			}
+
+			item.addEventListener('click', function (e) {
+				var optionValue = item.dataset.value;
+				inputHidden.value = optionValue;
+			});
+		});
+
 		selectContent.addEventListener('click', function (e) {
 			if (selectDropdown.classList.contains('hide')) {
 				selectDropdown.classList.remove('hide');
