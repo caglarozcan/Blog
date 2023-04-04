@@ -12,6 +12,18 @@ var Util = function () {
 			}
 		},
 
+		hasClass: function (element, className) {
+			return element.classList.contains(className);
+		},
+
+		addClass: function (element, className) {
+			return element.classList.add(className);
+		},
+
+		removeClass: function (element, className) {
+			return element.classList.removeClass(className);
+		},
+
 		urlHelper: function (endpoint) {
 			return 'https://localhost:9000/' + endpoint.replace(/^\/|\/$/g, '');
 		},
