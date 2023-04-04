@@ -18,11 +18,11 @@ var ChSelect = function () {
 		properties.element = Util.find(selector);
 		properties.searchable = false;
 
-		properties.placeholder = Util.getAttribute(properties.element, 'placeholder') || options.placeholder || 'Bir deðer seçiniz';
-		properties.searchText = Util.getAttribute(properties.element, 'searchtext') || options.searchText || 'Ara..';
+		//properties.placeholder = Util.getAttribute(properties.element, 'placeholder') || options.placeholder || 'Bir deðer seçiniz';
+		//properties.searchText = Util.getAttribute(properties.element, 'searchtext') || options.searchText || 'Ara..';
 
-		this.multiple = Util.getAttribute(properties.element, 'multiple');
-		this.disabled = Util.getAttribute(properties.element, 'disabled');
+		//this.multiple = Util.getAttribute(properties.element, 'multiple');
+		//this.disabled = Util.getAttribute(properties.element, 'disabled');
 
 		properties.element.style.opacity = "0";
 		properties.element.style.padding = "0";
@@ -30,6 +30,8 @@ var ChSelect = function () {
 		properties.element.style.height = "0";
 
 		processData();
+
+		console.log(properties);
 	};
 
 	var processData = function () {
@@ -80,6 +82,10 @@ var ChSelect = function () {
 		}
 	};
 }();
+
+Util.onDOMContentLoaded(function () {
+	ChSelect.init('.chselect');
+});
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 	module.exports = ChSelect;
