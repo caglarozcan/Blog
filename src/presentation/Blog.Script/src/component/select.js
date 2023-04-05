@@ -4,24 +4,24 @@ var ChSelect = function () {
 
 	var properties = {
 		element: null,
-		searchable: false,
+		searchable: true,
 		options: [],
 		selectedOptions: [],
 		placeholder: '',
 		searchText: '',
 		dropdown: null,
-		multiple: null,
+		multiple: false,
 		disabled: null
 	};
 
 	var initComponent = function (selector, options) {
 		properties.element = Util.find(selector);
-		properties.searchable = false;
+		properties.searchable = true;
 
-		//properties.placeholder = Util.getAttribute(properties.element, 'placeholder') || options.placeholder || 'Bir deðer seçiniz';
-		//properties.searchText = Util.getAttribute(properties.element, 'searchtext') || options.searchText || 'Ara..';
+		properties.placeholder = 'Bir de?er seçiniz.', //Util.getAttribute(properties.element, 'placeholder') || options.placeholder || 'Bir deðer seçiniz';
+		properties.searchText = 'Ara..', //Util.getAttribute(properties.element, 'searchtext') || options.searchText || 'Ara..';
 
-		//this.multiple = Util.getAttribute(properties.element, 'multiple');
+		properties.multiple = false, //Util.getAttribute(properties.element, 'multiple');
 		//this.disabled = Util.getAttribute(properties.element, 'disabled');
 
 		properties.element.style.opacity = "0";
@@ -30,8 +30,8 @@ var ChSelect = function () {
 		properties.element.style.height = "0";
 
 		processData();
-
-		console.log(properties);
+		renderDropdown();
+		renderSelectedItem();
 	};
 
 	var processData = function () {
@@ -75,6 +75,70 @@ var ChSelect = function () {
 		});
 		properties.selectedOptions = selectedOptions;
 	};
+
+	var renderDropdown = function () {
+		var searchHtml = '<div class="option-search"><input type="text" placeholder="' + properties.searchText + '" /></div>';
+
+		var html = '<div class="select">';
+		html += '<div class="select-content">';
+		html += '<i class="fa-duotone fa-chevron-down fa-fw"></i>';
+		html += '</div>';
+		html += '<div class="option-box">';
+		html += (properties.searchable ? searchHtml : '');
+		html += '<ul>';
+		html += '</ul>';
+		html += '</div>';
+		html += '</div>';
+
+		properties.element.insertAdjacentHTML('afterend', html);
+		properties.dropdown = properties.element.nextElementSibling;
+
+		renderSelectedItem();
+		renderItems();
+	};
+
+	var renderSelectedItem = function () {
+		var selectedHtml = '';
+		if (properties.multiple) {
+			properties.selectedOptions.forEach(item => {
+				selectedHtml += $`<div class="selected-text">${item.data.text}</div>`;
+			});
+
+			selectedHtml == '' ? properties.placeholder : selectedHtml;
+		} else {
+			selectedHtml = properties.selectedOptions.length > 0 ? properties.selectedOptions[0].data.text : properties.placeholder;
+		}
+
+		var selectContent = Util.find('.select-content', properties.dropdown);
+		selectContent.innerHTML = selectedHtml;
+	};
+
+	var renderItems = function () {
+		var ul = Util.find('ul', properties.dropdown);
+		properties.options.forEach(item => {
+			ul.appendChild(renderItem(item));
+		});
+	}
+
+	var renderItem = function (option) {
+		var li = document.createElement('li');
+		var span = document.createElement('span');
+		span.innerText = option.data.text;
+		var icon = document.createElement('i');
+		Util.addClass(icon, 'fa-duotone');
+		Util.addClass(icon, 'fa-check');
+		Util.addClass(icon, 'fa-fw');
+
+		li.setAttribute('data-value', option.data.value);
+		li.appendChild(span);
+
+		option.attributes.selected ? li.appendChild(icon) : null;
+
+		option.attributes.selected ? li.classList.add('selected') : null;
+		option.attributes.disabled ? li.classList.add('disabled') : null;
+
+		return li;
+	}
 
 	return {
 		init: function (selector, options) {
