@@ -1,4 +1,4 @@
-"use strict";
+/*"use strict";
 
 const { hasClass } = require("../util/util");
 
@@ -201,10 +201,10 @@ var ChSelect = function () {
 		} else {
 			properties.dropdown.focus();
 		}
-		/*else {
+		else {
 			Util.removeClass(properties.dropdown, 'show');
 			triggerModalClose(properties.element);
-		}*/
+		}
 	};
 
 	return {
@@ -220,4 +220,4 @@ Util.onDOMContentLoaded(function () {
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 	module.exports = ChSelect;
-}
+}*/

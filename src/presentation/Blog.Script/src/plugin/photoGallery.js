@@ -9,7 +9,7 @@ var PhotoGallery = function (options) {
 	const imageLayout = '<div class="attachment">\
 							<div class="thumbnail">\
 								<div class="centered">\
-									<img src="'+ Util.urlHelper('Uploads/')+'{imgUrl}" />\
+									<img src="'+ Util.urlHelper('Uploads/')+'/{imgUrl}" />\
 								</div>\
 							</div>\
 							<button type="button" class="check" value="{id}">\
