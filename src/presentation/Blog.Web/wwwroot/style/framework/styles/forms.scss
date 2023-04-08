@@ -403,6 +403,10 @@ input[type="checkbox"] {
 		}
 	}
 
+	&.show .option-box{
+		display:block !important;
+	}
+
 	.option-box {
 		width: 100%;
 		max-height: 200px;
@@ -415,6 +419,7 @@ input[type="checkbox"] {
 		border-radius: 5px;
 		padding: 12px 0;
 		box-shadow: 0px 0px 40px 0px rgba(82, 63, 105, 0.15);
+		display:none;
 
 		.option-search {
 			width: 100%;

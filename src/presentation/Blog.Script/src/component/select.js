@@ -1,5 +1,7 @@
 "use strict";
 
+const { hasClass } = require("../util/util");
+
 var ChSelect = function () {
 
 	var properties = {
@@ -13,6 +15,45 @@ var ChSelect = function () {
 		multiple: false,
 		disabled: null
 	};
+
+	//Begin::Events
+	// utility functions
+	var triggerClick = function (el) {
+		var event = document.createEvent("MouseEvents");
+		event.initEvent("click", true, false);
+		el.dispatchEvent(event);
+	};
+
+	var triggerChange = function (el) {
+		var event = document.createEvent("HTMLEvents");
+		event.initEvent("change", true, false);
+		el.dispatchEvent(event);
+	};
+
+	var triggerFocusIn = function (el) {
+		var event = document.createEvent("FocusEvent");
+		event.initEvent("focusin", true, false);
+		el.dispatchEvent(event);
+	};
+
+	var triggerFocusOut = function (el) {
+		var event = document.createEvent("FocusEvent");
+		event.initEvent("focusout", true, false);
+		el.dispatchEvent(event);
+	};
+
+	var triggerModalOpen = function(el) {
+		var event = document.createEvent("UIEvent");
+		event.initEvent("modalopen", true, false);
+		el.dispatchEvent(event);
+	}
+
+	var triggerModalClose = function(el) {
+		var event = document.createEvent("UIEvent");
+		event.initEvent("modalclose", true, false);
+		el.dispatchEvent(event);
+	}
+	//End::Events
 
 	var initComponent = function (selector, options) {
 		properties.element = Util.find(selector);
@@ -31,6 +72,7 @@ var ChSelect = function () {
 
 		processData();
 		renderDropdown();
+		bindEvent();
 		renderSelectedItem();
 	};
 
@@ -133,12 +175,35 @@ var ChSelect = function () {
 		li.appendChild(span);
 
 		option.attributes.selected ? li.appendChild(icon) : null;
-
 		option.attributes.selected ? li.classList.add('selected') : null;
 		option.attributes.disabled ? li.classList.add('disabled') : null;
 
 		return li;
 	}
+
+	var bindEvent = function () {
+		properties.dropdown.addEventListener('click', _onClicked.bind(this));
+		properties.dropdown.addEventListener("focusin", triggerFocusIn.bind(this, properties.element));
+		properties.dropdown.addEventListener("focusout", triggerFocusOut.bind(this, properties.element));
+	};
+
+	var _onClicked = function (e) {
+		e.preventDefault();
+		if (!Util.hasClass(properties.dropdown, 'show')) {
+			Util.addClass(properties.dropdown, 'show');
+			triggerModalOpen(properties.element);
+		} 
+
+		if (Util.hasClass(properties.dropdown, 'show')) {
+
+		} else {
+			properties.dropdown.focus();
+		}
+		/*else {
+			Util.removeClass(properties.dropdown, 'show');
+			triggerModalClose(properties.element);
+		}*/
+	};
 
 	return {
 		init: function (selector, options) {
