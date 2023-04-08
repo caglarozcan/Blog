@@ -2,6 +2,8 @@
 
 const { hasClass } = require("../util/util");
 
+//Source : https://github.com/bluzky/nice-select2/blob/master/src/js/nice-select2.js
+
 var ChSelect = function () {
 
 	var properties = {
