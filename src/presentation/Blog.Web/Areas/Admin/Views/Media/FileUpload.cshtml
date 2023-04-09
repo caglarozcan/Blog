@@ -38,18 +38,18 @@
         </div>
         <!--Dosya yükleme alanı-->
         <!--Progress bar-->
-        <div class="col-12 hide">
+        <div class="col-12 hide" id="progress-container">
             <div class="card">
-                <div class="card-body pd" id="upload-progress">
+                <div class="card-body pd">
                     <span>Yükleniyor :</span>
                     <progress id="progress-bar" max=100 value=0 style="width:400px"></progress>
-                    <span>%0</span>
+                    <span id="progress-percent">%0</span>
                 </div>
             </div>
         </div>
         <!--Progress bar-->
         <!--Dosya yükleme önizleme-->
-        <div class="col-12 hide">
+        <div class="col-12 hide" id="file-preview-container">
             <div class="card">
                 <div class="card-body" style="padding:5px;">
                     <div class="image-preview-container" id="upload-preview"></div>
@@ -62,139 +62,139 @@
 
 <script>
 
-    document.addEventListener('DOMContentLoaded', (event) => {
-        var uploadArea = document.getElementById('upload-area');
+    const dropArea          = document.getElementById('upload-area');
+    const previewBox        = document.getElementById('upload-preview');
+    const previewContainer  = document.getElementById('file-preview-container');
+    const progressContainer = document.getElementById('progress-container');
+    const progressBar       = document.getElementById('progress-bar');
+    const progressPercent   = document.getElementById('progress-percent');
+    let filesDone = 0;
+    let filesToDo = 0;
+    let uploadProgress = [];
 
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            uploadArea.addEventListener(eventName, (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-            }, false);
-        });
-
-        ['dragenter', 'dragover'].forEach(eventName => {
-            uploadArea.addEventListener(eventName, () => {
-                uploadArea.classList.add('highlight');
-            }, false);
-        });
-
-        ['dragleave', 'drop'].forEach(eventName => {
-            uploadArea.addEventListener(eventName, () => {
-                uploadArea.classList.remove('highlight');
-            }, false);
-        });
-
-        uploadArea.addEventListener('drop', handleDrop, false);
-
-        let filesDone = 0;
-        let filesToDo = 0;
-        let uploadProgress = [];
-        let progressBar = document.getElementById('progress-bar');
-
-        function handleDrop(e) {
-            let dt = e.dataTransfer;
-            let files = dt.files;
-
-            preview(files);
-            initializeProgress(files.length);
-
-            for (var i = 0; i < files.length; i++) {
-                var url = 'https://localhost:9000/yonetim/dosya-yukle';
-                var xhr = new XMLHttpRequest();
-                var formData = new FormData();
-                xhr.open('POST', url, true);
-
-                xhr.upload.addEventListener("progress", function (e) {
-                    updateProgress(i, (e.loaded * 100.0 / e.total) || 100);
-                });
-
-                xhr.addEventListener('readystatechange', function (e) {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        //sonuç başarılıysa
-                        let response = JSON.parse(xhr.responseText);
-
-                        /*if (response.status === true) {
-                            alert(response.message);
-                        } else {
-                            alert(response.message);
-                        }*/
-                    }
-                    else if (xhr.readyState == 4 && xhr.status != 200) {
-                        //hata durumunda
-                    }
-                });
-
-                formData.append('file', files[i]);
-                xhr.setRequestHeader("mimeType", "multipart/form-data");
-                xhr.send(formData);
-            }
-        }
-
-        function preview(files) {
-            let previewBox = document.getElementById('upload-preview');
-            for (var i = 0; i < files.length; i++) {
-
-                let reader = new FileReader();
-                reader.readAsDataURL(files[i]);
-
-                let fileName = files[i].name;
-                let fileSize = (files[i].size / 1024).toFixed(2) + ' KB';
-                let fileType = files[i].type;
-
-                reader.onloadend = function () {
-                    let previewContainer = document.createElement('div');
-                    previewContainer.classList.add('image-upload-preview');
-
-                    let img = document.createElement('img');
-                    if (fileType.search('image') > -1) {
-                        img.src = reader.result;
-                    } else {
-                        img.src = '/images/file.png';
-                    }
-                    previewContainer.appendChild(img);
-
-                    let imageInfoContainer = document.createElement('div');
-
-                    let imageInfoUl = document.createElement('ul');
-
-                    let imageNameLi = document.createElement('li');
-                    imageNameLi.innerHTML = 'Adı : ' + fileName;
-                    imageInfoUl.appendChild(imageNameLi);
-
-                    let imageSizeLi = document.createElement('li');
-                    imageSizeLi.innerHTML = 'Boyutu : ' + fileSize;
-                    imageInfoUl.appendChild(imageSizeLi);
-
-                    let imageTypeLi = document.createElement('li');
-                    imageTypeLi.innerHTML = 'Türü : ' + fileType;
-                    imageInfoUl.appendChild(imageTypeLi);
-
-                    previewContainer.appendChild(imageInfoUl);
-
-                    previewBox.appendChild(previewContainer);
-                }
-            }
-        }
-
-        function initializeProgress(numFiles) {
-            progressBar.value = 0;
-            uploadProgress = [];
-
-            for (let i = numFiles; i > 0; i--) {
-                uploadProgress.push(0);
-            }
-        }
-
-        function updateProgress(fileNumber, percent) {
-            uploadProgress[fileNumber] = percent;
-            let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length;
-            progressBar.value = total;
-        }
-
-        function progressDone() {
-            filesDone++;
-            progressBar.value = filesDone / filesToDo * 100;
-        }
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
     });
 
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    function highlight(e) {
+        dropArea.classList.add('highlight');
+    }
+
+    function unhighlight(e) {
+        dropArea.classList.remove('highlight');
+    }
+
+    dropArea.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e){
+        let dt = e.dataTransfer;
+        let files = dt.files;
+
+        handleFiles(files);
+    }
+
+    function handleFiles(files){
+        previewContainer.classList.remove('hide');
+        progressContainer.classList.remove('hide');
+
+        files = [...files];
+        
+        initProgress(files.length);
+        
+        files.forEach(uploadFile);
+        files.forEach(previewFile);
+    }
+
+    function uploadFile(file, i){
+        var url = 'https://localhost:9000/yonetim/dosya-yukle';
+        var xhr = new XMLHttpRequest();
+        var formData = new FormData();
+        xhr.open('POST', url, true);
+
+        xhr.upload.addEventListener('progress', function (e) {
+            updateProgress(i, (e.loaded * 100.0 / e.total) || 100);
+        });
+
+        xhr.addEventListener('readystatechange', function (e) {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+               
+            }
+            else if (xhr.readyState == 4 && xhr.status != 200) {
+
+            }
+        });
+
+        formData.append('file', file);
+        xhr.setRequestHeader("mimeType", "multipart/form-data");
+        xhr.send(formData);
+    }
+
+    function previewFile(file){
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = function(){
+            let fileName = file.name;
+            let fileSize = (file.size / 1024).toFixed(2) + ' KB';
+            let fileType = file.type;
+
+            let previewContainer = document.createElement('div');
+            previewContainer.classList.add('image-upload-preview');
+
+            let img = document.createElement('img');
+            if (fileType.search('image') > -1) {
+                img.src = reader.result;
+            } else {
+                img.src = '/images/file.png';
+            }
+            previewContainer.appendChild(img);
+
+            let imageInfoContainer = document.createElement('div');
+
+            let imageInfoUl = document.createElement('ul');
+
+            let imageNameLi = document.createElement('li');
+            imageNameLi.innerHTML = 'Adı : ' + fileName;
+            imageInfoUl.appendChild(imageNameLi);
+
+            let imageSizeLi = document.createElement('li');
+            imageSizeLi.innerHTML = 'Boyutu : ' + fileSize;
+            imageInfoUl.appendChild(imageSizeLi);
+
+            let imageTypeLi = document.createElement('li');
+            imageTypeLi.innerHTML = 'Türü : ' + fileType;
+            imageInfoUl.appendChild(imageTypeLi);
+
+            previewContainer.appendChild(imageInfoUl);
+            previewBox.appendChild(previewContainer);
+        }
+    }
+
+    function initProgress(fileNum) {
+        progressBar.value = 0;
+        uploadProgress = [];
+
+        for(let i = fileNum; i > 0; i--){
+            uploadProgress.push(0);
+        }
+    }
+
+    function updateProgress(fileNum, percent){
+        uploadProgress[fileNum] = percent;
+        let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length;
+        progressBar.value = total;
+        progressPercent.innerText = '%' + total;
+    }
 </script>
