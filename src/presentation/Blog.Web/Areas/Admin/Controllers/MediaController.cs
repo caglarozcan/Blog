@@ -42,7 +42,7 @@ public class MediaController : BaseController
 		return Ok(await _mediaService.GetMediaInfoAsync(id));
 	}
 
-	[HttpGet]
+	[HttpPost]
 	public async Task<IActionResult> GetMediaList(DataListRequest request)
 	{
 		return Ok(await _mediaService.GetMediaListAsync(request));

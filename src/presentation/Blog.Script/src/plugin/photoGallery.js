@@ -49,7 +49,7 @@ var PhotoGallery = function (options) {
 
 		init: function () {
 			Ajax.send({
-				method: 'GET',
+				method: 'POST',
 				url: Util.urlHelper('Admin/Media/GetMediaList'),
 				data: { Page: 1, PerData: 34 }
 			}).then((message) => {
