@@ -17,8 +17,6 @@ public class CategoryController : BaseController
 		_categoryService = categoryService;
 	}
 
-	
-
 	#region Functions
 	#region Create
 	[HttpPost]

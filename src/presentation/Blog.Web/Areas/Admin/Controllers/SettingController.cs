@@ -26,13 +26,15 @@ public class SettingController : BaseController
 		var settings = await _settingService.GetSettingsAsync();
 		return View(settings);
 	}
-	#endregion
+    #endregion
 
-	#region Upate
-	/*
-	 * Update işlemi için kullanılan modellerin özellikleri Settings tablosundaki SettingKey ile aynı olmak zorunda.
-	 */
-	[HttpPost]
+    #region Upate
+    /// <summary>
+    /// Update işlemi için kullanılan modellerin özellikleri Settings tablosundaki SettingKey ile aynı olmak zorunda.
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
+    [HttpPost]
 	public async Task<IActionResult> SaveGeneralSettings(GeneralSettingUpdateDto data)
 	{
 		var result = await _settingService.SaveGeneralSettingsAsync(data, ModelState);
