@@ -72,7 +72,7 @@
 
 						<div class="form-group">
 							<!--Web Editor Start-->
-							<div class="web-editor">
+							<div class="web-editor" id="editor">
 								<div class="editor-menu">
 									<ul class="menu">
 										<li>
@@ -430,12 +430,18 @@
 					*@
 				</div>
 			</div>
+
+			<div class="card">
+				<div class="card-body pd text-center">
+					<a href="javascript:void(0)">Öne çıkan görsel seç</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
 <script>
-	/*var select = new ChSelect('#process-type', {
-		search: true
-	});*/
+	window.addEventListener('DOMContentLoaded', (event) => {
+		var editor = new Editor('#editor');
+	});
 </script>
