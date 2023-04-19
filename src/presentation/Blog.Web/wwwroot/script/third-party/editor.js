@@ -11,33 +11,34 @@
 })(typeof global !== "undefined" ? global : this.window || this.global, function (plugin) {
 	"use strict";
 
-	var find = function (element, selector) {
+	var find = function (selector, element = document.documentElement) {
 		return Element.prototype.querySelector.call(element, selector);
 	};
 
-	var findAll = function (element, selector) {
-		return Element.prototype.querySelectorAll.call(element, selector);
+	var findAll = function (selector, element = document.documentElement) {
+		return [].concat(
+			...Element.prototype.querySelectorAll.call(element, selector)
+		);
 	};
 
 	var Editor = function (selector) {
-		this.editor = document.querySelector(selector);
-		this.menu = document.querySelector('.editor-menu .menu');
-		this.editorArea = find(this.editor, '.editor-content');
-		this.state = [];
+		var editor = find(selector);
+		this.el = {
+			parentContainer: editor,
+			menu: find('.editor-menu > .menu', editor),
+			textArea: find('.editor-content', editor),
+			footer: find('.editor-footer', editor),
+			doc: editor.contentWindow.document
+		};
+
 		this.init();
 	};
 
 	var editorProto = Editor.prototype;
 
 	editorProto.init = function () {
-		var el = this;
-		var doc = el.editor.contentWindow.document;
-
-		doc.execCommand('defaultParagraphSeparator', 'p');
-
-		var menuItems = findAll(el.menu, 'li:not(.seperator)');
-
-		console.log(menuItems);
+		var editor = this;
+		console.log(editor);
 	};
 
 	return Editor;
