@@ -11,25 +11,34 @@
 })(typeof global !== "undefined" ? global : this.window || this.global, function (plugin) {
 	"use strict";
 
+	var find = function (element, selector) {
+		return Element.prototype.querySelector.call(element, selector);
+	};
+
+	var findAll = function (element, selector) {
+		return Element.prototype.querySelectorAll.call(element, selector);
+	};
+
 	var Editor = function (selector) {
 		this.editor = document.querySelector(selector);
 		this.menu = document.querySelector('.editor-menu .menu');
+		this.editorArea = find(this.editor, '.editor-content');
+		this.state = [];
 		this.init();
-	}
+	};
 
 	var editorProto = Editor.prototype;
 
 	editorProto.init = function () {
-		var editor = this;
+		var el = this;
+		var doc = el.editor.contentWindow.document;
 
-		var menuItems = Element.prototype.querySelectorAll.call(editor.menu, 'li:not(.seperator)');
+		doc.execCommand('defaultParagraphSeparator', 'p');
 
-		menuItems.forEach((item) => {
-			console.log(item);
-		});
+		var menuItems = findAll(el.menu, 'li:not(.seperator)');
 
 		console.log(menuItems);
-	}
+	};
 
 	return Editor;
 });
