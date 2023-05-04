@@ -28,7 +28,7 @@
 			menu: find('.editor-menu > .menu', editor),
 			textArea: find('.editor-content', editor),
 			footer: find('.editor-footer', editor),
-			doc: editor.contentWindow.document
+			//doc: editor.contentWindow.document
 		};
 
 		this.init();
@@ -38,7 +38,16 @@
 
 	editorProto.init = function () {
 		var editor = this;
-		console.log(editor);
+		document.execCommand('defaultParagraphSeparator', false, 'p');
+
+		var menuItems = findAll('li:not(.seperator)', editor.el.menu);
+
+		console.log(menuItems);
+
+		menuItems.forEach((item, i) => {
+			console.log(i);
+			console.log(item);
+		});
 	};
 
 	return Editor;
