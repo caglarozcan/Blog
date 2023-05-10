@@ -21,38 +21,21 @@
 		);
 	};
 
-	var replaceSelection = function (html) {
-		var selection = window.getSelection();
-		var fragment;
-		if (selection.getRangeAt && selection.rangeCount) {
-			var range = window.getSelection().getRangeAt(0);
-			range.deleteContents();
-
-			if (range.createContextualFragment) {
-				fragment = range.createContextualFragment(html);
-			}
-
-			var firstInsertedNode = fragment.firstChild;
-			var lastInsertedNode = fragment.lastChild;
-			range.insertNode(fragment);
-
-			if (firstInsertedNode) {
-				range.setStartBefore(firstInsertedNode);
-				range.setEndAfter(lastInsertedNode);
-			}
-			selection.removeAllRanges();
-			selection.addRange(range);
-		}
-	};
+	var isHidden = function (el) {
+		var style = window.getComputedStyle(el);
+		return (style.display === 'none')
+	}
 
 	var Editor = function (selector) {
 		var editor = find(selector);
+		var iframe = find('#richEditor', editor);
 		this.el = {
 			parentContainer: editor,
 			menu: find('.editor-menu > .menu', editor),
-			textArea: find('.editor-content', editor),
+			container: iframe,
 			footer: find('.editor-footer', editor),
-			//doc: editor.contentWindow.document
+			doc: iframe.contentWindow.document,
+			textarea: find('textarea', editor)
 		};
 
 		this.init();
@@ -62,260 +45,57 @@
 
 	editorProto.init = function () {
 		var editor = this;
-		document.execCommand('defaultParagraphSeparator', false, 'p');
+		editor.el.doc.body.setAttribute('contenteditable', "true");
+		editor.el.doc.execCommand('defaultParagraphSeparator', false, 'p');
 
-		var menuItems = findAll('li:not(.seperator)', editor.el.menu);
+		editor.el.doc.body.addEventListener('input', function () {
+			var firstChild = editor.el.doc.body.firstChild;
+			if (!firstChild || firstChild.nodeType !== 3) return;
+			var range = document.createRange();
+			range.selectNodeContents(firstChild);
+			var selection = window.getSelection();
+			selection.removeAllRanges();
+			selection.addRange(range);
+			editor.el.doc.execCommand('formatBlock', false, 'p');
+			editor.el.doc.body.focus();
+		});
 
-		menuItems.forEach((item, i) => {
-			var command = item.children[0];
-			this.process(command);
+		editor.el.doc.body.addEventListener("keyup", this.getBlockType);
+		editor.el.doc.body.addEventListener("mouseup", this.getBlockType);
+
+		//Switch Editor
+		var switchEditor = find('[data-process="switchcode"]', editor.el.menu);
+		switchEditor.addEventListener('click', function () {
+
+			editor.el.textarea.value = editor.el.doc.body.innerHTML;
+
+			if (isHidden(editor.el.textarea)) {
+				editor.el.container.style.display = 'none';
+				editor.el.textarea.style.display = 'block';
+			} else {
+				editor.el.textarea.style.display = 'none';
+				editor.el.container.style.display = 'block';
+			}
 		});
 	};
 
-	editorProto.process = function (element) {
-		var command = element.getAttribute('data-process');
-		switch (command) {
-			case 'heading':
-				this.heading(element);
-				break;
-			case 'bold':
-				this.bold(element);
-				break;
-			case 'italic':
-				this.italic(element);
-				break;
-			case 'underline':
-				this.underline(element);
-				break;
-			case 'stroke':
-				this.stroke(element);
-				break;
-			case 'stroke':
-				this.stroke(element);
-				break;
-			case 'alignleft':
-				this.alignLeft(element);
-				break;
-			case 'aligncenter':
-				this.alignCenter(element);
-				break;
-			case 'alignright':
-				this.alignRight(element);
-				break;
-			case 'alignjustify':
-				this.alignJustify(element);
-				break;
-			case 'emphasize':
-				this.emphasize(element);
-				break;
-			case 'fontcolor':
-				this.fontcolor(element);
-				break;
-			case 'superset':
-				this.superset(element);
-				break;
-			case 'subset':
-				this.subset(element);
-				break;
-			case 'image':
-				this.image(element);
-				break;
-			case 'media':
-				this.media(element);
-				break;
-			case 'youtube':
-				this.youtube(element);
-				break;
-			case 'table':
-				this.table(element);
-				break;
-			case 'link':
-				this.link(element);
-				break;
-			case 'listul':
-				this.listul(element);
-				break;
-			case 'listol':
-				this.listol(element);
-				break;
-			case 'quote':
-				this.quote(element);
-				break;
-			case 'code':
-				this.code(element);
-				break;
-			case 'switchcode':
-				this.switchCode(element);
-				break;
-			default:
-				'geçersiz komut';
-				break;
-		};
-	};
-
-	editorProto.heading = function (element) {
-		element.addEventListener('click', function () {
-			console.log('heading');
-		});
-	};
-
-	editorProto.bold = function (element) {
-		element.addEventListener('click', function () {
-			var replace = document.createElement('b');
-			replace.style.color = this.value;
-			replace.textContent = window.getSelection().toString();
-
-			replaceSelection(replace.outerHTML);
-		});
-	};
-
-	editorProto.italic = function (element) {
-		element.addEventListener('click', function () {
-			var replace = document.createElement('i');
-			replace.style.color = this.value;
-			replace.textContent = window.getSelection().toString();
-
-			replaceSelection(replace.outerHTML);
-		});
-	};
-
-	editorProto.underline = function (element) {
-		element.addEventListener('click', function () {
-			var replace = document.createElement('u');
-			replace.style.color = this.value;
-			replace.textContent = window.getSelection().toString();
-
-			replaceSelection(replace.outerHTML);
-		});
-	};
-
-	editorProto.stroke = function (element) {
-		element.addEventListener('click', function () {
-			var replace = document.createElement('s');
-			replace.style.color = this.value;
-			replace.textContent = window.getSelection().toString();
-
-			replaceSelection(replace.outerHTML);
-		});
-	};
-
-	editorProto.alignLeft = function (element) {
-		element.addEventListener('click', function () {
-			console.log('alignLeft');
-		});
-	};
-
-	editorProto.alignCenter = function (element) {
-		element.addEventListener('click', function () {
-			console.log('alignCenter');
-		});
-	};
-
-	editorProto.alignRight = function (element) {
-		element.addEventListener('click', function () {
-			console.log('alignRight');
-		});
-	};
-
-	editorProto.alignJustify = function (element) {
-		element.addEventListener('click', function () {
-			console.log('alignJustify');
-		});
-	};
-
-	editorProto.emphasize = function (element) {
-		element.addEventListener('click', function () {
-			console.log('emphasize');
-		});
-	};
-
-	editorProto.fontcolor = function (element) {
-		element.addEventListener('click', function () {
-			console.log('fontcolor');
-		});
-	};
-
-	editorProto.superset = function (element) {
-		element.addEventListener('click', function () {
-			var replace = document.createElement('sup');
-			replace.style.color = this.value;
-			replace.textContent = window.getSelection().toString();
-
-			replaceSelection(replace.outerHTML);
-		});
-	};
-
-	editorProto.subset = function (element) {
-		element.addEventListener('click', function () {
-			var replace = document.createElement('sub');
-			replace.style.color = this.value;
-			replace.textContent = window.getSelection().toString();
-
-			replaceSelection(replace.outerHTML);
-		});
-	};
-
-	editorProto.image = function (element) {
-		element.addEventListener('click', function () {
-			console.log('image');
-		});
-	};
-
-	editorProto.media = function (element) {
-		element.addEventListener('click', function () {
-			console.log('media');
-		});
-	};
-
-	editorProto.youtube = function (element) {
-		element.addEventListener('click', function () {
-			console.log('youtube');
-		});
-	};
-
-	editorProto.table = function (element) {
-		element.addEventListener('click', function () {
-			console.log('table');
-		});
-	};
-
-	editorProto.link = function (element) {
-		element.addEventListener('click', function () {
-			console.log('link');
-		});
-	};
-
-	editorProto.listul = function (element) {
-		element.addEventListener('click', function () {
-			console.log('listul');
-		});
-	};
-
-	editorProto.listol = function (element) {
-		element.addEventListener('click', function () {
-			console.log('listol');
-		});
-	};
-
-	editorProto.quote = function (element) {
-		element.addEventListener('click', function () {
-			console.log('quote');
-		});
-	};
-
-	editorProto.code = function (element) {
-		element.addEventListener('click', function () {
-			console.log('code');
-		});
-	};
-
-	editorProto.switchCode = function (element) {
-		element.addEventListener('click', function () {
-			console.log('switchcode');
-		});
-	};
-
-	
+	editorProto.getBlockType = function (e) {
+		console.log(this);
+		const key = e.key || e.keyCode;
+		if (
+			e.type === "mouseup" ||
+			(key === "Enter" ||
+				key === 13 ||
+				key === "Backspace" ||
+				key === 8)
+		) {
+			const selection = this.el.doc.getSelection().anchorNode.parentNode;
+			const parentType = selection.parentNode.nodeName.toLowerCase();
+			const type = selection.nodeName.toLowerCase();
+			console.log(parentType);
+			console.log(type);
+		}
+	}
 
 	return Editor;
 });
