@@ -1,101 +1,74 @@
-﻿(function (root, factory) {
-	var plugin = "Editor";
+﻿function find(selector, el = document.documentElement) {
+	return Element.prototype.querySelector.call(el, selector);
+};
 
-	if (typeof exports === "object") {
-		module.exports = factory(plugin);
-	} else if (typeof define === "function" && define.amd) {
-		define([], factory(plugin));
-	} else {
-		root[plugin] = factory(plugin);
-	}
-})(typeof global !== "undefined" ? global : this.window || this.global, function (plugin) {
-	"use strict";
+function findAll(selector, el = document.documentElement) {
+	return [].concat(
+		...Element.prototype.querySelectorAll.call(el, selector)
+	);
+};
 
-	var find = function (selector, element = document.documentElement) {
-		return Element.prototype.querySelector.call(element, selector);
-	};
+function isHidden(el) {
+	var style = window.getComputedStyle(el);
+	return (style.display === 'none')
+}
 
-	var findAll = function (selector, element = document.documentElement) {
-		return [].concat(
-			...Element.prototype.querySelectorAll.call(element, selector)
-		);
-	};
+const editor_plugin = (function () {
+	class Editor {
+		constructor(settings) {
+			this.settings = { ...settings };
+			this.el = {
+				container: find(this.settings.selector),
+			};
 
-	var isHidden = function (el) {
-		var style = window.getComputedStyle(el);
-		return (style.display === 'none')
-	}
-
-	var Editor = function (selector) {
-		var editor = find(selector);
-		var iframe = find('#richEditor', editor);
-		this.el = {
-			parentContainer: editor,
-			menu: find('.editor-menu > .menu', editor),
-			container: iframe,
-			footer: find('.editor-footer', editor),
-			doc: iframe.contentWindow.document,
-			textarea: find('textarea', editor)
+			this.init();
 		};
 
-		this.init();
-	};
+		init() {
+			this.el = {
+				...this.el,
+				iframe: find(this.settings.selector + ' iframe'),
+				doc: find(this.settings.selector + ' iframe').contentWindow.document
+			};
 
-	var editorProto = Editor.prototype;
-
-	editorProto.init = function () {
-		var editor = this;
-		editor.el.doc.body.setAttribute('contenteditable', "true");
-		editor.el.doc.execCommand('defaultParagraphSeparator', false, 'p');
-
-		editor.el.doc.body.addEventListener('input', function () {
-			var firstChild = editor.el.doc.body.firstChild;
-			if (!firstChild || firstChild.nodeType !== 3) return;
-			var range = document.createRange();
-			range.selectNodeContents(firstChild);
-			var selection = window.getSelection();
-			selection.removeAllRanges();
-			selection.addRange(range);
-			editor.el.doc.execCommand('formatBlock', false, 'p');
-			editor.el.doc.body.focus();
-		});
-
-		editor.el.doc.body.addEventListener("keyup", this.getBlockType);
-		editor.el.doc.body.addEventListener("mouseup", this.getBlockType);
-
-		//Switch Editor
-		var switchEditor = find('[data-process="switchcode"]', editor.el.menu);
-		switchEditor.addEventListener('click', function () {
-
-			editor.el.textarea.value = editor.el.doc.body.innerHTML;
-
-			if (isHidden(editor.el.textarea)) {
-				editor.el.container.style.display = 'none';
-				editor.el.textarea.style.display = 'block';
-			} else {
-				editor.el.textarea.style.display = 'none';
-				editor.el.container.style.display = 'block';
-			}
-		});
-	};
-
-	editorProto.getBlockType = function (e) {
-		console.log(this);
-		const key = e.key || e.keyCode;
-		if (
-			e.type === "mouseup" ||
-			(key === "Enter" ||
-				key === 13 ||
-				key === "Backspace" ||
-				key === 8)
-		) {
-			const selection = this.el.doc.getSelection().anchorNode.parentNode;
-			const parentType = selection.parentNode.nodeName.toLowerCase();
-			const type = selection.nodeName.toLowerCase();
-			console.log(parentType);
-			console.log(type);
+			this.el.doc.body.setAttribute('contenteditable', 'true');
+			this.el.doc.execCommand('defaultParagraphSeparator', false, 'p');
+			this.el.doc.body.addEventListener('input', () => {
+				const firstChild = this.el.doc.body.firstChild;
+				if (!firstChild || firstChild.nodeType !== 3) return;
+				const range = document.createRange();
+				range.selectNodeContents(firstChild);
+				const selection = window.getSelection();
+				selection.removeAllRanges();
+				selection.addRange(range);
+				this.el.doc.execCommand('formatBlock', false, 'p');
+			});
+			this.el.doc.body.addEventListener('keyup', this.getSelectedBlockType);
+			this.el.doc.body.addEventListener('mouseup', this.getSelectedBlockType);
 		}
-	}
+
+		getSelectedBlockType(e) {
+			const key = e.key || e.keyCode;
+			if (e.type === "mouseup" || (key === "Enter" || key === 13 || key === "Backspace" || key === 8)) {
+				console.log(this);
+				const selection = this.el.doc.getSelection().anchorNode.parentNode;
+				const parentType = selection.parentNode.nodeName.toLowerCase();
+				const type = selection.nodeName.toLowerCase();
+				console.log(type);
+				//menü butonu aktif et.
+				/*
+				$all('.toolbar__btn[data-format="block"]', this.el.toolbar).forEach(
+				btn => {
+					if (btn.dataset.type === type || btn.dataset.type === parentType) {
+						btn.classList.add("is-selected");
+					} else {
+						btn.classList.remove("is-selected");
+					}
+				});
+				*/
+			}
+		}
+	};
 
 	return Editor;
-});
+})();

@@ -443,6 +443,8 @@
 
 <script>
 	window.addEventListener('DOMContentLoaded', (event) => {
-		var editor = new Editor('#article-editor');
+		const editor = new editor_plugin({
+			selector: "#article-editor"
+		});
 	});
 </script>
