@@ -21,6 +21,8 @@ const editor_plugin = (function () {
 				container: find(this.settings.selector),
 			};
 
+			this.getSelectedBlockType = this.getSelectedBlockType.bind(this);
+			this.getCurrentBlock = this.getCurrentBlock.bind(this);
 			this.init();
 		};
 
@@ -45,16 +47,18 @@ const editor_plugin = (function () {
 			});
 			this.el.doc.body.addEventListener('keyup', this.getSelectedBlockType);
 			this.el.doc.body.addEventListener('mouseup', this.getSelectedBlockType);
+			this.el.doc.body.addEventListener('mouseup', this.getCurrentBlock);
 		}
 
 		getSelectedBlockType(e) {
 			const key = e.key || e.keyCode;
 			if (e.type === "mouseup" || (key === "Enter" || key === 13 || key === "Backspace" || key === 8)) {
-				console.log(this);
 				const selection = this.el.doc.getSelection().anchorNode.parentNode;
 				const parentType = selection.parentNode.nodeName.toLowerCase();
 				const type = selection.nodeName.toLowerCase();
+
 				console.log(type);
+
 				//menü butonu aktif et.
 				/*
 				$all('.toolbar__btn[data-format="block"]', this.el.toolbar).forEach(
@@ -67,6 +71,27 @@ const editor_plugin = (function () {
 				});
 				*/
 			}
+		}
+
+		getCurrentBlock() {
+			const selection = this.el.doc.getSelection().anchorNode.parentNode;
+			const type = selection.nodeName.toLowerCase();
+			if (type === "body" || type === "html") return;
+			const children = this.el.doc.body.childNodes;
+			let index = 0;
+			for (let i = 0; i < children.length; i++) {
+				if (children[i] == selection) {
+					index = i;
+					break;
+				}
+			}
+			const currentBlock = {
+				index,
+				type,
+				text: selection.textContent
+			};
+			console.log(currentBlock);
+			return currentBlock;
 		}
 	};
 
