@@ -45,9 +45,39 @@ const editor_plugin = (function () {
 				selection.addRange(range);
 				this.el.doc.execCommand('formatBlock', false, 'p');
 			});
+
+			let sampleData = document.createElement('p');
+			sampleData.innerText = "Bu yazı deneme ve test amaçlı eklenmiştir.";
+			this.el.doc.body.appendChild(sampleData);
+
+
 			this.el.doc.body.addEventListener('keyup', this.getSelectedBlockType);
 			this.el.doc.body.addEventListener('mouseup', this.getSelectedBlockType);
-			this.el.doc.body.addEventListener('mouseup', this.getCurrentBlock);
+
+			var boldBtn = find('[data-process="bold"]');
+			boldBtn.addEventListener('click', e => {
+				e.preventDefault();
+				this.getSelection(e);
+			});
+		}
+
+		getSelection(e) {
+			const selection = this.el.doc.getSelection();
+			if (selection && selection.rangeCount) {
+				const container = selection.getRangeAt(0).commonAncestorContainer;
+				const parent = container.parentNode;
+
+				while (container.firstChild) {
+					if (newChildType) {
+						container.replaceChild(
+							createElement('b', null, container.firstChild.textContent),
+							container.firstChild
+						);
+					}
+					parent.insertBefore(container.firstChild, container);
+				}
+				parent.removeChild(container);
+			}
 		}
 
 		getSelectedBlockType(e) {
@@ -56,8 +86,6 @@ const editor_plugin = (function () {
 				const selection = this.el.doc.getSelection().anchorNode.parentNode;
 				const parentType = selection.parentNode.nodeName.toLowerCase();
 				const type = selection.nodeName.toLowerCase();
-
-				console.log(type);
 
 				//menü butonu aktif et.
 				/*
