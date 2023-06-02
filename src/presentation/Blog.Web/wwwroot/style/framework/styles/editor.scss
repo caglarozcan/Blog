@@ -47,6 +47,10 @@
 						background: var(--color-gray-300);
 					}
 
+					&.selected {
+						background: var(--color-gray-300);
+					}
+
 					i {
 						color: var(--editor-icon-color);
 						font-size: 18px;

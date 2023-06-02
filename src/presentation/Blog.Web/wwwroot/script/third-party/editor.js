@@ -16,13 +16,16 @@ function isHidden(el) {
 const editor_plugin = (function () {
 	class Editor {
 		constructor(settings) {
+			const editorContainer = find(settings.selector);
 			this.settings = { ...settings };
 			this.el = {
-				container: find(this.settings.selector),
+				container: editorContainer,
+				menuItems: findAll('.menu > li:not(.seperator)', editorContainer),
+				textarea: find('textarea', editorContainer),
+				footer: find('.editor-footer', editorContainer)
 			};
 
 			this.getSelectedBlockType = this.getSelectedBlockType.bind(this);
-			this.getCurrentBlock = this.getCurrentBlock.bind(this);
 			this.init();
 		};
 
@@ -30,8 +33,14 @@ const editor_plugin = (function () {
 			this.el = {
 				...this.el,
 				iframe: find(this.settings.selector + ' iframe'),
-				doc: find(this.settings.selector + ' iframe').contentWindow.document
+				doc: find(this.settings.selector + ' iframe').contentWindow.document,
 			};
+
+			let cssFile = document.createElement('link');
+			cssFile.href = 'https://localhost:9000/style/editorHtml.css';
+			cssFile.rel = 'stylesheet';
+			cssFile.type = 'text/css';
+			this.el.doc.head.appendChild(cssFile);
 
 			this.el.doc.body.setAttribute('contenteditable', 'true');
 			this.el.doc.execCommand('defaultParagraphSeparator', false, 'p');
@@ -46,38 +55,37 @@ const editor_plugin = (function () {
 				this.el.doc.execCommand('formatBlock', false, 'p');
 			});
 
+			//test
 			let sampleData = document.createElement('p');
-			sampleData.innerText = "Bu yazı deneme ve test amaçlı eklenmiştir.";
+			sampleData.innerText = "Bu yazı deneme ve test amaçlı eklenmiştir. Bu yazı da deneme ve test amaçlı eklenmiştir.";
 			this.el.doc.body.appendChild(sampleData);
+			this.wordCounter();
+			//test
 
-
+			this.el.doc.addEventListener("keyup", () => this.displayHTML(), false);
 			this.el.doc.body.addEventListener('keyup', this.getSelectedBlockType);
 			this.el.doc.body.addEventListener('mouseup', this.getSelectedBlockType);
 
-			var boldBtn = find('[data-process="bold"]');
-			boldBtn.addEventListener('click', e => {
-				e.preventDefault();
-				this.getSelection(e);
+			const codeSwitchBtn = find('[data-process="switchcode"]', this.el.container);
+			codeSwitchBtn.addEventListener('click', e => {
+				this.displayHTML();
+				this.el.iframe.classList.toggle('hide');
+				this.el.textarea.classList.toggle('hide');
 			});
-		}
 
-		getSelection(e) {
-			const selection = this.el.doc.getSelection();
-			if (selection && selection.rangeCount) {
-				const container = selection.getRangeAt(0).commonAncestorContainer;
-				const parent = container.parentNode;
-
-				while (container.firstChild) {
-					if (newChildType) {
-						container.replaceChild(
-							createElement('b', null, container.firstChild.textContent),
-							container.firstChild
-						);
-					}
-					parent.insertBefore(container.firstChild, container);
+			this.el.menuItems.forEach(item => {
+				let menu = item.children[0];
+				const isCommand = menu.dataset.command;
+				if (isCommand == 'true') {
+					menu.addEventListener('click', e => {
+						e.stopPropagation();
+						e.preventDefault();
+						this.selectTool(e);
+					}, false);
+				} else {
+					//TODO : burada opsiyonlar geliştirilecek.
 				}
-				parent.removeChild(container);
-			}
+			});
 		}
 
 		getSelectedBlockType(e) {
@@ -87,39 +95,38 @@ const editor_plugin = (function () {
 				const parentType = selection.parentNode.nodeName.toLowerCase();
 				const type = selection.nodeName.toLowerCase();
 
-				//menü butonu aktif et.
-				/*
-				$all('.toolbar__btn[data-format="block"]', this.el.toolbar).forEach(
-				btn => {
-					if (btn.dataset.type === type || btn.dataset.type === parentType) {
-						btn.classList.add("is-selected");
-					} else {
-						btn.classList.remove("is-selected");
-					}
-				});
-				*/
+				this.el.menuItems.forEach(
+					item => {
+						let button = item.children[0];
+						if (button.dataset.type === type || button.dataset.type === parentType) {
+							button.classList.add("selected");
+						} else {
+							button.classList.remove("selected");
+						}
+					});
 			}
 		}
 
-		getCurrentBlock() {
-			const selection = this.el.doc.getSelection().anchorNode.parentNode;
-			const type = selection.nodeName.toLowerCase();
-			if (type === "body" || type === "html") return;
-			const children = this.el.doc.body.childNodes;
-			let index = 0;
-			for (let i = 0; i < children.length; i++) {
-				if (children[i] == selection) {
-					index = i;
-					break;
-				}
+		selectTool(e) {
+			const target = e.currentTarget;
+			const process = target.dataset.process;
+			const isChanged = this.el.doc.execCommand(process, false, null);
+			target.classList.toggle('selected');
+			if (isChanged) {
+				this.displayHTML();
 			}
-			const currentBlock = {
-				index,
-				type,
-				text: selection.textContent
-			};
-			console.log(currentBlock);
-			return currentBlock;
+			this.el.doc.body.focus();
+		}
+
+		displayHTML() {
+			this.el.textarea.value = this.el.doc.body.innerHTML;
+			this.wordCounter();
+		}
+
+		wordCounter() {
+			let text = this.el.doc.body.innerText;
+			let count = text.replace(/\s+/gm, ' ').replace(/^\s+|\s+$/gm, '').split(' ').length;
+			this.el.footer.innerText = 'Kelime: ' + count;
 		}
 	};
 

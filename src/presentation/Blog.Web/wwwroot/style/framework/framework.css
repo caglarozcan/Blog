@@ -2095,6 +2095,9 @@ table td a i {
 .web-editor .editor-menu .menu li a:hover {
   background: var(--color-gray-300);
 }
+.web-editor .editor-menu .menu li a.selected {
+  background: var(--color-gray-300);
+}
 .web-editor .editor-menu .menu li a i {
   color: var(--editor-icon-color);
   font-size: 18px;
