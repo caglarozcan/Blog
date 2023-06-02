@@ -26,6 +26,7 @@ const editor_plugin = (function () {
 			};
 
 			this.getSelectedBlockType = this.getSelectedBlockType.bind(this);
+			this.showSelectedInlineStyles = this.showSelectedInlineStyles.bind(this);
 			this.init();
 		};
 
@@ -65,6 +66,7 @@ const editor_plugin = (function () {
 			this.el.doc.addEventListener("keyup", () => this.displayHTML(), false);
 			this.el.doc.body.addEventListener('keyup', this.getSelectedBlockType);
 			this.el.doc.body.addEventListener('mouseup', this.getSelectedBlockType);
+			this.el.doc.body.addEventListener('mouseup', this.showSelectedInlineStyles);
 
 			const codeSwitchBtn = find('[data-process="switchcode"]', this.el.container);
 			codeSwitchBtn.addEventListener('click', e => {
@@ -105,6 +107,21 @@ const editor_plugin = (function () {
 						}
 					});
 			}
+		}
+
+		showSelectedInlineStyles(e) {
+			const selection = this.el.doc.getSelection();
+			const type = selection.anchorNode.parentNode.tagName.toLowerCase();
+			if (type === "body") return;
+			['bold', 'italic', 'underline', 'strikeThrough'].forEach(key => {
+				const command = key;
+				const btn = find(`[data-process="${command}"]`, this.el.container);
+				if (this.el.doc.queryCommandState(command)) {
+					btn.classList.add("selected");
+				} else {
+					btn.classList.remove("selected");
+				}
+			});
 		}
 
 		selectTool(e) {
