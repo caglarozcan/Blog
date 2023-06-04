@@ -68,6 +68,10 @@ const editor_plugin = (function () {
 			this.el.doc.body.addEventListener('mouseup', this.getSelectedBlockType);
 			this.el.doc.body.addEventListener('mouseup', this.showSelectedInlineStyles);
 
+			this.editorButtons();
+		}
+
+		editorButtons() {
 			const codeSwitchBtn = find('[data-process="switchcode"]', this.el.container);
 			codeSwitchBtn.addEventListener('click', e => {
 				this.displayHTML();
@@ -113,7 +117,7 @@ const editor_plugin = (function () {
 			const selection = this.el.doc.getSelection();
 			const type = selection.anchorNode.parentNode.tagName.toLowerCase();
 			if (type === "body") return;
-			['bold', 'italic', 'underline', 'strikeThrough'].forEach(key => {
+			['bold', 'italic', 'underline', 'strikeThrough', 'superscript', 'subscript'].forEach(key => {
 				const command = key;
 				const btn = find(`[data-process="${command}"]`, this.el.container);
 				if (this.el.doc.queryCommandState(command)) {
