@@ -68,6 +68,10 @@ const editor_plugin = (function () {
 			this.el.doc.body.addEventListener('mouseup', this.getSelectedBlockType);
 			this.el.doc.body.addEventListener('mouseup', this.showSelectedInlineStyles);
 
+			this.editorButtons();
+		}
+
+		editorButtons() {
 			const codeSwitchBtn = find('[data-process="switchcode"]', this.el.container);
 			codeSwitchBtn.addEventListener('click', e => {
 				this.displayHTML();
