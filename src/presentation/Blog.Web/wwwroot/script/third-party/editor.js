@@ -113,7 +113,7 @@ const editor_plugin = (function () {
 			const selection = this.el.doc.getSelection();
 			const type = selection.anchorNode.parentNode.tagName.toLowerCase();
 			if (type === "body") return;
-			['bold', 'italic', 'underline', 'strikeThrough'].forEach(key => {
+			['bold', 'italic', 'underline', 'strikeThrough', 'insertUnorderedList', 'insertOrderedList', 'superscript', 'subscript'].forEach(key => {
 				const command = key;
 				const btn = find(`[data-process="${command}"]`, this.el.container);
 				if (this.el.doc.queryCommandState(command)) {
