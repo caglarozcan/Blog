@@ -2120,6 +2120,9 @@ table td a i {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+.web-editor .editor-select {
+  background: #FFFFFF;
+}
 
 .status-success, .status-info, .status-primary, .status-danger, .status-warning {
   display: inline-block;
