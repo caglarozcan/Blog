@@ -18,25 +18,25 @@ public sealed class UserUpdateDto
 	[DataType(DataType.Text)]
 	[Required(ErrorMessage = "İsim alanı zorunludur.")]
 	[MaxLength(20, ErrorMessage = "İsim alanı en fazla 20 karakter olabilir.")]
-	public string Name { get; set; }
+	public required string Name { get; set; }
 
 	[DisplayName("Soyisim")]
 	[DataType(DataType.Text)]
 	[Required(ErrorMessage = "Soyisim alanı zorunludur.")]
 	[MaxLength(20, ErrorMessage = "Soyisim alanı en fazla 20 karakter olabilir.")]
-	public string LastName { get; set; }
+	public required string LastName { get; set; }
 
 	[DisplayName("Takma İsim")]
 	[DataType(DataType.Text)]
 	[Required(ErrorMessage = "Takma isim alanı zorunludur.")]
 	[MaxLength(10, ErrorMessage = "Takma isim alanı en fazla 10 karakter olabilir.")]
-	public string NickName { get; set; }
+	public required string NickName { get; set; }
 
 	[DisplayName("E-posta Adresi")]
 	[DataType(DataType.EmailAddress)]
 	[Required(ErrorMessage = "Email adresi zorunludur.")]
 	[MaxLength(150, ErrorMessage = "Email adresi en fazla 150 karakter olabilir.")]
-	public string Email { get; set; }
+	public required string Email { get; set; }
 
 	[DisplayName("Şifre")]
 	[DataType(DataType.Password)]

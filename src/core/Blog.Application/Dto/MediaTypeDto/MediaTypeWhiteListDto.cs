@@ -4,9 +4,9 @@ public sealed class MediaTypeWhiteListDto
 {
 	public Guid Id { get; set; }
 
-	public string MimeType { get; set; }
+	public required string MimeType { get; set; }
 
-	public string FileExtension { get; set; }
+	public required string FileExtension { get; set; }
 
-	public string UploadDir { get; set; }
+	public required string UploadDir { get; set; }
 }

@@ -4,15 +4,15 @@ public sealed class UserListDto
 {
 	public Guid Id { get; set; }
 
-	public string Name { get; set; }
+	public required string Name { get; set; }
 
-	public string LastName { get; set; }
+	public required string LastName { get; set; }
 
-	public string NickName { get; set; }
+	public required string NickName { get; set; }
 
-	public string Email { get; set; }
+	public required string Email { get; set; }
 
-	public string RoleName { get; set; }
+	public required string RoleName { get; set; }
 
 	public DateTime CreatedDate { get; set; }
 

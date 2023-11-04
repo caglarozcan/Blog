@@ -9,7 +9,7 @@ public sealed class TagInsertDto
 	[DisplayName("Etiket İsmi")]
 	[Required(ErrorMessage = "Etiket ismi zorunludur.")]
 	[MaxLength(20, ErrorMessage = "Etiket ismi en fazla 20 karakter olabilir.")]
-	public string Title { get; set; }
+	public required string Title { get; set; }
 
 	[DataType(DataType.Text)]
 	[DisplayName("URL (Slug)")]

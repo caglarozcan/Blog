@@ -10,24 +10,24 @@ public sealed class MediaInfoDto
 
 	[DataType(DataType.Text)]
 	[DisplayName("Dosya Adı")]
-	public string Name { get; set; }
+	public required string Name { get; set; }
 
 	[DataType(DataType.Text)]
 	[DisplayName("Orijinal Dosya Adı")]
-	public string OriginalName { get; set; }
+	public required string OriginalName { get; set; }
 
 	[DataType(DataType.Text)]
 	[DisplayName("Dosya Açıklaması")]
 	[Required(ErrorMessage = "Dosya açıklaması alanı zorunludur.")]
-	public string Description { get; set; }
+	public required string Description { get; set; }
 
 	[DataType(DataType.Text)]
 	[DisplayName("Dosya MIME Türü")]
-	public string MediaTypeName { get; set; }
+	public required string MediaTypeName { get; set; }
 
 	[DataType(DataType.Text)]
 	[DisplayName("Dosya Uzantısı")]
-	public string FileExtension { get; set; }
+	public required string FileExtension { get; set; }
 
 	[DataType(DataType.DateTime)]
 	[DisplayName("Yükleme Tarihi")]

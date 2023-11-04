@@ -76,7 +76,7 @@ public class UnitOfWork : IUnitOfWork
 	public IUserReadRepository UserReadRepository => _userReadRepository ?? new UserReadRepository(_dbContext);
 	public IUserWriteRepository UserWriteRepository => _userWriteRepository ?? new UserWriteRepository(_dbContext);
 
-	public async Task<int> SaveAsync(CancellationToken cancellationToken = default)
+	public async ValueTask<int> SaveAsync(CancellationToken cancellationToken = default)
 	{
 		return await _dbContext.SaveChangesAsync(cancellationToken);
 	}

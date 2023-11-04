@@ -2,9 +2,9 @@
 
 public sealed class FileUploadOptions
 {
-	public string UploadPath { get; set; }
+	public required string UploadPath { get; set; }
 
-	public string UploadDirType { get; set; }
+	public required string UploadDirType { get; set; }
 
 	public int ImageSmallWidth { get; set; }
 

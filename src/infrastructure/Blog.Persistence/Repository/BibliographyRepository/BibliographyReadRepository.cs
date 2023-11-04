@@ -33,7 +33,7 @@ public class BibliographyReadRepository : ReadRepository<Bibliography>, IBibliog
 
 		if (request.SortType.HasValue)
 		{
-			query = query.OrderByPredicate(request.SortIndex.Value, request.SortType.Value);
+			query = query.OrderByPredicate(request.SortIndex!.Value, request.SortType.Value);
 		}
 
 		return await query.ToPagingData(request.PerData, request.Page);

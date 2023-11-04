@@ -40,5 +40,5 @@ public interface IUnitOfWork : IAsyncDisposable
 	IUserReadRepository UserReadRepository { get; }
 	IUserWriteRepository UserWriteRepository { get; }
 
-	Task<int> SaveAsync(CancellationToken cancellationToken = default);
+	ValueTask<int> SaveAsync(CancellationToken cancellationToken = default);
 }

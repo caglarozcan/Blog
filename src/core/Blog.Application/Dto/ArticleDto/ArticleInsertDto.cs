@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Blog.Application.Enums;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Application.Dto.ArticleDto
@@ -30,6 +31,7 @@ namespace Blog.Application.Dto.ArticleDto
 
 		[DataType(DataType.Text)]
 		[DisplayName("Kayıt Türü")]
-		public int SaveType { get; set; }
+		[Required(ErrorMessage = "Makale kayıt türü seçilmedi.")]
+		public ArticleSaveType SaveType { get; set; }
 	}
 }

@@ -6,9 +6,9 @@ public sealed class SettingsListDto
 
 	public Guid SettingGroupId { get; set; }
 
-	public string Name { get; set; }
+	public required string Name { get; set; }
 
-	public string Value { get; set; }
+	public required string Value { get; set; }
 
-	public string SettingKey { get; set; }
+	public required string SettingKey { get; set; }
 }

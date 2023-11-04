@@ -2,11 +2,11 @@
 
 public sealed class GeneralSiteOptions
 {
-	public string SiteTitle { get; set; }
+	public required string SiteTitle { get; set; }
 
-	public string SiteDescription { get; set; }
+	public required string SiteDescription { get; set; }
 
-	public string SiteUrl { get; set; }
+	public required string SiteUrl { get; set; }
 
-	public string SiteSlogan { get; set; }
+	public required string SiteSlogan { get; set; }
 }

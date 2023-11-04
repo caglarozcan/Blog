@@ -6,13 +6,13 @@ public sealed class EmailSettingUpdateDto
 {
 	[Required(ErrorMessage = "Email adresi alanı zorunludur.")]
 	[EmailAddress(ErrorMessage = "Girilen email adresi geçersizdir.")]
-	public string EmailFrom { get; set; }
+	public required string EmailFrom { get; set; }
 
 	[Required(ErrorMessage = "Email sunucusu alanı zorunludur.")]
-	public string EmailHost { get; set; }
+	public required string EmailHost { get; set; }
 
 	[Required(ErrorMessage = "Email şifre alanı zorunludur.")]
-	public string EmailPassword { get; set; }
+	public required string EmailPassword { get; set; }
 
 	[Required(ErrorMessage = "Email sunucusu port alanı zorunludur.")]
 	[Range(1,999, ErrorMessage = "Girilen port numarası geçersizdir.")]
