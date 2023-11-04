@@ -9,24 +9,24 @@ namespace Blog.Application.Services;
 public interface IMediaTypeService
 {
 	#region Create
-	Task<Response<ProblemDetails>> InsertAsync(MediaTypeInsertDto data, ModelStateDictionary modelState);
+	ValueTask<Response<ProblemDetails>> InsertAsync(MediaTypeInsertDto data, ModelStateDictionary modelState);
 	#endregion
 
 	#region Read
-	Task<PagingDataResponse<MediaTypeListDto>> GetMediaTypeListAsync(DataListRequest request);
+	ValueTask<PagingDataResponse<MediaTypeListDto>> GetMediaTypeListAsync(DataListRequest request);
 
-	Task<Response<MediaTypeUpdateDto>> GetUpdatedMediaTypeAsync(Guid id);
+	ValueTask<Response<MediaTypeUpdateDto>> GetUpdatedMediaTypeAsync(Guid id);
 
-	Task<MediaTypeSelectDto> GetMediaTypeSelectAsync(Guid? id);
+	ValueTask<MediaTypeSelectDto> GetMediaTypeSelectAsync(Guid? id);
 	#endregion
 
 	#region Update
-	Task<Response.Response> StatusChangeAsync(Guid id);
+	ValueTask<Response.Response> StatusChangeAsync(Guid id);
 
-	Task<Response<ProblemDetails>> UpdateAsync(MediaTypeUpdateDto data, ModelStateDictionary modelState);
+	ValueTask<Response<ProblemDetails>> UpdateAsync(MediaTypeUpdateDto data, ModelStateDictionary modelState);
 	#endregion
 
 	#region Delete
-	Task<Response.Response> DeleteAsync(Guid id);
+	ValueTask<Response.Response> DeleteAsync(Guid id);
 	#endregion
 }

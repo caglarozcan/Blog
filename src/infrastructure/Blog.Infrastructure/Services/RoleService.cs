@@ -14,7 +14,7 @@ public class RoleService : BaseService, IRoleService
 	}
 
 	#region Read
-	public async Task<RoleSelectDto> GetSelectRolesAsync(Guid? id)
+	public async ValueTask<RoleSelectDto> GetSelectRolesAsync(Guid? id)
         {
 		return await _unitOfWork.RoleReadRepository.GetSelectRolesAsync(id);
 	}

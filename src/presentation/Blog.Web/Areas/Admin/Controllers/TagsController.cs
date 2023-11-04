@@ -20,7 +20,7 @@ public class TagsController : Controller
 	#region Functions
 	#region Create
 	[HttpPost]
-	public async Task<IActionResult> Insert(TagInsertDto data)
+	public async ValueTask<IActionResult> Insert(TagInsertDto data)
 	{
 		var result = await _ticketService.InsertAsync(data, ModelState);
 
@@ -40,7 +40,7 @@ public class TagsController : Controller
 		return View();
 	}
 
-	public async Task<IActionResult> GetList(DataListRequest request)
+	public async ValueTask<IActionResult> GetList(DataListRequest request)
 	{
 		var list = await _ticketService.ListAsync(request);
 
@@ -48,7 +48,7 @@ public class TagsController : Controller
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> GetEditInfo(Guid id)
+	public async ValueTask<IActionResult> GetEditInfo(Guid id)
 	{
 		var result = await _ticketService.GetUpdatedTicketAsync(id);
 
@@ -58,7 +58,7 @@ public class TagsController : Controller
 
 	#region Update
 	[HttpPost]
-	public async Task<IActionResult> Edit(TagEditDto data)
+	public async ValueTask<IActionResult> Edit(TagEditDto data)
 	{
 		var result = await _ticketService.EditAsync(data, ModelState);
 
@@ -74,7 +74,7 @@ public class TagsController : Controller
 
 	#region Delete
 	[HttpPost]
-	public async Task<IActionResult> Delete(Guid id)
+	public async ValueTask<IActionResult> Delete(Guid id)
 	{
 		var result = await _ticketService.DeleteAsync(id);
 

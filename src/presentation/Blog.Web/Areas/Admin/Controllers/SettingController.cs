@@ -21,21 +21,21 @@ public class SettingController : BaseController
 	#endregion
 
 	#region Read
-	public async Task<IActionResult> Index()
+	public async ValueTask<IActionResult> Index()
 	{
 		var settings = await _settingService.GetSettingsAsync();
 		return View(settings);
 	}
-    #endregion
+	#endregion
 
-    #region Upate
-    /// <summary>
-    /// Update işlemi için kullanılan modellerin özellikleri Settings tablosundaki SettingKey ile aynı olmak zorunda.
-    /// </summary>
-    /// <param name="data"></param>
-    /// <returns></returns>
-    [HttpPost]
-	public async Task<IActionResult> SaveGeneralSettings(GeneralSettingUpdateDto data)
+	#region Upate
+	/// <summary>
+	/// Update işlemi için kullanılan modellerin özellikleri Settings tablosundaki SettingKey ile aynı olmak zorunda.
+	/// </summary>
+	/// <param name="data"></param>
+	/// <returns></returns>
+	[HttpPost]
+	public async ValueTask<IActionResult> SaveGeneralSettings(GeneralSettingUpdateDto data)
 	{
 		var result = await _settingService.SaveGeneralSettingsAsync(data, ModelState);
 
@@ -49,7 +49,7 @@ public class SettingController : BaseController
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> SaveArticleSettings(ArticleSettingUpdateDto data)
+	public async ValueTask<IActionResult> SaveArticleSettings(ArticleSettingUpdateDto data)
 	{
 		var result = await _settingService.SaveArticleSettingsAsync(data, ModelState);
 
@@ -63,7 +63,7 @@ public class SettingController : BaseController
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> SaveFileUploadSettings(FileUploadSettingUpdateDto data)
+	public async ValueTask<IActionResult> SaveFileUploadSettings(FileUploadSettingUpdateDto data)
 	{
 		var result = await _settingService.SaveFileUploadSettingsAsync(data, ModelState);
 
@@ -77,7 +77,7 @@ public class SettingController : BaseController
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> SaveMailSettings(EmailSettingUpdateDto data)
+	public async ValueTask<IActionResult> SaveMailSettings(EmailSettingUpdateDto data)
 	{
 		var result = await _settingService.SaveMailSettingsAsync(data, ModelState);
 
@@ -91,7 +91,7 @@ public class SettingController : BaseController
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> SaveCommentSettings(CommentSettingUpdateDto data)
+	public async ValueTask<IActionResult> SaveCommentSettings(CommentSettingUpdateDto data)
 	{
 		var result = await _settingService.SaveCommentSettingsAsync(data, ModelState);
 
@@ -105,7 +105,7 @@ public class SettingController : BaseController
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> SavePagingSettings(PagingSettingUpdateDto data)
+	public async ValueTask<IActionResult> SavePagingSettings(PagingSettingUpdateDto data)
 	{
 		var result = await _settingService.SavePagingSettingsAsync(data, ModelState);
 

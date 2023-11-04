@@ -17,7 +17,7 @@ public class AuthenticationService : BaseService, IAuthenticationService
 		this._hashService = hashService;
 	}
 
-	public async Task<Response<ClaimsPrincipal>> LoginAsync(UserLoginDto data)
+	public async ValueTask<Response<ClaimsPrincipal>> LoginAsync(UserLoginDto data)
 	{
 
 		data.Password = _hashService.Hash(data.Password);

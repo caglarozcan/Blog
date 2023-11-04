@@ -19,8 +19,8 @@ public class CategoryList : ViewComponent
 		return View(items);
 	}
 
-	private Task<CategorySelectDto> GetItemsAsync(Guid? id)
+	private async Task<CategorySelectDto> GetItemsAsync(Guid? id)
 	{
-		return _categoryService.GetSelectCategoriesAsync(id);
+		return await _categoryService.GetSelectCategoriesAsync(id);
 	}
 }

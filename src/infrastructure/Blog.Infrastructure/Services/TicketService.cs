@@ -20,7 +20,7 @@ public class TicketService : BaseService, ITicketService
 	}
 
 	#region Create
-	public async Task<Response<ProblemDetails>> InsertAsync(TagInsertDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> InsertAsync(TagInsertDto data, ModelStateDictionary modelState)
 	{
 		if (!modelState.IsValid)
 		{
@@ -59,14 +59,14 @@ public class TicketService : BaseService, ITicketService
 	#endregion
 
 	#region Read
-	public async Task<PagingDataResponse<TagListDto>> ListAsync(DataListRequest request)
+	public async ValueTask<PagingDataResponse<TagListDto>> ListAsync(DataListRequest request)
 	{
 		var ticketList = await _unitOfWork.TicketReadRepository.ListAsync(request);
 
 		return ticketList;
 	}
 
-	public async Task<Response<TagListDto>> GetUpdatedTicketAsync(Guid id)
+	public async ValueTask<Response<TagListDto>> GetUpdatedTicketAsync(Guid id)
 	{
 		bool ticketExists = await _unitOfWork.TicketReadRepository.AnyAsync(a => a.Id.Equals(id));
 
@@ -86,7 +86,7 @@ public class TicketService : BaseService, ITicketService
 	#endregion
 
 	#region Update
-	public async Task<Response<ProblemDetails>> EditAsync(TagEditDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> EditAsync(TagEditDto data, ModelStateDictionary modelState)
 	{
 		if (false.Equals(modelState.IsValid))
 		{
@@ -133,7 +133,7 @@ public class TicketService : BaseService, ITicketService
 	#endregion
 
 	#region Delete
-	public async Task<Response> DeleteAsync(Guid id)
+	public async ValueTask<Response> DeleteAsync(Guid id)
 	{
 		bool ticketExists = await _unitOfWork.TicketReadRepository.AnyAsync(a => a.Id.Equals(id));
 

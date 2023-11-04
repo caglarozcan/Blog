@@ -9,7 +9,7 @@ window.TabControl = require('./component/tab.js');
 window.DropDown = require('./component/dropdown.js');
 window.Alert = require('./component/alert.js');
 window.Dailog = require('./component/dialog.js');
-window.Select = require('./component/select.js');
+//window.Select = require('./component/select.js');
 
 //plugins
 window.PhotoGallery = require('./plugin/photoGallery.js');

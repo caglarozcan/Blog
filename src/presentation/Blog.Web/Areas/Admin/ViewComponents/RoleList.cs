@@ -19,8 +19,8 @@ public class RoleList : ViewComponent
 		return View(items);
 	}
 
-	private Task<RoleSelectDto> GetItemsAsync(Guid? id)
+	private async Task<RoleSelectDto> GetItemsAsync(Guid? id)
 	{
-		return _roleService.GetSelectRolesAsync(id);
+		return await _roleService.GetSelectRolesAsync(id);
 	}
 }

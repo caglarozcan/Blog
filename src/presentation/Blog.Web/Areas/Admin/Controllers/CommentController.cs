@@ -21,7 +21,7 @@ public class CommentController : BaseController
 	#endregion
 
 	#region Read
-	public async Task<IActionResult> Index()
+	public async ValueTask<IActionResult> Index()
 	{
 		return View();
 	}

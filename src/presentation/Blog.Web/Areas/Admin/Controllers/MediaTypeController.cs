@@ -20,7 +20,7 @@ public class MediaTypeController : Controller
 	#region Functions
 	#region Create
 	[HttpPost]
-	public async Task<IActionResult> Insert(MediaTypeInsertDto data)
+	public async ValueTask<IActionResult> Insert(MediaTypeInsertDto data)
 	{
 		var result = await _mediaTypeService.InsertAsync(data, ModelState);
 
@@ -35,13 +35,13 @@ public class MediaTypeController : Controller
 	#endregion
 
 	#region Read
-	public async Task<IActionResult> Index()
+	public IActionResult Index()
 	{
 		return View();
 	}
 
 	[HttpGet]
-	public async Task<IActionResult> GetList(DataListRequest request)
+	public async ValueTask<IActionResult> GetList(DataListRequest request)
 	{
 		var list = await _mediaTypeService.GetMediaTypeListAsync(request);
 
@@ -49,7 +49,7 @@ public class MediaTypeController : Controller
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> EditInfo(Guid id)
+	public async ValueTask<IActionResult> EditInfo(Guid id)
 	{
 		var result = await _mediaTypeService.GetUpdatedMediaTypeAsync(id);
 		return Ok(result);
@@ -58,14 +58,14 @@ public class MediaTypeController : Controller
 
 	#region Update
 	[HttpPost]
-	public async Task<IActionResult> StatusChange(Guid id)
+	public async ValueTask<IActionResult> StatusChange(Guid id)
 	{
 		var result = await _mediaTypeService.StatusChangeAsync(id);
 		return Ok(result);
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> Edit(MediaTypeUpdateDto data)
+	public async ValueTask<IActionResult> Edit(MediaTypeUpdateDto data)
 	{
 		var result = await _mediaTypeService.UpdateAsync(data, ModelState);
 
@@ -80,7 +80,7 @@ public class MediaTypeController : Controller
 	#endregion
 
 	#region Delete
-	public async Task<IActionResult> Delete(Guid id)
+	public async ValueTask<IActionResult> Delete(Guid id)
 	{
 		var result = await _mediaTypeService.DeleteAsync(id);
 		return Ok(result);

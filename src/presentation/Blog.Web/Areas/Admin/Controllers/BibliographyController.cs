@@ -19,20 +19,20 @@ public class BibliographyController : BaseController
 
 	#region Functions
 	#region Create
-	public async Task<IActionResult> Insert(BibliographyInsertDto data)
+	public async ValueTask<IActionResult> Insert(BibliographyInsertDto data)
 	{
 		return Ok(data);
 	}
 	#endregion
 
 	#region Read
-	public async Task<IActionResult> Index()
+	public async ValueTask<IActionResult> Index()
 	{
 		return View();
 	}
 
 	[HttpGet]
-	public async Task<IActionResult> GetList(DataListRequest request)
+	public async ValueTask<IActionResult> GetList(DataListRequest request)
 	{
 		return Ok(await _bibliographyService.GetBibliographyListAsync(request));
 	}

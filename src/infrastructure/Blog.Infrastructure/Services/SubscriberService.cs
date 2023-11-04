@@ -22,14 +22,14 @@ public class SubscriberService : BaseService, ISubscriberService
 	#endregion
 
 	#region Read
-	public async Task<PagingDataResponse<SubscriberListDto>> GetSubscriberListAsync(DataListRequest request)
+	public async ValueTask<PagingDataResponse<SubscriberListDto>> GetSubscriberListAsync(DataListRequest request)
 	{
 		return await _unitOfWork.SubscriberReadRepository.GetSubscriberListAsync(request);
 	}
 	#endregion
 
 	#region Update
-	public async Task<Response> StatusChangeAsync(Guid id)
+	public async ValueTask<Response> StatusChangeAsync(Guid id)
 	{
 		bool subscriberExists = await _unitOfWork.SubscriberReadRepository.AnyAsync(a => a.Id.Equals(id));
 
@@ -50,7 +50,7 @@ public class SubscriberService : BaseService, ISubscriberService
 	#endregion
 
 	#region Delete
-	public async Task<Response> DeleteAsync(Guid id)
+	public async ValueTask<Response> DeleteAsync(Guid id)
 	{
 		bool subscriberExists = await _unitOfWork.SubscriberReadRepository.AnyAsync(a => a.Id.Equals(id));
 

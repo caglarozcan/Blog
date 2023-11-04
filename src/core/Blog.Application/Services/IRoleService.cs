@@ -5,6 +5,6 @@ namespace Blog.Application.Services;
 public interface IRoleService
     {
 	#region Read
-	Task<RoleSelectDto> GetSelectRolesAsync(Guid? id);
+	ValueTask<RoleSelectDto> GetSelectRolesAsync(Guid? id);
 	#endregion
 }

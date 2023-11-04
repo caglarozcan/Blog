@@ -20,7 +20,7 @@ public class CategoryController : BaseController
 	#region Functions
 	#region Create
 	[HttpPost]
-	public async Task<IActionResult> Insert(CategoryInsertDto data)
+	public async ValueTask<IActionResult> Insert(CategoryInsertDto data)
 	{				
 		var result = await _categoryService.InsertAsync(data, ModelState);
 
@@ -34,19 +34,19 @@ public class CategoryController : BaseController
 	#endregion
 
 	#region Read
-	public async Task<IActionResult> Index()
+	public async ValueTask<IActionResult> Index()
 	{
 		return View();
 	}
 
-	public async Task<IActionResult> GetList(DataListRequest request)
+	public async ValueTask<IActionResult> GetList(DataListRequest request)
 	{
 		var list = await _categoryService.GetCategoryListAsync(request);
 
 		return Ok(list);
 	}
 
-	public async Task<IActionResult> EditInfo(Guid id)
+	public async ValueTask<IActionResult> EditInfo(Guid id)
 	{
 		var result = await _categoryService.GetUpdatedCategoryInfoAsync(id);
 
@@ -56,7 +56,7 @@ public class CategoryController : BaseController
 
 	#region Update
 	[HttpPost]
-	public async Task<IActionResult> Edit(CategoryEditDto data)
+	public async ValueTask<IActionResult> Edit(CategoryEditDto data)
 	{
 		var result = await _categoryService.EditAsync(data, ModelState);
 
@@ -69,7 +69,7 @@ public class CategoryController : BaseController
 		};
 	}
 
-	public async Task<IActionResult> StatusChange(Guid id)
+	public async ValueTask<IActionResult> StatusChange(Guid id)
 	{
 		var result = await _categoryService.StatusChangeAsync(id);
 
@@ -78,7 +78,7 @@ public class CategoryController : BaseController
 	#endregion
 
 	#region Delete
-	public async Task<IActionResult> Delete(Guid id)
+	public async ValueTask<IActionResult> Delete(Guid id)
 	{
 		var result = await _categoryService.DeleteAsync(id);
 

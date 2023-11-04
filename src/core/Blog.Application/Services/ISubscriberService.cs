@@ -12,15 +12,15 @@ public interface ISubscriberService
 	#endregion
 
 	#region Read
-	Task<PagingDataResponse<SubscriberListDto>> GetSubscriberListAsync(DataListRequest request);
+	ValueTask<PagingDataResponse<SubscriberListDto>> GetSubscriberListAsync(DataListRequest request);
 	#endregion
 
 	#region Update
-	Task<Response.Response> StatusChangeAsync(Guid id);
+	ValueTask<Response.Response> StatusChangeAsync(Guid id);
 	#endregion
 
 	#region Delete
-	Task<Response.Response> DeleteAsync(Guid id);
+	ValueTask<Response.Response> DeleteAsync(Guid id);
 	#endregion
 	#endregion
 }

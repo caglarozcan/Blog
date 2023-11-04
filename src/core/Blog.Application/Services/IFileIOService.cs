@@ -4,11 +4,11 @@ namespace Blog.Application.Services;
 
 public interface IFileIOService
 {
-	Task<Response.Response> Create(IFormFile file);
+	ValueTask<Response.Response> Create(IFormFile file);
 
-	Task<Response.Response> Copy(Guid id);
+	ValueTask<Response.Response> Copy(Guid id);
 
-	Task<Response.Response> Rename(Guid id, string name);
+	ValueTask<Response.Response> Rename(Guid id, string name);
 
-	Task<Response.Response> Delete(Guid id);
+	ValueTask<Response.Response> Delete(Guid id);
 }

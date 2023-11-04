@@ -19,7 +19,7 @@ public class MediaController : BaseController
 	#region Functions
 	#region Create
 	[HttpPost]
-	public async Task<IActionResult> FileUpload(IFormFile file)
+	public async ValueTask<IActionResult> FileUpload(IFormFile file)
 	{
 		return Ok(await _mediaService.FileUploadAsync(file));
 	}
@@ -37,13 +37,13 @@ public class MediaController : BaseController
 	}
 
 	[HttpGet]
-	public async Task<IActionResult> EditInfo(Guid id)
+	public async ValueTask<IActionResult> EditInfo(Guid id)
 	{
 		return Ok(await _mediaService.GetMediaInfoAsync(id));
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> GetMediaList(DataListRequest request)
+	public async ValueTask<IActionResult> GetMediaList(DataListRequest request)
 	{
 		return Ok(await _mediaService.GetMediaListAsync(request));
 	}

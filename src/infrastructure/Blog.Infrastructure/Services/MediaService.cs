@@ -22,7 +22,7 @@ public class MediaService : BaseService, IMediaService
 
 	#region Functions
 	#region Create
-	public async Task<Response> FileUploadAsync(IFormFile file)
+	public async ValueTask<Response> FileUploadAsync(IFormFile file)
 	{
 		if (file == null)
 			return new Response("Yüklenecek dosya seçilmeli", false);
@@ -32,12 +32,12 @@ public class MediaService : BaseService, IMediaService
 	#endregion
 
 	#region Read
-	public async Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request)
+	public async ValueTask<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request)
 	{
 		return await _unitOfWork.MediaReadRepository.GetMediaListAsync(request, _authUserInfoService.Id);
 	}
 
-	public async Task<MediaInfoDto> GetMediaInfoAsync(Guid id)
+	public async ValueTask<MediaInfoDto> GetMediaInfoAsync(Guid id)
 	{
 		var media = await _unitOfWork.MediaReadRepository.GetAsync(m => m.Id.Equals(id), includes: i => i.MediaType);
 

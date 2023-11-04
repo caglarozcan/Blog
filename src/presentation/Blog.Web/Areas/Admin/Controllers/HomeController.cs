@@ -15,12 +15,12 @@ public class HomeController : Controller
 		_dashboardService = dashboardService;
 	}
 
-	public async Task<IActionResult> Index()
+	public IActionResult Index()
 	{
 		return View();
 	}
 
-	public async Task<IActionResult> GeneralStatistic()
+	public async ValueTask<IActionResult> GeneralStatistic()
 	{
 		return View(await _dashboardService.GetGeneralStatisticAsync());
 	}

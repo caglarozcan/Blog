@@ -2051,6 +2051,15 @@ table td a i {
   background: var(--color-gray-300);
 }
 
+.rte-floatpanel-paragraphop {
+  display: none !important;
+}
+
+.rte-toolbar-desktop {
+  border-bottom: 1px solid var(--color-gray-400) !important;
+  background-color: var(--color-gray-100) !important;
+}
+
 .web-editor {
   display: block;
 }

@@ -6,5 +6,5 @@ namespace Blog.Application.Services;
 
 public interface IAuthenticationService
 {
-	Task<Response<ClaimsPrincipal>> LoginAsync(UserLoginDto data);
+	ValueTask<Response<ClaimsPrincipal>> LoginAsync(UserLoginDto data);
 }

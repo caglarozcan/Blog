@@ -20,7 +20,7 @@ public class MediaTypeService : BaseService, IMediaTypeService
 
 	#region Functions
 	#region Create
-	public async Task<Response<ProblemDetails>> InsertAsync(MediaTypeInsertDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> InsertAsync(MediaTypeInsertDto data, ModelStateDictionary modelState)
 	{
 		if (!modelState.IsValid)
 		{
@@ -60,12 +60,12 @@ public class MediaTypeService : BaseService, IMediaTypeService
 	#endregion
 
 	#region Read
-	public async Task<PagingDataResponse<MediaTypeListDto>> GetMediaTypeListAsync(DataListRequest request)
+	public async ValueTask<PagingDataResponse<MediaTypeListDto>> GetMediaTypeListAsync(DataListRequest request)
 	{
 		return await _unitOfWork.MediaTypeReadRepository.GetMediaTypeListAsync(request);
 	}
 
-	public async Task<Response<MediaTypeUpdateDto>> GetUpdatedMediaTypeAsync(Guid id)
+	public async ValueTask<Response<MediaTypeUpdateDto>> GetUpdatedMediaTypeAsync(Guid id)
 	{
 		var mediaType = await _unitOfWork.MediaTypeReadRepository.GetAsync(m => m.Id.Equals(id));
 
@@ -84,14 +84,14 @@ public class MediaTypeService : BaseService, IMediaTypeService
 		});
 	}
 
-	public async Task<MediaTypeSelectDto> GetMediaTypeSelectAsync(Guid? id)
+	public async ValueTask<MediaTypeSelectDto> GetMediaTypeSelectAsync(Guid? id)
 	{
 		return await _unitOfWork.MediaTypeReadRepository.GetMediaTypeSelectAsync(id);
 	}
 	#endregion
 
 	#region Update
-	public async Task<Response> StatusChangeAsync(Guid id)
+	public async ValueTask<Response> StatusChangeAsync(Guid id)
 	{
 		var mediaType = await _unitOfWork.MediaTypeReadRepository.GetAsync(m => m.Id.Equals(id));
 
@@ -109,7 +109,7 @@ public class MediaTypeService : BaseService, IMediaTypeService
 		return new Response("Medya türü durumu değiştirilmiştir.", true);
 	}
 
-	public async Task<Response<ProblemDetails>> UpdateAsync(MediaTypeUpdateDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> UpdateAsync(MediaTypeUpdateDto data, ModelStateDictionary modelState)
 	{
 		if (!modelState.IsValid)
 		{
@@ -155,7 +155,7 @@ public class MediaTypeService : BaseService, IMediaTypeService
 	#endregion
 
 	#region Delete
-	public async Task<Response> DeleteAsync(Guid id)
+	public async ValueTask<Response> DeleteAsync(Guid id)
 	{
 		var mediaType = await _unitOfWork.MediaTypeReadRepository.GetAsync(m => m.Id.Equals(id));
 

@@ -4,5 +4,5 @@ namespace Blog.Application.Services;
 
 public interface IDashboardService
 {
-	Task<GeneralStaticticDto> GetGeneralStatisticAsync();
+	ValueTask<GeneralStaticticDto> GetGeneralStatisticAsync();
 }

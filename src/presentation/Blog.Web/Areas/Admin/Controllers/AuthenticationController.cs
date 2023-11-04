@@ -16,13 +16,13 @@ public class AuthenticationController : Controller
 		this._authenticationService = authenticationService;
 	}
 
-	public async Task<IActionResult> Index()
+	public async ValueTask<IActionResult> Index()
 	{
 		return View();
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> Index(UserLoginDto data)
+	public async ValueTask<IActionResult> Index(UserLoginDto data)
 	{
 		if(!ModelState.IsValid)
 			return View(data);
@@ -40,7 +40,7 @@ public class AuthenticationController : Controller
 		}
 	}
 
-	public async Task<IActionResult> LogOut()
+	public async ValueTask<IActionResult> LogOut()
 	{
 		await HttpContext.SignOutAsync();
 		return RedirectToAction("Index");

@@ -25,7 +25,7 @@ public class UserService : BaseService, IUserService
 	}
 
 	#region Create
-	public async Task<Response<ProblemDetails>> InsertAsync(UserInsertDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> InsertAsync(UserInsertDto data, ModelStateDictionary modelState)
 	{
 		if (!modelState.IsValid)
 		{
@@ -93,14 +93,14 @@ public class UserService : BaseService, IUserService
 	#endregion
 
 	#region Read
-	public async Task<PagingDataResponse<UserListDto>> GetUserListAsync(DataListRequest request)
+	public async ValueTask<PagingDataResponse<UserListDto>> GetUserListAsync(DataListRequest request)
 	{
 		var userList = await _unitOfWork.UserReadRepository.GetUserListAsync(request);
 
 		return userList;
 	}
 
-	public async Task<UserUpdateDto> GetUpdatedUserAsync(Guid id)
+	public async ValueTask<UserUpdateDto> GetUpdatedUserAsync(Guid id)
 	{
 		var user = await _unitOfWork.UserReadRepository.GetAsync(u => u.Id.Equals(id), default, i => i.Roles);
 
@@ -119,7 +119,7 @@ public class UserService : BaseService, IUserService
 	#endregion
 
 	#region Update
-	public async Task<Response<ProblemDetails>> UpdateAsync(UserUpdateDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> UpdateAsync(UserUpdateDto data, ModelStateDictionary modelState)
 	{
 		if (!modelState.IsValid)
 		{
@@ -194,7 +194,7 @@ public class UserService : BaseService, IUserService
 		}
 	}
 
-	public async Task<Response> StatusChangeAsync(Guid id)
+	public async ValueTask<Response> StatusChangeAsync(Guid id)
 	{
 		var user = await _unitOfWork.UserReadRepository.GetAsync(u => u.Id.Equals(id));
 
@@ -214,7 +214,7 @@ public class UserService : BaseService, IUserService
 	#endregion
 
 	#region Delete
-	public async Task<Response> DeleteAsync(Guid id)
+	public async ValueTask<Response> DeleteAsync(Guid id)
 	{
 		var user = await _unitOfWork.UserReadRepository.GetAsync(u => u.Id.Equals(id));
 

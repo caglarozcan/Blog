@@ -21,14 +21,14 @@ public class SettingService : BaseService, ISettingService
 	#endregion
 
 	#region Read
-	public async Task<List<SettingGroupListDto>> GetSettingsAsync()
+	public async ValueTask<List<SettingGroupListDto>> GetSettingsAsync()
 	{
 		return await _unitOfWork.SettingGroupReadRepository.GetSettingsAsync();
 	}
 	#endregion
 
 	#region Update
-	public async Task<Response<ProblemDetails>> SaveArticleSettingsAsync(ArticleSettingUpdateDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> SaveArticleSettingsAsync(ArticleSettingUpdateDto data, ModelStateDictionary modelState)
 	{
 		if (!modelState.IsValid)
 		{
@@ -49,7 +49,7 @@ public class SettingService : BaseService, ISettingService
 		return new Response<ProblemDetails>(message: "Güncelleme işlemi başarılı.", success: true);
 	}
 
-	public async Task<Response<ProblemDetails>> SaveCommentSettingsAsync(CommentSettingUpdateDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> SaveCommentSettingsAsync(CommentSettingUpdateDto data, ModelStateDictionary modelState)
 	{
 		if (!modelState.IsValid)
 		{
@@ -70,7 +70,7 @@ public class SettingService : BaseService, ISettingService
 		return new Response<ProblemDetails>(message: "Güncelleme işlemi başarılı.", success: true);
 	}
 
-	public async Task<Response<ProblemDetails>> SaveFileUploadSettingsAsync(FileUploadSettingUpdateDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> SaveFileUploadSettingsAsync(FileUploadSettingUpdateDto data, ModelStateDictionary modelState)
 	{
 		if (!modelState.IsValid)
 		{
@@ -91,7 +91,7 @@ public class SettingService : BaseService, ISettingService
 		return new Response<ProblemDetails>(message: "Güncelleme işlemi başarılı.", success: true);
 	}
 
-	public async Task<Response<ProblemDetails>> SaveGeneralSettingsAsync(GeneralSettingUpdateDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> SaveGeneralSettingsAsync(GeneralSettingUpdateDto data, ModelStateDictionary modelState)
 	{
 		if (!modelState.IsValid)
 		{
@@ -112,7 +112,7 @@ public class SettingService : BaseService, ISettingService
 		return new Response<ProblemDetails>(message: "Güncelleme işlemi başarılı.", success: true);
 	}
 
-	public async Task<Response<ProblemDetails>> SaveMailSettingsAsync(EmailSettingUpdateDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> SaveMailSettingsAsync(EmailSettingUpdateDto data, ModelStateDictionary modelState)
 	{
 		if (!modelState.IsValid)
 		{
@@ -133,7 +133,7 @@ public class SettingService : BaseService, ISettingService
 		return new Response<ProblemDetails>(message: "Güncelleme işlemi başarılı.", success: true);
 	}
 
-	public async Task<Response<ProblemDetails>> SavePagingSettingsAsync(PagingSettingUpdateDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> SavePagingSettingsAsync(PagingSettingUpdateDto data, ModelStateDictionary modelState)
 	{
 		if (!modelState.IsValid)
 		{

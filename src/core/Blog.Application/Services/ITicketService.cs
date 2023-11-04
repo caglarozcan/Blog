@@ -9,20 +9,20 @@ namespace Blog.Application.Services;
 public interface ITicketService
 {
 	#region Create
-	Task<Response<ProblemDetails>> InsertAsync(TagInsertDto data, ModelStateDictionary modelState);
+	ValueTask<Response<ProblemDetails>> InsertAsync(TagInsertDto data, ModelStateDictionary modelState);
 	#endregion
 
 	#region Read
-	Task<PagingDataResponse<TagListDto>> ListAsync(DataListRequest request);
+	ValueTask<PagingDataResponse<TagListDto>> ListAsync(DataListRequest request);
 
-	Task<Response<TagListDto>> GetUpdatedTicketAsync(Guid id);
+	ValueTask<Response<TagListDto>> GetUpdatedTicketAsync(Guid id);
 	#endregion
 
 	#region Update
-	Task<Response<ProblemDetails>> EditAsync(TagEditDto data, ModelStateDictionary modelState);
+	ValueTask<Response<ProblemDetails>> EditAsync(TagEditDto data, ModelStateDictionary modelState);
 	#endregion
 
 	#region Delete
-	Task<Response.Response> DeleteAsync(Guid id);
+	ValueTask<Response.Response> DeleteAsync(Guid id);
 	#endregion
 }

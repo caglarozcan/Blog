@@ -8,13 +8,13 @@ namespace Blog.Application.Services;
 public interface IMediaService
 {
 	#region Create
-	Task<Response.Response> FileUploadAsync(IFormFile file);
+	ValueTask<Response.Response> FileUploadAsync(IFormFile file);
 	#endregion
 
 	#region Read
-	Task<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request);
+	ValueTask<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request);
 
-	Task<MediaInfoDto> GetMediaInfoAsync(Guid id);
+	ValueTask<MediaInfoDto> GetMediaInfoAsync(Guid id);
 	#endregion
 
 	#region Update

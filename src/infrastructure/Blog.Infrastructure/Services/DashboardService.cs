@@ -13,7 +13,7 @@ public class DashboardService : IDashboardService
 		_unitOfWork = unitOfWork;
 	}
 
-	public async Task<GeneralStaticticDto> GetGeneralStatisticAsync()
+	public async ValueTask<GeneralStaticticDto> GetGeneralStatisticAsync()
 	{
 		GeneralStaticticDto generalStatictic = new();
 		generalStatictic.ArticleCount = await _unitOfWork.ArticleReadRepository.CountAsync(null);

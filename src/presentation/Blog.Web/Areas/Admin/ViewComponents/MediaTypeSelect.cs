@@ -19,8 +19,8 @@ public class MediaTypeSelect : ViewComponent
 		return View(items);
 	}
 
-	private Task<MediaTypeSelectDto> GetItemsAsync(Guid? id)
+	private async Task<MediaTypeSelectDto> GetItemsAsync(Guid? id)
 	{
-		return _mediaTypeService.GetMediaTypeSelectAsync(id);
+		return await _mediaTypeService.GetMediaTypeSelectAsync(id);
 	}
 }

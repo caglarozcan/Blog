@@ -25,7 +25,7 @@ public class UsersController : Controller
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> Insert(UserInsertDto data)
+	public async ValueTask<IActionResult> Insert(UserInsertDto data)
 	{
 		var result = await _userService.InsertAsync(data, ModelState);
 
@@ -40,12 +40,12 @@ public class UsersController : Controller
 	#endregion
 
 	#region Read
-	public async Task<IActionResult> Index()
+	public IActionResult Index()
 	{
 		return View();
 	}
 
-	public async Task<IActionResult> GetList(DataListRequest request)
+	public async ValueTask<IActionResult> GetList(DataListRequest request)
 	{
 		var list = await _userService.GetUserListAsync(request);
 
@@ -54,14 +54,14 @@ public class UsersController : Controller
 	#endregion
 
 	#region Update
-	public async Task<IActionResult> Update(Guid id)
+	public async ValueTask<IActionResult> Update(Guid id)
 	{
 		var user = await _userService.GetUpdatedUserAsync(id);
 		return View(user);
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> Update(UserUpdateDto data)
+	public async ValueTask<IActionResult> Update(UserUpdateDto data)
 	{
 		var result = await _userService.UpdateAsync(data, ModelState);
 
@@ -75,7 +75,7 @@ public class UsersController : Controller
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> StatusChange(Guid id)
+	public async ValueTask<IActionResult> StatusChange(Guid id)
 	{
 		var result = await _userService.StatusChangeAsync(id);
 		return Ok(result);
@@ -84,7 +84,7 @@ public class UsersController : Controller
 
 	#region Delete
 	[HttpPost]
-	public async Task<IActionResult> Delete(Guid id)
+	public async ValueTask<IActionResult> Delete(Guid id)
 	{
 		var result = await _userService.DeleteAsync(id);
 		return Ok(result);

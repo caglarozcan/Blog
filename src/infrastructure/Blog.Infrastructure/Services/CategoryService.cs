@@ -22,7 +22,7 @@ public class CategoryService : BaseService, ICategoryService
     }
 
     #region Create
-    public async Task<Response<ProblemDetails>> InsertAsync(CategoryInsertDto data, ModelStateDictionary modelState)
+    public async ValueTask<Response<ProblemDetails>> InsertAsync(CategoryInsertDto data, ModelStateDictionary modelState)
     {
         if (!modelState.IsValid)
             return new Response<ProblemDetails>(message: "Doğrulama hatası", success: false, ModelValidationProblem(modelState, "Formda gönderilen alanlar geçersiz veya eksik."));
@@ -54,14 +54,14 @@ public class CategoryService : BaseService, ICategoryService
     #endregion
 
     #region Read
-    public async Task<PagingDataResponse<CategoryListDto>> GetCategoryListAsync(DataListRequest request)
+    public async ValueTask<PagingDataResponse<CategoryListDto>> GetCategoryListAsync(DataListRequest request)
     {
         var categoryList = await _unitOfWork.CategoryReadRepository.GetCategoryListAsync(request);
 
         return categoryList;
     }
 
-    public async Task<Response<CategoryListDto>> GetUpdatedCategoryInfoAsync(Guid id)
+    public async ValueTask<Response<CategoryListDto>> GetUpdatedCategoryInfoAsync(Guid id)
     {
         var category = await _unitOfWork.CategoryReadRepository.GetAsync(c => c.Id.Equals(id));
 
@@ -82,12 +82,12 @@ public class CategoryService : BaseService, ICategoryService
         });
     }
 
-    public async Task<CategorySelectDto> GetSelectCategoriesAsync(Guid? id)
+    public async ValueTask<CategorySelectDto> GetSelectCategoriesAsync(Guid? id)
     {
         return await _unitOfWork.CategoryReadRepository.GetCategorySelect(id);
     }
 
-    public async Task<List<HierarchicalCategoryListDto>> GetHierarchicalCategoryListsync()
+    public async ValueTask<List<HierarchicalCategoryListDto>> GetHierarchicalCategoryListsync()
     {
         var query = await _unitOfWork.CategoryReadRepository.GetAllAsync(c => !c.ParentId.HasValue, includes: i => i.Childs);
 
@@ -113,7 +113,7 @@ public class CategoryService : BaseService, ICategoryService
     #endregion
 
     #region Update
-    public async Task<Response<ProblemDetails>> EditAsync(CategoryEditDto data, ModelStateDictionary modelState)
+    public async ValueTask<Response<ProblemDetails>> EditAsync(CategoryEditDto data, ModelStateDictionary modelState)
     {
         if (!modelState.IsValid)
             return new Response<ProblemDetails>(message: "Doğrulama hatası", success: false, ModelValidationProblem(modelState, "Formda gönderilen alanlar geçersiz veya eksik."));
@@ -152,7 +152,7 @@ public class CategoryService : BaseService, ICategoryService
         return new Response<ProblemDetails>(message: "Kategori başarıyla güncellendi.", success: true);
     }
 
-    public async Task<Response> StatusChangeAsync(Guid id)
+    public async ValueTask<Response> StatusChangeAsync(Guid id)
     {
         var category = await _unitOfWork.CategoryReadRepository.GetAsync(c => c.Id.Equals(id));
 
@@ -172,7 +172,7 @@ public class CategoryService : BaseService, ICategoryService
     #endregion
 
     #region Delete
-    public async Task<Response> DeleteAsync(Guid id)
+    public async ValueTask<Response> DeleteAsync(Guid id)
     {
         var category = await _unitOfWork.CategoryReadRepository.GetAsync(c => c.Id.Equals(id));
 

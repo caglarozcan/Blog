@@ -21,7 +21,7 @@ public class BibliographyService : BaseService, IBibliographyService
 
 	#region Functions
 	#region Create
-	public async Task<Response<ProblemDetails>> InsertAsync(BibliographyInsertDto data, ModelStateDictionary modelState)
+	public async ValueTask<Response<ProblemDetails>> InsertAsync(BibliographyInsertDto data, ModelStateDictionary modelState)
 	{
 		if (!modelState.IsValid)
 		{
@@ -54,7 +54,7 @@ public class BibliographyService : BaseService, IBibliographyService
 	#endregion
 
 	#region Read
-	public async Task<PagingDataResponse<BibliographyListDto>> GetBibliographyListAsync(DataListRequest request)
+	public async ValueTask<PagingDataResponse<BibliographyListDto>> GetBibliographyListAsync(DataListRequest request)
 	{
 		var data = await _unitOfWork.BibliographyReadRepository.GetBibliographyListAsync(request);
 

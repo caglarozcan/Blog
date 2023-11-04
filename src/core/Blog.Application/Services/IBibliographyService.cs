@@ -10,11 +10,11 @@ public interface IBibliographyService
 {
 	#region Functions
 	#region Create
-	Task<Response<ProblemDetails>> InsertAsync(BibliographyInsertDto data, ModelStateDictionary modelState);
+	ValueTask<Response<ProblemDetails>> InsertAsync(BibliographyInsertDto data, ModelStateDictionary modelState);
 	#endregion
 
 	#region Read
-	Task<PagingDataResponse<BibliographyListDto>> GetBibliographyListAsync(DataListRequest request);
+	ValueTask<PagingDataResponse<BibliographyListDto>> GetBibliographyListAsync(DataListRequest request);
 	#endregion
 
 	#region Update

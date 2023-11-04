@@ -33,13 +33,13 @@ public class FileIOService : IFileIOService
 	 */
     #endregion
 
-    public async Task<Response> Copy(Guid id)
+    public async ValueTask<Response> Copy(Guid id)
     {
         throw new NotImplementedException();
     }
 
     [SupportedOSPlatform("windows")]
-    public async Task<Response> Create(IFormFile file)
+    public async ValueTask<Response> Create(IFormFile file)
     {
         if (!(file.Length > 0))
             return new Response("Dosya seçmelisiniz.", false);
@@ -93,12 +93,12 @@ public class FileIOService : IFileIOService
         return new Response("Dosya başarıyla yüklendi.", true);
     }
 
-    public async Task<Response> Delete(Guid id)
+    public async ValueTask<Response> Delete(Guid id)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<Response> Rename(Guid id, string name)
+    public async ValueTask<Response> Rename(Guid id, string name)
     {
         throw new NotImplementedException();
     }

@@ -16,7 +16,7 @@ public class MailService : IMailService
 		this._emailOptions = emailOptions;
 	}
 
-	public async Task<bool> SendMail(string mailAddress, string subject, Dictionary<string, string> body, string template)
+	public async ValueTask<bool> SendMail(string mailAddress, string subject, Dictionary<string, string> body, string template)
 	{
 		string content = "Merhaba [uname]... Şifre sıfırlama bağlantınız: [key]";
 		/*using (System.IO.StreamReader streamReader = new System.IO.StreamReader(template, Encoding.GetEncoding("UTF-8")))

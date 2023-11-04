@@ -12,25 +12,25 @@ public sealed class CategoryInsertDto
 	[DisplayName("Kategori Adı")]
 	[Required(ErrorMessage = "Kategori adı zorunludur.")]
 	[MaxLength(60, ErrorMessage = "Kategori adı en fazla 60 karakter olabilir.")]
-	public string Title { get; set; }
+	public required string Title { get; set; }
 
 	[DataType(DataType.Text)]
 	[DisplayName("Icon")]
 	[Required(ErrorMessage = "Icon alanı zorunludur.")]
 	[MaxLength(20, ErrorMessage = "Icon alanı en fazla 20 karakter olabilir.")]
-	public string Icon { get; set; }
+	public required string Icon { get; set; }
 
 	[DataType(DataType.Text)]
 	[DisplayName("Renk")]
 	[Required(ErrorMessage = "Renk alanı zorunludur.")]
 	[MaxLength(20, ErrorMessage = "Renk alanı en fazla 20 karakter olabilir.")]
-	public string Color { get; set; }
+	public required string Color { get; set; }
 
 	[DataType(DataType.MultilineText)]
 	[DisplayName("Kısa Kategori Açıklaması")]
 	[Required(ErrorMessage = "Kısa kategori açıklaması zorunludur.")]
 	[MaxLength(500, ErrorMessage = "Kısa açıklama en fazla 500 karakter olabilir.")]
-	public string Description { get; set; }
+	public required string Description { get; set; }
 
 	[DataType(DataType.Text)]
 	[DisplayName("Url (Slug)")]

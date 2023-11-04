@@ -22,12 +22,12 @@ public class SubscriberController : BaseController
 	#endregion
 
 	#region Read
-	public async Task<IActionResult> Index()
+	public IActionResult Index()
 	{
 		return View();
 	}
 
-	public async Task<IActionResult> GetList(DataListRequest request)
+	public async ValueTask<IActionResult> GetList(DataListRequest request)
 	{
 		var list = await _subscriberService.GetSubscriberListAsync(request);
 
@@ -37,7 +37,7 @@ public class SubscriberController : BaseController
 
 	#region Update
 	[HttpPost]
-	public async Task<IActionResult> StatusChange(Guid id)
+	public async ValueTask<IActionResult> StatusChange(Guid id)
 	{
 		var result = await _subscriberService.StatusChangeAsync(id);
 
@@ -47,7 +47,7 @@ public class SubscriberController : BaseController
 
 	#region Delete
 	[HttpPost]
-	public async Task<IActionResult> Delete(Guid id)
+	public async ValueTask<IActionResult> Delete(Guid id)
 	{
 		var result = await _subscriberService.DeleteAsync(id);
 
