@@ -7,14 +7,14 @@
 			<li>
 				<details open>
 					<summary>
-						<input type="checkbox" value="@item.Id" name="CategoryId" />&nbsp;&nbsp;@item.Title
+						<input type="checkbox" value="@item.Id" name="Categories[]" />&nbsp;&nbsp;@item.Title
 					</summary>
 					@if (@item.ChildCategories.Count() > 0)
 					{
 						<ul>
 							@foreach (var subItem in item.ChildCategories)
 							{
-								<li><input type="checkbox" value="@subItem.Id" name="CategoryId" />&nbsp;&nbsp;@subItem.Title</li>
+								<li><input type="checkbox" value="@subItem.Id" name="Categories[]" />&nbsp;&nbsp;@subItem.Title</li>
 							}
 						</ul>
 					}

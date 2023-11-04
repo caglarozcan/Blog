@@ -19,273 +19,212 @@
 </div>
 
 <div class="wrapper">
-	<div class="grid">
-		<div class="col-9">
-			<div class="tab tab-bg soft-border" data-tab="tab">
-				<!--Tab Menü-->
-				<div class="tab-menu-fixed">
-					<div class="tab-menu-item active">
-						<a href="javascript:void(0)" data-tab-target="#general-setting">
-							<i class="fa-duotone fa-book-open-cover fa-fw fc-blue"></i>
-							&nbsp;
-							Makale Metni
-						</a>
-					</div>
-					<div class="tab-menu-item">
-						<a href="javascript:void(0)" data-tab-target="#article-setting">
-							<i class="fa-duotone fa-code-simple fa-fw fc-blue"></i>
-							&nbsp;
-							Meta
-						</a>
-					</div>
-					<div class="tab-menu-item">
-						<a href="javascript:void(0)" data-tab-target="#image-setting">
-							<i class="fa-duotone fa-code-fork fa-fw fc-blue"></i>
-							&nbsp;
-							Kategori & Etiket
-						</a>
-					</div>
-					<div class="tab-menu-item">
-						<a href="javascript:void(0)" data-tab-target="#mail-setting">
-							<i class="fa-duotone fa-file-pen fa-fw fc-blue"></i>
-							&nbsp;
-							Medya
-						</a>
-					</div>
-					<div class="tab-menu-item">
-						<a href="javascript:void(0)" data-tab-target="#comment-setting">
-							<i class="fa-duotone fa-bookmark fa-fw fc-blue"></i>
-							&nbsp;
-							Kaynakça
-						</a>
-					</div>
-				</div>
-				<!--Tab Menü-->
-				<!--Tab İçerik-->
-				<div class="tab-content">
-					<!--Genel Ayarlar içeriği-->
-					<div class="tab-item show" id="general-setting">
-						<div class="form-group">
-							<input type="text" name="Title" class="input fc-l" placeholder="Makale Başlığı..." />
-							<span class="vld-Title"></span>
+	<form id="article-insert-form" asp-area="Admin" asp-controller="Article" asp-action="Insert">
+		<div class="grid">
+			<div class="col-9">
+				<div class="tab tab-bg soft-border" data-tab="tab">
+					<!--Tab Menü-->
+					<div class="tab-menu-fixed">
+						<div class="tab-menu-item active">
+							<a href="javascript:void(0)" data-tab-target="#general-setting">
+								<i class="fa-duotone fa-book-open-cover fa-fw fc-blue"></i>
+								&nbsp;
+								Makale Metni
+							</a>
 						</div>
-
-						<div class="form-group">
-							<!--Web Editor Start-->
-							<div id="contentEditor" style="height:600px;"></div>
-							<!--Web Editor End-->
-							<span class="vld-Content"></span>
+						<div class="tab-menu-item">
+							<a href="javascript:void(0)" data-tab-target="#article-setting">
+								<i class="fa-duotone fa-code-simple fa-fw fc-blue"></i>
+								&nbsp;
+								Meta
+							</a>
+						</div>
+						<div class="tab-menu-item">
+							<a href="javascript:void(0)" data-tab-target="#image-setting">
+								<i class="fa-duotone fa-code-fork fa-fw fc-blue"></i>
+								&nbsp;
+								Kategori & Etiket
+							</a>
+						</div>
+						<div class="tab-menu-item">
+							<a href="javascript:void(0)" data-tab-target="#mail-setting">
+								<i class="fa-duotone fa-file-pen fa-fw fc-blue"></i>
+								&nbsp;
+								Medya
+							</a>
+						</div>
+						<div class="tab-menu-item">
+							<a href="javascript:void(0)" data-tab-target="#comment-setting">
+								<i class="fa-duotone fa-bookmark fa-fw fc-blue"></i>
+								&nbsp;
+								Kaynakça
+							</a>
 						</div>
 					</div>
-					<!--Genel Ayarlar içeriği-->
-					<!--Makale Ayarları-->
-					<div class="tab-item" id="article-setting">
-						<div class="form-group">
-							<label class="label"><strong>Makale Açıklama</strong></label>
-							<textarea name="Description" class="input" style="height:150px;"></textarea>
-							<span class="vld-Description"></span>
-						</div>
-						<div class="form-group">
-							<label class="label"><strong>Makale Linki</strong></label>
-							<input type="text" name="Slug" class="input" value="" />
-							<small>Boş bırakırsanız otomatik oluşturulacaktır.</small>
-							<span class="vld-Slug"></span>
-						</div>
-					</div>
-					<!--Makale Ayarlar-->
-					<!--Resim Yükleme Ayarları-->
-					<div class="tab-item" id="image-setting">
-						<div class="grid">
-							<div class="col-6" style="padding-bottom:20px;">
-								<div class="form-group">
-									<label class="label"><strong>Makale Kategorileri</strong></label>
-								</div>
-								@await Component.InvokeAsync("CategoryTreeComponent", null)
+					<!--Tab Menü-->
+					<!--Tab İçerik-->
+					<div class="tab-content">
+						<!--Genel Ayarlar içeriği-->
+						<div class="tab-item show" id="general-setting">
+							<div class="form-group">
+								<input type="text" name="Title" class="input fc-l" placeholder="Makale Başlığı" />
+								<span class="vld-Title"></span>
 							</div>
-							<div class="col-6">
-								<div class="form-group">
-									<label class="label"><strong>Makale Etiketleri</strong></label>
-								</div>
-								<div class="ticket-container" id="ticket-container">
-									<div class="ticket">
-										<span>sql</span>
-										<a href="javascript:void(0)">
-											<i class="fa-duotone fa-xmark"></i>
-										</a>
-									</div>
-									<div class="ticket">
-										<span>code</span>
-										<a href="javascript:void(0)">
-											<i class="fa-duotone fa-xmark fa-fw"></i>
-										</a>
-									</div>
-									<div class="ticket">
-										<span>project</span>
-										<a href="javascript:void(0)">
-											<i class="fa-duotone fa-xmark fa-fw"></i>
-										</a>
-									</div>
-									<div class="ticket">
-										<span>ddd</span>
-										<a href="javascript:void(0)">
-											<i class="fa-duotone fa-xmark fa-fw"></i>
-										</a>
-									</div>
-									<div class="ticket">
-										<span>programlama</span>
-										<a href="javascript:void(0)">
-											<i class="fa-duotone fa-xmark fa-fw"></i>
-										</a>
-									</div>
-									<div class="ticket">
-										<span>blog</span>
-										<a href="javascript:void(0)">
-											<i class="fa-duotone fa-xmark fa-fw"></i>
-										</a>
-									</div>
-									<div class="ticket">
-										<span>sql server</span>
-										<a href="javascript:void(0)">
-											<i class="fa-duotone fa-xmark fa-fw"></i>
-										</a>
-									</div>
-								</div>
-								<div class="input-group">
-									<input type="text" name="ticketText" class="input" placeholder="Etiket ismi..." />
-									<button class="btn btn-primary group-text">
-										<i class="fa-duotone fa-plus-large fa-fw fc-white"></i>
-									</button>
-								</div>
+
+							<div class="form-group">
+								<div id="contentEditor" style="height:600px;"></div>
+								<input type="hidden" name="Content" value=""/>
+								<span class="vld-Content"></span>
 							</div>
 						</div>
-
-					</div>
-					<!--Resim Yükleme Ayarları-->
-					<!--Mail Ayarları-->
-					<div class="tab-item" id="mail-setting">
-						<div class="file-box">
-							@for (int i = 0; i < 12; i++)
-							{
-								<div class="file-item">
-									<div class="file-delete-button">
-										<a href="javascript:void(0)">
-											<i class="fa-duotone fa-xmark fa-fw"></i>
-										</a>
+						<!--Genel Ayarlar içeriği-->
+						<!--Makale Ayarları-->
+						<div class="tab-item" id="article-setting">
+							<div class="form-group">
+								<label class="label"><strong>Makale Açıklama</strong></label>
+								<textarea name="Description" class="input" style="height:150px;"></textarea>
+								<span class="vld-Description"></span>
+							</div>
+							<div class="form-group">
+								<label class="label"><strong>Makale Linki</strong></label>
+								<input type="text" name="Slug" class="input" />
+								<small>Boş bırakırsanız otomatik oluşturulacaktır.</small>
+								<span class="vld-Slug"></span>
+							</div>
+						</div>
+						<!--Makale Ayarlar-->
+						<!--Resim Yükleme Ayarları-->
+						<div class="tab-item" id="image-setting">
+							<div class="grid">
+								<div class="col-6" style="padding-bottom:20px;">
+									<div class="form-group">
+										<label class="label"><strong>Makale Kategorileri</strong></label>
 									</div>
-									<div class="file-icon">
-										<i class="fa-duotone fa-file-lines fa-fw"></i>
-									</div>
-									<div class="file-name">
-										sample-data-formats.json
-									</div>
-									<div class="file-size">16 KB</div>
+									@await Component.InvokeAsync("CategoryTreeComponent", null)
+									<span class="vld-Categories"></span>
 								</div>
-							}
+								<div class="col-6">
+									<div class="form-group">
+										<label class="label"><strong>Makale Etiketleri</strong></label>
+									</div>
+									<div class="ticket-container" id="ticket-container">
+										<div class="ticket">
+											<span>sql</span>
+											<a href="javascript:void(0)">
+												<i class="fa-duotone fa-xmark"></i>
+											</a>
+										</div>
+									</div>
+									<div class="input-group">
+										<input type="text" name="ticketText" class="input" placeholder="Etiket ismi..." />
+										<button class="btn btn-primary group-text">
+											<i class="fa-duotone fa-plus-large fa-fw fc-white"></i>
+										</button>
+									</div>
+									<input type="hidden" name="Tickets" value="" />
+									<span class="vld-Tickets"></span>
+								</div>
+							</div>
+
 						</div>
-						<div class="hr mt-2 mb-2"></div>
-						<button class="btn btn-primary mb-1">Dosya Ekle</button>
+						<!--Resim Yükleme Ayarları-->
+						<!--Mail Ayarları-->
+						<div class="tab-item" id="mail-setting">
+							<div class="file-box">
+								@for (int i = 0; i < 12; i++)
+								{
+									<div class="file-item">
+										<div class="file-delete-button">
+											<a href="javascript:void(0)">
+												<i class="fa-duotone fa-xmark fa-fw"></i>
+											</a>
+										</div>
+										<div class="file-icon">
+											<i class="fa-duotone fa-file-lines fa-fw"></i>
+										</div>
+										<div class="file-name">
+											sample-data-formats.json
+										</div>
+										<div class="file-size">16 KB</div>
+									</div>
+								}
+							</div>
+							<div class="hr mt-2 mb-2"></div>
+							<button class="btn btn-primary mb-1">Dosya Ekle</button>
+						</div>
+						<!--Mail Ayarları-->
+						<!--Yorum Ayarları-->
+						<div class="tab-item" id="comment-setting">
+							<table>
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>İsim</th>
+										<th>Bağlantı</th>
+										<th>&nbsp;</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>Micsoroft üzerinde işlemler</td>
+										<td>https://code-maze.com/global-error-handling-aspnetcore/</td>
+										<td class="text-center">
+											<a href="javascript:void(0)">
+												<i class="fa-duotone fa-trash-can fa-fw fc-red"></i>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<div class="hr mt-2 mb-2"></div>
+
+							<div class="form-group">
+								<label class="label">İsim</label>
+								<input type="text" name="Title" class="input" />
+								<span class="vld-Title"></span>
+							</div>
+							<div class="form-group">
+								<label class="label">Bağlantı</label>
+								<input type="text" name="Title" class="input" />
+								<span class="vld-Title"></span>
+							</div>
+
+							<div class="form-group text-right">
+								<button class="btn btn-primary group-text">
+									<i class="fa-duotone fa-plus-large fa-fw fc-white"></i> Ekle
+								</button>
+							</div>
+						</div>
+						<!--Yorum Ayarları-->
 					</div>
-					<!--Mail Ayarları-->
-					<!--Yorum Ayarları-->
-					<div class="tab-item" id="comment-setting">
-						<table>
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>İsim</th>
-									<th>Bağlantı</th>
-									<th>&nbsp;</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Micsoroft üzerinde işlemler</td>
-									<td>https://code-maze.com/global-error-handling-aspnetcore/</td>
-									<td class="text-center">
-										<a href="javascript:void(0)">
-											<i class="fa-duotone fa-trash-can fa-fw fc-red"></i>
-										</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-
-						<div class="hr mt-2 mb-2"></div>
-
-						<div class="form-group">
-							<label class="label">İsim</label>
-							<input type="text" name="Title" class="input" />
-							<span class="vld-Title"></span>
-						</div>
-						<div class="form-group">
-							<label class="label">Bağlantı</label>
-							<input type="text" name="Title" class="input" />
-							<span class="vld-Title"></span>
-						</div>
-
-						<div class="form-group text-right">
-							<button class="btn btn-primary group-text">
-								<i class="fa-duotone fa-plus-large fa-fw fc-white"></i> Ekle
-							</button>
-						</div>
-					</div>
-					<!--Yorum Ayarları-->
+					<!--Tab İçerik-->
 				</div>
-				<!--Tab İçerik-->
 			</div>
-		</div>
-		<div class="col-3">
-			<div class="card">
-				<div class="card-body pd">
-					<div class="flex flex-sb">
-						<select name="SaveType" id="save-type" class="chselect">
-							<option value="1">Kaydet ve Yayınla</option>
-							<option value="2" selected>Taslak Olarak Kaydet</option>
-							<option value="3">PDF Olarak Kaydet</option>
-						</select>
-						<div class="flex-seperator"></div>
-						<button class="btn btn-primary">Kaydet</button>
+			<div class="col-3">
+				<div class="card">
+					<div class="card-body pd">
+						<div class="flex flex-sb">
+							<select name="SaveType" id="save-type" class="chselect">
+								<option value="1" selected>Kaydet ve Yayınla</option>
+								<option value="2">Taslak Olarak Kaydet</option>
+								<option value="3">PDF Olarak Kaydet</option>
+							</select>
+							<div class="flex-seperator"></div>
+							<button class="btn btn-primary" id="btn-article-insert" type="submit">Kaydet</button>
+						</div>
 					</div>
-
-					@*<br />
-					<br />
-					<br />
-
-					<div class="select" id="process-type" data-name="ProcessTypeId" data-placeholder="İşlem türü seçiniz.">
-					<div class="select-content" data-select="true">
-					<div class="selected-text"></div>
-					<i class="fa-duotone fa-chevron-down fa-fw"></i>
-					</div>
-					<div class="option-box hide">
-					<div class="option-search">
-					<input type="text" placeholder="Ara.." />
-					</div>
-					<ul>
-					<li class="selected" data-value="1">
-					<span>Kaydet ve Yayınla</span>
-					<i class="fa-duotone fa-check fa-fw"></i>
-					</li>
-					<li data-value="2">
-					<span>Taslak Olarak Kaydet</span>
-					</li>
-					<li data-value="3">
-					<span>PDF Olarak Kaydet</span>
-					</li>
-					</ul>
-					</div>
-					</div>
-					*@
 				</div>
-			</div>
 
-			<div class="card">
-				<div class="card-body pd text-center">
-					<a href="javascript:void(0)">Öne çıkan görsel seç</a>
+				<div class="card">
+					<div class="card-body pd text-center">
+						<a href="javascript:void(0)">Öne çıkan görsel seç</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 </div>
 
 <script>
@@ -295,6 +234,39 @@
 	editor1cfg.skin = 'rounded-corner';
 	var editor1 = new RichTextEditor("#contentEditor", editor1cfg);
 
-	var footerText = document.getElementsByTagName('rte-powerby');
-	footerText.remove();
+	window.addEventListener('DOMContentLoaded', (event) => {
+		FormValidation.init({
+			formSelector: '#article-insert-form',
+			sendAjax: true,
+			ajaxAfter: function () {
+				dtCategory.renderBody();
+			},
+			inputs: [
+				{
+					name: 'Title',
+					rules: [
+						{ rule: 'required', message: 'Makale başlığı alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Content',
+					rules: [
+						{ rule: 'required', message: 'Makale içeriği alanı zorunludur.' }
+					],
+				},
+				{
+					name: 'Description',
+					rules: [
+						{ rule: 'required', message: 'Kısa makale açıklaması zorunludur.' }
+					],
+				},
+				{
+					name: 'Tickets',
+					rules: [
+						{ rule: 'required', message: 'Makale için en az bir etiket belirlemelisiniz.' }
+					],
+				}
+			]
+		});
+	});
 </script>
