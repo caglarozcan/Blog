@@ -73,7 +73,7 @@
 
 							<div class="form-group">
 								<div id="contentEditor" style="height:600px;"></div>
-								<input type="hidden" name="Content" value=""/>
+								<input type="hidden" name="Content" value="" />
 								<span class="vld-Content"></span>
 							</div>
 						</div>
@@ -267,6 +267,12 @@
 					],
 				}
 			]
+		});
+
+		//Kaydedilmeyen değişiklikler var alerti çıkarma.
+		window.addEventListener('beforeunload', function (e) {
+			e.preventDefault();
+			e.returnValue = '';
 		});
 	});
 </script>
