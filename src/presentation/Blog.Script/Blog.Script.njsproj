@@ -48,6 +48,7 @@
     <Content Include="src\plugin\photoGallery.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\plugin\photoSelector.js" />
     <Content Include="src\plugin\ticket.js" />
     <Content Include="src\util\util.js" />
     <Content Include="webpack.config.js" />

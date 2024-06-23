@@ -18,6 +18,21 @@
 	</ul>
 </div>
 
+<div class="modal" id="photoSelect">
+	<div class="modal-container modal-xlg">
+		<div class="modal-title">
+			<div class="title">Öne Çıkan Görsel</div>
+			<a href="javascript:void(0)" class="close" data-dismiss="modal">
+				<i class="fa-duotone fa-xmark fa-fw fc-blue"></i>
+			</a>
+		</div>
+		<div class="modal-content">
+			Burası içerik kısmı
+		</div>
+		<div class="modal-footer"></div>
+	</div>
+</div>
+
 <div class="wrapper">
 	<form id="article-insert-form" asp-area="Admin" asp-controller="Article" asp-action="Insert">
 		<div class="grid">
@@ -219,7 +234,7 @@
 
 				<div class="card">
 					<div class="card-body pd text-center">
-						<a href="javascript:void(0)">Öne çıkan görsel seç</a>
+						<a href="javascript:void(0)" data-modal="#photoSelect">Öne çıkan görsel seç</a>
 					</div>
 				</div>
 			</div>
@@ -270,9 +285,9 @@
 		});
 
 		//Kaydedilmeyen değişiklikler var alerti çıkarma.
-		window.addEventListener('beforeunload', function (e) {
+		/*window.addEventListener('beforeunload', function (e) {
 			e.preventDefault();
 			e.returnValue = '';
-		});
+		});*/
 	});
 </script>
