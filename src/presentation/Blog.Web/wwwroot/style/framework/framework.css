@@ -1101,6 +1101,18 @@ input[type=checkbox]:checked::before {
   background: var(--color-gray-300);
 }
 
+.selected-item {
+  background: var(--color-primary);
+}
+
+.article-cover-image {
+  max-width: 250px;
+  max-height: 250px;
+  margin: 8px auto 20px auto;
+  display: flex;
+  align-self: center;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -2149,7 +2161,7 @@ table td a i {
 }
 .modal .modal-container {
   width: 450px;
-  margin: 50px auto 0 auto;
+  margin: 55px auto 0 auto;
   border-radius: 4px;
   background: #fff;
   box-shadow: 0 0 6.2px 0 rgba(0, 0, 0, 0.232);
@@ -2193,6 +2205,9 @@ table td a i {
 .modal .modal-container .modal-footer {
   width: 100%;
   padding: 1rem;
+}
+.modal .modal-container .modal-footer.footer-align-right {
+  text-align: right !important;
 }
 
 .show-modal {

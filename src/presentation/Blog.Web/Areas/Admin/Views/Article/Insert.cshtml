@@ -26,10 +26,29 @@
 				<i class="fa-duotone fa-xmark fa-fw fc-blue"></i>
 			</a>
 		</div>
-		<div class="modal-content">
-			Burası içerik kısmı
+		<div class="modal-content" id="image-galley-content">
+			<div class="gallery" data-columns="10" id="main-gallery"></div>
 		</div>
-		<div class="modal-footer"></div>
+		<div class="modal-footer footer-align-right">
+			<button class="btn btn-blue" data-close="modal">Kapat</button>
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="fileSelect">
+	<div class="modal-container modal-xlg">
+		<div class="modal-title">
+			<div class="title">Dosya Ekle</div>
+			<a href="javascript:void(0)" class="close" data-dismiss="modal">
+				<i class="fa-duotone fa-xmark fa-fw fc-blue"></i>
+			</a>
+		</div>
+		<div class="modal-content" id="file-galley-content">
+			<div class="gallery" data-columns="10" id="file-main-gallery"></div>
+		</div>
+		<div class="modal-footer footer-align-right">
+			<button class="btn btn-blue" data-close="modal">Kapat</button>
+		</div>
 	</div>
 </div>
 
@@ -65,7 +84,7 @@
 							<a href="javascript:void(0)" data-tab-target="#mail-setting">
 								<i class="fa-duotone fa-file-pen fa-fw fc-blue"></i>
 								&nbsp;
-								Medya
+								Dosya
 							</a>
 						</div>
 						<div class="tab-menu-item">
@@ -143,31 +162,13 @@
 
 						</div>
 						<!--Resim Yükleme Ayarları-->
-						<!--Mail Ayarları-->
+						<!--Dosya Ekle-->
 						<div class="tab-item" id="mail-setting">
-							<div class="file-box">
-								@for (int i = 0; i < 12; i++)
-								{
-									<div class="file-item">
-										<div class="file-delete-button">
-											<a href="javascript:void(0)">
-												<i class="fa-duotone fa-xmark fa-fw"></i>
-											</a>
-										</div>
-										<div class="file-icon">
-											<i class="fa-duotone fa-file-lines fa-fw"></i>
-										</div>
-										<div class="file-name">
-											sample-data-formats.json
-										</div>
-										<div class="file-size">16 KB</div>
-									</div>
-								}
-							</div>
+							<div class="file-box" id="article-files"></div>
 							<div class="hr mt-2 mb-2"></div>
-							<button class="btn btn-primary mb-1">Dosya Ekle</button>
+							<button class="btn btn-primary mb-1" data-modal="#fileSelect">Dosya Ekle</button>
 						</div>
-						<!--Mail Ayarları-->
+						<!--Dosya Ekle-->
 						<!--Yorum Ayarları-->
 						<div class="tab-item" id="comment-setting">
 							<table>
@@ -234,7 +235,9 @@
 
 				<div class="card">
 					<div class="card-body pd text-center">
+						<img class="article-cover-image" id="articleCover" style="display:none;" />
 						<a href="javascript:void(0)" data-modal="#photoSelect">Öne çıkan görsel seç</a>
+						<input type="hidden" name="CoverPhotoId" id="CoverPhotoId" value="" />
 					</div>
 				</div>
 			</div>
@@ -248,6 +251,12 @@
 	editor1cfg.toolbar_mytoolbar = "{paragraphs,bold,italic,underline,strike}|{forecolor,backcolor,ucase,lcase}|{justifyleft,justifycenter,justifyright,justifyfull,indent,outdent}|{insertorderedlist,insertunorderedlist,superscript,subscript}|{insertlink,inserttable,insertimage,insertblockquote,insertvideo,insertcode,code,insertchars}#{undo,redo,preview,html2pdf,fullscreenenter,fullscreenexit}";
 	editor1cfg.skin = 'rounded-corner';
 	var editor1 = new RichTextEditor("#contentEditor", editor1cfg);
+
+	function deleteFileItem(e) {
+		e = e || window.event;
+		var targ = e.target || e.srcElement || e;
+		targ.parentNode.parentNode.remove();
+	}
 
 	window.addEventListener('DOMContentLoaded', (event) => {
 		FormValidation.init({
@@ -284,10 +293,53 @@
 			]
 		});
 
-		//Kaydedilmeyen değişiklikler var alerti çıkarma.
-		/*window.addEventListener('beforeunload', function (e) {
-			e.preventDefault();
-			e.returnValue = '';
-		});*/
+		var gallery = new PhotoSelector({
+			selector: '#main-gallery', perData: 32, searchValue: 'jpg,png,jpeg,gif,svg', eh: function (id, path, name) {
+				document.getElementById('CoverPhotoId').value = id;
+				var prvImg = document.getElementById('articleCover');
+				prvImg.src = path;
+				prvImg.style.display = 'block';
+			}
+		});
+
+		const galleryContent = document.getElementById('image-galley-content');
+		const mainGallery = document.getElementById('main-gallery');
+		let idealColumnSize = galleryContent.clientWidth < 640 ? 135 : 150;
+		window.addEventListener('resize', (e) => {
+			let columnSize = Math.min(Math.round(galleryContent.clientWidth / idealColumnSize), 10) || 1;
+			mainGallery.setAttribute('data-columns', columnSize);
+		});
+
+
+		var fGallery = new PhotoSelector({
+			selector: '#file-main-gallery', perData: 32, searchValue: 'pdf,zip,rar,xls,txt,json,xml', eh: function (id, path, name) {
+				let fileItem = '<div class="file-delete-button">\
+														<a href="javascript:void(0)" onclick="deleteFileItem(this)">\
+															<i class="fa-duotone fa-xmark fa-fw"></i>\
+														</a>\
+													</div>\
+													<div class="file-icon">\
+														<i class="fa-duotone fa-file-lines fa-fw"></i>\
+														<input type="hidden" name="Attachments[]" value="' + id + '">\
+													</div>\
+														<div class="file-name">'+ name + '</div>';
+
+				let fileDiv = document.createElement('div');
+				fileDiv.className = 'file-item';
+				fileDiv.innerHTML = fileItem;
+
+				const fileBox = document.getElementById('article-files');
+				fileBox.appendChild(fileDiv);
+			}
+		});
+		const fileGalleryContent = document.getElementById('file-galley-content');
+		const fileGallery = document.getElementById('file-main-gallery');
+		idealColumnSize = fileGalleryContent.clientWidth < 640 ? 135 : 150;
+		window.addEventListener('resize', (e) => {
+			let columnSize = Math.min(Math.round(fileGalleryContent.clientWidth / idealColumnSize), 10) || 1;
+			fileGallery.setAttribute('data-columns', columnSize);
+		});
+
+		
 	});
 </script>

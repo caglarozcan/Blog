@@ -14,6 +14,8 @@ public interface IMediaService
 	#region Read
 	ValueTask<PagingDataResponse<MediaListDto>> GetMediaListAsync(DataListRequest request);
 
+	ValueTask<PagingDataResponse<MediaListDto>> GetFilteredMediaListAsync(DataListRequest request);
+
 	ValueTask<MediaInfoDto> GetMediaInfoAsync(Guid id);
 	#endregion
 

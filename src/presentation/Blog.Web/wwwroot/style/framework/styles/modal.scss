@@ -17,7 +17,7 @@
 
 	.modal-container {
 		width: 450px;
-		margin: 50px auto 0 auto;
+		margin: 55px auto 0 auto;
 		border-radius: 4px;
 		background: #fff;
 		box-shadow: 0 0 6.2px 0 rgba(0, 0, 0, 0.232);
@@ -69,6 +69,10 @@
 		.modal-footer {
 			width: 100%;
 			padding: 1rem;
+
+			&.footer-align-right{
+				text-align:right !important;
+			}
 		}
 	}
 }

@@ -221,3 +221,15 @@
 	height:1px;
 	background: var(--color-gray-300);
 }
+
+.selected-item {
+	background: var(--color-primary);
+}
+
+.article-cover-image{
+	max-width:250px;
+	max-height:250px;
+	margin: 8px auto 20px auto;
+	display:flex;
+	align-self:center;
+}

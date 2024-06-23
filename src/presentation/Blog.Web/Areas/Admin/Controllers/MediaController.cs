@@ -47,6 +47,12 @@ public class MediaController : BaseController
 	{
 		return Ok(await _mediaService.GetMediaListAsync(request));
 	}
+
+	[HttpPost]
+	public async ValueTask<IActionResult> GetFilteredMediaList(DataListRequest request)
+	{
+		return Ok(await _mediaService.GetFilteredMediaListAsync(request));
+	}
 	#endregion
 
 	#region Update

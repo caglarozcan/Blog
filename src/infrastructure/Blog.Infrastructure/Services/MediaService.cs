@@ -37,6 +37,11 @@ public class MediaService : BaseService, IMediaService
 		return await _unitOfWork.MediaReadRepository.GetMediaListAsync(request, _authUserInfoService.Id);
 	}
 
+	public async ValueTask<PagingDataResponse<MediaListDto>> GetFilteredMediaListAsync(DataListRequest request)
+	{
+		return await _unitOfWork.MediaReadRepository.GetFilteredMediaListAsync(request, _authUserInfoService.Id);
+	}
+
 	public async ValueTask<MediaInfoDto> GetMediaInfoAsync(Guid id)
 	{
 		var media = await _unitOfWork.MediaReadRepository.GetAsync(m => m.Id.Equals(id), includes: i => i.MediaType);

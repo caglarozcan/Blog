@@ -13,4 +13,4 @@ window.Dailog = require('./component/dialog.js');
 
 //plugins
 window.PhotoGallery = require('./plugin/photoGallery.js');
-window.PhotoGallery = require('./plugin/photoSelector.js');
+window.PhotoSelector = require('./plugin/photoSelector.js');
