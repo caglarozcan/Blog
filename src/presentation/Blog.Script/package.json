@@ -23,6 +23,8 @@
         "webpack-dev-server": "^4.15.2"
     },
     "devDependencies": {
+        "eslint": "^9.7.0",
+        "typescript": "^5.5.3",
         "webpack-fix-style-only-entries": "^0.6.1",
         "webpack-utf8-bom": "^1.4.0"
     }

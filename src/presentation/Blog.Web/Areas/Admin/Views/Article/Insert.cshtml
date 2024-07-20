@@ -171,26 +171,15 @@
 						<!--Dosya Ekle-->
 						<!--Yorum Ayarları-->
 						<div class="tab-item" id="comment-setting">
-							<table>
+							<table id="source-list">
 								<thead>
 									<tr>
-										<th>#</th>
+										<th style="width:30px;">#</th>
 										<th>İsim</th>
 										<th>Bağlantı</th>
-										<th>&nbsp;</th>
+										<th style="width:30px;">&nbsp;</th>
 									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1</td>
-										<td>Micsoroft üzerinde işlemler</td>
-										<td>https://code-maze.com/global-error-handling-aspnetcore/</td>
-										<td class="text-center">
-											<a href="javascript:void(0)">
-												<i class="fa-duotone fa-trash-can fa-fw fc-red"></i>
-											</a>
-										</td>
-									</tr>
+								</thead><tbody>
 								</tbody>
 							</table>
 
@@ -198,17 +187,17 @@
 
 							<div class="form-group">
 								<label class="label">İsim</label>
-								<input type="text" name="Title" class="input" />
+								<input type="text" name="sourceTitle" class="input" id="sourceTitle" placeholder="Kaynakça Adı"/>
 								<span class="vld-Title"></span>
 							</div>
 							<div class="form-group">
 								<label class="label">Bağlantı</label>
-								<input type="text" name="Title" class="input" />
+								<input type="text" name="sourceTitle" class="input" id="sourceLink" placeholder="Kaynakça Bağlantısı" />
 								<span class="vld-Title"></span>
 							</div>
 
 							<div class="form-group text-right">
-								<button class="btn btn-primary group-text">
+								<button class="btn btn-primary group-text" id="btnAddSource">
 									<i class="fa-duotone fa-plus-large fa-fw fc-white"></i> Ekle
 								</button>
 							</div>
@@ -314,15 +303,15 @@
 		var fGallery = new PhotoSelector({
 			selector: '#file-main-gallery', perData: 32, searchValue: 'pdf,zip,rar,xls,txt,json,xml', eh: function (id, path, name) {
 				let fileItem = '<div class="file-delete-button">\
-														<a href="javascript:void(0)" onclick="deleteFileItem(this)">\
-															<i class="fa-duotone fa-xmark fa-fw"></i>\
-														</a>\
-													</div>\
-													<div class="file-icon">\
-														<i class="fa-duotone fa-file-lines fa-fw"></i>\
-														<input type="hidden" name="Attachments[]" value="' + id + '">\
-													</div>\
-														<div class="file-name">'+ name + '</div>';
+															<a href="javascript:void(0)" onclick="deleteFileItem(this)">\
+																<i class="fa-duotone fa-xmark fa-fw"></i>\
+															</a>\
+														</div>\
+														<div class="file-icon">\
+															<i class="fa-duotone fa-file-lines fa-fw"></i>\
+															<input type="hidden" name="Attachments[]" value="' + id + '">\
+														</div>\
+															<div class="file-name">'+ name + '</div>';
 
 				let fileDiv = document.createElement('div');
 				fileDiv.className = 'file-item';
@@ -340,6 +329,44 @@
 			fileGallery.setAttribute('data-columns', columnSize);
 		});
 
-		
+
+
+		//Kaynak ekleme
+
+		const sourceButton = document.getElementById('btnAddSource');
+		const sourceTitle = document.getElementById('sourceTitle');
+		const sourceLink = document.getElementById('sourceLink');
+		const sourceList = document.querySelector('#source-list tbody');
+		let sourceNum = 1;
+		sourceButton.addEventListener('click', (e) => {
+			let tr = document.createElement('TR');
+			
+			let numberTd = document.createElement('TD');
+			numberTd.innerHTML = sourceNum;
+
+			let titleTd = document.createElement('TD');
+			titleTd.innerHTML = sourceTitle.value;
+
+			let linkTd = document.createElement('TD');
+			linkTd.innerHTML = sourceLink.value;
+
+			let buttonTd = document.createElement('TD');
+			let deleteButton = document.createElement('A');
+			deleteButton.setAttribute('href', "javascript:void(0)");
+			deleteButton.addEventListener('click', (e) => { 
+				e.target.parentNode.parentNode.parentNode.remove();
+				console.log(sourceList.childNodes);
+			});
+			deleteButton.innerHTML = '<i class="fa-duotone fa-trash-can fa-fw fc-red"></i>';
+			buttonTd.appendChild(deleteButton);
+
+			tr.appendChild(numberTd);
+			tr.appendChild(titleTd);
+			tr.appendChild(linkTd);
+			tr.appendChild(buttonTd);
+			sourceList.appendChild(tr);
+
+			sourceNum++;
+		});
 	});
 </script>

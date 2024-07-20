@@ -4,7 +4,8 @@ const BomPlugin = require('webpack-utf8-bom');
 
 let rootPath = path.resolve(__dirname);
 let srcPath = rootPath + "\\src";
-let distPath = "E:\\Development\\VisualStudio\\Blog\\src\\presentation\\Blog.Web\\wwwroot\\script\\frameworkJs";
+//let distPath = "E:\\Development\\VisualStudio\\Blog\\src\\presentation\\Blog.Web\\wwwroot\\script\\frameworkJs";
+let distPath = "C:\\Users\\caglar.ozcan\\source\\repos\\Blog\\src\\presentation\\Blog.Web\\wwwroot\\script\\frameworkJs";
 
 function getFiles() {
 	const entries = {};
